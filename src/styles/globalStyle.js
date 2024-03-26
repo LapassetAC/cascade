@@ -11,6 +11,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  letter-spacing: -0.05em;
+}
+
+a,p,button,h1,h2,h3,i,input {
+  letter-spacing: -0.05em; 
 }
 
 a {
