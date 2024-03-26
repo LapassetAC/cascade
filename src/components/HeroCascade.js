@@ -20,6 +20,7 @@ const StyledLine = styled.span`
 export default function HeroCascade() {
   const linesNb = 10;
   const [isLines, setIsLines] = useState(false);
+  const [mouseHoverLineIndex, setMouseHoverLineIndex] = useState(0);
 
   useEffect(() => {
     setIsLines(true);
@@ -28,12 +29,24 @@ export default function HeroCascade() {
   return (
     <StyledContainer>
       {Array.from({ length: linesNb }, (e, i) => {
+        let height = 0;
+        let delay = i * 0.1;
+        if (isLines) {
+          height = "calc(20vh + " + Math.pow(i, 2.2) + "px)";
+          if (mouseHoverLineIndex === i) {
+            height = 0;
+            delay = 0;
+          }
+        } else {
+          height = 0;
+        }
         return (
           <StyledLine
             $width={i + 1}
-            $height={isLines ? "calc(20vh + " + Math.pow(i, 2.2) + "px)" : 0}
+            $height={height}
             $margin={linesNb - i}
-            $delay={i * 0.1}
+            $delay={delay}
+            onMouseOver={() => setMouseHoverLineIndex(i)}
             key={i}
           ></StyledLine>
         );
