@@ -12,6 +12,11 @@ const moderat = localFont({
       style: "italic",
     },
     {
+      path: "../assets/fonts/Moderat-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+    {
       path: "../assets/fonts/Moderat-Medium.ttf",
       weight: "500",
       style: "normal",

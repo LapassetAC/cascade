@@ -8,7 +8,6 @@ const StyledContainer = styled.div`
   header {
     align-items: center;
     a {
-      font-size: 24px;
       h1 {
         font-weight: 900;
         font-style: italic;
@@ -21,13 +20,19 @@ const StyledContainer = styled.div`
   }
   section {
     &.hero {
-      & > div {
-        grid-column: 2 / 3;
-      }
+      /* height: 100vh; */
+      /* margin-top: 20vh; */
       p {
-        &:first-child {
+        &:first-of-type {
           font-size: 48px;
           font-weight: 900;
+          line-height: 52px;
+          grid-column: 3 / 4;
+          grid-row: 1 / 2;
+        }
+        &:last-of-type {
+          grid-row: 2 / 3;
+          grid-column: 3 / 5;
         }
       }
     }

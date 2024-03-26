@@ -15,7 +15,9 @@ body {
 }
 
 a,p,button,h1,h2,h3,i,input {
-  letter-spacing: -0.05em; 
+  letter-spacing: -0.05em;
+  font-size: 24px;
+ 
 }
 
 a {
