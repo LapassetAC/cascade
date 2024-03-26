@@ -11,7 +11,13 @@ const StyledContainer = styled.div`
 export default function Home({ projects }) {
   return (
     <StyledContainer>
-      <header>Cascade</header>
+      <header className="grid">
+        <a href="">Cascade</a>
+        <a href="">Projets</a>
+        <a href="">Savoir-faire</a>
+        <a href="">À propos</a>
+        <a href="">Contact</a>
+      </header>
       <ProjectsSection projects={projects} />
     </StyledContainer>
   );
