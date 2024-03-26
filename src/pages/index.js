@@ -1,17 +1,19 @@
 import { client } from "../../sanity/lib/client";
-import Head from "next/head";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  header {
+  }
+`;
 
 export default function Home({ projects }) {
   return (
-    <main>
-      <Head>
-        <title>Cascade</title>
-        <meta property="og:title" content="Cascade" key="title" />
-      </Head>
+    <StyledContainer>
+      <header>Cascade</header>
       <ProjectsSection projects={projects} />
-    </main>
+    </StyledContainer>
   );
 }
 
