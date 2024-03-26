@@ -5,7 +5,18 @@ import theme from "@/styles/theme";
 import GlobalStyle from "@/styles/globalStyle";
 
 const moderat = localFont({
-  src: "../assets/fonts/Moderat-Black-Italic.ttf",
+  src: [
+    {
+      path: "../assets/fonts/Moderat-Black-Italic.ttf",
+      weight: "900",
+      style: "italic",
+    },
+    {
+      path: "../assets/fonts/Moderat-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
 });
 export default function App({ Component, pageProps }) {
   return (
