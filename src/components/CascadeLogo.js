@@ -1,12 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useEffect } from "react";
+
+const cascadeAnim = keyframes`
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -88;
+  }
+`;
 
 const StyledContainer = styled.div`
   h1 {
     font-weight: 900;
     font-size: 32px;
     &:hover > svg > line {
-      stroke-dashoffset: -88;
+      animation: ${cascadeAnim} 0.4s ease-in-out infinite;
     }
     svg {
       height: 22px;
@@ -17,20 +26,21 @@ const StyledContainer = styled.div`
         stroke-dasharray: 44;
         stroke-dashoffset: 0;
         transition: stroke-dashoffset 0.4s ease-in-out;
+
         &:nth-child(1) {
-          transition-delay: 0.5s;
+          animation-delay: 0.5s;
         }
         &:nth-child(2) {
-          transition-delay: 0.4s;
+          animation-delay: 0.4s;
         }
         &:nth-child(3) {
-          transition-delay: 0.3s;
+          animation-delay: 0.3s;
         }
         &:nth-child(4) {
-          transition-delay: 0.2s;
+          animation-delay: 0.2s;
         }
         &:nth-child(5) {
-          transition-delay: 0.1s;
+          animation-delay: 0.1s;
         }
       }
     }
