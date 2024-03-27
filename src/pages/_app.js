@@ -7,17 +7,17 @@ import GlobalStyle from "@/styles/globalStyle";
 const moderat = localFont({
   src: [
     {
-      path: "../assets/fonts/Moderat-Black-Italic.ttf",
+      path: "../assets/fonts/Moderat-Black-Italic.woff2",
       weight: "900",
       style: "italic",
     },
     {
-      path: "../assets/fonts/Moderat-Black.ttf",
+      path: "../assets/fonts/Moderat-Black.woff2",
       weight: "900",
       style: "normal",
     },
     {
-      path: "../assets/fonts/Moderat-Medium.ttf",
+      path: "../assets/fonts/Moderat-Medium.woff2",
       weight: "500",
       style: "normal",
     },
