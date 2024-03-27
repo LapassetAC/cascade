@@ -16,9 +16,9 @@ const StyledContainer = styled.div`
 
     p {
       &:first-of-type {
-        font-size: 48px;
-        font-weight: 900;
-        line-height: 52px;
+        /* font-size: 48px; */
+        /* font-weight: 900; */
+        /* line-height: 52px; */
         margin-bottom: 30px;
       }
     }
@@ -75,7 +75,7 @@ export default function HeroSection() {
               $width={i + 1}
               $height={height}
               $delay={delay}
-              onMouseOver={() => setMouseHoverLineIndex(i)}
+              // onMouseOver={() => setMouseHoverLineIndex(i)}
               key={i}
             ></StyledLine>
           );
