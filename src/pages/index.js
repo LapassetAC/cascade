@@ -1,20 +1,22 @@
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
-import HeroSection from "@/components/HeroSection";
+import CascadeLogo from "@/components/CascadeLogo";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
   header {
     align-items: center;
     a {
-      h1 {
-        font-weight: 900;
-        font-style: italic;
-        font-size: 32px;
-      }
       &:nth-child(2) {
         grid-column: 3 / 4;
+      }
+    }
+  }
+  section {
+    &.hero {
+      p {
+        grid-column: 3 / 5;
       }
     }
   }
@@ -25,14 +27,22 @@ export default function Home({ projects }) {
     <StyledContainer>
       <header className="grid">
         <a href="">
-          <h1>Cascade</h1>
+          <CascadeLogo />
         </a>
         <a href="">Projets</a>
         <a href="">Savoir-faire</a>
         <a href="">À propos</a>
         <a href="">Contact</a>
       </header>
-      <HeroSection />
+      <section className="grid hero">
+        <p>Revitalisez votre présence digitale.</p>
+        <p>
+          Nous concevons des sites web engageants pour des marques engagées. Nos
+          créations se distinguent par leur fluidité, leur respect de
+          l'environnement, et leur optimisation pour le référencement naturel
+          (SEO).
+        </p>
+      </section>
       <ProjectsSection projects={projects} />
     </StyledContainer>
   );
