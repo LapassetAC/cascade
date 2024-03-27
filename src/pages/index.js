@@ -1,7 +1,7 @@
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
-import HeroCascade from "@/components/HeroCascade";
+import HeroSection from "@/components/HeroSection";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
@@ -15,25 +15,6 @@ const StyledContainer = styled.div`
       }
       &:nth-child(2) {
         grid-column: 3 / 4;
-      }
-    }
-  }
-  section {
-    &.hero {
-      /* height: 100vh; */
-      /* margin-top: 20vh; */
-      p {
-        &:first-of-type {
-          font-size: 48px;
-          font-weight: 900;
-          line-height: 52px;
-          grid-column: 3 / 4;
-          grid-row: 1 / 2;
-        }
-        &:last-of-type {
-          grid-row: 2 / 3;
-          grid-column: 3 / 5;
-        }
       }
     }
   }
@@ -51,16 +32,7 @@ export default function Home({ projects }) {
         <a href="">À propos</a>
         <a href="">Contact</a>
       </header>
-      <section className="hero grid">
-        <HeroCascade />
-        <p>Revitalisez votre présence digitale</p>
-        <p>
-          Nous concevons des sites web engageants pour des marques engagées. Nos
-          créations se distinguent par leur fluidité, leur respect de
-          l'environnement, et leur optimisation pour le référencement naturel
-          (SEO).
-        </p>
-      </section>
+      <HeroSection />
       <ProjectsSection projects={projects} />
     </StyledContainer>
   );
