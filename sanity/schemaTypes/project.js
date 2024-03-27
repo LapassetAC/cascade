@@ -17,9 +17,23 @@ export const project = {
       name: "image",
       title: "Image",
       type: "image",
+      fields: [
+        {
+          name: "dominantColor",
+          title: "Couleur dominante",
+          type: "string",
+          description:
+            "Utiliser : https://onlinejpgtools.com/find-dominant-jpg-colors et sélectionner une couleur sur laquelle la police peut être noire.",
+        },
+      ],
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: "video",
+      title: "Vidéo démo du projet",
+      type: "file",
     },
     {
       name: "categories",
@@ -55,7 +69,7 @@ export const project = {
   preview: {
     select: {
       title: "title",
-      media: "mainImage",
+      media: "image",
     },
   },
 };
