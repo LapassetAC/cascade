@@ -19,16 +19,16 @@ const StyledContainer = styled.div`
         grid-column: 1 / 3;
       }
       &:nth-child(2) {
-        animation-delay: 2s;
+        animation-delay: 2.4s;
       }
       &:nth-child(3) {
-        animation-delay: 2.1s;
+        animation-delay: 2.5s;
       }
       &:nth-child(4) {
-        animation-delay: 2.2s;
+        animation-delay: 2.6s;
       }
       &:nth-child(5) {
-        animation-delay: 2.3s;
+        animation-delay: 2.7s;
       }
     }
   }
@@ -60,7 +60,7 @@ const StyledContainer = styled.div`
         &:nth-child(2) {
           grid-column: 3 / 6;
           opacity: 0;
-          animation: ${fadeIn} 0.4s 1.5s forwards;
+          animation: ${fadeIn} 0.4s 2s forwards;
         }
       }
     }
