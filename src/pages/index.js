@@ -3,7 +3,7 @@ import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import CascadeLogo from "@/components/CascadeLogo";
 import styled from "styled-components";
-import { textApparitionAnim } from "@/styles/theme";
+import { textApparitionAnim, fadeIn } from "@/styles/theme";
 
 const StyledContainer = styled.div`
   header {
@@ -19,27 +19,48 @@ const StyledContainer = styled.div`
         grid-column: 1 / 3;
       }
       &:nth-child(2) {
-        animation-delay: 0.1s;
+        animation-delay: 2s;
       }
       &:nth-child(3) {
-        animation-delay: 0.2s;
+        animation-delay: 2.1s;
       }
       &:nth-child(4) {
-        animation-delay: 0.3s;
+        animation-delay: 2.2s;
       }
       &:nth-child(5) {
-        animation-delay: 0.4s;
+        animation-delay: 2.3s;
       }
     }
   }
   section {
     &.hero {
+      margin: 30px 0;
       p {
+        overflow-y: hidden;
         &:nth-child(1) {
           grid-column: 1 / 3;
+          span {
+            display: inline-block;
+            transform: translateY(-50px);
+            animation: ${textApparitionAnim} 0.4s forwards;
+            &:nth-child(1) {
+              animation-delay: 0.4s;
+            }
+            &:nth-child(2) {
+              animation-delay: 0.5s;
+            }
+            &:nth-child(3) {
+              animation-delay: 0.6s;
+            }
+            &:nth-child(4) {
+              animation-delay: 0.7s;
+            }
+          }
         }
         &:nth-child(2) {
           grid-column: 3 / 6;
+          opacity: 0;
+          animation: ${fadeIn} 0.4s 1.5s forwards;
         }
       }
     }
@@ -59,7 +80,10 @@ export default function Home({ projects }) {
         <a href="">Contact</a>
       </header>
       <section className="grid hero">
-        <p>Revitalisez votre présence digitale.</p>
+        <p>
+          <span>Revitalisez </span> <span>votre&nbsp;</span>
+          <span> présence </span> <span>digitale.</span>
+        </p>
         <p>
           Nous concevons des sites web engageants pour des marques engagées. Nos
           créations se distinguent par leur fluidité, leur respect de

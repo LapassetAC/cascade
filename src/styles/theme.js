@@ -36,11 +36,25 @@ const theme = {
 };
 
 export const textApparitionAnim = keyframes`
-  from {
+  0% {
     transform: translateY(-50px);
+    opacity: 0;
   }
-  to {
+  30% {
+    opacity: 0;
+
+  }
+  100% {
     transform: translateY(0px);
+    opacity: 1;
+  }
+`;
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 `;
 
