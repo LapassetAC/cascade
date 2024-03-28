@@ -1,3 +1,5 @@
+import { keyframes } from "styled-components";
+
 export const breakpoint = {
   xs: 375,
   sm: 768,
@@ -32,5 +34,28 @@ const theme = {
     desktop: 1.8,
   },
 };
+
+export const textApparitionAnim = keyframes`
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+`;
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export default theme;

@@ -3,8 +3,12 @@ import Image from "next/image";
 import { styled } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
+import { fadeIn } from "@/styles/theme";
 
 const StyledContainer = styled.section`
+  opacity: 0;
+  animation: ${fadeIn} 0.4s 1.5s forwards;
+
   .project-info {
     grid-column: 1 / 3;
     position: sticky;
