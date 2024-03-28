@@ -83,7 +83,14 @@ export default function ProjectsSection({ projects }) {
               }}
             >
               <Image {...imageProps} alt={title} sizes="100vw" />
-              <video autoPlay loop muted className={isHovered ? "show" : ""}>
+              <video
+                preload
+                playsinline
+                autoPlay
+                loop
+                muted
+                className={isHovered ? "show" : ""}
+              >
                 <source src={videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
