@@ -7,6 +7,9 @@ import { client } from "../../sanity/lib/client";
 const StyledContainer = styled.section`
   .project-info {
     grid-column: 1 / 3;
+    position: sticky;
+    top: 30px;
+    height: fit-content;
   }
   .image-container {
     grid-column: 3 / 7;
