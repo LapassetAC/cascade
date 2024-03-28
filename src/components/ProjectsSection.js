@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
@@ -50,6 +50,9 @@ const StyledProject = styled.a`
 `;
 
 export default function ProjectsSection({ projects }) {
+  const projectRefs = useRef([]);
+  const [currentProject, setCurrentProject] = useState(projects[0]);
+
   const changeBgColor = (color) => {
     document.body.style.backgroundColor = color;
   };
@@ -80,6 +83,7 @@ export default function ProjectsSection({ projects }) {
             </div>
             <div
               className="image-container"
+              // ref={(el) => (projectRefs.current[index] = el)}
               onMouseEnter={() => {
                 changeBgColor(image.dominantColor);
                 setIsHovered(true);
@@ -91,8 +95,8 @@ export default function ProjectsSection({ projects }) {
             >
               <Image {...imageProps} alt={title} sizes="100vw" />
               <video
-                preload
-                playsinline
+                preload="true"
+                playsInline
                 autoPlay
                 loop
                 muted
