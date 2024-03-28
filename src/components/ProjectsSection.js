@@ -57,14 +57,6 @@ export default function ProjectsSection({ projects }) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            onMouseEnter={() => {
-              changeBgColor(image.dominantColor);
-              setIsHovered(true);
-            }}
-            onMouseLeave={() => {
-              changeBgColor("#F4F3EF");
-              setIsHovered(false);
-            }}
             className="grid"
             key={title}
           >
@@ -79,7 +71,17 @@ export default function ProjectsSection({ projects }) {
                 ))}
               </div>
             </div>
-            <div className="image-container">
+            <div
+              className="image-container"
+              onMouseEnter={() => {
+                changeBgColor(image.dominantColor);
+                setIsHovered(true);
+              }}
+              onMouseLeave={() => {
+                changeBgColor("#F4F3EF");
+                setIsHovered(false);
+              }}
+            >
               <Image {...imageProps} alt={title} sizes="100vw" />
               <video autoPlay loop muted className={isHovered ? "show" : ""}>
                 <source src={videoUrl} type="video/mp4" />
