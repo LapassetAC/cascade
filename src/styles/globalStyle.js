@@ -10,7 +10,7 @@ export default createGlobalStyle`
 html,
 body {
   max-width: 100vw;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   letter-spacing: -0.05em;
   transition: background-color 0.5s ease;
   background-color: #F4F3EF;
