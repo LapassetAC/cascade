@@ -9,7 +9,8 @@ const StyledContainer = styled.div`
   header {
     align-items: end;
     overflow-y: hidden;
-    padding: 30px;
+    margin: 30px;
+    padding: 0;
     a {
       transform: translateY(-50px);
       animation: ${textApparitionAnim} 0.4s forwards;
