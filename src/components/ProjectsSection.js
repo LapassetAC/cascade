@@ -7,7 +7,7 @@ import { fadeIn } from "@/styles/theme";
 
 const StyledContainer = styled.section`
   opacity: 0;
-  animation: ${fadeIn} 0.4s 1.5s forwards;
+  animation: ${fadeIn} 0.4s 2s forwards;
 
   .project-info {
     grid-column: 1 / 3;
