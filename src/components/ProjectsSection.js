@@ -25,7 +25,6 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
-  height: calc(100vh - 120px);
   img {
     height: auto;
     width: 100%;
