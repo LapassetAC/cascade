@@ -7,10 +7,16 @@ import { textApparitionAnim, fadeIn } from "@/styles/theme";
 
 const StyledContainer = styled.div`
   header {
-    align-items: end;
-    overflow-y: hidden;
-    margin: 30px;
-    padding: 0;
+    position: sticky;
+    top: 0;
+    background-color: ${({ theme }) => theme.color.white};
+    z-index: 1;
+    padding: 30px;
+    .animationMask {
+      padding: 0;
+      align-items: end;
+      overflow-y: hidden;
+    }
     a {
       transform: translateY(-50px);
       animation: ${textApparitionAnim} 0.4s forwards;
@@ -69,14 +75,16 @@ const StyledContainer = styled.div`
 export default function Home({ projects }) {
   return (
     <StyledContainer>
-      <header className="grid">
-        <a href="">
-          <CascadeLogo />
-        </a>
-        <a href="">Projets</a>
-        <a href="">Savoir-faire</a>
-        <a href="">À propos</a>
-        <a href="">Contact</a>
+      <header>
+        <div className="grid animationMask">
+          <a href="">
+            <CascadeLogo />
+          </a>
+          <a href="">Projets</a>
+          <a href="">Savoir-faire</a>
+          <a href="">À propos</a>
+          <a href="">Contact</a>
+        </div>
       </header>
       <section className="grid hero">
         <p>

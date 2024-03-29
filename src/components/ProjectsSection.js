@@ -12,7 +12,7 @@ const StyledContainer = styled.section`
   .project-info {
     grid-column: 1 / 3;
     position: sticky;
-    top: 30px;
+    top: 120px;
     height: fit-content;
   }
   .image-container {
@@ -25,6 +25,7 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
+  height: calc(100vh - 120px);
   img {
     height: auto;
     width: 100%;
@@ -102,7 +103,7 @@ export default function ProjectsSection({ projects }) {
               setIsHovered(true);
             }}
             onMouseLeave={() => {
-              changeBgColor("#F4F3EF");
+              changeBgColor("#F4F3EF"); //TODO color from theme
               setIsHovered(false);
             }}
           >
