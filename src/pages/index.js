@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import CascadeLogo from "@/components/CascadeLogo";
 import styled from "styled-components";
 import { textApparitionAnim, fadeIn } from "@/styles/theme";
+import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.div`
   header {
     position: sticky;
     top: 0;
-    background-color: ${({ theme }) => theme.color.white};
+    background-color: ${(props) => props.bgColor};
     z-index: 1;
     padding: 30px 30px 0 30px;
 
@@ -87,8 +88,9 @@ const StyledContainer = styled.div`
 `;
 
 export default function Home({ projects }) {
-  const [bgColor, setBgColor] = useState("white");
-  const [fontColor, setFontColor] = useState("black");
+  const theme = useContext(ThemeContext);
+  const [bgColor, setBgColor] = useState(theme.color.white);
+  const [fontColor, setFontColor] = useState(theme.color.black);
 
   const changeColors = (newBgColor, newFontColor) => {
     setBgColor(newBgColor);
@@ -98,7 +100,7 @@ export default function Home({ projects }) {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer bgColor={bgColor}>
       <header>
         <div className="grid animationMask">
           <a href="">

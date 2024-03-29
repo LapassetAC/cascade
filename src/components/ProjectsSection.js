@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
 import { fadeIn } from "@/styles/theme";
+import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.section`
   opacity: 0;
@@ -51,6 +52,8 @@ const StyledProjectVisuals = styled.a`
 `;
 
 export default function ProjectsSection({ projects, changeColors }) {
+  const theme = useContext(ThemeContext);
+
   const projectRefs = useRef([]);
   const [currentProject, setCurrentProject] = useState(projects[0]);
   const headersHeight = 300;
@@ -96,11 +99,11 @@ export default function ProjectsSection({ projects, changeColors }) {
             key={index}
             ref={(el) => (projectRefs.current[index] = el)}
             onMouseEnter={() => {
-              changeColors(image.dominantColor, "white");
+              changeColors(image.dominantColor, theme.color.white);
               setIsHovered(true);
             }}
             onMouseLeave={() => {
-              changeColors("white", "black");
+              changeColors(theme.color.white, theme.color.black);
               setIsHovered(false);
             }}
           >
