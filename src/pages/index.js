@@ -8,9 +8,17 @@ import { textApparitionAnim, fadeIn } from "@/styles/theme";
 
 const StyledContainer = styled.div`
   header {
-    align-items: end;
-    overflow-y: hidden;
-    padding: 30px;
+    position: sticky;
+    top: 0;
+    background-color: ${({ theme }) => theme.color.white};
+    z-index: 1;
+    padding: 30px 30px 0 30px;
+
+    .animationMask {
+      padding: 0 0 30px;
+      align-items: end;
+      overflow-y: hidden;
+    }
     a {
       transform: translateY(-50px);
       animation: ${textApparitionAnim} 0.4s forwards;
@@ -64,6 +72,18 @@ const StyledContainer = styled.div`
       }
     }
   }
+  footer {
+    svg {
+      grid-column: 1 / 8;
+      grid-row: 1/2;
+      width: 100%;
+    }
+    div {
+      grid-row: 1/2;
+      grid-column: 1 / 8;
+      align-self: self-end;
+    }
+  }
 `;
 
 export default function Home({ projects }) {
@@ -79,14 +99,16 @@ export default function Home({ projects }) {
 
   return (
     <StyledContainer>
-      <header className="grid">
-        <a href="">
-          <CascadeLogo color={fontColor} />
-        </a>
-        <a href="">Projets</a>
-        <a href="">Savoir-faire</a>
-        <a href="">À propos</a>
-        <a href="">Contact</a>
+      <header>
+        <div className="grid animationMask">
+          <a href="">
+            <CascadeLogo color={fontColor} />
+          </a>
+          <a href="">Projets</a>
+          <a href="">Savoir-faire</a>
+          <a href="">À propos</a>
+          <a href="">Contact</a>
+        </div>
       </header>
       <section className="grid hero">
         <p>
@@ -106,6 +128,32 @@ export default function Home({ projects }) {
         bgColor={bgColor}
         fontColor={fontColor}
       />
+      <footer className="grid">
+        <svg
+          viewBox="0 0 1380 1012"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="235.995" width="114.999" height="321.997" fill="black" />
+          <rect width="91.9991" height="91.9991" fill="black" />
+          <rect x="470.984" width="137.999" height="689.993" fill="black" />
+          <rect x="705.978" width="160.998" height="873.991" fill="black" />
+          <rect x="941.01" width="183.998" height="965.991" fill="black" />
+          <rect x="1173" width="206.998" height="1011.99" fill="black" />
+        </svg>
+        <div>
+          <a href="">contact@cascade.fr</a>
+          <a href="">+33 (0)6 74 62 64 76</a>
+        </div>
+        <div>
+          <a href="">contact@cascade.fr</a>
+          <a href="">+33 (0)6 74 62 64 76</a>
+        </div>
+        <div>
+          <a href="">contact@cascade.fr</a>
+          <a href="">+33 (0)6 74 62 64 76</a>
+        </div>
+      </footer>
     </StyledContainer>
   );
 }

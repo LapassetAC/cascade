@@ -10,7 +10,10 @@ export const breakpoint = {
 };
 
 const theme = {
-  colors: {},
+  color: {
+    white: "#F4F3EF",
+    black: "#1E1E1E",
+  },
 
   minWidth: {
     xs: `(min-width: ${breakpoint.xs}px)`,
