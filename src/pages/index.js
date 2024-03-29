@@ -8,10 +8,8 @@ import { textApparitionAnim, fadeIn } from "@/styles/theme";
 const StyledContainer = styled.div`
   header {
     align-items: end;
-    padding: 0px;
     overflow-y: hidden;
-    margin: 30px 30px 0;
-    padding-bottom: 30px;
+    padding: 30px;
     a {
       transform: translateY(-50px);
       animation: ${textApparitionAnim} 0.4s forwards;

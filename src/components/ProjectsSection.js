@@ -16,27 +16,6 @@ const StyledContainer = styled.section`
     height: fit-content;
   }
   .image-container {
-    grid-column: 3 / 7;
-    position: relative;
-    img {
-      height: auto;
-      width: 100%;
-    }
-    video {
-      height: auto;
-      width: 80%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s, visibility 0.5s;
-    }
-    video.show {
-      opacity: 1;
-      visibility: visible;
-    }
   }
   .category {
     margin: 10px 0 15px;
@@ -44,6 +23,27 @@ const StyledContainer = styled.section`
 `;
 
 const StyledProject = styled.a`
+  grid-column: 3 / 7;
+  position: relative;
+  img {
+    height: auto;
+    width: 100%;
+  }
+  video {
+    height: auto;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+  }
+  video.show {
+    opacity: 1;
+    visibility: visible;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -52,13 +52,44 @@ const StyledProject = styled.a`
 export default function ProjectsSection({ projects }) {
   const projectRefs = useRef([]);
   const [currentProject, setCurrentProject] = useState(projects[0]);
+  const headersHeight = 600;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentIndex = projectRefs.current.findIndex((ref) => {
+        const rect = ref.getBoundingClientRect();
+        return (
+          rect.top < window.innerHeight * 0.5 && rect.bottom >= headersHeight
+        );
+      });
+      if (currentIndex !== -1 && currentIndex !== currentProject) {
+        setCurrentProject(projects[currentIndex]);
+        console.log(currentProject.title);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [currentProject]);
 
   const changeBgColor = (color) => {
     document.body.style.backgroundColor = color;
   };
   return (
-    <StyledContainer>
-      {projects.map((project) => {
+    <StyledContainer className="grid">
+      <div className="project-info">
+        <p className="title">{currentProject.title}</p>
+        <p className="category">{currentProject.category}</p>
+        <div className="services">
+          {currentProject.services.map((service, i) => (
+            <p className="service-tag" key={i}>
+              {service}
+            </p>
+          ))}
+        </div>
+      </div>
+      {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         const imageProps = useNextSanityImage(client, image);
         const [isHovered, setIsHovered] = useState(false);
@@ -67,45 +98,30 @@ export default function ProjectsSection({ projects }) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="grid"
-            key={title}
+            key={index}
+            // className="image-container"
+            ref={(el) => (projectRefs.current[index] = el)}
+            onMouseEnter={() => {
+              changeBgColor(image.dominantColor);
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              changeBgColor("#F4F3EF");
+              setIsHovered(false);
+            }}
           >
-            <div className="project-info">
-              <p className="title">{title}</p>
-              <p className="category">{category}</p>
-              <div className="services">
-                {services.map((service, i) => (
-                  <p className="service-tag" key={i}>
-                    {service}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <div
-              className="image-container"
-              // ref={(el) => (projectRefs.current[index] = el)}
-              onMouseEnter={() => {
-                changeBgColor(image.dominantColor);
-                setIsHovered(true);
-              }}
-              onMouseLeave={() => {
-                changeBgColor("#F4F3EF");
-                setIsHovered(false);
-              }}
+            <Image {...imageProps} alt={title} sizes="100vw" />
+            <video
+              preload="true"
+              playsInline
+              autoPlay
+              loop
+              muted
+              className={isHovered ? "show" : ""}
             >
-              <Image {...imageProps} alt={title} sizes="100vw" />
-              <video
-                preload="true"
-                playsInline
-                autoPlay
-                loop
-                muted
-                className={isHovered ? "show" : ""}
-              >
-                <source src={videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+              <source src={videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </StyledProject>
         );
       })}
