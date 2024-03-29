@@ -25,6 +25,7 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
+  margin-bottom: 180px;
   img {
     height: auto;
     width: 100%;
@@ -49,10 +50,10 @@ const StyledProjectVisuals = styled.a`
   }
 `;
 
-export default function ProjectsSection({ projects }) {
+export default function ProjectsSection({ projects, changeColors }) {
   const projectRefs = useRef([]);
   const [currentProject, setCurrentProject] = useState(projects[0]);
-  const headersHeight = 600;
+  const headersHeight = 300;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,9 +73,6 @@ export default function ProjectsSection({ projects }) {
     };
   }, [currentProject]);
 
-  const changeBgColor = (color) => {
-    document.body.style.backgroundColor = color;
-  };
   return (
     <StyledContainer className="grid">
       <div className="project-info">
@@ -98,11 +96,11 @@ export default function ProjectsSection({ projects }) {
             key={index}
             ref={(el) => (projectRefs.current[index] = el)}
             onMouseEnter={() => {
-              changeBgColor(image.dominantColor);
+              changeColors(image.dominantColor, "white");
               setIsHovered(true);
             }}
             onMouseLeave={() => {
-              changeBgColor("#F4F3EF");
+              changeColors("white", "black");
               setIsHovered(false);
             }}
           >

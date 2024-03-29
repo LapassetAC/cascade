@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -66,11 +67,21 @@ const StyledContainer = styled.div`
 `;
 
 export default function Home({ projects }) {
+  const [bgColor, setBgColor] = useState("white");
+  const [fontColor, setFontColor] = useState("black");
+
+  const changeColors = (newBgColor, newFontColor) => {
+    setBgColor(newBgColor);
+    setFontColor(newFontColor);
+    document.body.style.color = newFontColor;
+    document.body.style.backgroundColor = newBgColor;
+  };
+
   return (
     <StyledContainer>
       <header className="grid">
         <a href="">
-          <CascadeLogo />
+          <CascadeLogo color={fontColor} />
         </a>
         <a href="">Projets</a>
         <a href="">Savoir-faire</a>
@@ -89,7 +100,12 @@ export default function Home({ projects }) {
           (SEO).
         </p>
       </section>
-      <ProjectsSection projects={projects} />
+      <ProjectsSection
+        projects={projects}
+        changeColors={changeColors}
+        bgColor={bgColor}
+        fontColor={fontColor}
+      />
     </StyledContainer>
   );
 }
