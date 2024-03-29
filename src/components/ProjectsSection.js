@@ -22,7 +22,7 @@ const StyledContainer = styled.section`
   }
 `;
 
-const StyledProject = styled.a`
+const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
   img {
@@ -64,7 +64,6 @@ export default function ProjectsSection({ projects }) {
       });
       if (currentIndex !== -1 && currentIndex !== currentProject) {
         setCurrentProject(projects[currentIndex]);
-        console.log(currentProject.title);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -83,9 +82,7 @@ export default function ProjectsSection({ projects }) {
         <p className="category">{currentProject.category}</p>
         <div className="services">
           {currentProject.services.map((service, i) => (
-            <p className="service-tag" key={i}>
-              {service}
-            </p>
+            <p key={i}>{service}</p>
           ))}
         </div>
       </div>
@@ -94,12 +91,11 @@ export default function ProjectsSection({ projects }) {
         const imageProps = useNextSanityImage(client, image);
         const [isHovered, setIsHovered] = useState(false);
         return (
-          <StyledProject
+          <StyledProjectVisuals
             href={url}
             target="_blank"
             rel="noopener noreferrer"
             key={index}
-            // className="image-container"
             ref={(el) => (projectRefs.current[index] = el)}
             onMouseEnter={() => {
               changeBgColor(image.dominantColor);
@@ -122,7 +118,7 @@ export default function ProjectsSection({ projects }) {
               <source src={videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          </StyledProject>
+          </StyledProjectVisuals>
         );
       })}
     </StyledContainer>
