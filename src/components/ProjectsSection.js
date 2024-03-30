@@ -88,7 +88,7 @@ export default function ProjectsSection({ projects, changeColors }) {
         </div>
       </div>
       {projects.map((project, index) => {
-        const { title, image, url, videoUrl, category, services } = project;
+        const { title, image, url, videoUrl } = project;
         const imageProps = useNextSanityImage(client, image);
         const [isHovered, setIsHovered] = useState(false);
         return (

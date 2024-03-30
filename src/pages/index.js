@@ -11,7 +11,8 @@ const StyledContainer = styled.div`
   header {
     position: sticky;
     top: 0;
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.$bgColor};
+    transition: background-color 0.5s ease;
     z-index: 1;
     padding: 30px 30px 0 30px;
 
@@ -100,7 +101,7 @@ export default function Home({ projects }) {
   };
 
   return (
-    <StyledContainer bgColor={bgColor}>
+    <StyledContainer $bgColor={bgColor}>
       <header>
         <div className="grid animationMask">
           <a href="">
@@ -124,12 +125,7 @@ export default function Home({ projects }) {
           (SEO).
         </p>
       </section>
-      <ProjectsSection
-        projects={projects}
-        changeColors={changeColors}
-        bgColor={bgColor}
-        fontColor={fontColor}
-      />
+      <ProjectsSection projects={projects} changeColors={changeColors} />
       <footer className="grid">
         <svg
           viewBox="0 0 1380 1012"
