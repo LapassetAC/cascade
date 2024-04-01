@@ -3,7 +3,7 @@ import Image from "next/image";
 import { styled } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
-import { fadeIn } from "@/styles/theme";
+import { textApparitionAnim, fadeIn } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.section`
@@ -15,8 +15,8 @@ const StyledContainer = styled.section`
     position: sticky;
     top: 120px;
     height: fit-content;
-  }
-  .image-container {
+    animation: ${(props) => (props.animate ? textApparitionAnim : "none")} 0.4s
+      forwards;
   }
   .category {
     margin: 10px 0 15px;
@@ -55,30 +55,32 @@ export default function ProjectsSection({ projects, changeColors }) {
   const theme = useContext(ThemeContext);
 
   const projectRefs = useRef([]);
-  const [currentProject, setCurrentProject] = useState(projects[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const headersHeight = 300;
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentIndex = projectRefs.current.findIndex((ref) => {
+      const newCurrentIndex = projectRefs.current.findIndex((ref) => {
         const rect = ref.getBoundingClientRect();
         return (
           rect.top < window.innerHeight * 0.5 && rect.bottom >= headersHeight
         );
       });
-      if (currentIndex !== -1 && currentIndex !== currentProject) {
-        setCurrentProject(projects[currentIndex]);
+      if (newCurrentIndex !== -1 && newCurrentIndex !== currentIndex) {
+        setCurrentIndex(newCurrentIndex);
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [currentProject]);
+  }, [currentIndex]);
+
+  const currentProject = projects[currentIndex];
 
   return (
-    <StyledContainer className="grid">
-      <div className="project-info">
+    <StyledContainer className="grid" animate={currentIndex}>
+      <div className="project-info" key={currentProject.title}>
         <p className="title">{currentProject.title}</p>
         <p className="category">{currentProject.category}</p>
         <div className="services">
