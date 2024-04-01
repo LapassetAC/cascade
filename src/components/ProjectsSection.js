@@ -15,8 +15,7 @@ const StyledContainer = styled.section`
     position: sticky;
     top: 120px;
     height: fit-content;
-    animation: ${(props) => (props.animate ? textApparitionAnim : "none")} 0.4s
-      forwards;
+    animation: ${textApparitionAnim} 0.4s forwards;
   }
   .category {
     margin: 10px 0 15px;
@@ -56,15 +55,13 @@ export default function ProjectsSection({ projects, changeColors }) {
 
   const projectRefs = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const headersHeight = 300;
+  const headersHeight = 700;
 
   useEffect(() => {
     const handleScroll = () => {
       const newCurrentIndex = projectRefs.current.findIndex((ref) => {
         const rect = ref.getBoundingClientRect();
-        return (
-          rect.top < window.innerHeight * 0.5 && rect.bottom >= headersHeight
-        );
+        return rect.top < headersHeight && rect.bottom >= headersHeight;
       });
       if (newCurrentIndex !== -1 && newCurrentIndex !== currentIndex) {
         setCurrentIndex(newCurrentIndex);
@@ -79,7 +76,7 @@ export default function ProjectsSection({ projects, changeColors }) {
   const currentProject = projects[currentIndex];
 
   return (
-    <StyledContainer className="grid" animate={currentIndex}>
+    <StyledContainer className="grid">
       <div className="project-info" key={currentProject.title}>
         <p className="title">{currentProject.title}</p>
         <p className="category">{currentProject.category}</p>
