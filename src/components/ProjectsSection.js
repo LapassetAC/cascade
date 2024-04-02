@@ -60,7 +60,6 @@ export default function ProjectsSection({ projects, changeColors }) {
     const handleScroll = () => {
       const newCurrentIndex = projectRefs.current.findIndex((ref) => {
         const rect = ref.getBoundingClientRect();
-        console.log("top: ", rect.top, " bottom: ", rect.bottom);
         return rect.top < headersHeight && rect.bottom >= headersHeight;
       });
       if (currentIndex === 0 && newCurrentIndex === -1) {
