@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
     background-color: ${(props) => props.$bgColor};
     transition: background-color 0.5s ease;
     z-index: 1;
-    padding: 30px 30px 0 30px;
+    padding: 30px 0 0;
 
     .animationMask {
       padding: 0 0 30px;
@@ -36,14 +36,12 @@ const StyledContainer = styled.div`
       &:nth-child(4) {
         animation-delay: 2.6s;
       }
-      &:nth-child(5) {
-        animation-delay: 2.7s;
-      }
     }
   }
   section {
     &.hero {
-      margin: 30px 0;
+      /* margin: 30px 0; */
+      height: calc(100vh - 180px);
       p {
         overflow-y: hidden;
         &:nth-child(1) {
@@ -63,6 +61,9 @@ const StyledContainer = styled.div`
             }
             &:nth-child(4) {
               animation-delay: 0.7s;
+            }
+            &:nth-child(5) {
+              animation-delay: 0.8s;
             }
           }
         }
@@ -115,7 +116,6 @@ export default function Home({ projects }) {
           <a href="">
             <CascadeLogo color={fontColor} />
           </a>
-          <a href="">Projets</a>
           <a href="">Savoir-faire</a>
           <a href="">À propos</a>
           <a href="">Contact</a>
@@ -123,14 +123,8 @@ export default function Home({ projects }) {
       </header>
       <section className="grid hero">
         <p>
-          <span>Revitalisez </span> <span>votre&nbsp;</span>
-          <span> présence </span> <span>digitale.</span>
-        </p>
-        <p>
-          Nous concevons des sites web engageants pour des marques engagées. Nos
-          créations se distinguent par leur fluidité, leur respect de
-          l'environnement, et leur optimisation pour le référencement naturel
-          (SEO).
+          <span>Créateurs </span> <span>de&nbsp;</span>
+          <span> sites </span> <span>web </span> <span>engageants.</span>
         </p>
       </section>
       {animIsLoaded && (

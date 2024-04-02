@@ -17,8 +17,7 @@ body {
 
 a,p,button,h1,h2,h3,i,input {
   letter-spacing: -0.05em;
-  font-size: 24px;
- 
+  font-size: 22px;
 }
 
 a {
@@ -30,11 +29,11 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
-  padding: 15px;
+  margin: 0 15px;
   @media ${(props) => props.theme.minWidth.sm} {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 30px;
-    padding: 30px;
+    margin: 0 30px;
   }
 }
 `;
