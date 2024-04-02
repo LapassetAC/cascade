@@ -60,10 +60,21 @@ export default function ProjectsSection({ projects, changeColors }) {
     const handleScroll = () => {
       const newCurrentIndex = projectRefs.current.findIndex((ref) => {
         const rect = ref.getBoundingClientRect();
+        console.log("top: ", rect.top, " bottom: ", rect.bottom);
         return rect.top < headersHeight && rect.bottom >= headersHeight;
       });
-      if (newCurrentIndex !== -1 && newCurrentIndex !== currentIndex) {
+      if (currentIndex === 0 && newCurrentIndex === -1) {
+        changeColors(theme.color.white, theme.color.black);
+      }
+      if (
+        (currentIndex === 0 && newCurrentIndex !== -1) ||
+        (currentIndex !== 0 && newCurrentIndex !== -1)
+      ) {
         setCurrentIndex(newCurrentIndex);
+        changeColors(
+          projects[newCurrentIndex].image.dominantColor,
+          theme.color.white
+        );
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -97,11 +108,10 @@ export default function ProjectsSection({ projects, changeColors }) {
             key={index}
             ref={(el) => (projectRefs.current[index] = el)}
             onMouseEnter={() => {
-              changeColors(image.dominantColor, theme.color.white);
               setIsHovered(true);
             }}
             onMouseLeave={() => {
-              changeColors(theme.color.white, theme.color.black);
+              // changeColors(theme.color.white, theme.color.black);
               setIsHovered(false);
             }}
           >
