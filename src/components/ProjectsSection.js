@@ -3,7 +3,7 @@ import Image from "next/image";
 import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
-import { textApparitionAnim, fadeIn } from "@/styles/theme";
+import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 
 const projectIntro = keyframes`
@@ -22,15 +22,20 @@ const projectIntro = keyframes`
 const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
-  .project-info {
+  .project-block {
     grid-column: 1 / 3;
     position: sticky;
     top: 120px;
     height: fit-content;
-    animation: ${textApparitionAnim} 0.4s forwards;
+    h2 {
+      margin-bottom: 30px;
+    }
   }
-  .category {
-    margin: 10px 0 15px;
+  .project-info {
+    & > * {
+      animation: ${textApparitionAnim} 0.4s forwards;
+      ${cascadeDelay(3, 0)}
+    }
   }
 `;
 
@@ -99,13 +104,16 @@ export default function ProjectsSection({ projects, changeColors }) {
 
   return (
     <StyledContainer className="grid">
-      <div className="project-info" key={currentProject.title}>
-        <p className="title">{currentProject.title}</p>
-        <p className="category">{currentProject.category}</p>
-        <div className="services">
-          {currentProject.services.map((service, i) => (
-            <p key={i}>{service}</p>
-          ))}
+      <div className="project-block">
+        <h2>Projets sélectionés</h2>
+        <div className="project-info" key={currentProject.title}>
+          <h3 className="title">{currentProject.title}</h3>
+          <p className="category">{currentProject.category}</p>
+          <ul className="services">
+            {currentProject.services.map((service, i) => (
+              <li key={i}>{service}</li>
+            ))}
+          </ul>
         </div>
       </div>
       {projects.map((project, index) => {

@@ -8,11 +8,13 @@ import { textApparitionAnim, fadeIn, cascadeDelay } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.div`
+  background-color: ${(props) => props.$bgColor};
+  transition: background-color 0.4s;
   header {
     position: sticky;
     top: 0;
     background-color: ${(props) => props.$bgColor};
-    transition: background-color 0.5s ease;
+    transition: background-color 0.4s;
     z-index: 1;
     padding: 30px 0 0;
 
@@ -47,11 +49,11 @@ const StyledContainer = styled.div`
             ${cascadeDelay(5, 0.7)}
           }
         }
-        &:nth-child(2) {
+        /* &:nth-child(2) {
           grid-column: 3 / 6;
           opacity: 0;
           animation: ${fadeIn} 0.4s 2s forwards;
-        }
+        } */
       }
     }
   }
@@ -86,7 +88,6 @@ export default function Home({ projects }) {
     setBgColor(newBgColor);
     setFontColor(newFontColor);
     document.body.style.color = newFontColor;
-    document.body.style.backgroundColor = newBgColor;
   };
 
   return (

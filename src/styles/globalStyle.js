@@ -11,13 +11,15 @@ html,
 body {
   max-width: 100vw;
   letter-spacing: -0.05em;
-  transition: background-color 0.5s ease;
   background-color: #F4F3EF;
 }
 
-a,p,button,h1,h2,h3,i,input {
+a,p,button,h1,h2,h3,i,input, ul, li {
   letter-spacing: -0.05em;
   font-size: 22px;
+  font-weight: 500;
+  text-decoration: none;
+  list-style: none;
 }
 
 a {
