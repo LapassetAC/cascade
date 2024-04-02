@@ -38,4 +38,8 @@ a {
     margin: 0 30px;
   }
 }
+
+.mask {
+  overflow-y: hidden;
+}
 `;

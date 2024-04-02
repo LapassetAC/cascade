@@ -3,7 +3,11 @@ import Image from "next/image";
 import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
-import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
+import {
+  textApparitionAnim,
+  textDisparitionAnim,
+  cascadeDelay,
+} from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 
 const projectIntro = keyframes`
@@ -32,8 +36,13 @@ const StyledContainer = styled.section`
     }
   }
   .project-info {
-    & > * {
-      animation: ${textApparitionAnim} 0.4s forwards;
+    /* opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 0 : 1)}; */
+    /* transition: opacity 0.2s; */
+    .info {
+      opacity: 0;
+      animation: ${({ $isInfoTransition }) =>
+          $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
+        0.4s forwards;
       ${cascadeDelay(3, 0)}
     }
   }
@@ -72,6 +81,8 @@ export default function ProjectsSection({ projects, changeColors }) {
 
   const projectRefs = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentProject, setCurrentProject] = useState(projects[currentIndex]);
+  const [isInfoTransition, setIsInfoTransition] = useState(false);
   const headersHeight = 700;
 
   useEffect(() => {
@@ -98,22 +109,38 @@ export default function ProjectsSection({ projects, changeColors }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    setIsInfoTransition(true);
+    setTimeout(() => {
+      setIsInfoTransition(false);
+      setCurrentProject(projects[currentIndex]);
+    }, 400);
   }, [currentIndex]);
 
-  const currentProject = projects[currentIndex];
+  //
+
+  // const currentProject = projects[currentIndex];
 
   return (
-    <StyledContainer className="grid">
+    <StyledContainer className="grid" $isInfoTransition={isInfoTransition}>
       <div className="project-block">
         <h2>Projets sélectionés</h2>
         <div className="project-info" key={currentProject.title}>
-          <h3 className="title">{currentProject.title}</h3>
-          <p className="category">{currentProject.category}</p>
-          <ul className="services">
-            {currentProject.services.map((service, i) => (
-              <li key={i}>{service}</li>
-            ))}
-          </ul>
+          <div className="mask">
+            <h3 className="info">{currentProject.title}</h3>
+          </div>
+          <div className="mask">
+            <p className="info">{currentProject.category}</p>
+          </div>
+          <div className="mask">
+            <ul className="info">
+              {currentProject.services.map((service, i) => (
+                <li key={i}>{service}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       {projects.map((project, index) => {

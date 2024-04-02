@@ -53,6 +53,22 @@ export const textApparitionAnim = keyframes`
     opacity: 1;
   }
 `;
+
+export const textDisparitionAnim = keyframes`
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+    
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+`;
+
 export const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -66,7 +82,7 @@ export const fadeIn = keyframes`
 
 export function cascadeDelay(elementNumber, baseDelayInMs) {
   let styles = "";
-  for (let i = 0; i <= elementNumber; i += 1) {
+  for (let i = 0; i <= elementNumber; i++) {
     styles += `
     &:nth-child(${i}) {
       animation-delay: ${i / 10 + baseDelayInMs}s;
