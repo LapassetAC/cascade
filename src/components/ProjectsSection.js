@@ -8,8 +8,8 @@ import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.section`
   opacity: 0;
-  animation: ${fadeIn} 0.4s 2s forwards;
-
+  animation: ${fadeIn} 0.4s 1s forwards;
+  margin-top: 360px;
   .project-info {
     grid-column: 1 / 3;
     position: sticky;

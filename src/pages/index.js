@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -92,6 +92,14 @@ export default function Home({ projects }) {
   const theme = useContext(ThemeContext);
   const [bgColor, setBgColor] = useState(theme.color.white);
   const [fontColor, setFontColor] = useState(theme.color.black);
+  const [animIsLoaded, setAnimIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimIsLoaded(true);
+    }, 2400);
+    return () => clearTimeout(timer);
+  }, []);
 
   const changeColors = (newBgColor, newFontColor) => {
     setBgColor(newBgColor);
@@ -125,33 +133,37 @@ export default function Home({ projects }) {
           (SEO).
         </p>
       </section>
-      <ProjectsSection projects={projects} changeColors={changeColors} />
-      <footer className="grid">
-        <svg
-          viewBox="0 0 1380 1012"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="235.995" width="114.999" height="321.997" fill="black" />
-          <rect width="91.9991" height="91.9991" fill="black" />
-          <rect x="470.984" width="137.999" height="689.993" fill="black" />
-          <rect x="705.978" width="160.998" height="873.991" fill="black" />
-          <rect x="941.01" width="183.998" height="965.991" fill="black" />
-          <rect x="1173" width="206.998" height="1011.99" fill="black" />
-        </svg>
-        <div>
-          <a href="">contact@cascade.fr</a>
-          <a href="">+33 (0)6 74 62 64 76</a>
-        </div>
-        <div>
-          <a href="">contact@cascade.fr</a>
-          <a href="">+33 (0)6 74 62 64 76</a>
-        </div>
-        <div>
-          <a href="">contact@cascade.fr</a>
-          <a href="">+33 (0)6 74 62 64 76</a>
-        </div>
-      </footer>
+      {animIsLoaded && (
+        <ProjectsSection projects={projects} changeColors={changeColors} />
+      )}
+      {animIsLoaded && (
+        <footer className="grid">
+          <svg
+            viewBox="0 0 1380 1012"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="235.995" width="114.999" height="321.997" fill="black" />
+            <rect width="91.9991" height="91.9991" fill="black" />
+            <rect x="470.984" width="137.999" height="689.993" fill="black" />
+            <rect x="705.978" width="160.998" height="873.991" fill="black" />
+            <rect x="941.01" width="183.998" height="965.991" fill="black" />
+            <rect x="1173" width="206.998" height="1011.99" fill="black" />
+          </svg>
+          <div>
+            <a href="">contact@cascade.fr</a>
+            <a href="">+33 (0)6 74 62 64 76</a>
+          </div>
+          <div>
+            <a href="">contact@cascade.fr</a>
+            <a href="">+33 (0)6 74 62 64 76</a>
+          </div>
+          <div>
+            <a href="">contact@cascade.fr</a>
+            <a href="">+33 (0)6 74 62 64 76</a>
+          </div>
+        </footer>
+      )}
     </StyledContainer>
   );
 }
