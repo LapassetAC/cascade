@@ -13,6 +13,7 @@ const theme = {
   color: {
     white: "#F4F3EF",
     black: "#1E1E1E",
+    blue: "#222C89",
   },
 
   minWidth: {

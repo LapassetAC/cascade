@@ -116,7 +116,7 @@ export default function Home({ projects }) {
           <a href="">
             <CascadeLogo color={fontColor} />
           </a>
-          <a href="">Savoir-faire</a>
+          <a href="/expertise">Savoir-faire</a>
           <a href="">À propos</a>
           <a href="">Contact</a>
         </div>
