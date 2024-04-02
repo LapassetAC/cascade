@@ -1,14 +1,27 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import Image from "next/image";
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
 import { textApparitionAnim, fadeIn } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 
+const projectIntro = keyframes`
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(90px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+  }
+`;
+
 const StyledContainer = styled.section`
   opacity: 0;
-  animation: ${fadeIn} 0.4s 1s forwards;
+  animation: ${projectIntro} 0.4s 2.2s forwards;
   .project-info {
     grid-column: 1 / 3;
     position: sticky;

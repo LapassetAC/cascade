@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes, css } from "styled-components";
 
 export const breakpoint = {
   xs: 375,
@@ -63,5 +63,19 @@ export const fadeIn = keyframes`
     transform: translateY(0px);
   }
 `;
+
+export function cascadeDelay(elementNumber, baseDelayInMs) {
+  let styles = "";
+  for (let i = 0; i <= elementNumber; i += 1) {
+    styles += `
+    &:nth-child(${i}) {
+      animation-delay: ${i / 10 + baseDelayInMs}s;
+    }
+    `;
+  }
+  return css`
+    ${styles}
+  `;
+}
 
 export default theme;

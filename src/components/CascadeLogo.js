@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { textApparitionAnim } from "@/styles/theme";
+import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useState } from "react";
 
 const cascadeAnim = keyframes`
@@ -40,21 +40,8 @@ const StyledContainer = styled.div`
         $isLogoHovered
           ? cascadeAnim + "0.4s linear infinite"
           : textApparitionAnim + "0.4s forwards"}; */
-      &:nth-child(1) {
-        animation-delay: 0.5s;
-      }
-      &:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-      &:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      &:nth-child(4) {
-        animation-delay: 0.2s;
-      }
-      &:nth-child(5) {
-        animation-delay: 0.1s;
-      }
+
+      ${cascadeDelay(6, 0)}
     }
   }
 `;
