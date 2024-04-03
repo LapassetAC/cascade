@@ -158,7 +158,6 @@ export default function ProjectsSection({ projects, changeColors }) {
               setIsHovered(true);
             }}
             onMouseLeave={() => {
-              // changeColors(theme.color.white, theme.color.black);
               setIsHovered(false);
             }}
           >
