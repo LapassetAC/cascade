@@ -23,7 +23,7 @@ const projectIntro = keyframes`
 const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
-  grid-row-gap: 0;
+  grid-row-gap: 0 !important;
   .project-block {
     grid-column: 1 / 3;
     position: sticky;
