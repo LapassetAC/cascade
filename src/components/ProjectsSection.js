@@ -40,12 +40,12 @@ const StyledContainer = styled.section`
     .mask {
       &:nth-child(1) {
         .info {
-          animation-delay: 0.1s;
+          animation-delay: 0.05s;
         }
       }
       &:nth-child(2) {
         .info {
-          animation-delay: 0.2s;
+          animation-delay: 0.1s;
         }
       }
     }
@@ -53,27 +53,27 @@ const StyledContainer = styled.section`
       .mask {
         &:nth-child(1) {
           .info {
-            animation-delay: 0.3s;
+            animation-delay: 0.15s;
           }
         }
         &:nth-child(2) {
           .info {
-            animation-delay: 0.4s;
+            animation-delay: 0.2s;
           }
         }
         &:nth-child(3) {
           .info {
-            animation-delay: 0.5s;
+            animation-delay: 0.25s;
           }
         }
         &:nth-child(4) {
           .info {
-            animation-delay: 0.6s;
+            animation-delay: 0.3s;
           }
         }
         &:nth-child(5) {
           .info {
-            animation-delay: 0.7s;
+            animation-delay: 0.35s;
           }
         }
       }
