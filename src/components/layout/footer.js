@@ -7,6 +7,7 @@ const StyledFooter = styled.footer`
     grid-row: 1/2;
     width: 100%;
     rect {
+      width: 0;
       &:nth-child(1) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.44 * 2}px;
       }
