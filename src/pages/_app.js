@@ -4,6 +4,7 @@ import theme from "@/styles/theme";
 import GlobalStyle from "@/styles/globalStyle";
 import Layout from "@/components/layout";
 import localFont from "next/font/local";
+import { DataProvider } from "@/app/Context";
 
 const moderat = localFont({
   src: [
@@ -29,15 +30,17 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Head>
-        <title>Cascade</title>
-        <meta property="og:title" content="Cascade" key="title" />
-      </Head>
-      <div className={moderat.className}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <DataProvider>
+        <Head>
+          <title>Cascade</title>
+          <meta property="og:title" content="Cascade" key="title" />
+        </Head>
+        <div className={moderat.className}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </DataProvider>
     </ThemeProvider>
   );
 }
