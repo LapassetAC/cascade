@@ -26,6 +26,7 @@ const projectIntro = keyframes`
 const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
+  grid-row-gap: 0;
   .project-block {
     grid-column: 1 / 3;
     position: sticky;
@@ -51,7 +52,7 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
-  margin-bottom: 180px;
+  padding: 90px 0;
   img {
     height: auto;
     width: 100%;
@@ -83,21 +84,17 @@ export default function ProjectsSection({ projects, changeColors }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentProject, setCurrentProject] = useState(projects[currentIndex]);
   const [isInfoTransition, setIsInfoTransition] = useState(false);
-  const headersHeight = 700;
+  const triggerFromTop = 700;
 
   useEffect(() => {
     const handleScroll = () => {
       const newCurrentIndex = projectRefs.current.findIndex((ref) => {
         const rect = ref.getBoundingClientRect();
-        return rect.top < headersHeight && rect.bottom >= headersHeight;
+        return rect.top < triggerFromTop && rect.bottom >= triggerFromTop;
       });
-      if (currentIndex === 0 && newCurrentIndex === -1) {
+      if (newCurrentIndex === -1) {
         changeColors(theme.color.white, theme.color.black);
-      }
-      if (
-        (currentIndex === 0 && newCurrentIndex !== -1) ||
-        (currentIndex !== 0 && newCurrentIndex !== -1)
-      ) {
+      } else {
         setCurrentIndex(newCurrentIndex);
         changeColors(
           projects[newCurrentIndex].image.dominantColor,
@@ -118,10 +115,6 @@ export default function ProjectsSection({ projects, changeColors }) {
       setCurrentProject(projects[currentIndex]);
     }, 400);
   }, [currentIndex]);
-
-  //
-
-  // const currentProject = projects[currentIndex];
 
   return (
     <StyledContainer className="grid" $isInfoTransition={isInfoTransition}>
