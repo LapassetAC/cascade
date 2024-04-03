@@ -40,14 +40,52 @@ const StyledContainer = styled.section`
     }
   }
   .project-info {
-    /* opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 0 : 1)}; */
-    /* transition: opacity 0.2s; */
+    .mask {
+      &:nth-child(1) {
+        .info {
+          animation-delay: 0.05s;
+        }
+      }
+      &:nth-child(2) {
+        .info {
+          animation-delay: 0.1s;
+        }
+      }
+    }
+    ul {
+      .mask {
+        &:nth-child(1) {
+          .info {
+            animation-delay: 0.15s;
+          }
+        }
+        &:nth-child(2) {
+          .info {
+            animation-delay: 0.2s;
+          }
+        }
+        &:nth-child(3) {
+          .info {
+            animation-delay: 0.25s;
+          }
+        }
+        &:nth-child(4) {
+          .info {
+            animation-delay: 0.3s;
+          }
+        }
+        &:nth-child(5) {
+          .info {
+            animation-delay: 0.35s;
+          }
+        }
+      }
+    }
     .info {
-      opacity: 0;
+      opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
       animation: ${({ $isInfoTransition }) =>
           $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
         0.4s forwards;
-      ${cascadeDelay(3, 0)}
     }
   }
 `;
@@ -55,7 +93,7 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
   position: relative;
-  padding: 90px 0;
+  padding-bottom: 180px;
   img {
     height: auto;
     width: 100%;
@@ -117,7 +155,7 @@ export default function ProjectsSection({ projects }) {
     setTimeout(() => {
       setIsInfoTransition(false);
       setCurrentProject(projects[currentIndex]);
-    }, 400);
+    }, 400 + currentProject.services.length * 100);
   }, [currentIndex]);
 
   return (
@@ -126,18 +164,20 @@ export default function ProjectsSection({ projects }) {
         <h2>Projets sélectionés</h2>
         <div className="project-info" key={currentProject.title}>
           <div className="mask">
-            <h3 className="info">{currentProject.title}</h3>
+            <h3 className="info title">{currentProject.title}</h3>
           </div>
           <div className="mask">
-            <p className="info">{currentProject.category}</p>
+            <p className="info category">{currentProject.category}</p>
           </div>
-          <div className="mask">
-            <ul className="info">
-              {currentProject.services.map((service, i) => (
-                <li key={i}>{service}</li>
-              ))}
-            </ul>
-          </div>
+          <ul>
+            {currentProject.services.map((service, i) => (
+              <div className="mask">
+                <li className="info service" key={i}>
+                  {service}
+                </li>
+              </div>
+            ))}
+          </ul>
         </div>
       </div>
       {projects.map((project, index) => {
