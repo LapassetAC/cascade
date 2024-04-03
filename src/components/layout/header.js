@@ -27,12 +27,12 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default function Header() {
+export default function Header({ bgColor, fontColor }) {
   return (
-    <StyledHeader>
+    <StyledHeader $bgColor={bgColor}>
       <div className="grid animationMask">
         <a href="" className="logo">
-          <CascadeLogo /*color={fontColor}*/ />
+          <CascadeLogo color={fontColor} />
         </a>
         <a href="/expertise">Savoir-faire</a>
         <a href="">À propos</a>

@@ -9,6 +9,7 @@ import {
   cascadeDelay,
 } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
+import { Context } from "@/app/Context";
 
 const projectIntro = keyframes`
   0% {
@@ -26,7 +27,9 @@ const projectIntro = keyframes`
 const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
-  grid-row-gap: 0;
+  .grid {
+    grid-gap: 0;
+  }
   .project-block {
     grid-column: 1 / 3;
     position: sticky;
@@ -115,8 +118,9 @@ const StyledProjectVisuals = styled.a`
   }
 `;
 
-export default function ProjectsSection({ projects, changeColors }) {
+export default function ProjectsSection({ projects }) {
   const theme = useContext(ThemeContext);
+  const { changeColors } = useContext(Context);
 
   const projectRefs = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -167,10 +171,8 @@ export default function ProjectsSection({ projects, changeColors }) {
           </div>
           <ul>
             {currentProject.services.map((service, i) => (
-              <div className="mask">
-                <li className="info service" key={i}>
-                  {service}
-                </li>
+              <div className="mask" key={i}>
+                <li className="info service">{service}</li>
               </div>
             ))}
           </ul>

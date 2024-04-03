@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import styled from "styled-components";
 import { textApparitionAnim, fadeIn, cascadeDelay } from "@/styles/theme";
-import { ThemeContext } from "styled-components";
 
 const StyledContainer = styled.div`
-  background-color: ${(props) => props.$bgColor};
-  transition: background-color 0.4s;
+  /* background-color: ${(props) => props.$bgColor}; */
+  /* transition: background-color 0.4s; */
   section {
     &.hero {
       /* margin: 30px 0; */
@@ -35,9 +33,6 @@ const StyledContainer = styled.div`
 `;
 
 export default function Home({ projects }) {
-  const theme = useContext(ThemeContext);
-  const [bgColor, setBgColor] = useState(theme.color.white);
-  const [fontColor, setFontColor] = useState(theme.color.black);
   // const [animIsLoaded, setAnimIsLoaded] = useState(false);
 
   // useEffect(() => {
@@ -47,21 +42,21 @@ export default function Home({ projects }) {
   //   return () => clearTimeout(timer);
   // }, []);
 
-  const changeColors = (newBgColor, newFontColor) => {
-    setBgColor(newBgColor);
-    setFontColor(newFontColor);
-    document.body.style.color = newFontColor;
-  };
+  // const changeColors = (newBgColor, newFontColor) => {
+  //   setBgColor(newBgColor);
+  //   setFontColor(newFontColor);
+  //   document.body.style.color = newFontColor;
+  // };
 
   return (
-    <StyledContainer $bgColor={bgColor}>
+    <StyledContainer /*$bgColor={colors.bgColor}*/>
       <section className="grid hero">
         <p>
           <span>Créateurs </span> <span>de&nbsp;</span>
           <span> sites </span> <span>web </span> <span>engageants.</span>
         </p>
       </section>
-      <ProjectsSection projects={projects} changeColors={changeColors} />
+      <ProjectsSection projects={projects} />
     </StyledContainer>
   );
 }
