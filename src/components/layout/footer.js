@@ -10,21 +10,27 @@ const StyledFooter = styled.footer`
       width: 0;
       &:nth-child(1) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.44 * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 0.09 * 10}px;
       }
       &:nth-child(2) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.56 * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 0.32 * 10}px;
       }
       &:nth-child(3) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.67 * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 0.68 * 10}px;
       }
       &:nth-child(4) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.78 * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 0.86 * 10}px;
       }
       &:nth-child(5) {
         width: ${({ $progressInPercent }) => $progressInPercent * 0.89 * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 0.95 * 10}px;
       }
       &:nth-child(6) {
         width: ${({ $progressInPercent }) => $progressInPercent * 2}px;
+        height: ${({ $progressInPercent }) => $progressInPercent * 10}px;
       }
     }
   }
