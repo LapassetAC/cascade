@@ -3,11 +3,7 @@ import Image from "next/image";
 import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
-import {
-  textApparitionAnim,
-  textDisparitionAnim,
-  cascadeDelay,
-} from "@/styles/theme";
+import { textApparitionAnim, textDisparitionAnim } from "@/styles/theme";
 import { ThemeContext } from "styled-components";
 import { Context } from "@/app/Context";
 
@@ -27,9 +23,7 @@ const projectIntro = keyframes`
 const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
-  .grid {
-    grid-gap: 0;
-  }
+  grid-row-gap: 0;
   .project-block {
     grid-column: 1 / 3;
     position: sticky;
