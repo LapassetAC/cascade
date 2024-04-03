@@ -86,8 +86,10 @@ const StyledContainer = styled.section`
 
 const StyledProjectVisuals = styled.a`
   grid-column: 3 / 7;
-  position: relative;
   padding-bottom: 180px;
+  div {
+    position: relative;
+  }
   img {
     height: auto;
     width: 100%;
@@ -190,18 +192,20 @@ export default function ProjectsSection({ projects }) {
               setIsHovered(false);
             }}
           >
-            <Image {...imageProps} alt={title} sizes="100vw" />
-            <video
-              preload="true"
-              playsInline
-              autoPlay
-              loop
-              muted
-              className={isHovered ? "show" : ""}
-            >
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div>
+              <Image {...imageProps} alt={title} sizes="100vw" />
+              <video
+                preload="true"
+                playsInline
+                autoPlay
+                loop
+                muted
+                className={isHovered ? "show" : ""}
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </StyledProjectVisuals>
         );
       })}
