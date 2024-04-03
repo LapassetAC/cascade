@@ -171,10 +171,8 @@ export default function ProjectsSection({ projects }) {
           </div>
           <ul>
             {currentProject.services.map((service, i) => (
-              <div className="mask">
-                <li className="info service" key={i}>
-                  {service}
-                </li>
+              <div className="mask" key={i}>
+                <li className="info service">{service}</li>
               </div>
             ))}
           </ul>
