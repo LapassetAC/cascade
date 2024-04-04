@@ -42,7 +42,8 @@ const StyledContainer = styled.div`
 `;
 
 export default function Expertise() {
-  const [progressInPercent, setProgressInPercent] = useState(27);
+  const illusInitSize = 18;
+  const [progressInPercent, setProgressInPercent] = useState(illusInitSize);
   const ref = useRef();
   const illusRef = useRef();
 
@@ -55,10 +56,10 @@ export default function Expertise() {
       );
       const scroll = window.scrollY;
       const percent = Math.abs(Math.round((scroll / maxScroll) * 100));
-      if (percent > 25) {
+      if (percent > illusInitSize) {
         setProgressInPercent(percent);
       } else {
-        setProgressInPercent(27);
+        setProgressInPercent(illusInitSize);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -89,51 +90,27 @@ export default function Expertise() {
           <li>charte graphique</li>
           <li>rédaction de contenu</li>
         </ul>
-        <h2>Identité</h2>
+        <h2>Produits</h2>
         <ul>
-          <li>création de logo</li>
-          <li>charte graphique</li>
-          <li>rédaction de contenu</li>
+          <li>sites vitrines</li>
+          <li>e-commerce</li>
+          <li>blogs</li>
+          <li>applications Web</li>
         </ul>
-        <h2>Identité</h2>
+        <h2>Conception</h2>
         <ul>
-          <li>création de logo</li>
-          <li>charte graphique</li>
-          <li>rédaction de contenu</li>
+          <li>arborescence</li>
+          <li>maquettage</li>
+          <li>prototypage</li>
         </ul>
-        <h2>Identité</h2>
+        <h2>Code</h2>
         <ul>
-          <li>création de logo</li>
-          <li>charte graphique</li>
-          <li>rédaction de contenu</li>
+          <li>référencement (SEO)</li>
+          <li>gestion du contenu (CMS)</li>
+          <li>hébergement</li>
+          <li>mise en ligne</li>
         </ul>
       </section>
-      <h2>Identité</h2>
-      <ul>
-        <li>création de logo</li>
-        <li>charte graphique</li>
-        <li>rédaction de contenu</li>
-      </ul>
-      <h2>Produits</h2>
-      <ul>
-        <li>sites vitrines</li>
-        <li>e-commerce</li>
-        <li>blogs</li>
-        <li>applications Web</li>
-      </ul>
-      <h2>Conception</h2>
-      <ul>
-        <li>arborescence</li>
-        <li>maquettage</li>
-        <li>prototypage</li>
-      </ul>
-      <h2>Code</h2>
-      <ul>
-        <li>référencement (SEO)</li>
-        <li>gestion du contenu (CMS)</li>
-        <li>hébergement</li>
-        <li>mise en ligne</li>
-      </ul>
     </StyledContainer>
   );
 }
