@@ -11,33 +11,79 @@ const StyledFooter = styled.footer`
     background-color: ${({ $colors }) => $colors.fontColor};
     &:nth-child(1) {
       grid-column: 1 / 2;
-      width: ${({ $progressInPercent }) => $progressInPercent * 0.44}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px)`};
+
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 44%;
+              height: calc(13vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent * 0.44}%;
+              height: calc(
+                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
     &:nth-child(2) {
       grid-column: 2 / 3;
-      width: ${({ $progressInPercent }) => $progressInPercent * 0.56}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px)`};
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 56%;
+              height: calc(36vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent * 0.56}%;
+              height: calc(
+                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
     &:nth-child(3) {
       grid-column: 3 / 4;
-      width: ${({ $progressInPercent }) => $progressInPercent * 0.67}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px)`};
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 67%;
+              height: calc(72vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent * 0.67}%;
+              height: calc(
+                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
     &:nth-child(4) {
       grid-column: 4 / 5;
-      width: ${({ $progressInPercent }) => $progressInPercent * 0.78}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px)`};
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 78%;
+              height: calc(90vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent * 0.78}%;
+              height: calc(
+                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
     &:nth-child(5) {
       grid-column: 5 / 6;
-      width: ${({ $progressInPercent }) => $progressInPercent * 0.89}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px)`};
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 89%;
+              height: calc(99vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent * 0.89}%;
+              height: calc(
+                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
     &:nth-child(6) {
       grid-column: 6 / 7;
