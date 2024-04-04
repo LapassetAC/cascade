@@ -4,7 +4,7 @@ import theme from "@/styles/theme";
 
 const StyledContainer = styled.div`
   min-height: ${({ theme }) => `calc(100vh - ${theme.headerHeight}px)`};
-  padding-top: 60px;
+  /* padding-top: 60px; */
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
   align-items: start;
@@ -24,6 +24,13 @@ const StyledContainer = styled.div`
         width: calc(${$progressInPercent}%);
         height: calc(${$progressInPercent}vh - ${theme.headerHeight + 30}px);
       `}
+    &:after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 70px;
+      background-color: ${({ theme }) => theme.color.white};
+    }
   }
   .expertises {
     grid-column: 5 / 7;
@@ -57,11 +64,13 @@ export default function Expertise() {
       );
       const scroll = window.scrollY;
       const percent = Math.abs(Math.round((scroll / maxScroll) * 100));
-      if (percent > illusInitSize) {
-        setProgressInPercent(percent);
-      } else {
-        setProgressInPercent(illusInitSize);
-      }
+      setProgressInPercent(percent);
+
+      // if (percent > illusInitSize) {
+      //   setProgressInPercent(percent);
+      // } else {
+      //   setProgressInPercent(illusInitSize);
+      // }
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
