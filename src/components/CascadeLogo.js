@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useState } from "react";
 
@@ -18,12 +18,15 @@ const StyledContainer = styled.div`
       ${({ theme }) => theme.cubicBezier.pageTranstion} infinite !important;
   } */
   h1 {
-    transform: translateY(-50px);
     font-weight: 900;
     font-size: 32px;
-    transform: translateY(-10px);
     line-height: 0.8em;
-    animation: ${textApparitionAnim} 0.4s forwards;
+    ${({ $isAnimation }) =>
+      $isAnimation &&
+      css`
+        animation: ${textApparitionAnim} 0.4s forwards;
+        transform: translateY(-50px);
+      `}
   }
   svg {
     height: 22px;
@@ -31,27 +34,27 @@ const StyledContainer = styled.div`
     left: -12px;
     top: 8px;
     line {
-      transform: translateY(-50px);
       stroke-dasharray: 44;
       stroke-dashoffset: 0;
       transition: stroke-dashoffset 0.4s ease-in-out;
-      animation: ${textApparitionAnim} 0.4s forwards;
-      /* animation: ${({ $isLogoHovered }) =>
-        $isLogoHovered
-          ? cascadeAnim + "0.4s linear infinite"
-          : textApparitionAnim + "0.4s forwards"}; */
-
       ${cascadeDelay(6, 0)}
+      ${({ $isAnimation }) =>
+        $isAnimation &&
+        css`
+          transform: translateY(-50px);
+          animation: ${textApparitionAnim} 0.4s forwards;
+        `}
     }
   }
 `;
 
-export default function CascadeLogo({ color }) {
+export default function CascadeLogo({ color, isAnimation }) {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   return (
     <StyledContainer
       onMouseOver={() => setIsLogoHovered(true)}
       $isLogoHovered={isLogoHovered}
+      $isAnimation={isAnimation}
       // style={{ color: color }}
     >
       <h1>cascade</h1>

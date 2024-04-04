@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import CascadeLogo from "@/components/CascadeLogo";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
+import { useRouter } from "next/router";
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -16,8 +17,12 @@ const StyledHeader = styled.header`
     overflow-y: hidden;
   }
   a {
-    transform: translateY(-50px);
-    animation: ${textApparitionAnim} 0.4s forwards;
+    ${({ $isAnimation }) =>
+      $isAnimation &&
+      css`
+        transform: translateY(-50px);
+        animation: ${textApparitionAnim} 0.4s forwards;
+      `};
     &.logo {
       grid-column: 1 / 3;
     }
@@ -28,11 +33,13 @@ const StyledHeader = styled.header`
 `;
 
 export default function Header({ bgColor, fontColor }) {
+  const pathname = useRouter().pathname;
+  const isAnimation = pathname === "/";
   return (
-    <StyledHeader $bgColor={bgColor}>
+    <StyledHeader $bgColor={bgColor} $isAnimation={isAnimation}>
       <div className="grid animationMask">
         <a href="/" className="logo">
-          <CascadeLogo color={fontColor} />
+          <CascadeLogo color={fontColor} isAnimation={isAnimation} />
         </a>
         <a href="/expertise">Savoir-faire</a>
         <a href="/about">À propos</a>
