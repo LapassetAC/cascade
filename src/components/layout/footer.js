@@ -13,31 +13,31 @@ const StyledFooter = styled.footer`
       grid-column: 1 / 2;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.44}%;
       height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.09}vh - ${theme.headerHeight + 30}px)`};
+        `calc(${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px)`};
     }
     &:nth-child(2) {
       grid-column: 2 / 3;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.56}%;
       height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.32}vh - ${theme.headerHeight + 30}px)`};
+        `calc(${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px)`};
     }
     &:nth-child(3) {
       grid-column: 3 / 4;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.67}%;
       height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.68}vh - ${theme.headerHeight + 30}px)`};
+        `calc(${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px)`};
     }
     &:nth-child(4) {
       grid-column: 4 / 5;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.78}%;
       height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.86}vh - ${theme.headerHeight + 30}px)`};
+        `calc(${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px)`};
     }
     &:nth-child(5) {
       grid-column: 5 / 6;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.89}%;
       height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent * 0.95}vh - ${theme.headerHeight + 30}px)`};
+        `calc(${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px)`};
     }
     &:nth-child(6) {
       grid-column: 6 / 7;
