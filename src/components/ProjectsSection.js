@@ -116,7 +116,7 @@ const StyledProjectVisuals = styled.a`
 
 export default function ProjectsSection({ projects }) {
   const theme = useContext(ThemeContext);
-  const { changeColors } = useContext(Context);
+  const { setColors } = useContext(Context);
 
   const projectRefs = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -131,13 +131,13 @@ export default function ProjectsSection({ projects }) {
         return rect.top < triggerFromTop && rect.bottom >= triggerFromTop;
       });
       if (newCurrentIndex === -1) {
-        changeColors(theme.color.white, theme.color.black);
+        setColors({ bgColor: theme.color.white, fontColor: theme.color.black });
       } else {
         setCurrentIndex(newCurrentIndex);
-        changeColors(
-          projects[newCurrentIndex].image.dominantColor,
-          theme.color.white
-        );
+        setColors({
+          bgColor: projects[newCurrentIndex].image.dominantColor,
+          fontColor: theme.color.white,
+        });
       }
     };
     window.addEventListener("scroll", handleScroll);

@@ -72,15 +72,6 @@ export default function Footer() {
   useEffect(() => {
     const handleScroll = () => {
       const top = ref.current.getBoundingClientRect().top;
-
-      console.log(
-        Math.round(
-          ((window.innerHeight - top) /
-            (window.innerHeight - theme.headerHeight)) *
-            100
-        )
-      );
-
       setProgressInPercent(
         Math.round(
           ((window.innerHeight - top) /

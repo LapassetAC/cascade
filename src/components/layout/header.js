@@ -31,12 +31,12 @@ export default function Header({ bgColor, fontColor }) {
   return (
     <StyledHeader $bgColor={bgColor}>
       <div className="grid animationMask">
-        <a href="" className="logo">
+        <a href="/" className="logo">
           <CascadeLogo color={fontColor} />
         </a>
         <a href="/expertise">Savoir-faire</a>
-        <a href="">À propos</a>
-        <a href="">Contact</a>
+        <a href="/about">À propos</a>
+        <a href="/contact">Contact</a>
       </div>
     </StyledHeader>
   );

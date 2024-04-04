@@ -2,7 +2,7 @@ import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import styled from "styled-components";
-import { textApparitionAnim, fadeIn, cascadeDelay } from "@/styles/theme";
+import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 
 const StyledContainer = styled.div`
   section {
