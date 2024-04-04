@@ -108,6 +108,32 @@ export default function Expertise() {
           <li>rédaction de contenu</li>
         </ul>
       </section>
+      <h2>Identité</h2>
+      <ul>
+        <li>création de logo</li>
+        <li>charte graphique</li>
+        <li>rédaction de contenu</li>
+      </ul>
+      <h2>Produits</h2>
+      <ul>
+        <li>sites vitrines</li>
+        <li>e-commerce</li>
+        <li>blogs</li>
+        <li>applications Web</li>
+      </ul>
+      <h2>Conception</h2>
+      <ul>
+        <li>arborescence</li>
+        <li>maquettage</li>
+        <li>prototypage</li>
+      </ul>
+      <h2>Code</h2>
+      <ul>
+        <li>référencement (SEO)</li>
+        <li>gestion du contenu (CMS)</li>
+        <li>hébergement</li>
+        <li>mise en ligne</li>
+      </ul>
     </StyledContainer>
   );
 }
