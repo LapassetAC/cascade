@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import React, { useState, useEffect, useRef } from "react";
 import theme from "@/styles/theme";
 
@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   padding-bottom: 30px;
   aside {
     grid-row: 1/2;
-    background-color: ${({ theme }) => theme.color.black};
+    background-color: ${({ $colors }) => $colors.fontColor};
     &:nth-child(1) {
       grid-column: 1 / 2;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.44}%;
@@ -41,14 +41,24 @@ const StyledFooter = styled.footer`
     }
     &:nth-child(6) {
       grid-column: 6 / 7;
-      width: ${({ $progressInPercent }) => $progressInPercent}%;
-      height: ${({ $progressInPercent }) =>
-        `calc(${$progressInPercent}vh - ${theme.headerHeight + 30}px)`};
+      ${({ $progressInPercent, $noAnimation }) =>
+        $noAnimation
+          ? css`
+              width: 100%;
+              height: calc(100vh - ${theme.headerHeight + 30}px);
+            `
+          : css`
+              width: ${$progressInPercent}%;
+              height: calc(
+                ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+              );
+            `}
     }
   }
   div {
     grid-row: 1/2;
     align-self: self-end;
+    color: ${({ $colors }) => $colors.fontColor};
     a {
       display: block;
       margin-top: 15px;
@@ -65,7 +75,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export default function Footer() {
+export default function Footer({ colors, noAnimation }) {
   const [progressInPercent, setProgressInPercent] = useState(0);
   const ref = useRef();
 
@@ -91,6 +101,8 @@ export default function Footer() {
       className="grid"
       ref={ref}
       $progressInPercent={progressInPercent}
+      $colors={colors}
+      $noAnimation={noAnimation}
     >
       <aside></aside>
       <aside></aside>

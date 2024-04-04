@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
+  min-height: ${({ theme }) => `calc(100vh - ${theme.headerHeight}px)`};
   padding-top: 90px;
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
