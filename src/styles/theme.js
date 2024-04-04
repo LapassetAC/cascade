@@ -37,6 +37,7 @@ const theme = {
     mobile: 1.25,
     desktop: 1.8,
   },
+  headerHeight: 86,
 };
 
 export const textApparitionAnim = keyframes`
