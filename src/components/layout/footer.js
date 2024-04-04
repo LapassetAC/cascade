@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   padding-bottom: 30px;
   aside {
     grid-row: 1/2;
-    background-color: ${({ theme }) => theme.color.black};
+    background-color: ${({ $colors }) => $colors.fontColor};
     &:nth-child(1) {
       grid-column: 1 / 2;
       width: ${({ $progressInPercent }) => $progressInPercent * 0.44}%;
@@ -49,6 +49,7 @@ const StyledFooter = styled.footer`
   div {
     grid-row: 1/2;
     align-self: self-end;
+    color: ${({ $colors }) => $colors.fontColor};
     a {
       display: block;
       margin-top: 15px;
@@ -65,7 +66,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export default function Footer() {
+export default function Footer({ colors }) {
   const [progressInPercent, setProgressInPercent] = useState(0);
   const ref = useRef();
 
@@ -91,6 +92,7 @@ export default function Footer() {
       className="grid"
       ref={ref}
       $progressInPercent={progressInPercent}
+      $colors={colors}
     >
       <aside></aside>
       <aside></aside>

@@ -81,6 +81,10 @@ const StyledContainer = styled.section`
           $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
         0.4s forwards;
     }
+    .info,
+    .mask {
+      line-height: 30px;
+    }
   }
 `;
 
@@ -130,7 +134,7 @@ export default function ProjectsSection({ projects }) {
         const rect = ref.getBoundingClientRect();
         return rect.top < triggerFromTop && rect.bottom >= triggerFromTop;
       });
-      if (newCurrentIndex === -1) {
+      if (newCurrentIndex === -1 || window.scrollY === 0) {
         setColors({ bgColor: theme.color.white, fontColor: theme.color.black });
       } else {
         setCurrentIndex(newCurrentIndex);
