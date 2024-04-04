@@ -1,18 +1,78 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import React, { useState, useEffect, useRef } from "react";
+import theme from "@/styles/theme";
 
 const StyledContainer = styled.div`
   min-height: ${({ theme }) => `calc(100vh - ${theme.headerHeight}px)`};
-  padding-top: 90px;
+  padding-top: 60px;
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
+  align-items: start;
+
   .intro {
-    grid-column: 2 / 5;
+    grid-column: 1 / 3;
+    position: sticky;
+    top: 100px;
+  }
+  .illustration {
+    grid-column: 4 / 5;
+    position: sticky;
+    top: 100px;
+    background-color: ${({ theme }) => theme.color.white};
+    ${({ $progressInPercent, theme }) =>
+      css`
+        width: calc(${$progressInPercent}%);
+        height: calc(${$progressInPercent}vh - ${theme.headerHeight + 30}px);
+      `}
+  }
+  .expertises {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+  h2 {
+    font-size: 32px;
+    font-weight: 900;
+    grid-column: 1 / 2;
+  }
+  ul {
+    grid-column: 2/ 3;
+    padding-bottom: 100px;
   }
 `;
 
 export default function Expertise() {
+  const [progressInPercent, setProgressInPercent] = useState(27);
+  const ref = useRef();
+  const illusRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const maxScroll = Math.abs(
+        window.innerHeight -
+          ref.current.getBoundingClientRect().height -
+          theme.headerHeight
+      );
+      const scroll = window.scrollY;
+      const percent = Math.abs(Math.round((scroll / maxScroll) * 100));
+      if (percent > 25) {
+        setProgressInPercent(percent);
+      } else {
+        setProgressInPercent(27);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <StyledContainer className="grid">
+    <StyledContainer
+      className="grid"
+      $progressInPercent={progressInPercent}
+      ref={ref}
+    >
       <p className="intro">
         Nous accompagnons nos clients à travers toutes les étapes de leur projet
         : de la conception du site jusqu’à sa mise en ligne. Afin de répondre
@@ -21,6 +81,33 @@ export default function Expertise() {
         uniques et en développant l’outils de gestion du contenu (CMS)
         sur-mesure.
       </p>
+      <div className="illustration" ref={illusRef}></div>
+      <section className="expertises">
+        <h2>Identité</h2>
+        <ul>
+          <li>création de logo</li>
+          <li>charte graphique</li>
+          <li>rédaction de contenu</li>
+        </ul>
+        <h2>Identité</h2>
+        <ul>
+          <li>création de logo</li>
+          <li>charte graphique</li>
+          <li>rédaction de contenu</li>
+        </ul>
+        <h2>Identité</h2>
+        <ul>
+          <li>création de logo</li>
+          <li>charte graphique</li>
+          <li>rédaction de contenu</li>
+        </ul>
+        <h2>Identité</h2>
+        <ul>
+          <li>création de logo</li>
+          <li>charte graphique</li>
+          <li>rédaction de contenu</li>
+        </ul>
+      </section>
     </StyledContainer>
   );
 }
