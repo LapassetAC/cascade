@@ -86,11 +86,15 @@ const StyledContainer = styled.section`
       line-height: 30px;
     }
   }
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    grid-column: 3 / 7;
+  }
 `;
 
 const StyledProjectVisuals = styled.a`
-  grid-column: 3 / 7;
-  padding-bottom: 180px;
   div {
     position: relative;
   }
@@ -128,27 +132,27 @@ export default function ProjectsSection({ projects }) {
   const [isInfoTransition, setIsInfoTransition] = useState(false);
   const triggerFromTop = 700;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const newCurrentIndex = projectRefs.current.findIndex((ref) => {
-        const rect = ref.getBoundingClientRect();
-        return rect.top < triggerFromTop && rect.bottom >= triggerFromTop;
-      });
-      if (newCurrentIndex === -1 || window.scrollY === 0) {
-        setColors({ bgColor: theme.color.white, fontColor: theme.color.black });
-      } else {
-        setCurrentIndex(newCurrentIndex);
-        setColors({
-          bgColor: projects[newCurrentIndex].image.dominantColor,
-          fontColor: theme.color.white,
-        });
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const newCurrentIndex = projectRefs.current.findIndex((ref) => {
+  //       const rect = ref.getBoundingClientRect();
+  //       return rect.top < triggerFromTop && rect.bottom >= triggerFromTop;
+  //     });
+  //     if (newCurrentIndex === -1 || window.scrollY === 0) {
+  //       setColors({ bgColor: theme.color.white, fontColor: theme.color.black });
+  //     } else {
+  //       setCurrentIndex(newCurrentIndex);
+  //       setColors({
+  //         bgColor: projects[newCurrentIndex].image.dominantColor,
+  //         fontColor: theme.color.white,
+  //       });
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   useEffect(() => {
     setIsInfoTransition(true);
@@ -178,41 +182,43 @@ export default function ProjectsSection({ projects }) {
           </ul>
         </div>
       </div>
-      {projects.map((project, index) => {
-        const { title, image, url, videoUrl } = project;
-        const imageProps = useNextSanityImage(client, image);
-        const [isHovered, setIsHovered] = useState(false);
-        return (
-          <StyledProjectVisuals
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={index}
-            ref={(el) => (projectRefs.current[index] = el)}
-            onMouseEnter={() => {
-              setIsHovered(true);
-            }}
-            onMouseLeave={() => {
-              setIsHovered(false);
-            }}
-          >
-            <div>
-              <Image {...imageProps} alt={title} sizes="100vw" />
-              <video
-                preload="true"
-                playsInline
-                autoPlay
-                loop
-                muted
-                className={isHovered ? "show" : ""}
-              >
-                <source src={videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </StyledProjectVisuals>
-        );
-      })}
+      <div className="projects-container">
+        {projects.map((project, index) => {
+          const { title, image, url, videoUrl } = project;
+          const imageProps = useNextSanityImage(client, image);
+          const [isHovered, setIsHovered] = useState(false);
+          return (
+            <StyledProjectVisuals
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={index}
+              ref={(el) => (projectRefs.current[index] = el)}
+              onMouseEnter={() => {
+                setIsHovered(true);
+              }}
+              onMouseLeave={() => {
+                setIsHovered(false);
+              }}
+            >
+              <div>
+                <Image {...imageProps} alt={title} sizes="100vw" />
+                <video
+                  preload="true"
+                  playsInline
+                  autoPlay
+                  loop
+                  muted
+                  className={isHovered ? "show" : ""}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </StyledProjectVisuals>
+          );
+        })}
+      </div>
     </StyledContainer>
   );
 }

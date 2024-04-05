@@ -7,17 +7,24 @@ import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 const StyledContainer = styled.div`
   section {
     &.hero {
-      height: calc(100vh - 180px);
+      margin-top: 30px;
+      align-items: start;
       p {
         overflow-y: hidden;
         &:nth-child(1) {
           grid-column: 1 / 3;
+          position: sticky;
+          top: 30px;
           span {
             display: inline-block;
             transform: translateY(-50px);
             animation: ${textApparitionAnim} 0.4s forwards;
             ${cascadeDelay(5, 0.7)}
           }
+        }
+        &:nth-child(2) {
+          grid-column: 3 / 6;
+          margin-bottom: 60px;
         }
       }
     }
@@ -31,6 +38,12 @@ export default function Home({ projects }) {
         <p>
           <span>Créateurs </span> <span>de&nbsp;</span>
           <span> sites </span> <span>web </span> <span>engageants.</span>
+        </p>
+        <p>
+          Nous concevons des sites web engageants pour des marques engagées. Nos
+          créations se distinguent par leur fluidité, leur respect de
+          l'environnement, et leur optimisation pour le référencement naturel
+          (SEO).
         </p>
       </section>
       <ProjectsSection projects={projects} />
