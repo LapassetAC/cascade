@@ -23,14 +23,13 @@ const StyledContainer = styled.div`
       css`
         width: calc(${$progressInPercent}%);
         height: calc(${$progressInPercent}vh - ${theme.headerHeight + 30}px);
-      `}
-    &:after {
+      `}/* &:after {
       content: "";
       display: block;
       width: 70px;
       height: 70px;
       background-color: ${({ theme }) => theme.color.white};
-    }
+    } */
   }
   .expertises {
     grid-column: 5 / 7;
@@ -66,11 +65,11 @@ export default function Expertise() {
       const percent = Math.abs(Math.round((scroll / maxScroll) * 100));
       setProgressInPercent(percent);
 
-      // if (percent > illusInitSize) {
-      //   setProgressInPercent(percent);
-      // } else {
-      //   setProgressInPercent(illusInitSize);
-      // }
+      if (percent > illusInitSize) {
+        setProgressInPercent(percent);
+      } else {
+        setProgressInPercent(illusInitSize);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
