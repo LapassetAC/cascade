@@ -17,9 +17,11 @@ const StyledFooter = styled.footer`
           ? css`
               width: 44%;
               height: calc(13vh - ${theme.headerHeight + 30}px);
+              min-height: 5px;
             `
           : css`
               width: ${$progressInPercent * 0.44}%;
+              min-height: 5px;
               height: calc(
                 ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
               );
@@ -35,6 +37,8 @@ const StyledFooter = styled.footer`
             `
           : css`
               width: ${$progressInPercent * 0.56}%;
+              min-height: 5px;
+
               height: calc(
                 ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
               );
@@ -50,6 +54,8 @@ const StyledFooter = styled.footer`
             `
           : css`
               width: ${$progressInPercent * 0.67}%;
+              min-height: 5px;
+
               height: calc(
                 ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
               );
@@ -65,6 +71,8 @@ const StyledFooter = styled.footer`
             `
           : css`
               width: ${$progressInPercent * 0.78}%;
+              min-height: 5px;
+
               height: calc(
                 ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
               );
@@ -80,6 +88,8 @@ const StyledFooter = styled.footer`
             `
           : css`
               width: ${$progressInPercent * 0.89}%;
+              min-height: 5px;
+
               height: calc(
                 ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
               );
@@ -95,6 +105,8 @@ const StyledFooter = styled.footer`
             `
           : css`
               width: ${$progressInPercent}%;
+              min-height: 5px;
+
               height: calc(
                 ${$progressInPercent}vh - ${theme.headerHeight + 30}px
               );
