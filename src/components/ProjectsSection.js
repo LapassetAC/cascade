@@ -42,47 +42,41 @@ const StyledContainer = styled.section`
       }
       &.category {
         margin-bottom: 15px;
+        animation-delay: 0.05s;
       }
     }
     .info,
     .mask {
       line-height: 30px;
     }
-    .mask {
-      &:nth-child(1) {
-        .info {
-          animation-delay: 0.05s;
-        }
-      }
-      &:nth-child(2) {
-        .info {
-          animation-delay: 0.1s;
-        }
-      }
-    }
     ul {
       .mask {
         &:nth-child(1) {
           .info {
-            animation-delay: 0.15s;
+            animation-delay: 0.1s;
           }
         }
         &:nth-child(2) {
           .info {
-            animation-delay: 0.2s;
+            animation-delay: 0.15s;
           }
         }
         &:nth-child(3) {
           .info {
-            animation-delay: 0.25s;
+            animation-delay: 0.2s;
           }
         }
         &:nth-child(4) {
           .info {
-            animation-delay: 0.3s;
+            animation-delay: 0.25s;
           }
         }
         &:nth-child(5) {
+          .info {
+            animation-delay: 0.3s;
+          }
+        }
+        &:nth-child(6) {
           .info {
             animation-delay: 0.35s;
           }
@@ -100,34 +94,31 @@ const StyledContainer = styled.section`
 
 const StyledProjectVisuals = styled.a`
   position: relative;
-  /* padding: 30px; */
   &:hover {
     video {
-      visibility: visible;
+      height: 300px;
+      transform: translateY(0px);
     }
   }
 
   img {
     height: auto;
     width: 100%;
-    /* object-fit: cover; */
-    /* aspect-ratio: 1.7; */
-    /* position: relative; */
   }
-  video {
+  .mask {
+    height: 300px;
     top: 60px;
     left: 30px;
     position: absolute;
     width: calc(100% - 60px);
+  }
+  video {
+    width: 100%;
+    transform: translateY(-300px);
 
-    /* opacity: 0; */
-    visibility: hidden;
-    /* transition: opacity 0.5s, visibility 0.5s; */
+    transition: transform 0.2s;
   }
-  video.show {
-    opacity: 1;
-    visibility: visible;
-  }
+
   &:hover {
     cursor: pointer;
   }
@@ -193,17 +184,19 @@ export default function ProjectsSection({ projects }) {
               }}
             >
               <Image {...imageProps} alt={title} />
-              <video
-                preload="true"
-                playsInline
-                autoPlay
-                loop
-                muted
-                className={isHovered ? "show" : ""}
-              >
-                <source src={videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div className="mask">
+                <video
+                  preload="true"
+                  playsInline
+                  autoPlay
+                  loop
+                  muted
+                  className={isHovered ? "show" : ""}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </StyledProjectVisuals>
           );
         })}
