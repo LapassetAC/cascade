@@ -25,7 +25,7 @@ const StyledContainer = styled.section`
   animation: ${projectIntro} 0.2s 2.2s forwards;
   grid-row-gap: 0 !important;
   grid-column: 1 / 7;
-  margin: 0;
+  margin: 0 !important;
   .project-info {
     grid-column: 1 / 3;
     position: sticky;
@@ -99,23 +99,30 @@ const StyledContainer = styled.section`
 `;
 
 const StyledProjectVisuals = styled.a`
-  div {
-    position: relative;
+  position: relative;
+  /* padding: 30px; */
+  &:hover {
+    video {
+      visibility: visible;
+    }
   }
+
   img {
     height: auto;
     width: 100%;
+    /* object-fit: cover; */
+    /* aspect-ratio: 1.7; */
+    /* position: relative; */
   }
   video {
-    height: auto;
-    width: 100%;
+    top: 60px;
+    left: 30px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+    width: calc(100% - 60px);
+
+    /* opacity: 0; */
     visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s;
+    /* transition: opacity 0.5s, visibility 0.5s; */
   }
   video.show {
     opacity: 1;
@@ -177,28 +184,26 @@ export default function ProjectsSection({ projects }) {
               key={index}
               ref={(el) => (projectRefs.current[index] = el)}
               onMouseEnter={() => {
-                setIsHovered(true);
+                // setIsHovered(true);
                 setCurrentProject(projects[index]);
               }}
               onMouseLeave={() => {
-                setIsHovered(false);
+                // setIsHovered(false);
                 setCurrentProject(null);
               }}
             >
-              <div>
-                <Image {...imageProps} alt={title} sizes="100vw" />
-                <video
-                  preload="true"
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                  className={isHovered ? "show" : ""}
-                >
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+              <Image {...imageProps} alt={title} />
+              <video
+                preload="true"
+                playsInline
+                autoPlay
+                loop
+                muted
+                className={isHovered ? "show" : ""}
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </StyledProjectVisuals>
           );
         })}
