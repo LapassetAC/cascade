@@ -1,37 +1,48 @@
 import styled from "styled-components";
-import Image from "next/image";
-import TeamImage from "@/assets/images/team.jpg";
 
 const StyledContainer = styled.div`
-  padding: 90px 0 200px;
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
+  padding-bottom: 60px;
+  @media ${({ theme }) => theme.minWidth.md} {
+    padding-top: 30px;
+    padding-bottom: 80px;
+  }
+  h1 {
+    grid-column: 1 / 3;
+    margin-bottom: 15px;
+    @media ${({ theme }) => theme.minWidth.md} {
+      margin-bottom: 0;
+    }
+  }
   .intro {
-    grid-column: 2 / 5;
-    margin-bottom: 100px;
+    grid-column: 1 / 3;
+    @media ${({ theme }) => theme.minWidth.md} {
+      grid-column: 3 / 6;
+      margin-bottom: 30px;
+    }
   }
-  img {
-    grid-column: 1 / 7;
-    width: 100%;
-    height: auto;
-    margin-bottom: 200px;
-  }
-  .presentation-adri {
-    grid-column: 1 / 4;
-  }
-  .presentation-clem {
-    grid-column: 4 / 7;
+  .presentation {
+    grid-column: 1 / 3;
+    margin-top: 15px;
+    @media ${({ theme }) => theme.minWidth.md} {
+      grid-column: 3 / 6;
+      margin-top: 30px;
+    }
   }
   h2 {
-    font-size: 40px;
     font-weight: 900;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
+    @media ${({ theme }) => theme.minWidth.md} {
+      margin-bottom: 15px;
+    }
   }
 `;
 
 export default function About() {
   return (
     <StyledContainer className="grid">
+      <h1>Deux frères, deux artisans du web.</h1>
       <p className="intro">
         Fondé par deux frères passionnés se définissant comme artisans du Web,
         le studio Cascade incarne leur volonté de faire passer les sites et
@@ -41,8 +52,7 @@ export default function About() {
         etc.) nous nous engageons à offrir une structure de prix réduite et
         transparente.
       </p>
-      <Image src={TeamImage} alt="Photo d'équipe" />
-      <div className="presentation-adri">
+      <div className="presentation">
         <h2>Adrien</h2>
         <p>
           Initialement formé à l’informatique, Adrien a enrichi son parcours par
@@ -54,7 +64,7 @@ export default function About() {
           innovation constante dans ses projets.
         </p>
       </div>
-      <div className="presentation-clem">
+      <div className="presentation">
         <h2>Clément</h2>
         <p>
           Diplômé de l’EDHEC avec une expérience en conseil chez Sopra Steria et
