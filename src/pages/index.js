@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
         &:nth-child(1) {
           grid-column: 1 / 3;
           position: sticky;
-          top: 30px;
+          top: 116px;
           span {
             display: inline-block;
             transform: translateY(-50px);
@@ -45,8 +45,8 @@ export default function Home({ projects }) {
           l'environnement, et leur optimisation pour le référencement naturel
           (SEO).
         </p>
+        <ProjectsSection projects={projects} />
       </section>
-      <ProjectsSection projects={projects} />
     </StyledContainer>
   );
 }
