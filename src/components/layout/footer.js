@@ -7,6 +7,9 @@ const StyledFooter = styled.footer`
   height: calc(100vh - ${theme.headerHeight}px);
   padding-bottom: 30px;
   font-size: 12px;
+  @media ${({ theme }) => theme.minWidth.md} {
+    font-size: 16px;
+  }
   aside {
     grid-row: 1/2;
     background-color: ${({ $colors }) => $colors.fontColor};
