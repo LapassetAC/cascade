@@ -24,16 +24,32 @@ const StyledContainer = styled.section`
   opacity: 0;
   animation: ${projectIntro} 0.4s 2.2s forwards;
   grid-row-gap: 0 !important;
+  grid-column: 1 / 7;
+  margin: 0;
   .project-block {
     grid-column: 1 / 3;
     position: sticky;
-    top: 120px;
+    top: 170px;
     height: fit-content;
-    h2 {
-      margin-bottom: 30px;
-    }
   }
   .project-info {
+    .info {
+      opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
+      animation: ${({ $isInfoTransition }) =>
+          $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
+        0.4s forwards;
+      &.title {
+        font-weight: 900;
+        margin-bottom: 15px;
+      }
+      &.category {
+        margin-bottom: 15px;
+      }
+    }
+    .info,
+    .mask {
+      line-height: 30px;
+    }
     .mask {
       &:nth-child(1) {
         .info {
@@ -74,16 +90,6 @@ const StyledContainer = styled.section`
           }
         }
       }
-    }
-    .info {
-      opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
-      animation: ${({ $isInfoTransition }) =>
-          $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
-        0.4s forwards;
-    }
-    .info,
-    .mask {
-      line-height: 30px;
     }
   }
   .projects-container {
@@ -165,10 +171,9 @@ export default function ProjectsSection({ projects }) {
   return (
     <StyledContainer className="grid" $isInfoTransition={isInfoTransition}>
       <div className="project-block">
-        <h2>Projets sélectionés</h2>
         <div className="project-info" key={currentProject.title}>
           <div className="mask">
-            <h3 className="info title">{currentProject.title}</h3>
+            <h2 className="info title">{currentProject.title}</h2>
           </div>
           <div className="mask">
             <p className="info category">{currentProject.category}</p>
