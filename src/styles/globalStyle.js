@@ -16,10 +16,13 @@ body {
 
 a,p,button,h1,h2,h3,i,input, ul, li {
   letter-spacing: -0.05em;
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   list-style: none;
+  @media ${({ theme }) => theme.minWidth.md} {
+    font-size: 22px;
+  }
 }
 
 a {
