@@ -31,11 +31,12 @@ a {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
+  display: block;
+  /* grid-template-columns: repeat(1, 1fr); */
+  /* grid-gap: 15px; */
   margin: 0 15px;
   @media ${(props) => props.theme.minWidth.sm} {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 30px;
     margin: 0 30px;

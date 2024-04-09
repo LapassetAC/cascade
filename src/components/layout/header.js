@@ -9,12 +9,19 @@ const StyledHeader = styled.header`
   background-color: ${(props) => props.$bgColor};
   transition: background-color 0.4s;
   z-index: 1;
-  padding: 30px 0 0;
-
+  padding: 15px 0 0;
+  @media ${(props) => props.theme.minWidth.sm} {
+    padding: 30px 0 0;
+  }
   .animationMask {
-    padding: 0 0 30px;
+    display: flex;
     align-items: end;
     overflow-y: hidden;
+    padding: 0 0 15px;
+    @media ${(props) => props.theme.minWidth.sm} {
+      padding: 0 0 30px;
+      display: grid;
+    }
   }
   a {
     ${({ $isAnimation }) =>
@@ -25,9 +32,17 @@ const StyledHeader = styled.header`
       `};
     &.logo {
       grid-column: 1 / 3;
+      /* width: 100px; */
+      @media ${(props) => props.theme.minWidth.sm} {
+      }
     }
     &:not(.logo) {
       ${cascadeDelay(4, 2)}
+    }
+    margin-right: 7px;
+
+    @media ${(props) => props.theme.minWidth.sm} {
+      margin-right: 0;
     }
   }
 `;

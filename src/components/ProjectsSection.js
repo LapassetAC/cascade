@@ -84,9 +84,12 @@ const StyledContainer = styled.section`
   }
   .projects-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
-    grid-column: 3 / 7;
+    grid-template-columns: repeat(1, 1fr);
+    @media ${(props) => props.theme.minWidth.sm} {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px;
+      grid-column: 3 / 7;
+    }
   }
 `;
 
