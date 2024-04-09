@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
 import { textApparitionAnim, textDisparitionAnim } from "@/styles/theme";
-import { ThemeContext } from "styled-components";
-import { Context } from "@/app/Context";
 
 const projectIntro = keyframes`
   0% {
@@ -165,7 +163,14 @@ export default function ProjectsSection({ projects }) {
         {projects.map((project, index) => {
           const { title, image, url, videoUrl } = project;
           const imageProps = useNextSanityImage(client, image);
-          const [isHovered, setIsHovered] = useState(false);
+          const videoRef = useRef(null);
+
+          const handleMouseEnter = () => {
+            videoRef.current.play();
+          };
+          const handleMouseLeave = () => {
+            videoRef.current.pause();
+          };
 
           return (
             <StyledProjectVisuals
@@ -175,24 +180,17 @@ export default function ProjectsSection({ projects }) {
               key={index}
               ref={(el) => (projectRefs.current[index] = el)}
               onMouseEnter={() => {
-                // setIsHovered(true);
+                handleMouseEnter();
                 setCurrentProject(projects[index]);
               }}
               onMouseLeave={() => {
-                // setIsHovered(false);
+                handleMouseLeave();
                 setCurrentProject(null);
               }}
             >
               <Image {...imageProps} alt={title} />
               <div className="mask">
-                <video
-                  preload="true"
-                  playsInline
-                  autoPlay
-                  loop
-                  muted
-                  className={isHovered ? "show" : ""}
-                >
+                <video ref={videoRef} preload="auto" playsInline loop muted>
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
