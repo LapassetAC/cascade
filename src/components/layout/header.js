@@ -31,9 +31,9 @@ const StyledHeader = styled.header`
         animation: ${textApparitionAnim} 0.4s forwards;
       `};
     &.logo {
-      grid-column: 1 / 3;
-      /* width: 100px; */
+      margin-right: auto;
       @media ${(props) => props.theme.minWidth.sm} {
+        grid-column: 1 / 3;
       }
     }
     &:not(.logo) {

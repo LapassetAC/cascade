@@ -7,14 +7,21 @@ import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 const StyledContainer = styled.div`
   section {
     &.hero {
-      margin-top: 30px;
+      margin-top: 15px;
       align-items: start;
+      @media ${(props) => props.theme.minWidth.sm} {
+        margin-top: 30px;
+      }
       p {
         overflow-y: hidden;
         &:nth-child(1) {
-          grid-column: 1 / 3;
-          position: sticky;
-          top: 116px;
+          margin-bottom: 30px;
+          @media ${(props) => props.theme.minWidth.sm} {
+            margin-bottom: 0px;
+            grid-column: 1 / 3;
+            top: 116px;
+            position: sticky;
+          }
           span {
             display: inline-block;
             transform: translateY(-50px);
@@ -24,7 +31,10 @@ const StyledContainer = styled.div`
         }
         &:nth-child(2) {
           grid-column: 3 / 6;
-          margin-bottom: 60px;
+          margin-bottom: 45px;
+          @media ${(props) => props.theme.minWidth.sm} {
+            margin-bottom: 60px;
+          }
         }
       }
     }
