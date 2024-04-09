@@ -8,7 +8,11 @@ const StyledFooter = styled.footer`
   padding-bottom: 30px;
   margin-top: 60px;
   font-size: 12px;
-  @media ${({ theme }) => theme.minWidth.md} {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 15px;
+  margin: 0 15px;
+  @media ${({ theme }) => theme.minWidth.sm} {
     font-size: 16px;
     margin-top: 80px;
   }
@@ -45,9 +49,11 @@ const StyledFooter = styled.footer`
               width: ${$progressInPercent * 0.56}%;
               min-height: 5px;
 
-              height: calc(
-                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
-              );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(3) {
@@ -61,10 +67,14 @@ const StyledFooter = styled.footer`
           : css`
               width: ${$progressInPercent * 0.67}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 200}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(4) {
@@ -78,10 +88,14 @@ const StyledFooter = styled.footer`
           : css`
               width: ${$progressInPercent * 0.78}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 200}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(5) {
@@ -97,12 +111,18 @@ const StyledFooter = styled.footer`
               min-height: 5px;
 
               height: calc(
-                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 200}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(6) {
       grid-column: 6 / 7;
+
       ${({ $progressInPercent, $noAnimation }) =>
         $noAnimation
           ? css`
@@ -114,27 +134,49 @@ const StyledFooter = styled.footer`
               min-height: 5px;
 
               height: calc(
-                ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent}vh - ${theme.headerHeight + 200}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
   }
   div {
-    grid-row: 1/2;
     align-self: self-end;
     color: ${({ $colors }) => $colors.fontColor};
+    @media ${({ theme }) => theme.minWidth.sm} {
+      grid-row: 1/2;
+    }
     a {
       display: block;
       margin-top: 15px;
     }
     &:nth-of-type(1) {
-      grid-column: 1 / 2;
+      grid-column: 1 / 4;
+      grid-row: 2/3;
+
+      @media ${({ theme }) => theme.minWidth.sm} {
+        grid-column: 1 / 2;
+      }
     }
     &:nth-of-type(2) {
-      grid-column: 2 / 3;
+      grid-column: 4 / 6;
+      grid-row: 2/3;
+
+      @media ${({ theme }) => theme.minWidth.sm} {
+        grid-column: 2 / 3;
+      }
     }
     &:nth-of-type(3) {
-      grid-column: 3 / 4;
+      grid-column: 5 / 7;
+      grid-row: 2/3;
+      justify-self: end;
+      @media ${({ theme }) => theme.minWidth.sm} {
+        grid-column: 3 / 4;
+      }
     }
   }
 `;
