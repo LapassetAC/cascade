@@ -25,15 +25,19 @@ const StyledContainer = styled.section`
   grid-column: 1 / 7;
   margin: 0 !important;
   .project-info {
-    grid-column: 1 / 3;
-    position: sticky;
-    top: 170px;
-    height: fit-content;
+    @media ${(props) => props.theme.minWidth.sm} {
+      grid-column: 1 / 3;
+      position: sticky;
+      top: 170px;
+      height: fit-content;
+    }
     .info {
-      opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
-      animation: ${({ $isInfoTransition }) =>
-          $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
-        0.2s forwards;
+      @media ${(props) => props.theme.minWidth.sm} {
+        opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
+        animation: ${({ $isInfoTransition }) =>
+            $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
+          0.2s forwards;
+      }
       &.title {
         font-weight: 900;
         margin-bottom: 15px;
@@ -125,6 +129,7 @@ export default function ProjectsSection({ projects }) {
   const [currentProject, setCurrentProject] = useState(null);
   const [displayedProject, setDisplayedProject] = useState(null);
   const [isInfoTransition, setIsInfoTransition] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (currentProject !== null) {
@@ -138,9 +143,21 @@ export default function ProjectsSection({ projects }) {
     }
   }, [currentProject]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      screenWidth < 768 ? setIsMobile(true) : setIsMobile(false);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <StyledContainer className="grid" $isInfoTransition={isInfoTransition}>
-      {displayedProject !== null && (
+      {displayedProject !== null && !isMobile && (
         <div className="project-info" key={displayedProject.title}>
           <div className="mask">
             <h2 className="info title">{displayedProject.title}</h2>
@@ -159,7 +176,7 @@ export default function ProjectsSection({ projects }) {
       )}
       <div className="projects-container">
         {projects.map((project, index) => {
-          const { title, image, url, videoUrl } = project;
+          const { title, image, url, videoUrl, category, services } = project;
           const imageProps = useNextSanityImage(client, image);
           const videoRef = useRef(null);
 
@@ -171,29 +188,48 @@ export default function ProjectsSection({ projects }) {
           };
 
           return (
-            <StyledProjectVisuals
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-              ref={(el) => (projectRefs.current[index] = el)}
-              onMouseEnter={() => {
-                handleMouseEnter();
-                setCurrentProject(projects[index]);
-              }}
-              onMouseLeave={() => {
-                handleMouseLeave();
-                setCurrentProject(null);
-              }}
-            >
-              <Image {...imageProps} alt={title} />
-              <div className="mask">
-                <video ref={videoRef} preload="auto" playsInline loop muted>
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </StyledProjectVisuals>
+            <>
+              <StyledProjectVisuals
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+                ref={(el) => (projectRefs.current[index] = el)}
+                onMouseEnter={() => {
+                  handleMouseEnter();
+                  setCurrentProject(projects[index]);
+                }}
+                onMouseLeave={() => {
+                  handleMouseLeave();
+                  setCurrentProject(null);
+                }}
+              >
+                <Image {...imageProps} alt={title} />
+                <div className="mask">
+                  <video ref={videoRef} preload="auto" playsInline loop muted>
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </StyledProjectVisuals>
+              {isMobile && (
+                <div className="project-info">
+                  <div className="mask">
+                    <h2 className="info title">{title}</h2>
+                  </div>
+                  <div className="mask">
+                    <p className="info category">{category}</p>
+                  </div>
+                  <ul>
+                    {services.map((service, i) => (
+                      <li className="mask" key={i}>
+                        <p className="info service">{service}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
           );
         })}
       </div>
