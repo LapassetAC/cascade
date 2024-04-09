@@ -2,7 +2,7 @@ import styled, { css, keyframes } from "styled-components";
 import React, { useState, useEffect, useRef } from "react";
 import theme from "@/styles/theme";
 
-const screenHeightWithoutHeader = `calc(100vh - 90px)`;
+const screenHeightWithoutHeader = `calc(100vh - 120px)`;
 
 const drop1 = keyframes`
 	from {
@@ -67,7 +67,8 @@ const drop6 = keyframes`
 
 const StyledFooter = styled.footer`
   height: ${screenHeightWithoutHeader};
-  margin-top: 60px;
+  margin: 60px 30px 30px;
+
   @media ${({ theme }) => theme.minWidth.sm} {
     font-size: 16px;
     margin-top: 90px;
@@ -80,39 +81,46 @@ const StyledFooter = styled.footer`
     view-timeline-name: --revealing-image;
     view-timeline-axis: block;
     animation-timeline: --revealing-image;
-    animation-range: entry 0% cover ${screenHeightWithoutHeader};
+    animation-range: entry -20% cover calc(100vh - 90px);
     animation-fill-mode: both;
     animation-timing-function: linear;
 
     &:nth-of-type(1) {
+      grid-column: 1 / 2;
       animation-name: ${drop1};
-      animation-delay: 1s;
-      animation-duration: 6s;
     }
     &:nth-of-type(2) {
+      grid-column: 2 / 3;
       animation-name: ${drop2};
-      animation-delay: 2s;
-      animation-duration: 6s;
+      animation-delay: 1s;
+      animation-duration: 5s;
     }
     &:nth-of-type(3) {
+      grid-column: 3 / 4;
       animation-name: ${drop3};
-      animation-delay: 3s;
-      animation-duration: 6s;
+      animation-delay: 2s;
+      animation-duration: 5s;
     }
     &:nth-of-type(4) {
+      grid-column: 4 / 5;
+
       animation-name: ${drop4};
-      animation-delay: 4s;
-      animation-duration: 6s;
+      animation-delay: 3s;
+      animation-duration: 5s;
     }
     &:nth-of-type(5) {
+      grid-column: 5 / 6;
+
       animation-name: ${drop5};
-      animation-delay: 5s;
-      animation-duration: 6s;
+      animation-delay: 4s;
+      animation-duration: 5s;
     }
     &:nth-of-type(6) {
+      grid-column: 6 / 7;
+
       animation-name: ${drop6};
-      animation-delay: 6s;
-      animation-duration: 6s;
+      animation-delay: 5s;
+      animation-duration: 5s;
     }
   }
   div {
@@ -149,6 +157,7 @@ const StyledFooter = styled.footer`
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 3 / 4;
         grid-row: 1/2;
+        justify-self: start;
       }
     }
   }
@@ -175,7 +184,7 @@ export default function Footer({ colors, noAnimation }) {
       <aside></aside>
       <aside></aside>
 
-      {/* <div>
+      <div>
         <a href="">contact@cascade.fr</a>
         <a href="">+33 (0)6 74 62 64 76</a>
       </div>
@@ -186,7 +195,7 @@ export default function Footer({ colors, noAnimation }) {
       <div>
         <a href="">LinkedIn</a>
         <a href="">Twitter</a>
-      </div> */}
+      </div>
     </StyledFooter>
   );
 }
