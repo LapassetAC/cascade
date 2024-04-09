@@ -1,147 +1,126 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import React, { useState, useEffect, useRef } from "react";
 import theme from "@/styles/theme";
 
+const screenHeightWithoutHeader = `calc(100vh - 120px)`;
+
+const drop1 = keyframes`
+	from {
+		opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+		opacity: 1;
+		clip-path: rect(0 44% 13% 0);
+	}
+`;
+const drop2 = keyframes`
+	from {
+		opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+		opacity: 1;
+		clip-path: rect(0 56% 36% 0);
+	}
+`;
+const drop3 = keyframes`
+	from {
+		opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+		opacity: 1;
+		clip-path: rect(0 67% 72% 0);
+	}
+`;
+const drop4 = keyframes`
+	from {
+		opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+		opacity: 1;
+		clip-path: rect(0 78% 90% 0);
+	}
+`;
+const drop5 = keyframes`
+	from {
+		opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+		opacity: 1;
+		clip-path: rect(0 89% 99% 0);
+	}
+`;
+const drop6 = keyframes`
+	from {
+    opacity: 0;
+    clip-path: rect(0 0% 0% 0);
+	}
+	to {
+    opacity: 1;
+		clip-path: rect(0 100% 100% 0);
+	}
+`;
+
 const StyledFooter = styled.footer`
-  padding-bottom: 30px;
-  height: calc(100vh - ${theme.headerHeight}px);
-  padding-bottom: 30px;
-  margin-top: 60px;
-  font-size: 12px;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 15px;
-  margin: 0 15px;
+  height: ${screenHeightWithoutHeader};
+  margin: 60px 30px 30px;
+
   @media ${({ theme }) => theme.minWidth.sm} {
     font-size: 16px;
-    margin-top: 80px;
+    margin-top: 90px;
   }
   aside {
     grid-row: 1/2;
-    background-color: ${({ $colors }) => $colors.fontColor};
-    &:nth-child(1) {
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.black};
+
+    view-timeline-name: --revealing-image;
+    view-timeline-axis: block;
+    animation-timeline: --revealing-image;
+    animation-range: entry -20% cover calc(100vh - 90px);
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+    &:nth-of-type(1) {
       grid-column: 1 / 2;
-
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 44%;
-              height: calc(13vh - ${theme.headerHeight + 30}px);
-              min-height: 5px;
-            `
-          : css`
-              width: ${$progressInPercent * 0.44}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
-              );
-            `}
+      animation-name: ${drop1};
     }
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       grid-column: 2 / 3;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 56%;
-              height: calc(36vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.56}%;
-              min-height: 5px;
-
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
-                );
-              }
-            `}
+      animation-name: ${drop2};
+      animation-delay: 1s;
+      animation-duration: 5s;
     }
-    &:nth-child(3) {
+    &:nth-of-type(3) {
       grid-column: 3 / 4;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 67%;
-              height: calc(72vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.67}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 200}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
-                );
-              }
-            `}
+      animation-name: ${drop3};
+      animation-delay: 2s;
+      animation-duration: 5s;
     }
-    &:nth-child(4) {
+    &:nth-of-type(4) {
       grid-column: 4 / 5;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 78%;
-              height: calc(90vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.78}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 200}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
-                );
-              }
-            `}
-    }
-    &:nth-child(5) {
-      grid-column: 5 / 6;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 89%;
-              height: calc(99vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.89}%;
-              min-height: 5px;
 
-              height: calc(
-                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 200}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
-                );
-              }
-            `}
+      animation-name: ${drop4};
+      animation-delay: 3s;
+      animation-duration: 5s;
     }
-    &:nth-child(6) {
+    &:nth-of-type(5) {
+      grid-column: 5 / 6;
+
+      animation-name: ${drop5};
+      animation-delay: 4s;
+      animation-duration: 5s;
+    }
+    &:nth-of-type(6) {
       grid-column: 6 / 7;
 
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 100%;
-              height: calc(100vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent}%;
-              min-height: 5px;
-
-              height: calc(
-                ${$progressInPercent}vh - ${theme.headerHeight + 200}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent}vh - ${theme.headerHeight + 30}px
-                );
-              }
-            `}
+      animation-name: ${drop6};
+      animation-delay: 5s;
+      animation-duration: 5s;
     }
   }
   div {
@@ -157,9 +136,9 @@ const StyledFooter = styled.footer`
     &:nth-of-type(1) {
       grid-column: 1 / 4;
       grid-row: 2/3;
-
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 1 / 2;
+        grid-row: 1/2;
       }
     }
     &:nth-of-type(2) {
@@ -168,6 +147,7 @@ const StyledFooter = styled.footer`
 
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 2 / 3;
+        grid-row: 1/2;
       }
     }
     &:nth-of-type(3) {
@@ -176,6 +156,8 @@ const StyledFooter = styled.footer`
       justify-self: end;
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 3 / 4;
+        grid-row: 1/2;
+        justify-self: start;
       }
     }
   }
@@ -186,16 +168,7 @@ export default function Footer({ colors, noAnimation }) {
   const ref = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const top = ref.current.getBoundingClientRect().top;
-      setProgressInPercent(
-        Math.round(
-          ((window.innerHeight - top) /
-            (window.innerHeight - theme.headerHeight)) *
-            100
-        )
-      );
-    };
+    const handleScroll = () => {};
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -203,31 +176,14 @@ export default function Footer({ colors, noAnimation }) {
   }, []);
 
   return (
-    <StyledFooter
-      className="grid"
-      ref={ref}
-      $progressInPercent={progressInPercent}
-      $colors={colors}
-      $noAnimation={noAnimation}
-    >
+    <StyledFooter className="grid" ref={ref} $colors={colors}>
       <aside></aside>
       <aside></aside>
       <aside></aside>
       <aside></aside>
       <aside></aside>
       <aside></aside>
-      {/* <svg
-        viewBox="0 0 1380 1012"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="91.9991" height="91.9991" fill="black" />
-        <rect x="235.995" width="114.999" height="321.997" fill="black" />
-        <rect x="470.984" width="137.999" height="689.993" fill="black" />
-        <rect x="705.978" width="160.998" height="873.991" fill="black" />
-        <rect x="941.01" width="183.998" height="965.991" fill="black" />
-        <rect x="1173" width="206.998" height="1011.99" fill="black" />
-      </svg> */}
+
       <div>
         <a href="">contact@cascade.fr</a>
         <a href="">+33 (0)6 74 62 64 76</a>
