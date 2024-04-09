@@ -25,11 +25,13 @@ const StyledContainer = styled.section`
   grid-column: 1 / 7;
   margin: 0 !important;
   .project-info {
+    margin-bottom: 40px;
     @media ${(props) => props.theme.minWidth.sm} {
       grid-column: 1 / 3;
       position: sticky;
       top: 170px;
       height: fit-content;
+      margin-bottom: 0;
     }
     .info {
       @media ${(props) => props.theme.minWidth.sm} {
@@ -40,16 +42,25 @@ const StyledContainer = styled.section`
       }
       &.title {
         font-weight: 900;
+        margin-top: 10px;
         margin-bottom: 15px;
+        @media ${(props) => props.theme.minWidth.sm} {
+          margin-top: 0;
+        }
       }
       &.category {
-        margin-bottom: 15px;
         animation-delay: 0.05s;
+        margin-bottom: 15px;
+      }
+      &.service {
+        margin-bottom: 0;
       }
     }
     .info,
     .mask {
-      line-height: 30px;
+      @media ${(props) => props.theme.minWidth.sm} {
+        line-height: 30px;
+      }
     }
     ul {
       .mask {
@@ -190,10 +201,10 @@ export default function ProjectsSection({ projects }) {
           return (
             <>
               <StyledProjectVisuals
+                key={index}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                key={index}
                 ref={(el) => (projectRefs.current[index] = el)}
                 onMouseEnter={() => {
                   handleMouseEnter();
@@ -214,15 +225,11 @@ export default function ProjectsSection({ projects }) {
               </StyledProjectVisuals>
               {isMobile && (
                 <div className="project-info">
-                  <div className="mask">
-                    <h2 className="info title">{title}</h2>
-                  </div>
-                  <div className="mask">
-                    <p className="info category">{category}</p>
-                  </div>
+                  <h2 className="info title">{title}</h2>
+                  <p className="info category">{category}</p>
                   <ul>
                     {services.map((service, i) => (
-                      <li className="mask" key={i}>
+                      <li key={i}>
                         <p className="info service">{service}</p>
                       </li>
                     ))}
