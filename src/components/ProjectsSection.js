@@ -93,32 +93,27 @@ const StyledContainer = styled.section`
 const StyledProjectVisuals = styled.a`
   position: relative;
   &:hover {
+    cursor: pointer;
     video {
-      height: 300px;
       transform: translateY(0px);
     }
   }
-
   img {
     height: auto;
     width: 100%;
+    aspect-ratio: 1.66;
   }
   .mask {
-    height: 300px;
-    top: 60px;
+    top: 30px;
     left: 30px;
+    right: 30px;
+    bottom: 30px;
     position: absolute;
-    width: calc(100% - 60px);
   }
   video {
     width: 100%;
-    transform: translateY(-300px);
-
+    transform: translateY(-101%);
     transition: transform 0.2s;
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 `;
 
