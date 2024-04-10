@@ -42,14 +42,14 @@ const StyledContainer = styled.div`
     }
     line {
       stroke: ${({ $color }) => $color};
-      stroke-dasharray: 44;
-      stroke-dashoffset: 0;
-      transition: stroke-dashoffset 0.4s ease-in-out;
-      ${cascadeDelay(6, 0)}
+      /* stroke-dasharray: 44; */
+      /* stroke-dashoffset: 0; */
+      /* transition: stroke-dashoffset 0.4s ease-in-out; */
+      ${cascadeDelay(6, 0.1)}
       ${({ $isAnimation }) =>
         $isAnimation &&
         css`
-          transform: translateY(-50px);
+          transform: translateY(-60px);
           animation: ${textApparitionAnim} 0.4s forwards;
         `}
     }
