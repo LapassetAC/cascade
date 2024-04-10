@@ -81,48 +81,91 @@ const StyledFooter = styled.footer`
     width: 100%;
     background-color: ${({ $colors }) => $colors.fontColor};
 
-    view-timeline-name: --revealing-image;
-    view-timeline-axis: block;
-    animation-timeline: --revealing-image;
-    animation-range: entry -20% cover calc(100vh - 90px);
-    animation-fill-mode: both;
-    animation-timing-function: linear;
+    ${({ $isContact }) =>
+      $isContact
+        ? `
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        `
+        : `
+        view-timeline-name: --revealing-image;
+        view-timeline-axis: block;
+        animation-timeline: --revealing-image;
+        animation-range: entry -20% cover calc(100vh - 90px);
+        animation-fill-mode: both;
+        animation-timing-function: linear;`}
     @media ${({ theme }) => theme.minWidth.sm} {
       height: calc(100vh - 120px);
     }
     &:nth-of-type(1) {
       grid-column: 1 / 2;
       animation-name: ${drop1};
+      ${({ $isContact }) => $isContact && `animation-duration: .4s`};
     }
     &:nth-of-type(2) {
       grid-column: 2 / 3;
       animation-name: ${drop2};
-      animation-delay: 1s;
-      animation-duration: 5s;
+      ${({ $isContact }) =>
+        $isContact
+          ? `
+          animation-delay: .1s;
+          animation-duration: .4s;
+          `
+          : `
+          animation-delay: 1s;
+          animation-duration: 5s;`}
     }
     &:nth-of-type(3) {
       grid-column: 3 / 4;
       animation-name: ${drop3};
-      animation-delay: 2s;
-      animation-duration: 5s;
+      ${({ $isContact }) =>
+        $isContact
+          ? `
+          animation-delay: .2s;
+          animation-duration: .4s;
+          `
+          : `
+          animation-delay: 2s;
+          animation-duration: 5s;`}
     }
     &:nth-of-type(4) {
       grid-column: 4 / 5;
       animation-name: ${drop4};
-      animation-delay: 3s;
-      animation-duration: 5s;
+      ${({ $isContact }) =>
+        $isContact
+          ? `
+          animation-delay: .2s;
+          animation-duration: .4s;
+          `
+          : `
+          animation-delay: 3s;
+          animation-duration: 5s;`}
     }
     &:nth-of-type(5) {
       grid-column: 5 / 6;
       animation-name: ${drop5};
-      animation-delay: 4s;
-      animation-duration: 5s;
+      ${({ $isContact }) =>
+        $isContact
+          ? `
+          animation-delay: .2s;
+          animation-duration: .4s;
+          `
+          : `
+          animation-delay: 4s;
+          animation-duration: 5s;`}
     }
     &:nth-of-type(6) {
       grid-column: 6 / 7;
       animation-name: ${drop6};
-      animation-delay: 5s;
-      animation-duration: 5s;
+      ${({ $isContact }) =>
+        $isContact
+          ? `
+          animation-delay: .2s;
+          animation-duration: .4s;
+          `
+          : `
+          animation-delay: 5s;
+          animation-duration: 5s;`}
     }
   }
   div {
@@ -170,12 +213,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export default function Footer({ colors, noAnimation }) {
-  const router = useRouter();
-
-  const isCascade = router.pathname === "/" || "/contact";
-  const isContact = router.pathname === "/contact";
-
+export default function Footer({ colors, isCascade, isContact }) {
   return (
     <StyledFooter
       className="grid"
