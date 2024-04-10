@@ -3,24 +3,13 @@ import Image from "next/image";
 import { styled, keyframes } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
-import { textApparitionAnim, textDisparitionAnim } from "@/styles/theme";
-
-const projectIntro = keyframes`
-  0% {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(90px);
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0px);
-  }
-`;
+import {
+  textApparitionAnim,
+  textDisparitionAnim,
+  cascadeDelay,
+} from "@/styles/theme";
 
 const StyledContainer = styled.section`
-  opacity: 0;
-  animation: ${projectIntro} 0.2s 2.2s forwards;
   grid-row-gap: 0 !important;
   grid-column: 1 / 7;
   margin: 0 !important;
@@ -109,6 +98,10 @@ const StyledContainer = styled.section`
 `;
 
 const StyledProjectVisuals = styled.a`
+  opacity: 0;
+  animation: ${textApparitionAnim} 0.4s forwards;
+  ${cascadeDelay(6, 2.5)}
+
   position: relative;
   &:hover {
     cursor: pointer;

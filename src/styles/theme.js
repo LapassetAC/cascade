@@ -75,7 +75,7 @@ export function cascadeDelay(elementNumber, baseDelayInMs) {
   let styles = "";
   for (let i = 0; i <= elementNumber; i++) {
     styles += `
-    &:nth-of-type(${i}) {
+    &:nth-of-type(${i + 1}) {
       animation-delay: ${i / 10 + baseDelayInMs}s;
     }
     `;

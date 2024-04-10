@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
       }
     }
     &:not(.logo) {
-      ${cascadeDelay(4, 2)}
+      ${cascadeDelay(3, 1.8)}
     }
     margin-right: 7px;
 
