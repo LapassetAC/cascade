@@ -1,6 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import React, { useState, useEffect, useRef } from "react";
-import theme from "@/styles/theme";
 
 const screenHeightWithoutHeader = `calc(100vh - 120px)`;
 
@@ -66,14 +65,17 @@ const drop6 = keyframes`
 `;
 
 const StyledFooter = styled.footer`
-  height: ${screenHeightWithoutHeader};
-  margin: 60px 30px 30px;
-
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 15px;
+  margin: 15px !important;
   @media ${({ theme }) => theme.minWidth.sm} {
+    margin: 60px 30px 30px !important;
     font-size: 16px;
     margin-top: 90px;
   }
   aside {
+    height: calc(100vh - 130px);
     grid-row: 1/2;
     width: 100%;
     background-color: ${({ theme }) => theme.color.black};
@@ -84,7 +86,9 @@ const StyledFooter = styled.footer`
     animation-range: entry -20% cover calc(100vh - 90px);
     animation-fill-mode: both;
     animation-timing-function: linear;
-
+    @media ${({ theme }) => theme.minWidth.sm} {
+      height: calc(100vh - 120px);
+    }
     &:nth-of-type(1) {
       grid-column: 1 / 2;
       animation-name: ${drop1};
@@ -103,21 +107,18 @@ const StyledFooter = styled.footer`
     }
     &:nth-of-type(4) {
       grid-column: 4 / 5;
-
       animation-name: ${drop4};
       animation-delay: 3s;
       animation-duration: 5s;
     }
     &:nth-of-type(5) {
       grid-column: 5 / 6;
-
       animation-name: ${drop5};
       animation-delay: 4s;
       animation-duration: 5s;
     }
     &:nth-of-type(6) {
       grid-column: 6 / 7;
-
       animation-name: ${drop6};
       animation-delay: 5s;
       animation-duration: 5s;
@@ -131,7 +132,9 @@ const StyledFooter = styled.footer`
     }
     a {
       display: block;
-      margin-top: 15px;
+      &:nth-last-of-type(even) {
+        margin-bottom: 15px;
+      }
     }
     &:nth-of-type(1) {
       grid-column: 1 / 4;
@@ -144,7 +147,6 @@ const StyledFooter = styled.footer`
     &:nth-of-type(2) {
       grid-column: 4 / 6;
       grid-row: 2/3;
-
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 2 / 3;
         grid-row: 1/2;
@@ -164,19 +166,8 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer({ colors, noAnimation }) {
-  const [progressInPercent, setProgressInPercent] = useState(0);
-  const ref = useRef();
-
-  useEffect(() => {
-    const handleScroll = () => {};
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <StyledFooter className="grid" ref={ref} $colors={colors}>
+    <StyledFooter className="grid" $colors={colors}>
       <aside></aside>
       <aside></aside>
       <aside></aside>
