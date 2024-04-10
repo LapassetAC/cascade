@@ -69,7 +69,7 @@ const StyledFooter = styled.footer`
   padding: 15px 0 !important;
   @media ${({ theme }) => theme.minWidth.sm} {
     bottom: 0;
-    padding: 60px 0 30px !important;
+    padding: ${({ $isContact }) => ($isContact ? "0 0 30px" : "60px 0 30px")};
     grid-gap: 30px;
     left: 0;
     right: 0;
@@ -79,7 +79,7 @@ const StyledFooter = styled.footer`
     height: calc(100vh - 130px);
     grid-row: 1/2;
     width: 100%;
-    background-color: ${({ theme }) => theme.color.black};
+    background-color: ${({ $colors }) => $colors.fontColor};
 
     view-timeline-name: --revealing-image;
     view-timeline-axis: block;
@@ -173,10 +173,16 @@ const StyledFooter = styled.footer`
 export default function Footer({ colors, noAnimation }) {
   const router = useRouter();
 
-  const isCascade = router.pathname === ("/" || "contact");
+  const isCascade = router.pathname === "/" || "/contact";
+  const isContact = router.pathname === "/contact";
 
   return (
-    <StyledFooter className="grid" $colors={colors} $isCascade={isCascade}>
+    <StyledFooter
+      className="grid"
+      $colors={colors}
+      $isCascade={isCascade}
+      $isContact={isContact}
+    >
       <aside></aside>
       <aside></aside>
       <aside></aside>
