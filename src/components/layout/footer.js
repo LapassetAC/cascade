@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
 
 const drop1 = keyframes`
 	from {
@@ -69,7 +70,8 @@ const StyledFooter = styled.footer`
   padding: 15px 0 !important;
   @media ${({ theme }) => theme.minWidth.sm} {
     bottom: 0;
-    padding: ${({ $isContact }) => ($isContact ? "0 0 30px" : "60px 0 30px")};
+    padding: ${({ $isContact }) =>
+      $isContact ? "0 0 30px !important" : "60px 0 30px !important"};
     grid-gap: 30px;
     left: 0;
     right: 0;
@@ -81,11 +83,13 @@ const StyledFooter = styled.footer`
     width: 100%;
     background-color: ${({ $colors }) => $colors.fontColor};
 
-    ${({ $isContact }) =>
+    ${({ $isContact, theme }) =>
       $isContact
         ? `
-        animation-timing-function: linear;
+        animation-timing-function: ${theme.cubicBezier.base};
         animation-fill-mode: forwards;
+        opacity: 0;
+        clip-path: rect(0 0% 0% 0);
         `
         : `
         view-timeline-name: --revealing-image;
@@ -134,7 +138,7 @@ const StyledFooter = styled.footer`
       ${({ $isContact }) =>
         $isContact
           ? `
-          animation-delay: .2s;
+          animation-delay: .3s;
           animation-duration: .4s;
           `
           : `
@@ -147,7 +151,7 @@ const StyledFooter = styled.footer`
       ${({ $isContact }) =>
         $isContact
           ? `
-          animation-delay: .2s;
+          animation-delay: .4s;
           animation-duration: .4s;
           `
           : `
@@ -160,7 +164,7 @@ const StyledFooter = styled.footer`
       ${({ $isContact }) =>
         $isContact
           ? `
-          animation-delay: .2s;
+          animation-delay: .5s;
           animation-duration: .4s;
           `
           : `
@@ -213,7 +217,17 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export default function Footer({ colors, isCascade, isContact }) {
+export default function Footer({ colors }) {
+  const [isCascade, setIsCascade] = useState(false);
+  const [isContact, setIsContact] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsCascade(router.pathname === "/" || "/contact");
+    setIsContact(router.pathname === "/contact");
+  }, []);
+
   return (
     <StyledFooter
       className="grid"
