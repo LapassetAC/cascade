@@ -19,7 +19,7 @@ export default function Layout({ children }) {
     <StyledLayout $bgColor={colors.bgColor} $fontColor={colors.fontColor}>
       <Header bgColor={colors.bgColor} fontColor={colors.fontColor} />
       <main>{children}</main>
-      <Footer colors={colors} />
+      {router.pathname === "/" && <Footer colors={colors} />}
     </StyledLayout>
   );
 }

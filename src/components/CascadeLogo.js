@@ -23,7 +23,6 @@ const StyledContainer = styled.div`
   h1 {
     font-weight: 900;
     font-size: 32px;
-    /* font-size: 20px; */
     line-height: 0.8em;
     ${({ $isAnimation }) =>
       $isAnimation &&
@@ -38,7 +37,11 @@ const StyledContainer = styled.div`
     @media ${(props) => props.theme.minWidth.md} {
       height: 30px;
     }
+    path {
+      fill: ${({ $color }) => $color};
+    }
     line {
+      stroke: ${({ $color }) => $color};
       stroke-dasharray: 44;
       stroke-dashoffset: 0;
       transition: stroke-dashoffset 0.4s ease-in-out;
@@ -60,7 +63,7 @@ export default function CascadeLogo({ color, isAnimation }) {
       onMouseOver={() => setIsLogoHovered(true)}
       $isLogoHovered={isLogoHovered}
       $isAnimation={isAnimation}
-      // style={{ color: color }}
+      $color={color}
     >
       <svg
         width="273"
