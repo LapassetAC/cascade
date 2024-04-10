@@ -1,7 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import React, { useState, useEffect, useRef } from "react";
-
-const screenHeightWithoutHeader = `calc(100vh - 120px)`;
+import { useRouter } from "next/router";
 
 const drop1 = keyframes`
 	from {
@@ -68,13 +66,16 @@ const StyledFooter = styled.footer`
   display: grid !important;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 15px;
-  margin: 15px !important;
+  padding: 15px 0 !important;
   @media ${({ theme }) => theme.minWidth.sm} {
-    margin: 60px 30px 30px !important;
-    font-size: 16px;
-    margin-top: 90px;
+    bottom: 0;
+    padding: 60px 0 30px !important;
+    grid-gap: 30px;
+    left: 0;
+    right: 0;
   }
   aside {
+    display: ${({ $isCascade }) => ($isCascade ? "block" : "none")};
     height: calc(100vh - 130px);
     grid-row: 1/2;
     width: 100%;
@@ -132,6 +133,10 @@ const StyledFooter = styled.footer`
     }
     a {
       display: block;
+      font-size: 12px;
+      @media ${({ theme }) => theme.minWidth.sm} {
+        font-size: 16px;
+      }
       &:nth-last-of-type(even) {
         margin-bottom: 15px;
       }
@@ -166,8 +171,12 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer({ colors, noAnimation }) {
+  const router = useRouter();
+
+  const isCascade = router.pathname === ("/" || "contact");
+
   return (
-    <StyledFooter className="grid" $colors={colors}>
+    <StyledFooter className="grid" $colors={colors} $isCascade={isCascade}>
       <aside></aside>
       <aside></aside>
       <aside></aside>
