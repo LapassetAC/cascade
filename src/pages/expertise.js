@@ -5,27 +5,27 @@ const StyledContainer = styled.div`
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
   align-items: start;
-  @media ${({ theme }) => theme.minWidth.md} {
+  @media ${({ theme }) => theme.minWidth.sm} {
     padding: 30px 0 140px;
   }
   h1 {
     grid-column: 1 / 3;
     margin-bottom: 15px;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       margin-bottom: 0;
     }
   }
   .intro {
     grid-column: 1 / 3;
     margin-bottom: 15px;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       grid-column: 3 / 6;
       margin-bottom: 60px;
     }
   }
   .expertises {
     grid-column: 1 / 2;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       grid-column: 3 / 7;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -33,7 +33,7 @@ const StyledContainer = styled.div`
     }
     .services-list {
       margin-bottom: 30px;
-      @media ${({ theme }) => theme.minWidth.md} {
+      @media ${({ theme }) => theme.minWidth.sm} {
         margin-bottom: 0;
       }
     }

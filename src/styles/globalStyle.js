@@ -21,6 +21,9 @@ a,p,button,h1,h2,h3,i,input, ul, li {
   font-weight: 500;
   text-decoration: none;
   list-style: none;
+  @media ${({ theme }) => theme.minWidth.sm} {
+    font-size: 18px;
+  }
   @media ${({ theme }) => theme.minWidth.md} {
     font-size: 22px;
   }

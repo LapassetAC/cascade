@@ -4,19 +4,19 @@ const StyledContainer = styled.div`
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
   padding-bottom: 60px;
-  @media ${({ theme }) => theme.minWidth.md} {
+  @media ${({ theme }) => theme.minWidth.sm} {
     padding: 30px 0 140px;
   }
   h1 {
     grid-column: 1 / 3;
     margin-bottom: 15px;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       margin-bottom: 0;
     }
   }
   .intro {
     grid-column: 1 / 3;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       grid-column: 3 / 6;
       margin-bottom: 30px;
     }
@@ -24,7 +24,7 @@ const StyledContainer = styled.div`
   .presentation {
     grid-column: 1 / 3;
     margin-top: 15px;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       grid-column: 3 / 6;
       margin-top: 30px;
     }
@@ -32,7 +32,7 @@ const StyledContainer = styled.div`
   h2 {
     font-weight: 900;
     margin-bottom: 8px;
-    @media ${({ theme }) => theme.minWidth.md} {
+    @media ${({ theme }) => theme.minWidth.sm} {
       margin-bottom: 15px;
     }
   }

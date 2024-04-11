@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
   svg {
     height: 20px;
     width: auto;
-    @media ${(props) => props.theme.minWidth.md} {
+    @media ${(props) => props.theme.minWidth.sm} {
       height: 30px;
     }
     path {
