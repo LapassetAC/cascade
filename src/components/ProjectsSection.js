@@ -195,7 +195,7 @@ export default function ProjectsSection({ projects }) {
           };
 
           return (
-            <div key={title}>
+            <>
               <StyledProjectVisuals
                 href={url}
                 target="_blank"
@@ -231,7 +231,7 @@ export default function ProjectsSection({ projects }) {
                   </ul>
                 </div>
               )}
-            </div>
+            </>
           );
         })}
       </div>
