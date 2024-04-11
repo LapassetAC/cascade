@@ -15,6 +15,8 @@ const DataProvider = ({ children }) => {
   useEffect(() => {
     if (router.pathname != "/") {
       setColors({ bgColor: theme.color.blue, fontColor: theme.color.white });
+      const html = document.documentElement;
+      html.style.backgroundColor = theme.color.blue;
     }
   }, []);
 

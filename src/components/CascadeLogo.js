@@ -106,7 +106,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="215"
           y2="17"
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <line
           x1="226.5"
@@ -114,7 +114,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="226.5"
           y2="27"
           stroke="black"
-          stroke-width="5"
+          strokeWidth="5"
         />
         <line
           x1="237"
@@ -122,7 +122,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="237"
           y2="43"
           stroke="black"
-          stroke-width="6"
+          strokeWidth="6"
         />
         <line
           x1="247.5"
@@ -130,7 +130,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="247.5"
           y2="51"
           stroke="black"
-          stroke-width="7"
+          strokeWidth="7"
         />
         <line
           x1="258"
@@ -138,7 +138,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="258"
           y2="55"
           stroke="black"
-          stroke-width="8"
+          strokeWidth="8"
         />
         <line
           x1="268.5"
@@ -146,7 +146,7 @@ export default function CascadeLogo({ color, isAnimation }) {
           x2="268.5"
           y2="57"
           stroke="black"
-          stroke-width="9"
+          strokeWidth="9"
         />
       </svg>
     </StyledContainer>

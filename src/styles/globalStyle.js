@@ -11,7 +11,7 @@ html,
 body {
   max-width: 100vw;
   letter-spacing: -0.05em;
-  background-color: #F4F3EF;
+  background-color: ${({ theme }) => theme.color.white};
   min-height: 100vh;
 }
 

@@ -3,6 +3,7 @@ import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import styled from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
+import { useEffect } from "react";
 
 const StyledContainer = styled.div`
   section {
