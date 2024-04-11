@@ -126,7 +126,9 @@ const StyledProjectVisuals = styled.a`
   &:hover {
     cursor: pointer;
     video {
-      transform: translateY(0px);
+      @media ${(props) => props.theme.minWidth.sm} {
+        transform: translateY(0px);
+      }
     }
   }
   img {
@@ -143,7 +145,9 @@ const StyledProjectVisuals = styled.a`
   }
   video {
     width: 100%;
-    transform: translateY(-101%);
+    @media ${(props) => props.theme.minWidth.sm} {
+      transform: translateY(-101%);
+    }
     transition: transform 0.2s;
   }
 `;
@@ -233,7 +237,14 @@ export default function ProjectsSection({ projects, isFromPage }) {
               >
                 <Image {...imageProps} alt={title} />
                 <div className="mask">
-                  <video ref={videoRef} preload="auto" playsInline loop muted>
+                  <video
+                    ref={videoRef}
+                    preload="auto"
+                    autoPlay={isMobile}
+                    playsInline
+                    loop
+                    muted
+                  >
                     <source src={videoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
