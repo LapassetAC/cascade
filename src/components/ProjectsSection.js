@@ -15,7 +15,11 @@ const StyledContainer = styled.section`
   margin: 0 !important;
   .project-info {
     margin-bottom: 40px;
+    opacity: 0;
+    animation: ${textApparitionAnim} 0.4s 2.4s forwards;
     @media ${(props) => props.theme.minWidth.sm} {
+      opacity: 1;
+      animation: none;
       grid-column: 1 / 3;
       position: sticky;
       top: 170px;
@@ -101,7 +105,6 @@ const StyledProjectVisuals = styled.a`
   opacity: 0;
   animation: ${textApparitionAnim} 0.4s forwards;
   ${cascadeDelay(6, 2.5)}
-
   position: relative;
   &:hover {
     cursor: pointer;

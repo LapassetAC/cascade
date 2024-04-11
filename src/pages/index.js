@@ -34,10 +34,10 @@ const StyledContainer = styled.div`
         &:nth-child(2) {
           grid-column: 3 / 6;
           margin-bottom: 45px;
+          animation: ${textApparitionAnim} 0.4s 2.3s forwards;
+          opacity: 0;
           @media ${(props) => props.theme.minWidth.sm} {
-            opacity: 0;
             margin-bottom: 60px;
-            animation: ${textApparitionAnim} 0.4s 2.3s forwards;
           }
         }
       }
