@@ -174,7 +174,7 @@ export default function ProjectsSection({ projects }) {
           </div>
           <ul>
             {displayedProject.services.map((service, i) => (
-              <li className="mask" key={i}>
+              <li className="mask" key={service}>
                 <p className="info service">{service}</p>
               </li>
             ))}
@@ -195,9 +195,8 @@ export default function ProjectsSection({ projects }) {
           };
 
           return (
-            <>
+            <div key={title}>
               <StyledProjectVisuals
-                key={index}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -232,7 +231,7 @@ export default function ProjectsSection({ projects }) {
                   </ul>
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </div>
