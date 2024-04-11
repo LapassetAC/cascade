@@ -2,13 +2,11 @@ import styled from "styled-components";
 import React from "react";
 
 const StyledContainer = styled.div`
-  min-height: calc(100vh - 136px);
   background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
   align-items: start;
   @media ${({ theme }) => theme.minWidth.md} {
-    min-height: ${({ theme }) => `calc(100vh - ${theme.headerHeight}px)`};
-    padding-top: 30px;
+    padding: 30px 0 140px;
   }
   h1 {
     grid-column: 1 / 3;

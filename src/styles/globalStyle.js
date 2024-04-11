@@ -12,6 +12,7 @@ body {
   max-width: 100vw;
   letter-spacing: -0.05em;
   background-color: #F4F3EF;
+  min-height: 100vh;
 }
 
 a,p,button,h1,h2,h3,i,input, ul, li {

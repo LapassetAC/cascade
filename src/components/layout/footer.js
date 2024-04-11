@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const drop1 = keyframes`
 	from {
@@ -68,10 +68,13 @@ const StyledFooter = styled.footer`
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 15px;
   padding: 15px 0 !important;
+  background-color: ${({ theme, $isCascade }) =>
+    !$isCascade && theme.color.blue};
   @media ${({ theme }) => theme.minWidth.sm} {
+    position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
     padding: ${({ $isContact }) =>
-      $isContact ? "0 0 30px !important" : "60px 0 30px !important"};
+      $isContact ? "0 0 30px !important" : "30px 0 !important"};
     grid-gap: 30px;
     left: 0;
     right: 0;
@@ -218,15 +221,10 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Footer({ colors }) {
-  const [isCascade, setIsCascade] = useState(false);
-  const [isContact, setIsContact] = useState(false);
-
   const router = useRouter();
-
-  useEffect(() => {
-    setIsCascade(router.pathname === "/" || "/contact");
-    setIsContact(router.pathname === "/contact");
-  }, []);
+  const pathname = router.pathname;
+  const isCascade = pathname === "/" || pathname === "/contact";
+  const isContact = pathname === "/contact";
 
   return (
     <StyledFooter

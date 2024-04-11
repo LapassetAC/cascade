@@ -5,8 +5,7 @@ const StyledContainer = styled.div`
   color: ${({ theme }) => theme.color.white};
   padding-bottom: 60px;
   @media ${({ theme }) => theme.minWidth.md} {
-    padding-top: 30px;
-    padding-bottom: 80px;
+    padding: 30px 0 140px;
   }
   h1 {
     grid-column: 1 / 3;
