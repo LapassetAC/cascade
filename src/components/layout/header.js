@@ -7,7 +7,6 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   background-color: ${(props) => props.$bgColor};
-  transition: background-color 0.4s;
   z-index: 1;
   padding: 15px 0 0;
   @media ${(props) => props.theme.minWidth.sm} {

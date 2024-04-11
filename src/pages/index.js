@@ -21,6 +21,7 @@ const StyledContainer = styled.div`
             grid-column: 1 / 3;
             top: 116px;
             position: sticky;
+            margin-bottom: 240px;
           }
           span {
             display: inline-block;
