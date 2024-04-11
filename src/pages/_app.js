@@ -5,6 +5,8 @@ import GlobalStyle from "@/styles/globalStyle";
 import Layout from "@/components/layout";
 import localFont from "next/font/local";
 import { DataProvider } from "@/app/Context";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const moderat = localFont({
   src: [
@@ -27,6 +29,23 @@ const moderat = localFont({
 });
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const [isFromPage, setIsFromPage] = useState(false);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      setIsFromPage(url === "/");
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, [router]);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -37,7 +56,7 @@ export default function App({ Component, pageProps }) {
         </Head>
         <div className={moderat.className}>
           <Layout>
-            <Component {...pageProps} />
+            <Component {...pageProps} isFromPage={isFromPage} />
           </Layout>
         </div>
       </DataProvider>

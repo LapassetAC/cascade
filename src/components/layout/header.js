@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import CascadeLogo from "@/components/CascadeLogo";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -39,7 +40,6 @@ const StyledHeader = styled.header`
       ${cascadeDelay(3, 1.8)}
     }
     margin-right: 7px;
-
     @media ${(props) => props.theme.minWidth.sm} {
       margin-right: 0;
     }
@@ -52,12 +52,12 @@ export default function Header({ bgColor, fontColor }) {
   return (
     <StyledHeader $bgColor={bgColor} $isAnimation={isAnimation}>
       <div className="grid animationMask">
-        <a href="/" className="logo">
+        <Link href="/" className="logo">
           <CascadeLogo color={fontColor} isAnimation={isAnimation} />
-        </a>
-        <a href="/expertise">Savoir-faire</a>
-        <a href="/about">À propos</a>
-        <a href="/contact">Contact</a>
+        </Link>
+        <Link href="/expertise">Savoir-faire</Link>
+        <Link href="/about">À propos</Link>
+        <Link href="/contact">Contact</Link>
       </div>
     </StyledHeader>
   );

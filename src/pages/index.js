@@ -1,7 +1,7 @@
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useEffect } from "react";
 
@@ -26,9 +26,13 @@ const StyledContainer = styled.div`
           }
           span {
             display: inline-block;
-            transform: translateY(-50px);
-            animation: ${textApparitionAnim} 0.4s forwards;
             ${cascadeDelay(5, 0.7)}
+            ${({ $isFromPage }) =>
+              !$isFromPage &&
+              css`
+                transform: translateY(-50px);
+                animation: ${textApparitionAnim} 0.4s forwards;
+              `}
           }
         }
         &:nth-child(2) {
@@ -45,9 +49,9 @@ const StyledContainer = styled.div`
   }
 `;
 
-export default function Home({ projects }) {
+export default function Home({ projects, isFromPage }) {
   return (
-    <StyledContainer>
+    <StyledContainer $isFromPage={isFromPage}>
       <section className="grid hero">
         <p>
           <span>Créateurs </span> <span>de&nbsp;</span>

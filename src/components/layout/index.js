@@ -7,7 +7,6 @@ import { Context } from "@/app/Context";
 const StyledLayout = styled.div`
   background-color: ${(props) => props.$bgColor};
   color: ${(props) => props.$fontColor};
-  transition: background-color 0.4s;
   min-height: 100vh;
 `;
 

@@ -1,24 +1,28 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import { ThemeContext } from "styled-components";
+import theme from "@/styles/theme";
 import { useRouter } from "next/router";
 
 const Context = createContext();
 
 const DataProvider = ({ children }) => {
   const router = useRouter();
-  const theme = useContext(ThemeContext);
+  const white = theme.color.white;
+  const black = theme.color.black;
+  const blue = theme.color.blue;
   const [colors, setColors] = useState({
-    bgColor: theme.color.white,
-    fontColor: theme.color.black,
+    bgColor: white,
+    fontColor: black,
   });
 
   useEffect(() => {
-    if (router.pathname != "/") {
-      setColors({ bgColor: theme.color.blue, fontColor: theme.color.white });
+    if (router.pathname === "/") {
+      setColors({ bgColor: white, fontColor: black });
+    } else {
+      setColors({ bgColor: blue, fontColor: white });
       const html = document.documentElement;
-      html.style.backgroundColor = theme.color.blue;
+      html.style.backgroundColor = blue;
     }
-  }, []);
+  }, [router]);
 
   return (
     <Context.Provider
