@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { styled, keyframes } from "styled-components";
+import { styled, keyframes, css } from "styled-components";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../sanity/lib/client";
 import {
@@ -8,6 +8,7 @@ import {
   textDisparitionAnim,
   cascadeDelay,
 } from "@/styles/theme";
+import Arrow from "@/assets/icons/Arrow";
 
 const StyledContainer = styled.section`
   grid-row-gap: 0 !important;
@@ -16,7 +17,11 @@ const StyledContainer = styled.section`
   .project-info {
     margin-bottom: 40px;
     opacity: 0;
-    animation: ${textApparitionAnim} 0.4s 2.4s forwards;
+    ${({ $isFromPage }) =>
+      !$isFromPage &&
+      css`
+        animation: ${textApparitionAnim} 0.4s 2.4s forwards;
+      `}
     @media ${(props) => props.theme.minWidth.sm} {
       opacity: 1;
       animation: none;
@@ -26,24 +31,36 @@ const StyledContainer = styled.section`
       height: fit-content;
       margin-bottom: 0;
     }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    a {
+      text-align: end;
+    }
     .info {
       @media ${(props) => props.theme.minWidth.sm} {
         opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
-        animation: ${({ $isInfoTransition }) =>
-            $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
+        animation: ${({ $isInfoTransition, $isFromPage }) =>
+            $isInfoTransition && !$isFromPage
+              ? textDisparitionAnim
+              : textApparitionAnim}
           0.2s forwards;
       }
       &.title {
         font-weight: 900;
-        margin-top: 10px;
-        margin-bottom: 15px;
         @media ${(props) => props.theme.minWidth.sm} {
-          margin-top: 0;
+          margin-bottom: 15px;
         }
       }
       &.category {
         animation-delay: 0.05s;
-        margin-bottom: 15px;
+        margin-bottom: 0;
+        @media ${(props) => props.theme.minWidth.sm} {
+          margin-bottom: 15px;
+        }
       }
       &.service {
         margin-bottom: 0;
@@ -131,7 +148,7 @@ const StyledProjectVisuals = styled.a`
   }
 `;
 
-export default function ProjectsSection({ projects }) {
+export default function ProjectsSection({ projects, isFromPage }) {
   const projectRefs = useRef([]);
   const [currentProject, setCurrentProject] = useState(null);
   const [displayedProject, setDisplayedProject] = useState(null);
@@ -163,7 +180,11 @@ export default function ProjectsSection({ projects }) {
   }, []);
 
   return (
-    <StyledContainer className="grid" $isInfoTransition={isInfoTransition}>
+    <StyledContainer
+      className="grid"
+      $isInfoTransition={isInfoTransition}
+      $isFromPage={isFromPage}
+    >
       {displayedProject !== null && !isMobile && (
         <div className="project-info" key={displayedProject.title}>
           <div className="mask">
@@ -220,15 +241,22 @@ export default function ProjectsSection({ projects }) {
               </StyledProjectVisuals>
               {isMobile && (
                 <div className="project-info">
-                  <h2 className="info title">{title}</h2>
-                  <p className="info category">{category}</p>
-                  <ul>
-                    {services.map((service, i) => (
-                      <li key={i}>
-                        <p className="info service">{service}</p>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="row">
+                    <h2 className="info title">{title}</h2>
+                    <p className="info category">{category}</p>
+                  </div>
+                  <div className="row">
+                    <ul>
+                      {services.map((service, i) => (
+                        <li key={i}>
+                          <p className="info service">{service}</p>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      Voir <Arrow />
+                    </a>
+                  </div>
                 </div>
               )}
             </>

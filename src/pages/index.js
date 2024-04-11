@@ -38,7 +38,11 @@ const StyledContainer = styled.div`
         &:nth-child(2) {
           grid-column: 3 / 6;
           margin-bottom: 45px;
-          animation: ${textApparitionAnim} 0.4s 2.3s forwards;
+          ${({ $isFromPage }) =>
+            !$isFromPage &&
+            css`
+              animation: ${textApparitionAnim} 0.4s 2.3s forwards;
+            `}
           opacity: 0;
           @media ${(props) => props.theme.minWidth.sm} {
             margin-bottom: 60px;
@@ -63,7 +67,7 @@ export default function Home({ projects, isFromPage }) {
           l'environnement, et leur optimisation pour le référencement naturel
           (SEO).
         </p>
-        <ProjectsSection projects={projects} />
+        <ProjectsSection projects={projects} isFromPage={isFromPage} />
       </section>
     </StyledContainer>
   );
