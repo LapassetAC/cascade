@@ -183,9 +183,9 @@ const StyledFooter = styled.footer`
     }
     a {
       display: block;
-      font-size: 12px;
+      /* font-size: 12px; */
       @media ${({ theme }) => theme.minWidth.sm} {
-        font-size: 16px;
+        /* font-size: 16px; */
       }
       &:nth-last-of-type(even) {
         margin-bottom: 15px;

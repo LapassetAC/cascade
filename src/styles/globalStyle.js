@@ -10,22 +10,24 @@ export default createGlobalStyle`
 html,
 body {
   max-width: 100vw;
-  letter-spacing: -0.05em;
-  background-color: ${({ theme }) => theme.color.white};
   min-height: 100vh;
+  background-color: ${({ theme }) => theme.color.white};
 }
 
 a,p,button,h1,h2,h3,i,input, ul, li {
   letter-spacing: -0.05em;
   font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
   text-decoration: none;
   list-style: none;
   @media ${({ theme }) => theme.minWidth.sm} {
     font-size: 18px;
-  }
+    line-height: 25px;
+  }  
   @media ${({ theme }) => theme.minWidth.md} {
     font-size: 22px;
+    line-height: 30px;
   }
 }
 
