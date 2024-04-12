@@ -24,8 +24,9 @@ const StyledHeader = styled.header`
     }
   }
   a {
-    ${({ $isAnimation }) =>
+    ${({ $isAnimation, $isFromPage }) =>
       $isAnimation &&
+      !$isFromPage &&
       css`
         transform: translateY(-50px);
         animation: ${textApparitionAnim} 0.4s forwards;
@@ -46,11 +47,15 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default function Header({ bgColor, fontColor }) {
+export default function Header({ bgColor, fontColor, isFromPage }) {
   const pathname = useRouter().pathname;
   const isAnimation = pathname === "/";
   return (
-    <StyledHeader $bgColor={bgColor} $isAnimation={isAnimation}>
+    <StyledHeader
+      $bgColor={bgColor}
+      $isAnimation={isAnimation}
+      $isFromPage={isFromPage}
+    >
       <div className="grid animationMask">
         <Link href="/" className="logo">
           <CascadeLogo color={fontColor} isAnimation={isAnimation} />

@@ -42,8 +42,8 @@ const StyledContainer = styled.div`
             !$isFromPage &&
             css`
               animation: ${textApparitionAnim} 0.4s 2.3s forwards;
+              opacity: 0;
             `}
-          opacity: 0;
           @media ${(props) => props.theme.minWidth.sm} {
             margin-bottom: 60px;
           }

@@ -55,7 +55,7 @@ export default function App({ Component, pageProps }) {
           <meta property="og:title" content="Cascade" key="title" />
         </Head>
         <div className={moderat.className}>
-          <Layout>
+          <Layout isFromPage={isFromPage}>
             <Component {...pageProps} isFromPage={isFromPage} />
           </Layout>
         </div>

@@ -43,10 +43,8 @@ const StyledContainer = styled.section`
     .info {
       @media ${(props) => props.theme.minWidth.sm} {
         opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
-        animation: ${({ $isInfoTransition, $isFromPage }) =>
-            $isInfoTransition && !$isFromPage
-              ? textDisparitionAnim
-              : textApparitionAnim}
+        animation: ${({ $isInfoTransition }) =>
+            $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
           0.2s forwards;
       }
       &.title {
@@ -119,8 +117,12 @@ const StyledContainer = styled.section`
 `;
 
 const StyledProjectVisuals = styled.a`
-  opacity: 0;
-  animation: ${textApparitionAnim} 0.4s forwards;
+  ${({ $isFromPage }) =>
+    !$isFromPage &&
+    css`
+      opacity: 0;
+      animation: ${textApparitionAnim} 0.4s forwards;
+    `}
   ${cascadeDelay(6, 2.5)}
   position: relative;
   &:hover {
@@ -234,6 +236,7 @@ export default function ProjectsSection({ projects, isFromPage }) {
                   handleMouseLeave();
                   setCurrentProject(null);
                 }}
+                $isFromPage={isFromPage}
               >
                 <Image {...imageProps} alt={title} />
                 <div className="mask">

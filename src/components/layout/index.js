@@ -10,12 +10,16 @@ const StyledLayout = styled.div`
   min-height: 100vh;
 `;
 
-export default function Layout({ children }) {
+export default function Layout({ children, isFromPage }) {
   const { colors } = useContext(Context);
 
   return (
     <StyledLayout $bgColor={colors.bgColor} $fontColor={colors.fontColor}>
-      <Header bgColor={colors.bgColor} fontColor={colors.fontColor} />
+      <Header
+        bgColor={colors.bgColor}
+        fontColor={colors.fontColor}
+        isFromPage={isFromPage}
+      />
       <main>{children}</main>
       <Footer colors={colors} />
     </StyledLayout>
