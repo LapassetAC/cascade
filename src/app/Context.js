@@ -15,11 +15,12 @@ const DataProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    const html = document.documentElement;
     if (router.pathname === "/") {
       setColors({ bgColor: white, fontColor: black });
+      html.style.backgroundColor = white;
     } else {
       setColors({ bgColor: blue, fontColor: white });
-      const html = document.documentElement;
       html.style.backgroundColor = blue;
     }
   }, [router]);
