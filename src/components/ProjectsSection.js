@@ -16,10 +16,10 @@ const StyledContainer = styled.section`
   margin: 0 !important;
   .project-info {
     margin-bottom: 40px;
-    opacity: 0;
     ${({ $isFromPage }) =>
       !$isFromPage &&
       css`
+        opacity: 0;
         animation: ${textApparitionAnim} 0.4s 2.4s forwards;
       `}
     @media ${(props) => props.theme.minWidth.sm} {
