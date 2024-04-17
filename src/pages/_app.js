@@ -67,13 +67,10 @@ export default function App({ Component, pageProps }) {
           />
           <meta name="og:type" content="website" />
           <meta name="og:url" content="https://cascadestudio.fr" />
-          <meta
-            property="og:image"
-            content="https://cascadestudio.fr/logo.jpg"
-          />
+          <meta property="og:image" content="https://cascadestudio.fr/og.jpg" />
           <meta
             name="twitter:image"
-            content="https://cascadestudio.fr/logo.jpg"
+            content="https://cascadestudio.fr/og.jpg"
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
