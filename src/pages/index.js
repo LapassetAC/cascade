@@ -61,10 +61,10 @@ export default function Home({ projects, isFromPage }) {
           <span> sites </span> <span>web </span> <span>engageants.</span>
         </p>
         <p>
-          Nous concevons des sites web engageants pour des marques engagées. Nos
-          créations se distinguent par leur fluidité, leur respect de
-          l'environnement, et leur optimisation pour le référencement naturel
-          (SEO).
+          Nous concevons des sites web uniques pour des marques inspirantes.
+          Fidèles aux valeurs de nos clients, nos créations se distinguent par
+          leur fluidité, leur performance énergétique, et un référencement
+          naturel (SEO) optimal.
         </p>
         <ProjectsSection projects={projects} isFromPage={isFromPage} />
       </section>
