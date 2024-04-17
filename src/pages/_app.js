@@ -53,6 +53,34 @@ export default function App({ Component, pageProps }) {
         <Head>
           <title>Cascade</title>
           <meta property="og:title" content="Cascade" key="title" />
+          <meta
+            name="description"
+            content="Créateurs de sites web engageants."
+          />
+          <meta
+            name="og:description"
+            content="Créateurs de sites web engageants."
+          />
+          <meta name="og:type" content="website" />
+          <meta name="og:url" content="https://cascadestudio.fr" />
+          <meta
+            property="og:image"
+            content="https://cascadestudio.fr/logo.jpg"
+          />
+          <meta
+            name="twitter:image"
+            content="https://cascadestudio.fr/logo.jpg"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Cascade" />
+          <meta name="twitter:url" content="https://cascadestudio.fr" />
+          <meta
+            name="twitter:description"
+            content="Créateurs de sites web engageants."
+          />
+          <meta property="og:image:alt" content="Cascade" />
+          <meta property="twitter:image:alt" content="Cascade" />
+          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <div className={moderat.className}>
           <Layout isFromPage={isFromPage}>
