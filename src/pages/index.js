@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
       @media ${(props) => props.theme.minWidth.sm} {
         margin-top: 30px;
       }
-      p {
+      & > p {
         overflow-y: hidden;
         &:nth-child(1) {
           margin-bottom: 30px;
