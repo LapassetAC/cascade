@@ -59,11 +59,11 @@ export default function App({ Component, pageProps }) {
           />
           <meta
             name="description"
-            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance énergétique, et un référencement naturel (SEO) optimal."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta
             name="og:description"
-            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance énergétique, et un référencement naturel (SEO) optimal."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta name="og:type" content="website" />
           <meta name="og:url" content="https://cascadestudio.fr" />
@@ -83,7 +83,7 @@ export default function App({ Component, pageProps }) {
           <meta name="twitter:url" content="https://cascadestudio.fr" />
           <meta
             name="twitter:description"
-            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance énergétique, et un référencement naturel (SEO) optimal."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta property="og:image:alt" content="Cascade" />
           <meta property="twitter:image:alt" content="Cascade" />
