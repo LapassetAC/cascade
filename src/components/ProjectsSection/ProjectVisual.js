@@ -33,13 +33,25 @@ const StyledContainer = styled.a`
     right: 30px;
     bottom: 30px;
     position: absolute;
+    &.mobile {
+      display: block;
+      @media ${({ theme }) => theme.minWidth.sm} {
+        display: none;
+      }
+    }
+    &.desktop {
+      display: none;
+      @media ${({ theme }) => theme.minWidth.sm} {
+        display: block;
+      }
+    }
   }
   video {
     width: 100%;
+    transition: transform 0.2s;
     @media ${(props) => props.theme.minWidth.sm} {
       transform: translateY(-101%);
     }
-    transition: transform 0.2s;
   }
 `;
 
@@ -56,11 +68,12 @@ export default function ProjectVisual({
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
-    videoRef.current.play();
+    !isMobile && videoRef.current.play();
   };
   const handleMouseLeave = () => {
-    videoRef.current.pause();
+    !isMobile && videoRef.current.pause();
   };
+
   return (
     <StyledContainer
       href={url}
@@ -78,19 +91,20 @@ export default function ProjectVisual({
       $isFromPage={isFromPage}
     >
       <Image {...imageProps} alt={title} />
-      <div className="mask">
-        <video
-          ref={videoRef}
-          preload="auto"
-          autoPlay={isMobile}
-          playsInline
-          loop
-          muted
-        >
+      <div className="mask mobile">
+        <video preload="auto" playsInline autoPlay loop muted>
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
+      {!isMobile && (
+        <div className="mask desktop">
+          <video ref={videoRef} preload="auto" playsInline loop muted>
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
     </StyledContainer>
   );
 }
