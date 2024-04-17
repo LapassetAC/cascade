@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }) {
           />
           <meta property="og:image:alt" content="Cascade" />
           <meta property="twitter:image:alt" content="Cascade" />
-          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.jpg" />
         </Head>
         <div className={moderat.className}>
           <Layout isFromPage={isFromPage}>
