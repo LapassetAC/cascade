@@ -1,13 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { styled, keyframes, css } from "styled-components";
-import { useNextSanityImage } from "next-sanity-image";
-import { client } from "../../sanity/lib/client";
-import {
-  textApparitionAnim,
-  textDisparitionAnim,
-  cascadeDelay,
-} from "@/styles/theme";
+import { useState, useEffect } from "react";
+import ProjectVisual from "./ProjectVisual";
+import { styled, css } from "styled-components";
+import { textApparitionAnim, textDisparitionAnim } from "@/styles/theme";
 import Arrow from "@/assets/icons/Arrow";
 
 const StyledContainer = styled.section`
@@ -25,7 +19,7 @@ const StyledContainer = styled.section`
     @media ${(props) => props.theme.minWidth.sm} {
       opacity: 1;
       animation: none;
-      grid-column: 1 / 3;
+      grid-column: 1 / 2;
       position: sticky;
       top: 170px;
       height: fit-content;
@@ -111,51 +105,12 @@ const StyledContainer = styled.section`
     @media ${(props) => props.theme.minWidth.sm} {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 30px;
-      grid-column: 3 / 7;
+      grid-column: 2 / 7;
     }
-  }
-`;
-
-const StyledProjectVisuals = styled.a`
-  ${({ $isFromPage }) =>
-    !$isFromPage &&
-    css`
-      opacity: 0;
-      animation: ${textApparitionAnim} 0.4s forwards;
-    `}
-  ${cascadeDelay(6, 2.5)}
-  position: relative;
-  &:hover {
-    cursor: pointer;
-    video {
-      @media ${(props) => props.theme.minWidth.sm} {
-        transform: translateY(0px);
-      }
-    }
-  }
-  img {
-    height: auto;
-    width: 100%;
-    aspect-ratio: 1.66;
-  }
-  .mask {
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    position: absolute;
-  }
-  video {
-    width: 100%;
-    @media ${(props) => props.theme.minWidth.sm} {
-      transform: translateY(-101%);
-    }
-    transition: transform 0.2s;
   }
 `;
 
 export default function ProjectsSection({ projects, isFromPage }) {
-  const projectRefs = useRef([]);
   const [currentProject, setCurrentProject] = useState(null);
   const [displayedProject, setDisplayedProject] = useState(null);
   const [isInfoTransition, setIsInfoTransition] = useState(false);
@@ -210,49 +165,18 @@ export default function ProjectsSection({ projects, isFromPage }) {
       )}
       <div className="projects-container">
         {projects.map((project, index) => {
-          const { title, image, url, videoUrl, category, services } = project;
-          const imageProps = useNextSanityImage(client, image);
-          const videoRef = useRef(null);
-
-          const handleMouseEnter = () => {
-            videoRef.current.play();
-          };
-          const handleMouseLeave = () => {
-            videoRef.current.pause();
-          };
-
+          const { title, url, category, services } = project;
           return (
             <>
-              <StyledProjectVisuals
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                ref={(el) => (projectRefs.current[index] = el)}
-                onMouseEnter={() => {
-                  handleMouseEnter();
-                  setCurrentProject(projects[index]);
-                }}
-                onMouseLeave={() => {
-                  handleMouseLeave();
-                  setCurrentProject(null);
-                }}
-                $isFromPage={isFromPage}
-              >
-                <Image {...imageProps} alt={title} />
-                <div className="mask">
-                  <video
-                    ref={videoRef}
-                    preload="auto"
-                    autoPlay={isMobile}
-                    playsInline
-                    loop
-                    muted
-                  >
-                    <source src={videoUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </StyledProjectVisuals>
+              <ProjectVisual
+                project={project}
+                isFromPage={isFromPage}
+                isMobile={isMobile}
+                index={index}
+                setCurrentProjectIndex={() =>
+                  setCurrentProject(projects[index])
+                }
+              />
               {isMobile && (
                 <div className="project-info">
                   <div className="row">

@@ -3,7 +3,6 @@ import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import styled, { css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
-import { useEffect } from "react";
 
 const StyledContainer = styled.div`
   section {
@@ -19,7 +18,7 @@ const StyledContainer = styled.div`
           margin-bottom: 30px;
           @media ${(props) => props.theme.minWidth.sm} {
             margin-bottom: 0px;
-            grid-column: 1 / 3;
+            grid-column: 1 / 2;
             top: 116px;
             position: sticky;
             margin-bottom: 240px;
