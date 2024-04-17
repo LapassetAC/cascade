@@ -51,32 +51,36 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <DataProvider>
         <Head>
-          <title>Cascade</title>
-          <meta property="og:title" content="Cascade" key="title" />
+          <title>Studio Cascade - Créateurs de sites web engageants</title>
+          <meta
+            property="og:title"
+            content="Studio Cascade - Créateurs de sites web engageants"
+            key="title"
+          />
           <meta
             name="description"
-            content="Créateurs de sites web engageants."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta
             name="og:description"
-            content="Créateurs de sites web engageants."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta name="og:type" content="website" />
           <meta name="og:url" content="https://cascadestudio.fr" />
-          <meta
-            property="og:image"
-            content="https://cascadestudio.fr/logo.jpg"
-          />
+          <meta property="og:image" content="https://cascadestudio.fr/og.jpg" />
           <meta
             name="twitter:image"
-            content="https://cascadestudio.fr/logo.jpg"
+            content="https://cascadestudio.fr/og.jpg"
           />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Cascade" />
+          <meta
+            name="twitter:title"
+            content="Studio Cascade - Créateurs de sites web engageants"
+          />
           <meta name="twitter:url" content="https://cascadestudio.fr" />
           <meta
             name="twitter:description"
-            content="Créateurs de sites web engageants."
+            content="Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal."
           />
           <meta property="og:image:alt" content="Cascade" />
           <meta property="twitter:image:alt" content="Cascade" />
