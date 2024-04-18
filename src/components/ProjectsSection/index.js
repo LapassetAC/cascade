@@ -66,7 +66,7 @@ export default function ProjectsSection({ projects, isFromPage }) {
       <div className="projects-container">
         {projects.map((project, index) => {
           return (
-            <>
+            <div key={index}>
               <ProjectVisual
                 project={project}
                 isFromPage={isFromPage}
@@ -84,7 +84,7 @@ export default function ProjectsSection({ projects, isFromPage }) {
                   isMobile={isMobile}
                 />
               )}
-            </>
+            </div>
           );
         })}
       </div>

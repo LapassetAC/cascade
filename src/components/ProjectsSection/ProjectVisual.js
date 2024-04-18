@@ -6,6 +6,7 @@ import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../../sanity/lib/client";
 
 const StyledContainer = styled.a`
+  display: block;
   ${({ $isFromPage }) =>
     !$isFromPage &&
     css`
