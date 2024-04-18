@@ -21,7 +21,6 @@ const StyledContainer = styled.div`
             grid-column: 1 / 2;
             top: 116px;
             position: sticky;
-            margin-bottom: 240px;
           }
           span {
             display: inline-block;
@@ -29,7 +28,7 @@ const StyledContainer = styled.div`
             ${({ $isFromPage }) =>
               !$isFromPage &&
               css`
-                transform: translateY(-50px);
+                transform: translateY(-60px);
                 animation: ${textApparitionAnim} 0.4s forwards;
               `}
           }

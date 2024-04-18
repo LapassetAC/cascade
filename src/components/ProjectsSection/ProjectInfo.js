@@ -3,21 +3,21 @@ import { styled, css } from "styled-components";
 import Arrow from "@/assets/icons/Arrow";
 
 const StyledContainer = styled.aside`
-  margin-bottom: 40px;
   ${({ $isFromPage }) =>
     !$isFromPage &&
     css`
       opacity: 0;
       animation: ${textApparitionAnim} 0.4s 2.4s forwards;
     `}
+  margin-bottom: 40px;
   @media ${(props) => props.theme.minWidth.sm} {
     opacity: 1;
     animation: none;
     grid-column: 1 / 2;
     position: sticky;
-    top: 170px;
+    top: 225px;
     height: fit-content;
-    margin-bottom: 0;
+    margin-bottom: 0px;
   }
   .row {
     display: flex;
