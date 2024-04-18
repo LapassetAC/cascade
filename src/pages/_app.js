@@ -11,11 +11,6 @@ import { useRouter } from "next/router";
 const moderat = localFont({
   src: [
     {
-      path: "../assets/fonts/Moderat-Black-Italic.woff2",
-      weight: "900",
-      style: "italic",
-    },
-    {
       path: "../assets/fonts/Moderat-Black.woff2",
       weight: "900",
       style: "normal",
