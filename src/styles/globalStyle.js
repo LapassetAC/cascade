@@ -14,9 +14,9 @@ body {
   background-color: ${({ theme }) => theme.color.white};
 }
 
-a,p,button,h1,h2,h3,i,input, ul, li {
+a, p, button, h1, h2, h3, i, input, ul, li {
   letter-spacing: -0.05em;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   font-weight: 500;
   text-decoration: none;
@@ -29,6 +29,10 @@ a,p,button,h1,h2,h3,i,input, ul, li {
     font-size: 22px;
     line-height: 30px;
   }
+}
+
+h2 {
+  letter-spacing: -0.03em;
 }
 
 a {
