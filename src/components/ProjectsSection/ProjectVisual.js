@@ -4,7 +4,6 @@ import { styled, css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../../sanity/lib/client";
-import dynamic from "next/dynamic";
 
 const StyledContainer = styled.a`
   ${({ $isFromPage }) =>
@@ -56,11 +55,6 @@ const StyledContainer = styled.a`
   }
 `;
 
-const DynamicVideo = dynamic(() => import("./DynamicVideo"), {
-  loading: () => null,
-  ssr: false,
-});
-
 export default function ProjectVisual({
   project,
   isFromPage,
@@ -98,11 +92,10 @@ export default function ProjectVisual({
     >
       <Image {...imageProps} alt={title} />
       <div className="mask mobile">
-        {/* <video preload="none" playsInline autoPlay loop muted>
+        <video preload="none" playsInline autoPlay loop muted>
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
-        </video> */}
-        <DynamicVideo videoUrl={videoUrl} />
+        </video>
       </div>
       {!isMobile && (
         <div className="mask desktop">
