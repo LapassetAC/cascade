@@ -4,6 +4,7 @@ import { styled, css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useNextSanityImage } from "next-sanity-image";
 import { client } from "../../../sanity/lib/client";
+import { useInView } from "react-intersection-observer";
 
 const StyledContainer = styled.a`
   ${({ $isFromPage }) =>
@@ -74,6 +75,11 @@ export default function ProjectVisual({
     !isMobile && videoRef.current.pause();
   };
 
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0,
+  });
+
   return (
     <StyledContainer
       href={url}
@@ -90,12 +96,14 @@ export default function ProjectVisual({
       }}
       $isFromPage={isFromPage}
     >
-      <Image {...imageProps} alt={title} />
+      <Image ref={ref} {...imageProps} alt={title} />
       <div className="mask mobile">
-        <video preload="none" playsInline autoPlay loop muted>
-          <source src={videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {inView && (
+          <video preload="metadata" playsInline autoPlay loop muted>
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
       </div>
       {!isMobile && (
         <div className="mask desktop">
