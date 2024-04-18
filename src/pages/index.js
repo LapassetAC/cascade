@@ -35,7 +35,7 @@ const StyledContainer = styled.div`
           }
         }
         &:nth-child(2) {
-          grid-column: 3 / 6;
+          grid-column: 2 / 5;
           margin-bottom: 45px;
           ${({ $isFromPage }) =>
             !$isFromPage &&
