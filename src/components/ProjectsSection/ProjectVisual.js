@@ -64,6 +64,7 @@ export default function ProjectVisual({
   isMobile,
   index,
   setCurrentProjectIndex,
+  priority,
 }) {
   const projectRefs = useRef([]);
   const { title, image, url, videoUrl } = project;
@@ -106,6 +107,7 @@ export default function ProjectVisual({
         height={483}
         quality={85}
         alt={title}
+        priority={priority}
       />
       <div className="mask mobile">
         {inView && (

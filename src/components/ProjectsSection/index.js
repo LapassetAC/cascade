@@ -126,6 +126,7 @@ export default function ProjectsSection({ projects, isFromPage }) {
                 setCurrentProjectIndex={() =>
                   setCurrentProject(projects[index])
                 }
+                priority={index === 0}
               />
               {isMobile && (
                 <ProjectInfo
