@@ -14,7 +14,7 @@ const StyledContainer = styled.section`
     @media ${(props) => props.theme.minWidth.sm} {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 30px;
-      grid-column: 2 / 7;
+      grid-column: 3 / 7;
     }
   }
 `;

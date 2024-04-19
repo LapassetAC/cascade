@@ -34,7 +34,7 @@ const StyledHeader = styled.header`
     &.logo {
       margin-right: auto;
       @media ${(props) => props.theme.minWidth.sm} {
-        grid-column: 1 / 2;
+        grid-column: 1 / 3;
       }
     }
     &:not(.logo) {

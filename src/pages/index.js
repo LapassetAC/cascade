@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
           margin-bottom: 30px;
           @media ${(props) => props.theme.minWidth.sm} {
             margin-bottom: 0px;
-            grid-column: 1 / 2;
+            grid-column: 1 / 3;
             top: 116px;
             position: sticky;
           }
@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
           }
         }
         &:nth-child(2) {
-          grid-column: 2 / 5;
+          grid-column: 3 / 5;
           margin-bottom: 45px;
           ${({ $isFromPage }) =>
             !$isFromPage &&
