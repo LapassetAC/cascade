@@ -2,8 +2,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import { styled, css } from "styled-components";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
-import { useNextSanityImage } from "next-sanity-image";
-import { client } from "../../../sanity/lib/client";
 import { useInView } from "react-intersection-observer";
 
 const StyledContainer = styled.a`
@@ -28,7 +26,6 @@ const StyledContainer = styled.a`
   img {
     height: auto;
     width: 100%;
-    aspect-ratio: 1.66;
   }
   .mask {
     top: 30px;
@@ -68,7 +65,6 @@ export default function ProjectVisual({
 }) {
   const projectRefs = useRef([]);
   const { title, image, url, videoUrl } = project;
-  const imageProps = useNextSanityImage(client, image);
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -101,10 +97,10 @@ export default function ProjectVisual({
       $isFromPage={isFromPage}
     >
       <Image
+        src={image.asset.url}
         ref={refImage}
-        {...imageProps}
         width={800}
-        height={483}
+        height={447}
         quality={85}
         alt={title}
         priority={priority}
