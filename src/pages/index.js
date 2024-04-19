@@ -1,72 +1,14 @@
 import { client } from "../../sanity/lib/client";
 import { PROJECTS_QUERY } from "../../sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
-import styled, { css } from "styled-components";
-import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
+import styled from "styled-components";
 
-const StyledContainer = styled.div`
-  section {
-    &.hero {
-      margin-top: 15px;
-      align-items: start;
-      @media ${(props) => props.theme.minWidth.sm} {
-        margin-top: 30px;
-      }
-      & > p {
-        overflow-y: hidden;
-        &:nth-child(1) {
-          margin-bottom: 30px;
-          @media ${(props) => props.theme.minWidth.sm} {
-            margin-bottom: 0px;
-            grid-column: 1 / 3;
-            top: 116px;
-            position: sticky;
-          }
-          span {
-            display: inline-block;
-            ${cascadeDelay(5, 0.7)}
-            ${({ $isFromPage }) =>
-              !$isFromPage &&
-              css`
-                transform: translateY(-60px);
-                animation: ${textApparitionAnim} 0.4s forwards;
-              `}
-          }
-        }
-        &:nth-child(2) {
-          grid-column: 3 / 5;
-          margin-bottom: 45px;
-          ${({ $isFromPage }) =>
-            !$isFromPage &&
-            css`
-              animation: ${textApparitionAnim} 0.4s 2.3s forwards;
-              opacity: 0;
-            `}
-          @media ${(props) => props.theme.minWidth.sm} {
-            margin-bottom: 60px;
-          }
-        }
-      }
-    }
-  }
-`;
+const StyledContainer = styled.div``;
 
 export default function Home({ projects, isFromPage }) {
   return (
     <StyledContainer $isFromPage={isFromPage}>
-      <section className="grid hero">
-        <p>
-          <span>Créateurs </span> <span>de&nbsp;</span>
-          <span> sites </span> <span>web </span> <span>engageants.</span>
-        </p>
-        <p>
-          Nous concevons des sites web uniques pour des marques inspirantes.
-          Fidèles aux valeurs de nos clients, nos créations se distinguent par
-          leur fluidité, leur performance et un référencement naturel (SEO)
-          optimal.
-        </p>
-        <ProjectsSection projects={projects} isFromPage={isFromPage} />
-      </section>
+      <ProjectsSection projects={projects} isFromPage={isFromPage} />
     </StyledContainer>
   );
 }

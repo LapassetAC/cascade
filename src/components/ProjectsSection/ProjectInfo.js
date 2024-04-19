@@ -15,7 +15,7 @@ const StyledContainer = styled.aside`
     animation: none;
     grid-column: 1 / 2;
     position: sticky;
-    top: 225px;
+    top: 220px;
     height: fit-content;
     margin-bottom: 0px;
   }
