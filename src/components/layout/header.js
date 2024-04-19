@@ -41,8 +41,15 @@ const StyledHeader = styled.header`
       ${cascadeDelay(3, 1.8)}
     }
     margin-right: 7px;
-    @media ${(props) => props.theme.minWidth.sm} {
+    font-size: 14px;
+    @media ${({ theme }) => theme.minWidth.sm} {
       margin-right: 0;
+      font-size: 18px;
+      line-height: 25px;
+    }
+    @media ${({ theme }) => theme.minWidth.md} {
+      font-size: 22px;
+      line-height: 30px;
     }
   }
 `;
