@@ -99,7 +99,14 @@ export default function ProjectVisual({
       }}
       $isFromPage={isFromPage}
     >
-      <Image ref={refImage} {...imageProps} alt={title} />
+      <Image
+        ref={refImage}
+        {...imageProps}
+        width={800}
+        height={483}
+        quality={85}
+        alt={title}
+      />
       <div className="mask mobile">
         {inView && (
           <video playsInline autoPlay loop muted>
