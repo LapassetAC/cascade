@@ -1,7 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Script from "next/script";
+import JSFooterAnim from "./JSFooterAnim";
 
 const drop1 = keyframes`
 	from {
@@ -226,6 +227,11 @@ export default function Footer({ colors }) {
   const pathname = router.pathname;
   const isCascade = pathname === "/" || pathname === "/contact";
   const isContact = pathname === "/contact";
+  const [isScrollSupport, setIsScrollSupport] = useState(false);
+
+  useEffect(() => {
+    setIsScrollSupport(CSS.supports("animation-timeline: scroll()"));
+  }, []);
 
   return (
     <StyledFooter
@@ -234,12 +240,18 @@ export default function Footer({ colors }) {
       $isCascade={isCascade}
       $isContact={isContact}
     >
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
+      {isScrollSupport ? (
+        <>
+          <aside></aside>
+          <aside></aside>
+          <aside></aside>
+          <aside></aside>
+          <aside></aside>
+          <aside></aside>
+        </>
+      ) : (
+        <JSFooterAnim colors={colors} noAnimation={isContact} />
+      )}
 
       <div>
         <a href="">contact@cascade.fr</a>
