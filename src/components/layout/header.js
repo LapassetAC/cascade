@@ -64,7 +64,7 @@ export default function Header({ bgColor, fontColor, isFromPage }) {
       $isFromPage={isFromPage}
     >
       <div className="grid animationMask">
-        <Link href="/" className="logo">
+        <Link href="/" className="logo" aria-label="Home page">
           <CascadeLogo color={fontColor} isAnimation={isAnimation} />
         </Link>
         <Link href="/expertise">Savoir-faire</Link>
