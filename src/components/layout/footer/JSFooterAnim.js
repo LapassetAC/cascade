@@ -8,13 +8,12 @@ const StyledContainer = styled.footer`
   margin: 0 !important;
   grid-column: 1/7;
   grid-row: 1/1;
-
+  display: grid !important;
   aside {
     grid-row: 1/2;
     background-color: ${({ $colors }) => $colors.fontColor};
     &:nth-child(1) {
       grid-column: 1 / 2;
-
       ${({ $progressInPercent, $noAnimation }) =>
         $noAnimation
           ? css`
@@ -26,8 +25,13 @@ const StyledContainer = styled.footer`
               width: ${$progressInPercent * 0.44}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(2) {
@@ -41,10 +45,14 @@ const StyledContainer = styled.footer`
           : css`
               width: ${$progressInPercent * 0.56}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(3) {
@@ -58,10 +66,14 @@ const StyledContainer = styled.footer`
           : css`
               width: ${$progressInPercent * 0.67}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(4) {
@@ -75,10 +87,14 @@ const StyledContainer = styled.footer`
           : css`
               width: ${$progressInPercent * 0.78}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(5) {
@@ -92,10 +108,14 @@ const StyledContainer = styled.footer`
           : css`
               width: ${$progressInPercent * 0.89}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
     &:nth-child(6) {
@@ -109,10 +129,14 @@ const StyledContainer = styled.footer`
           : css`
               width: ${$progressInPercent}%;
               min-height: 5px;
-
               height: calc(
-                ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+                ${$progressInPercent}vh - ${theme.headerHeight + 100}px
               );
+              @media ${({ theme }) => theme.minWidth.sm} {
+                height: calc(
+                  ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+                );
+              }
             `}
     }
   }
