@@ -75,10 +75,9 @@ export default function ProjectVisual({
     !isMobile && videoRef.current.pause();
   };
 
-  const [ref, inView] = useInView({
+  const [refImage, inView] = useInView({
     triggerOnce: true,
     threshold: 0,
-    initialInView: index === 0,
     rootMargin: "250px 0px 250px 0px",
   });
 
@@ -98,10 +97,10 @@ export default function ProjectVisual({
       }}
       $isFromPage={isFromPage}
     >
-      <Image {...imageProps} alt={title} />
-      <div ref={ref} className="mask mobile">
+      <Image ref={refImage} {...imageProps} alt={title} />
+      <div className="mask mobile">
         {inView && (
-          <video preload="none" playsInline autoPlay loop muted>
+          <video playsInline autoPlay loop muted>
             <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
