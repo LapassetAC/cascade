@@ -121,8 +121,8 @@ const StyledFooter = styled.footer`
           animation-duration: .4s;
           `
           : `
-          animation-delay: 1s;
-          animation-duration: 5s;`}
+          animation-delay: .1s;
+          animation-duration: .5s;`}
     }
     &:nth-of-type(3) {
       grid-column: 3 / 4;
@@ -134,8 +134,8 @@ const StyledFooter = styled.footer`
           animation-duration: .4s;
           `
           : `
-          animation-delay: 2s;
-          animation-duration: 5s;`}
+          animation-delay: .2s;
+          animation-duration: .5s;`}
     }
     &:nth-of-type(4) {
       grid-column: 4 / 5;
@@ -147,8 +147,8 @@ const StyledFooter = styled.footer`
           animation-duration: .4s;
           `
           : `
-          animation-delay: 3s;
-          animation-duration: 5s;`}
+          animation-delay: .3s;
+          animation-duration: .5s;`}
     }
     &:nth-of-type(5) {
       grid-column: 5 / 6;
@@ -160,8 +160,8 @@ const StyledFooter = styled.footer`
           animation-duration: .4s;
           `
           : `
-          animation-delay: 4s;
-          animation-duration: 5s;`}
+          animation-delay: .4s;
+          animation-duration: .5s;`}
     }
     &:nth-of-type(6) {
       grid-column: 6 / 7;
@@ -173,8 +173,8 @@ const StyledFooter = styled.footer`
           animation-duration: .4s;
           `
           : `
-          animation-delay: 5s;
-          animation-duration: 5s;`}
+          animation-delay: .5s;
+          animation-duration: .5s;`}
     }
   }
   div {
@@ -236,7 +236,7 @@ export default function Footer({ colors }) {
       $isCascade={isCascade}
       $isContact={isContact}
     >
-      {isScrollSupport ? (
+      {isScrollSupport || isContact ? (
         <>
           <aside></aside>
           <aside></aside>
@@ -246,7 +246,13 @@ export default function Footer({ colors }) {
           <aside></aside>
         </>
       ) : (
-        isCascade && <JSFooterAnim colors={colors} noAnimation={isContact} />
+        isCascade && (
+          <JSFooterAnim
+            colors={colors}
+            noAnimation={isContact}
+            pathname={pathname}
+          />
+        )
       )}
 
       <div>
