@@ -11,6 +11,7 @@ const StyledContainer = styled.a`
     !$isFromPage &&
     css`
       opacity: 0;
+      visibility: hidden;
       animation: ${textApparitionAnim} 0.4s forwards;
     `}
   ${cascadeDelay(6, 2.5)}

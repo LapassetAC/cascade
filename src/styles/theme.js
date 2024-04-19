@@ -45,14 +45,16 @@ export const textApparitionAnim = keyframes`
   0% {
     transform: translateY(-50px);
     opacity: 0;
+    visibility: hidden;
   }
   30% {
     opacity: 0;
-
+    visibility: hidden;
   }
   100% {
     transform: translateY(0px);
     opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -60,13 +62,15 @@ export const textDisparitionAnim = keyframes`
   0% {
     transform: translateY(0px);
     opacity: 1;
+    visibility: visible;
   }
   30% {
     opacity: 1;
-    
+    visibility: visible;
   }
   100% {
     opacity: 0;
+    visibility: hidden;
     transform: translateY(50px);
   }
 `;
