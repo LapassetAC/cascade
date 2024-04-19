@@ -80,7 +80,7 @@ export default function ProjectVisual({
   const [refImage, inView] = useInView({
     triggerOnce: true,
     threshold: 0,
-    rootMargin: "250px 0px 250px 0px",
+    rootMargin: "150px 0px 150px 0px",
   });
 
   return (
