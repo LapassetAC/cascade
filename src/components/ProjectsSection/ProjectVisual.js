@@ -7,6 +7,7 @@ import { client } from "../../../sanity/lib/client";
 
 const StyledContainer = styled.a`
   display: block;
+  line-height: normal;
   ${({ $isFromPage }) =>
     !$isFromPage &&
     css`

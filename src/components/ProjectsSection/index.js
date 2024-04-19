@@ -5,10 +5,8 @@ import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import styled, { css } from "styled-components";
 
 const StyledContainer = styled.section`
-  /* grid-row-gap: 0 !important; */
   grid-column: 1 / 7;
-  /* margin: 0 !important; */
-
+  align-items: start;
   .hero {
     margin-top: 15px;
     align-items: start;
@@ -21,8 +19,9 @@ const StyledContainer = styled.section`
       @media ${(props) => props.theme.minWidth.sm} {
         margin-bottom: 0px;
         grid-column: 1 / 3;
-        top: 120px;
-        position: sticky;
+        /* top: 120px; */
+        /* position: sticky; */
+        align-items: start;
       }
       span {
         display: inline-block;

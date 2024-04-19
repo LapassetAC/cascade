@@ -13,11 +13,10 @@ const StyledContainer = styled.aside`
   @media ${(props) => props.theme.minWidth.sm} {
     opacity: 1;
     animation: none;
-    grid-column: 1 / 2;
+    grid-column: 1 / 3;
     position: sticky;
-    top: 220px;
-    height: fit-content;
-    margin-bottom: 0px;
+    top: 120px;
+    margin-bottom: 60px;
   }
   .row {
     display: flex;
