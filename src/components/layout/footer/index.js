@@ -283,7 +283,13 @@ export default function Footer({ colors }) {
         >
           LinkedIn
         </a>
-        <a href="">Instagram</a>
+        <a
+          href="https://www.instagram.com/le_studio_cascade/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
       </div>
     </StyledFooter>
   );
