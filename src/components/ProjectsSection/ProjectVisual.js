@@ -6,7 +6,8 @@ import { useInView } from "react-intersection-observer";
 
 const StyledContainer = styled.a`
   display: block;
-  line-height: normal;
+  line-height: 0px;
+  position: relative;
   ${({ $isFromPage }) =>
     !$isFromPage &&
     css`
@@ -15,7 +16,6 @@ const StyledContainer = styled.a`
       animation: ${textApparitionAnim} 0.4s forwards;
     `}
   ${cascadeDelay(6, 2.5)}
-  position: relative;
   &:hover {
     cursor: pointer;
     video {
@@ -25,15 +25,9 @@ const StyledContainer = styled.a`
     }
   }
   img {
-    height: auto;
-    width: 100%;
+    object-fit: cover;
   }
   .mask {
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    position: absolute;
     &.mobile {
       display: block;
       @media ${({ theme }) => theme.minWidth.sm} {
@@ -49,8 +43,10 @@ const StyledContainer = styled.a`
   }
   video {
     width: 100%;
-    transition: transform 0.2s;
+    position: relative;
+    padding: 30px;
     @media ${(props) => props.theme.minWidth.sm} {
+      transition: transform 0.2s;
       transform: translateY(-101%);
     }
   }
@@ -100,8 +96,10 @@ export default function ProjectVisual({
       <Image
         src={image.asset.url}
         ref={refImage}
-        width={800}
-        height={447}
+        fill
+        sizes="(max-width: 768px) 100vw, 800px"
+        // width={800}
+        // height={447}
         quality={85}
         alt={title}
         priority={priority}
