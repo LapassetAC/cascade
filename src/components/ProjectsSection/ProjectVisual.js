@@ -27,6 +27,8 @@ const StyledContainer = styled.a`
   img {
     height: auto;
     width: 100%;
+    aspect-ratio: 1.49;
+    object-fit: cover;
   }
   .mask {
     top: 30px;
