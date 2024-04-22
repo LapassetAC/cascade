@@ -256,16 +256,34 @@ export default function Footer({ colors }) {
       )}
 
       <div>
-        <a href="">contact@cascade.fr</a>
-        <a href="">+33 (0)6 74 62 64 76</a>
+        <a href="mailto:contact@cascadestudio.fr">contact@cascadestudio.fr</a>
+        <a href="tel:+33674626476">+33 (0)6 74 62 64 76</a>
       </div>
       <div>
-        <a href="">Marseille</a>
-        <a href="">La Jarjatte</a>
+        <a
+          href="https://maps.app.goo.gl/ZN8LcTXYFRXWbsFMA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Marseille
+        </a>
+        <a
+          href="https://maps.app.goo.gl/zRgt6fsaEa2tVu7BA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          La Jarjatte
+        </a>
       </div>
       <div>
-        <a href="">LinkedIn</a>
-        <a href="">Twitter</a>
+        <a
+          href="https://www.linkedin.com/company/cascadestudio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a href="">Instagram</a>
       </div>
     </StyledFooter>
   );
