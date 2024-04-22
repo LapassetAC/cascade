@@ -267,7 +267,6 @@ export default function Footer({ colors }) {
         <a href="">LinkedIn</a>
         <a href="">Twitter</a>
       </div>
-      <Script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></Script>
     </StyledFooter>
   );
 }
