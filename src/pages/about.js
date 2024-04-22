@@ -43,7 +43,7 @@ export default function About() {
     <StyledContainer className="grid">
       <h1>Deux frères, deux artisans du web.</h1>
       <p className="intro">
-        Fondé par deux frères passionnés se définissant comme artisans du Web,
+        Fondé par deux frères passionnés se définissant comme artisans du web,
         le studio Cascade incarne leur volonté de faire passer les sites et
         interfaces dans une nouvelle ère, tant en termes de design que de
         performance énergétique. Conscients de la complexité des services du
@@ -55,7 +55,7 @@ export default function About() {
         <h2>Adrien</h2>
         <p>
           Initialement formé à l’informatique, Adrien a enrichi son parcours par
-          un Master en Design Graphique et Intéractivité à l’École Supérieure
+          un Master en Design Graphique et Interactivité à l’École Supérieure
           d’Art et de Design Graphique Le Havre-Rouen afin d’acquérir une double
           compétence en design et développement web. <br />
           Avec plus de 7 ans d'expérience en freelance, il excelle grâce à sa
@@ -66,9 +66,10 @@ export default function About() {
       <div className="presentation">
         <h2>Clément</h2>
         <p>
-          Diplômé de l’EDHEC avec une expérience en conseil chez Sopra Steria et
-          Deloitte, Clément s’est orienté vers le domaine du Web poussé par sa
-          passion du code et son désir de créativité. <br />
+          Diplômé de l’EDHEC (Master en Business Management et MSc en Stratégie,
+          Organisations & Conseil) avec une expérience en conseil chez Sopra
+          Steria et Deloitte, Clément s’est orienté vers le domaine du Web
+          poussé par sa passion du code et son désir de créativité. <br />
           Il mise sur une écoute attentive et une communication claire pour
           guider ses clients, tirant parti de son expérience variée pour
           répondre avec agilité et pédagogie à leurs besoins.
