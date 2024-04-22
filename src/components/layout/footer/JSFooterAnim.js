@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import theme from "@/styles/theme";
 
 const StyledContainer = styled.footer`
+  overflow: hidden;
   padding-bottom: 30px;
   height: calc(100vh - ${theme.headerHeight}px);
   margin: 0 !important;
@@ -18,18 +19,18 @@ const StyledContainer = styled.footer`
         $noAnimation
           ? css`
               width: 44%;
-              height: calc(13vh - ${theme.headerHeight + 30}px);
+              height: calc(0.13vh - ${theme.headerHeight + 30}px);
               min-height: 5px;
             `
           : css`
               width: ${$progressInPercent * 0.44}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
@@ -40,17 +41,17 @@ const StyledContainer = styled.footer`
         $noAnimation
           ? css`
               width: 56%;
-              height: calc(36vh - ${theme.headerHeight + 30}px);
+              height: calc(0.36vh - ${theme.headerHeight + 30}px);
             `
           : css`
               width: ${$progressInPercent * 0.56}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
@@ -61,17 +62,17 @@ const StyledContainer = styled.footer`
         $noAnimation
           ? css`
               width: 67%;
-              height: calc(72vh - ${theme.headerHeight + 30}px);
+              height: calc(0.72vh - ${theme.headerHeight + 30}px);
             `
           : css`
               width: ${$progressInPercent * 0.67}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
@@ -82,17 +83,17 @@ const StyledContainer = styled.footer`
         $noAnimation
           ? css`
               width: 78%;
-              height: calc(90vh - ${theme.headerHeight + 30}px);
+              height: calc(0.9vh - ${theme.headerHeight + 30}px);
             `
           : css`
               width: ${$progressInPercent * 0.78}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
@@ -103,17 +104,17 @@ const StyledContainer = styled.footer`
         $noAnimation
           ? css`
               width: 89%;
-              height: calc(99vh - ${theme.headerHeight + 30}px);
+              height: calc(0.99vh - ${theme.headerHeight + 30}px);
             `
           : css`
               width: ${$progressInPercent * 0.89}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
@@ -130,11 +131,11 @@ const StyledContainer = styled.footer`
               width: ${$progressInPercent}%;
               min-height: 5px;
               height: calc(
-                ${$progressInPercent}vh - ${theme.headerHeight + 100}px
+                ${$progressInPercent}vh - ${theme.headerHeight + 120}px
               );
               @media ${({ theme }) => theme.minWidth.sm} {
                 height: calc(
-                  ${$progressInPercent}vh - ${theme.headerHeight + 30}px
+                  ${$progressInPercent}vh - ${theme.headerHeight + 120}px
                 );
               }
             `}
