@@ -54,7 +54,7 @@ export default function Expertise() {
           projet : de la conception du site jusqu’à sa mise en ligne. Afin de
           répondre précisément aux besoins et à l’autonomie de chaque client,
           nous privilégions une approche personnalisée en créant des designs de
-          site uniques et en développant l’outils de gestion du contenu (CMS)
+          site uniques et en développant l’outil de gestion du contenu (CMS)
           sur-mesure.
         </p>
         <section className="expertises">
