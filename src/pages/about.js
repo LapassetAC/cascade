@@ -68,7 +68,7 @@ export default function About() {
         <p>
           Diplômé de l’EDHEC (Master en Business Management et MSc en Stratégie,
           Organisations & Conseil) avec une expérience en conseil chez Sopra
-          Steria et Deloitte, Clément s’est orienté vers le domaine du Web
+          Steria et Deloitte, Clément s’est orienté vers le domaine du web
           poussé par sa passion du code et son désir de créativité. <br />
           Il mise sur une écoute attentive et une communication claire pour
           guider ses clients, tirant parti de son expérience variée pour
