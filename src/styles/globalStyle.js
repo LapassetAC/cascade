@@ -47,7 +47,7 @@ a {
   margin: 0 15px;
   @media ${(props) => props.theme.minWidth.sm} {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 30px;
     margin: 0 30px;
   }
