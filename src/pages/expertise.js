@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
     padding: 30px 0 140px;
   }
   h1 {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
     margin-bottom: 15px;
     @media ${({ theme }) => theme.minWidth.sm} {
       margin-bottom: 0;
@@ -19,14 +19,14 @@ const StyledContainer = styled.div`
     grid-column: 1 / 3;
     margin-bottom: 15px;
     @media ${({ theme }) => theme.minWidth.sm} {
-      grid-column: 3 / 6;
+      grid-column: 2 / 5;
       margin-bottom: 60px;
     }
   }
   .expertises {
     grid-column: 1 / 2;
     @media ${({ theme }) => theme.minWidth.sm} {
-      grid-column: 3 / 7;
+      grid-column: 2 / 6;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 30px;

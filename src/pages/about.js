@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
     padding: 30px 0 140px;
   }
   h1 {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
     margin-bottom: 15px;
     @media ${({ theme }) => theme.minWidth.sm} {
       margin-bottom: 0;
@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
   .intro {
     grid-column: 1 / 3;
     @media ${({ theme }) => theme.minWidth.sm} {
-      grid-column: 3 / 6;
+      grid-column: 2 / 5;
       margin-bottom: 30px;
     }
   }
@@ -25,7 +25,7 @@ const StyledContainer = styled.div`
     grid-column: 1 / 3;
     margin-top: 15px;
     @media ${({ theme }) => theme.minWidth.sm} {
-      grid-column: 3 / 6;
+      grid-column: 2 / 5;
       margin-top: 30px;
     }
   }
@@ -41,7 +41,7 @@ const StyledContainer = styled.div`
 export default function About() {
   return (
     <StyledContainer className="grid">
-      <h1>Deux frères, deux artisans du web.</h1>
+      <h1>Deux frères, deux&nbsp;artisans&nbsp;du&nbsp;web.</h1>
       <p className="intro">
         Fondé par deux frères passionnés se définissant comme artisans du web,
         le studio Cascade incarne leur volonté de faire passer les sites et

@@ -13,7 +13,7 @@ const StyledContainer = styled.aside`
   @media ${(props) => props.theme.minWidth.sm} {
     opacity: 1;
     animation: none;
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
     position: sticky;
     top: 120px;
     margin-bottom: 60px;
