@@ -7,7 +7,7 @@ const StyledContainer = styled.footer`
   padding-bottom: 30px;
   height: calc(100vh - ${theme.headerHeight}px);
   margin: 0 !important;
-  grid-column: 1/7;
+  grid-column: 1/6;
   grid-row: 1/1;
   display: grid !important;
   aside {
@@ -119,27 +119,27 @@ const StyledContainer = styled.footer`
               }
             `}
     }
-    &:nth-child(6) {
+    /* &:nth-child(6) {
       grid-column: 6 / 7;
       ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 100%;
-              height: calc(100vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent}%;
-              min-height: 5px;
+      $noAnimation
+        ? css`
+            width: 100%;
+            height: calc(100vh - ${theme.headerHeight + 30}px);
+          `
+        : css`
+            width: ${$progressInPercent}%;
+            min-height: 5px;
+            height: calc(
+              ${$progressInPercent}vh - ${theme.headerHeight + 120}px
+            );
+            @media ${({ theme }) => theme.minWidth.sm} {
               height: calc(
                 ${$progressInPercent}vh - ${theme.headerHeight + 120}px
               );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
+            }
+          `}
+    } */
   }
   div {
     grid-row: 1/2;
@@ -195,7 +195,7 @@ export default function Footer({ colors, noAnimation }) {
       <aside></aside>
       <aside></aside>
       <aside></aside>
-      <aside></aside>
+      {/* <aside></aside> */}
     </StyledContainer>
   );
 }

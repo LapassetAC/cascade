@@ -5,7 +5,7 @@ import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import styled, { css } from "styled-components";
 
 const StyledContainer = styled.section`
-  grid-column: 1 / 7;
+  grid-column: 1 / 6;
   align-items: start;
   .hero {
     margin-top: 15px;
@@ -18,7 +18,7 @@ const StyledContainer = styled.section`
       margin-bottom: 30px;
       @media ${(props) => props.theme.minWidth.sm} {
         margin-bottom: 0px;
-        grid-column: 1 / 3;
+        grid-column: 1 / 2;
         /* top: 120px; */
         /* position: sticky; */
         align-items: start;
@@ -35,7 +35,7 @@ const StyledContainer = styled.section`
       }
     }
     &.businessDescription {
-      grid-column: 3 / 6;
+      grid-column: 2 / 5;
       margin-bottom: 45px;
       ${({ $isFromPage }) =>
         !$isFromPage &&
@@ -55,7 +55,7 @@ const StyledContainer = styled.section`
     @media ${(props) => props.theme.minWidth.sm} {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 30px;
-      grid-column: 3 / 7;
+      grid-column: 2 / 6;
     }
   }
 `;

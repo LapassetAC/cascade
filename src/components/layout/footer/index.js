@@ -67,7 +67,7 @@ const drop6 = keyframes`
 
 const StyledFooter = styled.footer`
   display: grid !important;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
   padding: 15px 0 !important;
   background-color: ${({ theme, $isCascade }) =>
@@ -83,7 +83,7 @@ const StyledFooter = styled.footer`
   }
   aside {
     display: ${({ $isCascade }) => ($isCascade ? "block" : "none")};
-    height: calc(100vh - 130px);
+    height: calc(100vh - 150px);
     grid-row: 1/2;
     width: 100%;
     background-color: ${({ $colors }) => $colors.fontColor};
@@ -163,19 +163,19 @@ const StyledFooter = styled.footer`
           animation-delay: .4s;
           animation-duration: .5s;`}
     }
-    &:nth-of-type(6) {
+    /* &:nth-of-type(6) {
       grid-column: 6 / 7;
       animation-name: ${drop6};
       ${({ $isContact }) =>
-        $isContact
-          ? `
+      $isContact
+        ? `
           animation-delay: .5s;
           animation-duration: .4s;
           `
-          : `
+        : `
           animation-delay: .5s;
           animation-duration: .5s;`}
-    }
+    } */
   }
   div {
     align-self: self-end;
@@ -190,7 +190,7 @@ const StyledFooter = styled.footer`
       }
     }
     &:nth-of-type(1) {
-      grid-column: 1 / 4;
+      grid-column: 1 / 3;
       grid-row: 2/3;
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 1 / 2;
@@ -198,7 +198,7 @@ const StyledFooter = styled.footer`
       }
     }
     &:nth-of-type(2) {
-      grid-column: 4 / 6;
+      grid-column: 3 / 5;
       grid-row: 2/3;
       @media ${({ theme }) => theme.minWidth.sm} {
         grid-column: 2 / 3;
@@ -206,7 +206,7 @@ const StyledFooter = styled.footer`
       }
     }
     &:nth-of-type(3) {
-      grid-column: 5 / 7;
+      grid-column: 4 / 6;
       grid-row: 2/3;
       justify-self: end;
       @media ${({ theme }) => theme.minWidth.sm} {
@@ -254,7 +254,7 @@ export default function Footer({ colors }) {
           <aside></aside>
           <aside></aside>
           <aside></aside>
-          <aside></aside>
+          {/* <aside></aside> */}
         </>
       ) : (
         isCascade && (
