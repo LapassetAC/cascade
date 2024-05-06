@@ -4,12 +4,14 @@ import theme from "@/styles/theme";
 
 const StyledContainer = styled.footer`
   overflow: hidden;
-  padding-bottom: 30px;
-  height: calc(100vh - ${theme.headerHeight}px);
+  height: calc(100vh - 140px);
   margin: 0 !important;
   grid-column: 1/6;
   grid-row: 1/1;
   display: grid !important;
+  @media ${({ theme }) => theme.minWidth.sm} {
+    height: calc(100vh - 120px);
+  }
   aside {
     grid-row: 1/2;
     background-color: ${({ $colors }) => $colors.fontColor};
