@@ -197,7 +197,6 @@ export default function Footer({ colors, noAnimation }) {
       <aside></aside>
       <aside></aside>
       <aside></aside>
-      {/* <aside></aside> */}
     </StyledContainer>
   );
 }
