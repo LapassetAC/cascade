@@ -99,7 +99,7 @@ export default function App({ Component, pageProps }) {
           <link rel="manifest" href="/site.webmanifest" />
         </Head>
         <div className={moderat.className}>
-          <Layout isFromPage={isFromPage}>
+          <Layout isFromPage={isFromPage} router={router}>
             <Component {...pageProps} isFromPage={isFromPage} />
           </Layout>
         </div>
