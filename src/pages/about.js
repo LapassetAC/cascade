@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  background-color: ${({ theme }) => theme.color.blue};
   color: ${({ theme }) => theme.color.white};
   padding-bottom: 60px;
   @media ${({ theme }) => theme.minWidth.sm} {

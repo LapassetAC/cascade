@@ -3,11 +3,13 @@ import Footer from "./footer";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Context } from "@/app/Context";
+import noiseImage from "@/assets/images/noise.png";
 
 const StyledLayout = styled.div`
   background-color: ${(props) => props.$bgColor};
   color: ${(props) => props.$fontColor};
   min-height: 100vh;
+  background-image: url(${noiseImage.src});
 `;
 
 export default function Layout({ children, isFromPage }) {

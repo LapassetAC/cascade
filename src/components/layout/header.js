@@ -7,7 +7,7 @@ import Link from "next/link";
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
-  background-color: ${(props) => props.$bgColor};
+  background-color: ${({ $bgColor, $isAnimation }) => $isAnimation && $bgColor};
   z-index: 1;
   padding: 15px 0 0;
   @media ${(props) => props.theme.minWidth.sm} {
@@ -56,16 +56,16 @@ const StyledHeader = styled.header`
 
 export default function Header({ bgColor, fontColor, isFromPage }) {
   const pathname = useRouter().pathname;
-  const isAnimation = pathname === "/";
+  const isHomePage = pathname === "/";
   return (
     <StyledHeader
       $bgColor={bgColor}
-      $isAnimation={isAnimation}
+      $isAnimation={isHomePage}
       $isFromPage={isFromPage}
     >
       <div className="grid animationMask">
         <Link href="/" className="logo" aria-label="Home page">
-          <CascadeLogo color={fontColor} isAnimation={isAnimation} />
+          <CascadeLogo color={fontColor} isAnimation={isHomePage} />
         </Link>
         <Link href="/expertise">Savoir-faire</Link>
         <Link href="/about">À propos</Link>

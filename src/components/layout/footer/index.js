@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import Script from "next/script";
 import JSFooterAnim from "./JSFooterAnim";
 
 const drop1 = keyframes`
@@ -54,24 +53,13 @@ const drop5 = keyframes`
 		clip-path: rect(0 89% 99% 0);
 	}
 `;
-const drop6 = keyframes`
-	from {
-    opacity: 0;
-    clip-path: rect(0 0% 0% 0);
-	}
-	to {
-    opacity: 1;
-		clip-path: rect(0 100% 100% 0);
-	}
-`;
 
 const StyledFooter = styled.footer`
   display: grid !important;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
   padding: 15px 0 !important;
-  background-color: ${({ theme, $isCascade }) =>
-    !$isCascade && theme.color.blue};
+  background-color: ${({ $isCascade }) => !$isCascade && `transparent`};
   @media ${({ theme }) => theme.minWidth.sm} {
     position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
@@ -163,19 +151,6 @@ const StyledFooter = styled.footer`
           animation-delay: .4s;
           animation-duration: .5s;`}
     }
-    /* &:nth-of-type(6) {
-      grid-column: 6 / 7;
-      animation-name: ${drop6};
-      ${({ $isContact }) =>
-      $isContact
-        ? `
-          animation-delay: .5s;
-          animation-duration: .4s;
-          `
-        : `
-          animation-delay: .5s;
-          animation-duration: .5s;`}
-    } */
   }
   div {
     align-self: self-end;
@@ -254,7 +229,6 @@ export default function Footer({ colors }) {
           <aside></aside>
           <aside></aside>
           <aside></aside>
-          {/* <aside></aside> */}
         </>
       ) : (
         isCascade && (
