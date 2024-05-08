@@ -3,11 +3,15 @@ import CascadeLogo from "@/components/CascadeLogo";
 import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import noiseLight from "@/assets/images/noise-light.jpg";
+import noiseImage from "@/assets/images/noise.png";
 
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
-  background-color: ${({ $bgColor, $isAnimation }) => $isAnimation && $bgColor};
+  background-image: ${({ $isAnimation }) =>
+    $isAnimation ? `url(${noiseLight.src})` : `url(${noiseImage.src})`};
+  background-color: ${({ $bgColor }) => $bgColor};
   z-index: 1;
   padding: 15px 0 0;
   @media ${(props) => props.theme.minWidth.sm} {
