@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import JSFooterAnim from "./JSFooterAnim";
+import noiseImage from "@/assets/images/noise.png";
 
 const drop1 = keyframes`
 	from {
@@ -61,11 +62,14 @@ const StyledFooter = styled.footer`
   padding: 15px 0 !important;
   background-color: ${({ $isCascade }) => !$isCascade && `transparent`};
   @media ${({ theme }) => theme.minWidth.sm} {
+    background-image: url(${noiseImage.src});
+    background-color: ${({ theme }) => theme.color.blue};
     position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
     padding: ${({ $isContact }) =>
-      $isContact ? "0 0 30px !important" : "30px 0 !important"};
+      $isContact ? "0 0 30px !important" : "30px !important"};
     grid-gap: 30px;
+    margin: 0 !important;
     left: 0;
     right: 0;
   }
