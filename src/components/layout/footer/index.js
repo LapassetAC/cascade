@@ -249,7 +249,7 @@ export default function Footer({ colors }) {
           <div className="email-mobile">Nous écrire</div>
           <div className="email-desktop">contact@cascadestudio.fr</div>
         </a>
-        <a href="tel:+33674626476">+33 (0)6 74 62 64 76</a>
+        <a href="tel:+33674626476">06 74 62 64 76</a>
       </div>
       <div>
         <a
