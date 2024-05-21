@@ -219,7 +219,6 @@ export default function Footer({ colors }) {
   useEffect(() => {
     setIsScrollSupport(CSS.supports("animation-timeline: scroll()"));
   }, []);
-  console.log(isCascade, isContact);
   return (
     <StyledFooter
       className="grid"
