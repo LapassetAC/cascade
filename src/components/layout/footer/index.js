@@ -63,7 +63,8 @@ const StyledFooter = styled.footer`
   background-color: ${({ $isCascade }) => !$isCascade && `transparent`};
   @media ${({ theme }) => theme.minWidth.sm} {
     background-image: url(${noiseImage.src});
-    background-color: ${({ theme }) => theme.color.blue};
+    background-color: ${({ $isCascade, $isContact, theme }) =>
+      $isCascade && !$isContact ? "" : theme.color.blue};
     position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
     padding: ${({ $isContact }) =>
@@ -218,7 +219,7 @@ export default function Footer({ colors }) {
   useEffect(() => {
     setIsScrollSupport(CSS.supports("animation-timeline: scroll()"));
   }, []);
-
+  console.log(isCascade, isContact);
   return (
     <StyledFooter
       className="grid"
