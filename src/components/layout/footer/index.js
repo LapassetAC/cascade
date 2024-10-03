@@ -60,6 +60,7 @@ const StyledFooter = styled.footer`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
   padding: 15px 0 !important;
+  margin: 0 15px;
   background-color: ${({ $isCascade }) => !$isCascade && `transparent`};
   @media ${({ theme }) => theme.minWidth.sm} {
     background-image: url(${noiseImage.src});
@@ -70,7 +71,7 @@ const StyledFooter = styled.footer`
     padding: ${({ $isContact }) =>
       $isContact ? "0 0 30px !important" : "30px !important"};
     grid-gap: 30px;
-    margin: 0 !important;
+    margin: 0 30px !important;
     left: 0;
     right: 0;
   }
