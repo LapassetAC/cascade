@@ -217,6 +217,17 @@ export default function Footer({ colors }) {
   const isContact = pathname === "/contact";
   const [isScrollSupport, setIsScrollSupport] = useState(false);
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/instagram")
+      .then((response) => response.json())
+      .then((data) => setPosts(data))
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
+  console.log(posts);
+
   useEffect(() => {
     setIsScrollSupport(CSS.supports("animation-timeline: scroll()"));
   }, []);
