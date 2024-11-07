@@ -69,7 +69,7 @@ const StyledFooter = styled.footer`
     position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
     padding: ${({ $isContact }) =>
-      $isContact ? "0 0 30px !important" : "30px !important"};
+      $isContact ? "0 0 30px !important" : "30px 0 !important"};
     grid-gap: 30px;
     margin: 0 30px !important;
     left: 0;
