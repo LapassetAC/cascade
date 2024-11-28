@@ -34,6 +34,8 @@ export const project = {
       name: "video",
       title: "Vidéo démo du projet",
       type: "file",
+      description:
+        "Vidéo d'une minute maximum, convertir le fichier au format MP4 via cloud convert, preset very slow, resolution 1280x800",
     },
     {
       name: "categories",
