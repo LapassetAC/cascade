@@ -69,7 +69,7 @@ const StyledFooter = styled.footer`
     position: ${({ $isCascade }) => !$isCascade && "fixed"};
     bottom: 0;
     padding: ${({ $isContact }) =>
-      $isContact ? "0 0 30px !important" : "30px !important"};
+      $isContact ? "0 0 30px !important" : "30px 0 !important"};
     grid-gap: 30px;
     margin: 0 30px !important;
     left: 0;
@@ -216,6 +216,17 @@ export default function Footer({ colors }) {
   const isCascade = pathname === "/" || pathname === "/contact";
   const isContact = pathname === "/contact";
   const [isScrollSupport, setIsScrollSupport] = useState(false);
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/instagram")
+      .then((response) => response.json())
+      .then((data) => setPosts(data))
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
+  console.log(posts);
 
   useEffect(() => {
     setIsScrollSupport(CSS.supports("animation-timeline: scroll()"));

@@ -101,10 +101,10 @@ export default function ProjectsSection({ projects, isFromPage }) {
         <span> sites </span> <span>web </span> <span>engageants.</span>
       </p>
       <p className="hero businessDescription">
-        Nous concevons des sites web uniques pour des marques inspirantes.
+        Nous concevons des interfaces web uniques pour des projets inspirants.
         Fidèles aux valeurs de nos clients, nos créations se distinguent par
         leur fluidité, leur performance et un référencement naturel (SEO)
-        optimal.
+        optimisé.
       </p>
       {!isMobile && displayedProject !== null && (
         <ProjectInfo
