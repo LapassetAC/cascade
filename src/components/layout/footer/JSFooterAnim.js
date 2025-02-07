@@ -1,169 +1,9 @@
-import styled, { css } from "styled-components";
+'use client';
+
 import React, { useState, useEffect, useRef } from "react";
-import theme from "@/styles/theme";
+import { cn } from "@/lib/utils";
 
-const StyledContainer = styled.footer`
-  overflow: hidden;
-  height: calc(100vh - 140px);
-  margin: 0 !important;
-  grid-column: 1/6;
-  grid-row: 1/1;
-  display: grid !important;
-  @media ${({ theme }) => theme.minWidth.sm} {
-    height: calc(100vh - 120px);
-  }
-  aside {
-    grid-row: 1/2;
-    background-color: ${({ $colors }) => $colors.fontColor};
-    &:nth-child(1) {
-      grid-column: 1 / 2;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 44%;
-              height: calc(0.13vh - ${theme.headerHeight + 30}px);
-              min-height: 5px;
-            `
-          : css`
-              width: ${$progressInPercent * 0.44}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 120}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.13}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
-    &:nth-child(2) {
-      grid-column: 2 / 3;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 56%;
-              height: calc(0.36vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.56}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 120}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.36}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
-    &:nth-child(3) {
-      grid-column: 3 / 4;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 67%;
-              height: calc(0.72vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.67}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 120}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.72}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
-    &:nth-child(4) {
-      grid-column: 4 / 5;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 78%;
-              height: calc(0.9vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.78}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 120}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.9}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
-    &:nth-child(5) {
-      grid-column: 5 / 6;
-      ${({ $progressInPercent, $noAnimation }) =>
-        $noAnimation
-          ? css`
-              width: 89%;
-              height: calc(0.99vh - ${theme.headerHeight + 30}px);
-            `
-          : css`
-              width: ${$progressInPercent * 0.89}%;
-              min-height: 5px;
-              height: calc(
-                ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 120}px
-              );
-              @media ${({ theme }) => theme.minWidth.sm} {
-                height: calc(
-                  ${$progressInPercent * 0.99}vh - ${theme.headerHeight + 120}px
-                );
-              }
-            `}
-    }
-    /* &:nth-child(6) {
-      grid-column: 6 / 7;
-      ${({ $progressInPercent, $noAnimation }) =>
-      $noAnimation
-        ? css`
-            width: 100%;
-            height: calc(100vh - ${theme.headerHeight + 30}px);
-          `
-        : css`
-            width: ${$progressInPercent}%;
-            min-height: 5px;
-            height: calc(
-              ${$progressInPercent}vh - ${theme.headerHeight + 120}px
-            );
-            @media ${({ theme }) => theme.minWidth.sm} {
-              height: calc(
-                ${$progressInPercent}vh - ${theme.headerHeight + 120}px
-              );
-            }
-          `}
-    } */
-  }
-  div {
-    grid-row: 1/2;
-    align-self: self-end;
-    color: ${({ $colors }) => $colors.fontColor};
-    a {
-      display: block;
-      margin-top: 15px;
-    }
-    &:nth-of-type(1) {
-      grid-column: 1 / 2;
-    }
-    &:nth-of-type(2) {
-      grid-column: 2 / 3;
-    }
-    &:nth-of-type(3) {
-      grid-column: 3 / 4;
-    }
-  }
-`;
-
-export default function Footer({ colors, noAnimation }) {
+export default function JSFooterAnim({ noAnimation, pathname }) {
   const [progressInPercent, setProgressInPercent] = useState(0);
   const ref = useRef();
 
@@ -172,31 +12,60 @@ export default function Footer({ colors, noAnimation }) {
       const top = ref.current.getBoundingClientRect().top;
       setProgressInPercent(
         Math.round(
-          ((window.innerHeight - top) /
-            (window.innerHeight - theme.headerHeight)) *
-            100
+          ((window.innerHeight - top) / (window.innerHeight - 120)) * 100
         )
       );
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const drops = [
+    { width: 44, height: 13 },
+    { width: 56, height: 36 },
+    { width: 67, height: 72 },
+    { width: 78, height: 90 },
+    { width: 89, height: 99 },
+  ];
+
   return (
-    <StyledContainer
-      className="grid"
+    <footer
       ref={ref}
-      $progressInPercent={progressInPercent}
-      $colors={colors}
-      $noAnimation={noAnimation}
+      className="overflow-hidden h-screen md:h-[calc(100vh-120px)] col-span-5 row-span-1 grid m-0"
     >
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-      <aside></aside>
-    </StyledContainer>
+      {drops.map((drop, index) => (
+        <aside
+          key={index}
+          className={cn(
+            "row-span-1 bg-current min-h-[5px]",
+            `col-start-${index + 1} col-span-1`
+          )}
+          style={{
+            width: noAnimation 
+              ? `${drop.width}%` 
+              : `${(progressInPercent * drop.width) / 100}%`,
+            height: noAnimation
+              ? `calc(${drop.height}vh - 150px)`
+              : `calc(${(progressInPercent * drop.height) / 100}vh - 150px)`,
+          }}
+        />
+      ))}
+      <div className="row-span-1 self-end text-current">
+        <a className="block mt-15">Link 1</a>
+        <a className="block mt-15">Link 2</a>
+        <a className="block mt-15">Link 3</a>
+      </div>
+      <div className="row-span-1 self-end text-current col-start-2">
+        <a className="block mt-15">Link 4</a>
+        <a className="block mt-15">Link 5</a>
+        <a className="block mt-15">Link 6</a>
+      </div>
+      <div className="row-span-1 self-end text-current col-start-3">
+        <a className="block mt-15">Link 7</a>
+        <a className="block mt-15">Link 8</a>
+        <a className="block mt-15">Link 9</a>
+      </div>
+    </footer>
   );
 }

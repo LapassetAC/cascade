@@ -1,128 +1,125 @@
-import { useRef } from "react";
-import Image from "next/image";
-import { styled, css } from "styled-components";
-import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
-import { useInView } from "react-intersection-observer";
+'use client';
 
-const StyledContainer = styled.a`
-  display: block;
-  line-height: 0px;
-  position: relative;
-  ${({ $isFromPage }) =>
-    !$isFromPage &&
-    css`
-      opacity: 0;
-      visibility: hidden;
-      animation: ${textApparitionAnim} 0.4s forwards;
-    `}
-  ${cascadeDelay(6, 2.5)}
-  &:hover {
-    cursor: pointer;
-    video {
-      @media ${(props) => props.theme.minWidth.sm} {
-        transform: translateY(0px);
-      }
-    }
-  }
-  img {
-    height: auto;
-    width: 100%;
-    aspect-ratio: 1.49;
-    object-fit: cover;
-  }
-  .mask {
-    &.mobile {
-      display: block;
-      @media ${({ theme }) => theme.minWidth.sm} {
-        display: none;
-      }
-    }
-    &.desktop {
-      display: none;
-      @media ${({ theme }) => theme.minWidth.sm} {
-        display: block;
-      }
-    }
-  }
-  video {
-    width: 100%;
-    position: relative;
-    padding: 30px;
-    @media ${(props) => props.theme.minWidth.sm} {
-      transition: transform 0.2s;
-      transform: translateY(-101%);
-    }
-  }
-`;
+import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { cascadeDelay } from "@/lib/animations";
 
 export default function ProjectVisual({
   project,
+  displayedProject,
+  isProjectTransition,
   isFromPage,
   isMobile,
   index,
   setCurrentProjectIndex,
-  priority,
 }) {
   const projectRefs = useRef([]);
   const { title, image, url, videoUrl } = project;
   const videoRef = useRef(null);
+  const imageRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseEnter = () => {
-    !isMobile && videoRef.current.play();
+    !isMobile && videoRef.current?.play();
+    setCurrentProjectIndex(index);
   };
+  
   const handleMouseLeave = () => {
-    !isMobile && videoRef.current.pause();
+    !isMobile && videoRef.current?.pause();
+    setCurrentProjectIndex(null);
   };
 
-  const [refImage, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0,
-    rootMargin: "150px 0px 150px 0px",
-  });
+  if (isMobile) {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={(el) => (projectRefs.current[index] = el)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={cn(
+          "block relative w-full aspect-[1.49] overflow-hidden",
+          "transition-transform duration-500",
+          isProjectTransition ? "scale-105" : "scale-100"
+        )}
+      >
+        <div ref={imageRef} className="relative w-full h-full">
+          <Image
+            src={image.asset.url}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            className={cn(
+              "object-cover",
+              !isFromPage && "animate-fade-in",
+              `[--animation-delay:${cascadeDelay(index + 1)}]`
+            )}
+            priority={index === 0}
+          />
+        </div>
+      </a>
+    );
+  }
 
   return (
-    <StyledContainer
+    <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
       ref={(el) => (projectRefs.current[index] = el)}
-      onMouseEnter={() => {
-        handleMouseEnter();
-        setCurrentProjectIndex(index);
-      }}
-      onMouseLeave={() => {
-        handleMouseLeave();
-        setCurrentProjectIndex(null);
-      }}
-      $isFromPage={isFromPage}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={cn(
+        "block relative w-full aspect-[1.49] overflow-hidden group",
+        "transition-transform duration-500",
+        isProjectTransition ? "scale-105" : "scale-100"
+      )}
     >
-      <Image
-        src={image.asset.url}
-        ref={refImage}
-        fill
-        sizes="(max-width: 768px) 100vw, 800px"
-        // width={800}
-        // height={447}
-        quality={85}
-        alt={title}
-        priority={priority}
-      />
-      <div className="mask mobile">
-        {inView && (
-          <video playsInline autoPlay loop muted>
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+      <div ref={imageRef} className="relative w-full h-full">
+        <Image
+          src={image.asset.url}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+          className={cn(
+            "object-cover",
+            !isFromPage && "animate-fade-in",
+            `[--animation-delay:${cascadeDelay(index + 1)}]`
+          )}
+          priority={index === 0}
+        />
+        {videoUrl && (
+          <video
+            ref={videoRef}
+            src={videoUrl}
+            muted
+            playsInline
+            loop
+            className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          />
         )}
       </div>
-      {!isMobile && (
-        <div className="mask desktop">
-          <video ref={videoRef} preload="auto" playsInline loop muted>
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-    </StyledContainer>
+    </a>
   );
 }

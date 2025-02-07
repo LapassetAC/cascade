@@ -1,97 +1,8 @@
-import { textApparitionAnim, textDisparitionAnim } from "@/styles/theme";
-import { styled, css } from "styled-components";
-import Arrow from "@/assets/icons/Arrow";
+'use client';
 
-const StyledContainer = styled.aside`
-  ${({ $isFromPage }) =>
-    !$isFromPage &&
-    css`
-      opacity: 0;
-      animation: ${textApparitionAnim} 0.4s 2.4s forwards;
-    `}
-  margin-bottom: 40px;
-  @media ${(props) => props.theme.minWidth.sm} {
-    opacity: 1;
-    animation: none;
-    grid-column: 1 / 2;
-    position: sticky;
-    top: 120px;
-    margin-bottom: 60px;
-  }
-  .row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  a {
-    text-align: end;
-  }
-  .info {
-    @media ${(props) => props.theme.minWidth.sm} {
-      opacity: ${({ $isInfoTransition }) => ($isInfoTransition ? 1 : 0)};
-      animation: ${({ $isInfoTransition }) =>
-          $isInfoTransition ? textDisparitionAnim : textApparitionAnim}
-        0.2s forwards;
-    }
-    &.title {
-      font-weight: 900;
-      @media ${(props) => props.theme.minWidth.sm} {
-        margin-bottom: 15px;
-      }
-    }
-    &.category {
-      animation-delay: 0.05s;
-      margin-bottom: 0;
-      @media ${(props) => props.theme.minWidth.sm} {
-        margin-bottom: 15px;
-      }
-    }
-    &.service {
-      margin-bottom: 0;
-    }
-  }
-  .info,
-  .mask {
-    @media ${(props) => props.theme.minWidth.sm} {
-      line-height: 30px;
-    }
-  }
-  ul {
-    .mask {
-      &:nth-child(1) {
-        .info {
-          animation-delay: 0.1s;
-        }
-      }
-      &:nth-child(2) {
-        .info {
-          animation-delay: 0.15s;
-        }
-      }
-      &:nth-child(3) {
-        .info {
-          animation-delay: 0.2s;
-        }
-      }
-      &:nth-child(4) {
-        .info {
-          animation-delay: 0.25s;
-        }
-      }
-      &:nth-child(5) {
-        .info {
-          animation-delay: 0.3s;
-        }
-      }
-      &:nth-child(6) {
-        .info {
-          animation-delay: 0.35s;
-        }
-      }
-    }
-  }
-`;
+import React from "react";
+import { cn } from "@/lib/utils";
+import Arrow from "@/assets/icons/Arrow";
 
 export default function ProjectInfo({
   project,
@@ -99,50 +10,94 @@ export default function ProjectInfo({
   isFromPage,
   isInfoTransition,
   isMobile,
+  isVisible,
 }) {
   if (isMobile) {
     const { title, url, category, services } = project;
     return (
-      <StyledContainer>
-        <div className="row">
-          <h2 className="info title">{title}</h2>
-          <p className="info category">{category}</p>
+      <div
+        className={cn(
+          "flex flex-col justify-center items-center text-center p-4",
+          "transition-opacity duration-400",
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex justify-between mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl animate-fade-in [--animation-delay:100ms]">
+            {title}
+          </h2>
+          <p className="text-lg animate-fade-in [--animation-delay:200ms]">
+            {category}
+          </p>
         </div>
-        <div className="row">
+        <div className="flex flex-wrap justify-center gap-4 animate-fade-in [--animation-delay:300ms]">
           <ul>
             {services.map((service, i) => (
               <li key={i}>
-                <p className="info service">{service}</p>
+                <p className="px-3 py-1 rounded-full border border-current text-sm">
+                  {service}
+                </p>
               </li>
             ))}
           </ul>
-          <a href={url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 underline animate-fade-in [--animation-delay:400ms]"
+          >
             Voir <Arrow />
           </a>
         </div>
-      </StyledContainer>
+      </div>
     );
   } else {
     const { title, category, services } = displayedProject;
     return (
-      <StyledContainer
-        $isFromPage={isFromPage}
-        $isInfoTransition={isInfoTransition}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 flex flex-col justify-center items-center text-center p-4",
+          "transition-opacity duration-400",
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
       >
-        <div className="mask">
-          <h2 className="info title">{title}</h2>
-        </div>
-        <div className="mask">
-          <p className="info category">{category}</p>
+        <div className="flex flex-col justify-center items-center text-center mb-4">
+          <h2
+            className={cn(
+              "text-2xl md:text-3xl lg:text-4xl animate-fade-in",
+              isInfoTransition ? "opacity-100" : "opacity-0",
+              isInfoTransition ? "animation-delay:100ms" : "animation-delay:0ms"
+            )}
+          >
+            {title}
+          </h2>
+          <p
+            className={cn(
+              "text-lg animate-fade-in",
+              isInfoTransition ? "opacity-100" : "opacity-0",
+              isInfoTransition ? "animation-delay:200ms" : "animation-delay:0ms"
+            )}
+          >
+            {category}
+          </p>
         </div>
         <ul>
           {services.map((service, i) => (
-            <li className="mask" key={service}>
-              <p className="info service">{service}</p>
+            <li
+              key={service}
+              className={cn(
+                "flex flex-wrap justify-center gap-4 animate-fade-in",
+                isInfoTransition ? "opacity-100" : "opacity-0",
+                isInfoTransition ? `animation-delay:${(i + 1) * 100}ms` : "animation-delay:0ms"
+              )}
+            >
+              <p className="px-3 py-1 rounded-full border border-current text-sm">
+                {service}
+              </p>
             </li>
           ))}
         </ul>
-      </StyledContainer>
+      </div>
     );
   }
 }

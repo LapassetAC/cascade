@@ -1,145 +1,68 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import React, { useState } from "react";
 import ProjectVisual from "./ProjectVisual";
 import ProjectInfo from "./ProjectInfo";
-import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
-import styled, { css } from "styled-components";
-
-const StyledContainer = styled.section`
-  grid-column: 1 / 6;
-  align-items: start;
-  .hero {
-    margin-top: 15px;
-    align-items: start;
-    @media ${(props) => props.theme.minWidth.sm} {
-      margin-top: 30px;
-    }
-    overflow-y: hidden;
-    &.slogan {
-      margin-bottom: 30px;
-      @media ${(props) => props.theme.minWidth.sm} {
-        margin-bottom: 0px;
-        grid-column: 1 / 2;
-        /* top: 120px; */
-        /* position: sticky; */
-        align-items: start;
-      }
-      span {
-        display: inline-block;
-        ${cascadeDelay(5, 0.7)}
-        ${({ $isFromPage }) =>
-          !$isFromPage &&
-          css`
-            transform: translateY(-60px);
-            animation: ${textApparitionAnim} 0.4s forwards;
-          `}
-      }
-    }
-    &.businessDescription {
-      grid-column: 2 / 5;
-      margin-bottom: 45px;
-      ${({ $isFromPage }) =>
-        !$isFromPage &&
-        css`
-          animation: ${textApparitionAnim} 0.4s 2.3s forwards;
-          opacity: 0;
-        `}
-      @media ${(props) => props.theme.minWidth.sm} {
-        margin-bottom: 60px;
-      }
-    }
-  }
-
-  .projects-container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    @media ${(props) => props.theme.minWidth.sm} {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 30px;
-      grid-column: 2 / 6;
-    }
-  }
-`;
+import { cn } from "@/lib/utils";
+import { cascadeDelay } from "@/lib/animations";
 
 export default function ProjectsSection({ projects, isFromPage }) {
-  const [currentProject, setCurrentProject] = useState(null);
-  const [displayedProject, setDisplayedProject] = useState(null);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(null);
+  const [displayedProject, setDisplayedProject] = useState(projects[0]);
+  const [isProjectTransition, setIsProjectTransition] = useState(false);
   const [isInfoTransition, setIsInfoTransition] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    if (currentProject !== null) {
-      setIsInfoTransition(true);
-      setTimeout(() => {
-        setDisplayedProject(currentProject);
-        setIsInfoTransition(false);
-      }, 200 + currentProject.services.length * 100);
-    } else {
-      setIsInfoTransition(true);
+  const handleProjectChange = (index) => {
+    if (index === null) {
+      setCurrentProjectIndex(null);
+      return;
     }
-  }, [currentProject]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      screenWidth < 768 ? setIsMobile(true) : setIsMobile(false);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    setIsProjectTransition(true);
+    setIsInfoTransition(true);
+
+    setTimeout(() => {
+      setDisplayedProject(projects[index]);
+      setCurrentProjectIndex(index);
+      setIsProjectTransition(false);
+      setIsInfoTransition(false);
+    }, 400);
+  };
 
   return (
-    <StyledContainer
-      className="grid"
-      $isInfoTransition={isInfoTransition}
-      $isFromPage={isFromPage}
-    >
-      <p className="hero slogan">
-        <span>Créateurs </span> <span>de&nbsp;</span>
-        <span> sites </span> <span>web </span> <span>engageants.</span>
-      </p>
-      <p className="hero businessDescription">
-        Nous concevons des interfaces web uniques pour des projets inspirants.
-        Fidèles aux valeurs de nos clients, nos créations se distinguent par
-        leur fluidité, leur performance et un référencement naturel (SEO)
-        optimisé.
-      </p>
-      {!isMobile && displayedProject !== null && (
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8">
+      <div className="md:col-span-1">
         <ProjectInfo
+          project={projects[currentProjectIndex]}
           displayedProject={displayedProject}
           isFromPage={isFromPage}
           isInfoTransition={isInfoTransition}
-          isMobile={isMobile}
+          isMobile={false}
         />
-      )}
-      <div className="projects-container">
-        {projects.map((project, index) => {
-          return (
-            <div key={index}>
+      </div>
+      <div className="md:col-span-4">
+        <div className="space-y-8">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className={cn(
+                !isFromPage && "animate-fade-in",
+                `[--animation-delay:${cascadeDelay(index + 2)}]`
+              )}
+            >
               <ProjectVisual
                 project={project}
+                displayedProject={displayedProject}
+                isProjectTransition={isProjectTransition}
                 isFromPage={isFromPage}
-                isMobile={isMobile}
+                isMobile={false}
                 index={index}
-                setCurrentProjectIndex={() =>
-                  setCurrentProject(projects[index])
-                }
-                priority={index === 0}
+                setCurrentProjectIndex={handleProjectChange}
               />
-              {isMobile && (
-                <ProjectInfo
-                  project={project}
-                  isFromPage={isFromPage}
-                  isInfoTransition={isInfoTransition}
-                  isMobile={isMobile}
-                />
-              )}
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
-    </StyledContainer>
+    </div>
   );
 }

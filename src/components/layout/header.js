@@ -1,80 +1,62 @@
-import styled, { css } from "styled-components";
+'use client';
+
 import CascadeLogo from "@/components/CascadeLogo";
-import { textApparitionAnim, cascadeDelay } from "@/styles/theme";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import noiseLight from "@/assets/images/noise-light.jpg";
 import noiseImage from "@/assets/images/noise.png";
+import { cn } from "@/lib/utils";
 
-const StyledHeader = styled.header`
-  position: sticky;
-  top: 0;
-  background-image: ${({ $isAnimation }) =>
-    $isAnimation ? `url(${noiseLight.src})` : `url(${noiseImage.src})`};
-  background-color: ${({ $bgColor }) => $bgColor};
-  z-index: 1;
-  padding: 15px 0 0;
-  @media ${(props) => props.theme.minWidth.sm} {
-    padding: 30px 0 0;
-  }
-  .animationMask {
-    display: flex;
-    align-items: end;
-    overflow-y: hidden;
-    padding: 0 0 15px;
-    @media ${(props) => props.theme.minWidth.sm} {
-      padding: 0 0 30px;
-      display: grid;
-    }
-  }
-  a {
-    ${({ $isAnimation, $isFromPage }) =>
-      $isAnimation &&
-      !$isFromPage &&
-      css`
-        transform: translateY(-50px);
-        animation: ${textApparitionAnim} 0.4s forwards;
-      `};
-    &.logo {
-      margin-right: auto;
-      @media ${(props) => props.theme.minWidth.sm} {
-        grid-column: 1 / 2;
-      }
-    }
-    &:not(.logo) {
-      ${cascadeDelay(3, 1.8)}
-    }
-    margin-right: 7px;
-    font-size: 14px;
-    @media ${({ theme }) => theme.minWidth.sm} {
-      margin-right: 0;
-      font-size: 18px;
-      line-height: 25px;
-    }
-    @media ${({ theme }) => theme.minWidth.md} {
-      font-size: 22px;
-      line-height: 30px;
-    }
-  }
-`;
+export default function Header({ isFromPage, isHomePage }) {
+  const router = useRouter();
+  const isAnimation = router.pathname === "/";
 
-export default function Header({ bgColor, fontColor, isFromPage }) {
-  const pathname = useRouter().pathname;
-  const isHomePage = pathname === "/";
   return (
-    <StyledHeader
-      $bgColor={bgColor}
-      $isAnimation={isHomePage}
-      $isFromPage={isFromPage}
+    <header
+      className="sticky top-0 z-10 pt-4 md:pt-8"
+      style={{
+        backgroundImage: `url(${isAnimation ? noiseLight.src : noiseImage.src})`,
+        backgroundColor: isHomePage ? "white" : "black",
+      }}
     >
-      <div className="grid animationMask">
-        <Link href="/" className="logo" aria-label="Home page">
-          <CascadeLogo color={fontColor} isAnimation={isHomePage} />
+      <div className="flex items-end overflow-y-hidden pb-4 md:pb-8 md:grid">
+        <Link
+          href="/"
+          className={cn(
+            "mr-auto md:col-start-1 md:col-end-2",
+            isAnimation && !isFromPage && "animate-fade-in-up"
+          )}
+        >
+          <CascadeLogo color={isHomePage ? "black" : "white"} isAnimation={isAnimation} />
         </Link>
-        <Link href="/expertise">Savoir-faire</Link>
-        <Link href="/about">À propos</Link>
-        <Link href="/contact">Contact</Link>
+        <Link
+          href="/expertise"
+          className={cn(
+            "mr-2 text-sm md:text-lg md:mr-0",
+            isAnimation && !isFromPage && "animate-fade-in-up [--animation-delay:1.8s]"
+          )}
+        >
+          Savoir-faire
+        </Link>
+        <Link
+          href="/about"
+          className={cn(
+            "mr-2 text-sm md:text-lg md:mr-0",
+            isAnimation && !isFromPage && "animate-fade-in-up [--animation-delay:1.9s]"
+          )}
+        >
+          À propos
+        </Link>
+        <Link
+          href="/contact"
+          className={cn(
+            "text-sm md:text-lg",
+            isAnimation && !isFromPage && "animate-fade-in-up [--animation-delay:2s]"
+          )}
+        >
+          Contact
+        </Link>
       </div>
-    </StyledHeader>
+    </header>
   );
 }

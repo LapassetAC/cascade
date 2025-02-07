@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './clipPaths.css';
+
+@layer base {
+  :root {
+    --animation-delay: 0s;
+  }
+  
+  * {
+    @apply box-border p-0 m-0;
+  }
+
+  html,
+  body {
+    @apply max-w-[100vw] min-h-screen bg-white;
+  }
+
+  a, p, button, h1, h2, h3, i, input, ul, li {
+    @apply tracking-tight text-base leading-5 font-medium no-underline list-none
+           md:text-lg md:leading-[25px]
+           lg:text-xl lg:leading-[30px];
+    letter-spacing: -0.05em;
+  }
+
+  h2 {
+    letter-spacing: -0.03em;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .grid {
+    @apply block mx-4
+           md:grid md:grid-cols-5 md:gap-8;
+  }
+
+  .email-mobile {
+    @apply block md:hidden;
+  }
+
+  .email-desktop {
+    @apply hidden md:block;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation-delay: var(--animation-delay);
+  }
+
+  .animate-fade-in-up {
+    animation-delay: var(--animation-delay);
+  }
+
+  .animate-drop-in {
+    animation-delay: var(--animation-delay);
+  }
+}
