@@ -25,7 +25,7 @@ export default {
         },
       },
       animation: {
-        textAppear: "textAppear 0.5s ease-out forwards",
+        textAppear: "textAppear 0.4s ease-out forwards",
       },
     },
   },

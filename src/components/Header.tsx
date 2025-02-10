@@ -2,7 +2,7 @@ import CascadeLogo from "@/components/CascadeLogo";
 
 const Header = () => {
   return (
-    <div>
+    <div className="overflow-y-hidden">
       <CascadeLogo />
     </div>
   );
