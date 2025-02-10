@@ -12,6 +12,21 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      keyframes: {
+        textAppear: {
+          "0%": {
+            transform: "translateY(-50px)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        textAppear: "textAppear 0.5s ease-out forwards",
+      },
     },
   },
   plugins: [],
