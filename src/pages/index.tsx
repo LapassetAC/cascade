@@ -2,13 +2,22 @@ import { client } from "@/sanity/lib/client";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import ProjectsSection from "@/components/ProjectsSection";
 import { Project } from "@/types/project";
-import Header from "@/components/Header";
+import CascadeLogo from "@/components/CascadeLogo";
 
 export default function Home({ projects }: { projects: Project[] }) {
   return (
     <div className="grid grid-cols-5 gap-10 p-10">
-      <Header />
-      <ProjectsSection projects={projects} />
+      <div className="overflow-y-hidden">
+        <CascadeLogo />
+      </div>
+      <div>
+        <h1 className="title">Créateurs de sites web engageants</h1>
+        <h2>
+          Nous concevons des sites web uniques et performants pour des marques
+          inspirantes.
+        </h2>
+        <ProjectsSection projects={projects} />
+      </div>
     </div>
   );
 }

@@ -1,22 +1,12 @@
-import { useState } from "react";
-
 export default function CascadeLogo() {
-  const containerClasses = `
-    flex justify-start animate-textAppear transform -translate-y-[50px]
-  `;
-
-  const svgClasses = `
-    h-[20px] sm:h-[30px] w-auto
-  `;
-
   const rectClasses = `
     transform -translate-y-[50px] opacity-0 animate-textAppear
   `;
 
   return (
-    <div className={containerClasses}>
+    <div className="animate-textAppear">
       <svg
-        className={svgClasses}
+        className="h-[20px] sm:h-[30px] w-auto"
         width="1032"
         height="214"
         viewBox="0 0 1032 214"
