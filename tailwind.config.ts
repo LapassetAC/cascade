@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        blue: "var(--blue)",
+      },
+      fontFamily: {
+        moderat: ["var(--font-moderat)"],
       },
       keyframes: {
         textAppear: {

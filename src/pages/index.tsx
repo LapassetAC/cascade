@@ -10,8 +10,12 @@ export default function Home({ projects }: { projects: Project[] }) {
       <div className="overflow-y-hidden">
         <CascadeLogo />
       </div>
-      <div>
-        <h1 className="title">Créateurs de sites web engageants</h1>
+      <div className="col-span-2 flex flex-col gap-10">
+        <h1 className="title ">
+          Créateurs de sites
+          <br />
+          web engageants
+        </h1>
         <h2>
           Nous concevons des sites web uniques et performants pour des marques
           inspirantes.
