@@ -22,6 +22,9 @@ export default function Home({ projects }: { projects: Project[] }) {
         </h2>
         <ProjectsSection projects={projects} />
       </div>
+      <div className="col-span-2 col-start-4 flex items-start justify-end">
+        <button className="font-bold">Contact</button>
+      </div>
     </div>
   );
 }

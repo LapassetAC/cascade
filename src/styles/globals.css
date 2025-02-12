@@ -4,7 +4,6 @@
 
 :root {
   --background: url("/white-background.jpg");
-  /* --white: #fcfaf7; */
   --foreground: #0b0bca;
   font-size: 20px;
   letter-spacing: -0.03em;
@@ -14,7 +13,6 @@
   :root {
     --background: #0b0bca;
     --foreground: #fcfaf7;
-    /* --blue: #0b0bca; */
   }
 }
 
