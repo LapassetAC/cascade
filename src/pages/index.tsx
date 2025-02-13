@@ -10,19 +10,18 @@ export default function Home({ projects }: { projects: Project[] }) {
       <div className="overflow-y-hidden">
         <CascadeLogo />
       </div>
-      <div className="col-span-2 flex flex-col gap-10">
+      <div className="col-span-3 flex flex-col gap-10">
         <h1 className="title ">
           Créateurs de sites
-          <br />
-          web engageants
+          <br /> web engageants
         </h1>
         <h2>
-          Nous concevons des sites web uniques et performants pour des marques
-          inspirantes.
+          Nous concevons des sites web uniques et performants pour
+          <br /> des marques inspirantes.
         </h2>
         <ProjectsSection projects={projects} />
       </div>
-      <div className="col-span-2 col-start-4 flex items-start justify-end">
+      <div className="col-start-5 flex items-start justify-end">
         <button className="font-bold">Contact</button>
       </div>
     </div>
