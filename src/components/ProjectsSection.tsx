@@ -1,7 +1,7 @@
 import { Project } from "@/types/project";
 import Image from "next/image";
 import { useRef } from "react";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
@@ -19,11 +19,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
     }
   };
 
-  const [refImage, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0,
-    rootMargin: "150px 0px 150px 0px",
-  });
+  // const [refImage, inView] = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0,
+  //   rootMargin: "150px 0px 150px 0px",
+  // });
 
   return (
     <section className="flex flex-col gap-y-16 pb-16">
@@ -46,7 +46,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 className="absolute object-cover"
                 src={image.asset.url}
                 fill
-                ref={refImage}
+                // ref={refImage}
                 sizes="(max-width: 768px) 100px, 800px"
                 quality={85}
                 alt={title}

@@ -7,11 +7,11 @@ const SkillsSection = () => {
         <h2 className="title mb-10">Revitalisons votre présence digitale.</h2>
         <p>
           Nous accompagnons nos clients à travers toutes les étapes de leur
-          projet : de la conception du site jusqu'à sa mise en ligne. Afin de
-          répondre précisément aux besoins et à l'autonomie de chaque client,
-          nous privilégions une approche personnalisée en créant des designs de
-          site uniques et en développant l'outils de gestion du contenu (CMS)
-          sur-mesure.
+          projet : de la conception du site jusqu&apos;à sa mise en ligne. Afin
+          de répondre précisément aux besoins et à l&apos;autonomie de chaque
+          client, nous privilégions une approche personnalisée en créant des
+          designs de site uniques et en développant l&apos;outils de gestion du
+          contenu (CMS) sur-mesure.
         </p>
       </div>
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">

@@ -5,7 +5,11 @@ export interface Project {
   url: string;
   image: {
     dominantColor: string;
-    asset: any;
+    asset: {
+      url: string;
+      _ref: string;
+      _type: "reference";
+    };
   };
   videoUrl: string;
   category: string;
