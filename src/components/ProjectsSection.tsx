@@ -53,20 +53,20 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 priority={index === 0}
               />
               <div className="overflow-hidden">
-                {inView && (
-                  <video
-                    ref={videoRef}
-                    className="hidden sm:block group-hover:translate-y-0 transition-transform w-full relative p-8 md:transition-transform md:transform md:-translate-y-full"
-                    preload="auto"
-                    playsInline
-                    loop
-                    muted
-                    autoPlay
-                  >
-                    <source src={videoUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                )}
+                {/* {inView && ( */}
+                <video
+                  ref={videoRef}
+                  className="hidden sm:block group-hover:translate-y-0 transition-transform w-full relative p-8 md:transition-transform md:transform md:-translate-y-full"
+                  preload="auto"
+                  playsInline
+                  loop
+                  muted
+                  autoPlay
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* )} */}
               </div>
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4 text-right">

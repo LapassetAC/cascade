@@ -16,7 +16,7 @@ const SkillsSection = () => {
       </div>
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
         <SkillsLogo />
-        <ol className="col-span-2 grid grid-cols-2 gap-8">
+        <ol id="skills-list" className="col-span-2 grid grid-cols-2 gap-16">
           <li className="text-right font-bold">Identité</li>
           <ul>
             <li>création de logo</li>
