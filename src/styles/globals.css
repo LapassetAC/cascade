@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: url("/white-background.jpg");
+  /* --background: url("/white-background.jpg"); */
+  --background: #fcfaf7;
   --foreground: #0b0bca;
   font-size: 20px;
   letter-spacing: -0.03em;

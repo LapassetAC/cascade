@@ -26,7 +26,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   });
 
   return (
-    <div className="flex flex-col gap-y-20">
+    <section className="flex flex-col gap-y-16 pb-16">
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         return (
@@ -83,7 +83,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           </a>
         );
       })}
-    </div>
+    </section>
   );
 };
 
