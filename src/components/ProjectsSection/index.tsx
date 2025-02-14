@@ -1,6 +1,6 @@
 import { Project } from "@/types/project";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 
@@ -26,21 +26,22 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   });
 
   return (
-    <div className="grid gap-8">
+    <div className="flex flex-col gap-y-20">
       {projects.map((project, index) => {
-        const { title, image, url, videoUrl } = project;
+        const { title, image, url, videoUrl, category, services } = project;
         return (
-          <div className="col-span-3" key={project._id}>
-            <a
-              href=""
-              className="group relative"
-              onMouseEnter={() => {
-                handleMouseEnter();
-              }}
-              onMouseLeave={() => {
-                handleMouseLeave();
-              }}
-            >
+          <a
+            key={project._id}
+            href={url}
+            className="col-span-3 group"
+            onMouseEnter={() => {
+              handleMouseEnter();
+            }}
+            onMouseLeave={() => {
+              handleMouseLeave();
+            }}
+          >
+            <div className="relative">
               <Image
                 className="absolute object-cover"
                 src={image.asset.url}
@@ -51,7 +52,6 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 alt={title}
                 priority={index === 0}
               />
-
               <div className="overflow-hidden">
                 {inView && (
                   <video
@@ -68,8 +68,19 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                   </video>
                 )}
               </div>
-            </a>
-          </div>
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-4 text-right">
+              <h3 className="font-bold">{title}</h3>
+              <p>{category}</p>
+              <ul>
+                {services.map((service, i) => (
+                  <li key={i}>
+                    <p className="">{service}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </a>
         );
       })}
     </div>
