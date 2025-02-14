@@ -1,6 +1,7 @@
 import { Project } from "@/types/project";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,16 +30,22 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
     }
   };
 
+  const [refImage, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0,
+    rootMargin: "150px 0px 150px 0px",
+  });
+
   return (
     <div className="grid gap-8">
       {/* <div> */}
-      {projects.map((project) => {
+      {projects.map((project, index) => {
         const { title, image, url, videoUrl } = project;
         return (
           <div className="col-span-3" key={project._id}>
             <a
               href=""
-              className="group"
+              className="group relative"
               onMouseEnter={() => {
                 handleMouseEnter();
               }}
@@ -47,30 +54,31 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               }}
             >
               <Image
-                className="absolute"
+                className="absolute object-cover"
                 src={image.asset.url}
-                // ref={refImage}
+                fill
+                ref={refImage}
                 sizes="(max-width: 768px) 100px, 800px"
-                width={800}
-                height={447}
                 quality={85}
                 alt={title}
-                // priority={priority}
+                priority={index === 0}
               />
 
               <div className="overflow-hidden">
-                <video
-                  ref={videoRef}
-                  className="hidden sm:block group-hover:translate-y-0 transition-transform w-full relative p-8 md:transition-transform md:transform md:-translate-y-full"
-                  preload="auto"
-                  playsInline
-                  loop
-                  muted
-                  autoPlay
-                >
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {inView && (
+                  <video
+                    ref={videoRef}
+                    className="hidden sm:block group-hover:translate-y-0 transition-transform w-full relative p-8 md:transition-transform md:transform md:-translate-y-full"
+                    preload="auto"
+                    playsInline
+                    loop
+                    muted
+                    autoPlay
+                  >
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </div>
             </a>
           </div>
