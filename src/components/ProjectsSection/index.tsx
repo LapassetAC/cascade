@@ -2,22 +2,11 @@ import { Project } from "@/types/project";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useWindowSize();
   const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      screenWidth < 768 ? setIsMobile(true) : setIsMobile(false);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const handleMouseEnter = () => {
     if (!isMobile && videoRef.current) {
@@ -38,7 +27,6 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
   return (
     <div className="grid gap-8">
-      {/* <div> */}
       {projects.map((project, index) => {
         const { title, image, url, videoUrl } = project;
         return (
