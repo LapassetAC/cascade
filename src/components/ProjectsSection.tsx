@@ -1,72 +1,84 @@
 import { Project } from "@/types/project";
 import Image from "next/image";
-import { useRef } from "react";
-// import { useInView } from "react-intersection-observer";
+import { useRef, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
-  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const handleMouseEnter = () => {
-    if (!isMobile && videoRef.current) {
-      videoRef.current.play();
-    }
-  };
-  const handleMouseLeave = () => {
-    if (!isMobile && videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
+  // Create an array of video refs
+  const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
 
-  // const [refImage, inView] = useInView({
-  //   triggerOnce: true,
-  //   threshold: 0,
-  //   rootMargin: "150px 0px 150px 0px",
-  // });
+  const projectRefs = projects.map(() =>
+    useInView({
+      triggerOnce: false,
+      threshold: 0.4,
+      rootMargin: "-100px",
+    })
+  );
 
   return (
     <section className="flex flex-col gap-y-16 pb-16">
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
+        const [inViewRef, inView] = projectRefs[index];
+        const videoRef = videoRefs[index];
+
+        useEffect(() => {
+          console.log(`Video ${index} inView:`, inView);
+          const videoElement = videoRef.current;
+
+          if (!videoElement) {
+            console.log(`Video ${index} element not found`);
+            return;
+          }
+
+          if (inView) {
+            console.log(`Attempting to play video ${index}`);
+            videoElement
+              .play()
+              .then(() => console.log(`Video ${index} playing successfully`))
+              .catch((error) =>
+                console.error(`Video ${index} play error:`, error)
+              );
+          } else {
+            videoElement.pause();
+          }
+        }, [inView, videoRef, index]);
+
+        // Combine the refs
+        const setRefs = (element: HTMLVideoElement | null) => {
+          // Set the video ref
+          videoRef.current = element;
+          // Set the inView ref
+          inViewRef(element);
+        };
+
         return (
-          <a
-            key={project._id}
-            href={url}
-            className="col-span-3 group"
-            onMouseEnter={() => {
-              handleMouseEnter();
-            }}
-            onMouseLeave={() => {
-              handleMouseLeave();
-            }}
-          >
+          <a key={project._id} href={url} className="col-span-3">
             <div className="relative">
               <Image
                 className="absolute object-cover"
                 src={image.asset.url}
                 fill
-                // ref={refImage}
                 sizes="(max-width: 768px) 100px, 800px"
                 quality={85}
                 alt={title}
                 priority={index === 0}
               />
               <div className="overflow-hidden">
-                {/* {inView && ( */}
                 <video
-                  ref={videoRef}
-                  className="hidden sm:block group-hover:translate-y-0 transition-transform w-full relative p-8 md:transition-transform md:transform md:-translate-y-full"
-                  preload="auto"
+                  ref={setRefs}
+                  className="hidden sm:block w-full relative p-8"
                   playsInline
                   loop
                   muted
-                  autoPlay
+                  preload="metadata"
                 >
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                {/* )} */}
               </div>
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4 text-right">
