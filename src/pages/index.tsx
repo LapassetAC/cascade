@@ -5,6 +5,7 @@ import { Project } from "@/types/project";
 import CascadeLogo from "@/components/CascadeLogo";
 import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
+import Footer from "@/components/Footer";
 
 export default function Home({ projects }: { projects: Project[] }) {
   return (
@@ -30,6 +31,7 @@ export default function Home({ projects }: { projects: Project[] }) {
       </div>
       <SkillsSection />
       <AboutSection />
+      <Footer />
     </>
   );
 }

@@ -36,7 +36,6 @@ const SkillsLogo = () => {
               trigger: skills[index],
               start: "top center",
               end: "bottom center",
-              //   scrub: 1,
               //   markers: true, // Pour débugger
               toggleActions: "play none none reverse",
             },
