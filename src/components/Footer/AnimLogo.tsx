@@ -15,7 +15,7 @@ function AnimLogo() {
       { opacity: 0 },
       {
         opacity: 1,
-        stagger: 0.2,
+        stagger: 0.3,
         scrollTrigger: {
           trigger: "#anim-logo",
           start: "top bottom",
