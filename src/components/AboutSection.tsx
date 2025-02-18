@@ -15,7 +15,7 @@ const AboutSection = () => {
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
         <div className="flex items-start justify-between">
           <img
-            src="/adrien-illustration.svg"
+            src="./imgs/adrien-illustration.svg"
             alt="Adrien illustration"
             className="flex-shrink w-full max-w-[100px] h-auto mt-2"
           />
@@ -34,7 +34,7 @@ const AboutSection = () => {
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
         <div className="flex items-start justify-between">
           <img
-            src="/clement-illustration.svg"
+            src="./imgs/clement-illustration.svg"
             alt="Clément illustration"
             className="flex-shrink w-full max-w-[70px] h-auto mt-2"
           />
