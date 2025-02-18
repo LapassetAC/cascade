@@ -3,28 +3,42 @@
 @tailwind utilities;
 
 :root {
-  /* --background: url("/white-background.jpg"); */
-  --background: #fcfaf7;
-  --foreground: #0b0bca;
+  --background-color: #fcfaf7;
+  --foreground-color: #0b0bca;
+  --background-noise: url("/imgs/white-noise.jpg");
+  --foreground-noise: url("/imgs/blue-noise.jpg");
   font-size: 20px;
   letter-spacing: -0.03em;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b0bca;
-    --foreground: #fcfaf7;
+    --background-color: #0b0bca;
+    --foreground-color: #fcfaf7;
+    --background-noise: url("/imgs/blue-noise.jpg");
+    --foreground-noise: url("/imgs/white-noise.jpg");
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground-color);
+  background: var(--background-noise);
+  font-family: Helvetica, sans-serif;
 }
 
 .title {
   font-size: 64px;
   line-height: 67px;
   letter-spacing: -0.05em;
+}
+
+.text-textured {
+  background-image: var(--foreground-texture);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /* Fallback pour les navigateurs qui ne supportent pas background-clip */
+  @supports not (background-clip: text) {
+    color: var(--foreground-color);
+  }
 }

@@ -2,7 +2,7 @@ import SkillsLogo from "./SkillsLogo";
 
 const SkillsSection = () => {
   return (
-    <section className="grid grid-cols-5 gap-8 px-8 py-32 bg-[var(--foreground)] text-[var(--background)]">
+    <section className="grid grid-cols-5 gap-8 px-8 py-32 bg-[var(--foreground-color)] text-[var(--background-color)]">
       <div className="col-start-2 col-span-2 mb-16">
         <h2 className="title mb-10">Revitalisons votre présence digitale.</h2>
         <p>

@@ -10,7 +10,7 @@ export default function CascadeLogo() {
         width="1134"
         height="246"
         viewBox="0 0 1134 246"
-        fill="var(--foreground)"
+        fill="var(--foreground-color)"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
