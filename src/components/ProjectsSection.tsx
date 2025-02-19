@@ -7,7 +7,6 @@ import useWindowSize from "@/hooks/useWindowSize";
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
 
-  // Create an array of video refs
   const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
 
   const projectRefs = projects.map(() =>
@@ -70,7 +69,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               <div className="overflow-hidden">
                 <video
                   ref={setRefs}
-                  className="hidden sm:block w-full relative p-8"
+                  className="w-full relative p-4 md:p-8"
                   playsInline
                   loop
                   muted
@@ -81,16 +80,34 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 </video>
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-3 gap-4 text-right">
-              <h3 className="font-bold">{title}</h3>
-              <p>{category}</p>
-              <ul>
-                {services.map((service, i) => (
-                  <li key={i}>
-                    <p className="">{service}</p>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex justify-between mt-4 md:grid grid-cols-3 gap-4 md:text-right">
+              <div>
+                <h3 className="font-bold">{title}</h3>
+                <p>{category}</p>
+                <ul>
+                  {services.map((service, i) => (
+                    <li key={i}>
+                      <p className="">{service}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <a
+                href={url}
+                className="md:hidden text-right flex items-start gap-2 font-bold"
+              >
+                Voir
+                <svg
+                  className="mt-[6px]"
+                  width="9"
+                  height="9"
+                  viewBox="0 0 9 9"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M8.82107 1.00022C8.82107 0.586008 8.48528 0.250222 8.07107 0.250222L1.32107 0.250221C0.906854 0.250221 0.571068 0.586008 0.571068 1.00022C0.571068 1.41444 0.906854 1.75022 1.32107 1.75022H7.32107V7.75022C7.32107 8.16443 7.65685 8.50022 8.07107 8.50022C8.48528 8.50022 8.82107 8.16443 8.82107 7.75022L8.82107 1.00022ZM1.53033 8.60162L8.6014 1.53055L7.54074 0.469891L0.46967 7.54096L1.53033 8.60162Z" />
+                </svg>
+              </a>
             </div>
           </a>
         );

@@ -43,6 +43,8 @@ body {
     letter-spacing: -0.03em;
     @apply text-[16px];
     @apply md:text-[20px];
+    @apply leading-[22px];
+    @apply md:leading-[30px];
   }
 }
 
