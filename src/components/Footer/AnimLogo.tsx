@@ -41,7 +41,7 @@ function AnimLogo() {
       viewBox="0 0 243 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="fill-current w-full md:w-[105%] h-auto relative md:right-[calc(5%+40px)] bottom-8"
+      className="fill-current w-full md:w-full h-auto relative md:right-[calc(1%+40px)] bottom-8"
     >
       <path d="M32.1669 39.5H59.0005V30.5C59.0005 13.9315 45.569 0.5 29.0005 0.5H0.000488281V1.87841C14.7952 10.0433 26.3253 23.4392 32.1669 39.5Z" />
       <path d="M65.4932 77.5H105V30.5C105 13.9315 91.5688 0.500031 75.0003 0.500031H51.0003V1.81357C59.6869 7.06901 65.4932 16.6065 65.4932 27.5V77.5Z" />

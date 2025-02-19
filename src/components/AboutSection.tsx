@@ -18,7 +18,7 @@ const AboutSection = () => {
             width="139"
             height="103"
             viewBox="0 0 139 103"
-            className="fill-current flex-shrink w-[80px] md:max-w-[100px] h-auto mt-2"
+            className="fill-current flex-shrink w-[80px] md:w-[110px] h-auto mt-2 mr-4"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M138.031 14.3303L138.031 0.412111L81.311 0.412113C75.474 0.412114 70.7421 5.14396 70.7421 10.981L70.7421 19.7884L71.0009 19.7884C72.8023 16.5339 76.2709 14.3303 80.2541 14.3303L138.031 14.3303Z" />
@@ -55,7 +55,7 @@ const AboutSection = () => {
             height="93"
             viewBox="0 0 85 93"
             xmlns="http://www.w3.org/2000/svg"
-            className="fill-current flex-shrink w-[55px] md:max-w-[70px] h-auto mt-2"
+            className="fill-current flex-shrink w-[55px] md:w-[75px] h-auto mt-2 mr-4"
           >
             <path d="M67.8031 20.5164L67.8031 6.59815L11.0834 6.59815C5.24641 6.59815 0.514564 11.33 0.514564 17.167L0.514565 25.9744L0.773347 25.9744C2.57477 22.7199 6.04334 20.5164 10.0266 20.5164L67.8031 20.5164Z" />
             <path d="M54.4159 36.722L54.4159 22.8038L11.0834 22.8038C5.24642 22.8038 0.514565 27.5356 0.514565 33.3727L0.514565 42.1801L0.773348 42.1801C2.57477 38.9255 6.04334 36.722 10.0266 36.722L54.4159 36.722Z" />

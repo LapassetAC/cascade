@@ -4,10 +4,9 @@ const Footer = () => {
   return (
     <div id="footer" className="md:relative mt-32 p-4 md:p-0">
       <AnimLogo />
-      <div className="md:grid grid-cols-5 gap-8 md:pl-8 md:absolute bottom-8 md:left-0 ">
-        <div className="flex flex-col gap-4">
+      <div className="md:grid grid-cols-5 gap-8 md:px-8 md:absolute bottom-8 md:left-0 w-full">
+        <div className="flex flex-col gap-4 col-span-2 xl:col-span-1">
           <a href="mailto:contact@cascadestudio.fr">
-            {/* <div className="hidden md:block">Nous écrire</div> */}
             <div>contact@cascadestudio.fr</div>
           </a>
           <a href="tel:+33674626476">06 74 62 64 76</a>
