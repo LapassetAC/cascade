@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section className="grid grid-cols-5 gap-8 px-8 py-32">
+    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32">
       <div className="col-start-2 col-span-2 mb-16">
         <h2 className="title mb-10">Deux frères, deux artisans du web.</h2>
         <p>
@@ -12,13 +12,13 @@ const AboutSection = () => {
           une structure de prix réduite et transparente.
         </p>
       </div>
-      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
-        <div className="flex items-start justify-between">
+      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8">
+        <div className="md:flex items-start justify-between">
           <svg
             width="139"
             height="103"
             viewBox="0 0 139 103"
-            className="fill-current flex-shrink w-full max-w-[100px] h-auto mt-2"
+            className="fill-current flex-shrink w-[80px] md:max-w-[100px] h-auto mt-2"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M138.031 14.3303L138.031 0.412111L81.311 0.412113C75.474 0.412114 70.7421 5.14396 70.7421 10.981L70.7421 19.7884L71.0009 19.7884C72.8023 16.5339 76.2709 14.3303 80.2541 14.3303L138.031 14.3303Z" />
@@ -32,26 +32,30 @@ const AboutSection = () => {
             <path d="M41.0051 39.6812L41.0051 53.5994L57.5631 53.5994C63.4001 53.5994 68.1319 48.8676 68.1319 43.0305L68.1319 34.5754L67.6692 34.5754C65.8177 37.6357 62.4577 39.6812 58.62 39.6812L41.0051 39.6812Z" />
             <path d="M54.3924 27.9405L54.3924 37.3939L57.5631 37.3939C63.4001 37.3939 68.132 32.662 68.132 26.825L68.132 16.6084L67.6463 16.6084C64.7699 21.8205 60.0506 25.8825 54.3924 27.9405Z" />
           </svg>
-          <h3 className="ml-auto font-bold ">Adrien</h3>
+          <h3 className="ml-auto font-bold md:block hidden">Adrien</h3>
         </div>
-        <p className="col-span-2">
-          Initialement formé à l’informatique, Adrien a enrichi son parcours par
-          un Master en Design Graphique et Intéractivité à l’École Supérieure
-          d’Art et de Design Graphique Le Havre-Rouen afin d’acquérir une double
-          compétence en design et développement web.
-          <br /> Avec plus de 10 ans d'expérience en agence puis en tant que
-          freelance, il excelle grâce à sa veille des tendances design et
-          technologies web, assurant une innovation constante dans ses projets.
-        </p>
+        <div className="col-span-2">
+          <h3 className="ml-auto font-bold md:hidden mb-2">Adrien</h3>
+          <p>
+            Initialement formé à l'informatique, Adrien a enrichi son parcours
+            par un Master en Design Graphique et Intéractivité à l'École
+            Supérieure d'Art et de Design Graphique Le Havre-Rouen afin
+            d'acquérir une double compétence en design et développement web.
+            <br /> Avec plus de 10 ans d'expérience en agence puis en tant que
+            freelance, il excelle grâce à sa veille des tendances design et
+            technologies web, assurant une innovation constante dans ses
+            projets.
+          </p>
+        </div>
       </div>
-      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
-        <div className="flex items-start justify-between">
+      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8 mt-16 md:mt-0">
+        <div className="md:flex items-start justify-between">
           <svg
             width="85"
             height="93"
             viewBox="0 0 85 93"
             xmlns="http://www.w3.org/2000/svg"
-            className="fill-current flex-shrink w-full max-w-[70px] h-auto mt-2"
+            className="fill-current flex-shrink w-[55px] md:max-w-[70px] h-auto mt-2"
           >
             <path d="M67.8031 20.5164L67.8031 6.59815L11.0834 6.59815C5.24641 6.59815 0.514564 11.33 0.514564 17.167L0.514565 25.9744L0.773347 25.9744C2.57477 22.7199 6.04334 20.5164 10.0266 20.5164L67.8031 20.5164Z" />
             <path d="M54.4159 36.722L54.4159 22.8038L11.0834 22.8038C5.24642 22.8038 0.514565 27.5356 0.514565 33.3727L0.514565 42.1801L0.773348 42.1801C2.57477 38.9255 6.04334 36.722 10.0266 36.722L54.4159 36.722Z" />
@@ -64,16 +68,19 @@ const AboutSection = () => {
             <path d="M57.2291 23.0728L57.2291 36.991L73.787 36.991C79.624 36.991 84.3559 32.2592 84.3559 26.4221L84.3559 17.967L83.8931 17.967C82.0416 21.0273 78.6816 23.0728 74.8439 23.0728L57.2291 23.0728Z" />
             <path d="M70.6163 11.3321L70.6163 20.7855L73.787 20.7855C79.624 20.7855 84.3559 16.0536 84.3559 10.2166L84.3559 0L83.8703 5.79083e-09C80.9938 5.21212 76.2745 9.27413 70.6163 11.3321Z" />
           </svg>
-          <h3 className="ml-auto font-bold ">Clément</h3>
+          <h3 className="ml-auto font-bold md:block hidden">Clément</h3>
         </div>
-        <p className="col-span-2">
-          Diplômé de l’EDHEC Business School avec une expérience en conseil chez
-          Sopra Steria et Deloitte, Clément s’est orienté vers le domaine du web
-          poussé par sa passion du code et son désir de créativité.
-          <br /> Il mise sur une écoute attentive et une communication claire
-          pour guider ses clients, tirant parti de son expérience variée pour
-          répondre avec agilité et pédagogie à leurs besoins.
-        </p>
+        <div className="col-span-2">
+          <h3 className="ml-auto font-bold md:hidden mb-2">Clément</h3>
+          <p>
+            Diplômé de l'EDHEC Business School avec une expérience en conseil
+            chez Sopra Steria et Deloitte, Clément s'est orienté vers le domaine
+            du web poussé par sa passion du code et son désir de créativité.
+            <br /> Il mise sur une écoute attentive et une communication claire
+            pour guider ses clients, tirant parti de son expérience variée pour
+            répondre avec agilité et pédagogie à leurs besoins.
+          </p>
+        </div>
       </div>
     </section>
   );

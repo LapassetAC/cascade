@@ -88,7 +88,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               </div>
             </div>
             <div className="flex justify-between mt-4 md:block">
-              <div className="grid grid-cols-3 gap-4 md:text-right">
+              <div className="md:grid grid-cols-3 gap-4 md:text-right">
                 <h3 className="font-bold">{title}</h3>
                 <p>{category}</p>
                 <ul>
