@@ -26,26 +26,26 @@ export default function Home({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
-        <header
-          className="sticky top-0 py-4 flex justify-between items-center md:hidden md:col-span-1 z-10"
-          style={{
-            backgroundImage: "var(--background-noise)",
-          }}
+      <header
+        className="sticky top-0 p-4 flex justify-between items-center md:hidden md:col-span-1 z-10"
+        style={{
+          backgroundImage: "var(--background-noise)",
+        }}
+      >
+        <button
+          onClick={scrollToTop}
+          className="overflow-hidden sticky top-4 -m-4 p-4"
         >
-          <button
-            onClick={scrollToTop}
-            className="overflow-hidden sticky top-4 -m-4 p-4"
-          >
-            <CascadeLogo />
-          </button>
-          <button
-            className="font-bold -m-4 p-4 md:hidden"
-            onClick={scrollToFooter}
-          >
-            Contact
-          </button>
-        </header>
+          <CascadeLogo />
+        </button>
+        <button
+          className="font-bold -m-4 p-4 md:hidden"
+          onClick={scrollToFooter}
+        >
+          Contact
+        </button>
+      </header>
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         <button
           onClick={scrollToTop}
           className="hidden md:block md:col-span-1 overflow-hidden sticky top-4 -m-4 p-4"

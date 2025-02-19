@@ -2,8 +2,8 @@ import SkillsLogo from "./SkillsLogo";
 
 const SkillsSection = () => {
   return (
-    <section className="grid grid-cols-5 gap-8 px-8 py-32 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca]">
-      <div className="col-start-2 col-span-2 mb-16">
+    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-32 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca]">
+      <div className="col-start-2 col-span-2 mb-8 md:mb-16">
         <h2 className="title mb-10">Revitalisons votre présence digitale.</h2>
         <p>
           Nous accompagnons nos clients à travers toutes les étapes de leur
@@ -14,23 +14,23 @@ const SkillsSection = () => {
           contenu (CMS) sur-mesure.
         </p>
       </div>
-      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
+      <div className="col-start-2 col-span-3 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         <SkillsLogo />
         <ol
           id="skills-list"
-          className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-16"
+          className="md:col-span-2 md:grid md:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-16"
         >
-          <li className="text-right font-bold">
-            <span className="font-normal mr-4">1</span>
+          <li className="md:text-right font-bold mt-8 md:mt-0">
+            <span className="font-normal mr-2 md:mr-4">1.</span>
             Identité
           </li>
           <ul>
             <li>création de logo</li>
             <li>Charte graphique</li>
-            <li>rédaction de contenu</li>
+            <li>rédaction de contenu </li>
           </ul>
-          <li className="text-right font-bold">
-            <span className="font-normal mr-4">2</span>
+          <li className="md:text-right font-bold mt-8 md:mt-0">
+            <span className="font-normal mr-2 md:mr-4">2.</span>
             Code
           </li>
           <ul>
@@ -39,8 +39,8 @@ const SkillsSection = () => {
             <li>déploiement</li>
             <li>hébergement</li>
           </ul>
-          <li className="text-right font-bold">
-            <span className="font-normal mr-4">3</span>
+          <li className="md:text-right font-bold mt-8 md:mt-0">
+            <span className="font-normal mr-2 md:mr-4">3.</span>
             Conception
           </li>
           <ul>
@@ -49,8 +49,8 @@ const SkillsSection = () => {
             <li>maquettage</li>
             <li>prototypage</li>
           </ul>
-          <li className="text-right font-bold">
-            <span className="font-normal mr-4">4</span>
+          <li className="md:text-right font-bold mt-8 md:mt-0">
+            <span className="font-normal mr-2 md:mr-4">4.</span>
             Produits
           </li>
           <ul>
@@ -59,8 +59,8 @@ const SkillsSection = () => {
             <li>blogs</li>
             <li>applications Web</li>
           </ul>
-          <li className="text-right font-bold">
-            <span className="font-normal mr-4">5</span>
+          <li className="md:text-right font-bold mt-8 md:mt-0">
+            <span className="font-normal mr-2 md:mr-4">5.</span>
             Stratégie digitale
           </li>
           <ul>
