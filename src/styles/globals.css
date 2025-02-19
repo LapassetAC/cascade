@@ -26,19 +26,26 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-.title {
-  font-size: 64px;
-  line-height: 67px;
-  letter-spacing: -0.05em;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  li,
+  label,
+  input,
+  textarea {
+    letter-spacing: -0.05em;
+    line-height: 30px;
+  }
 }
 
-.text-textured {
-  background-image: var(--foreground-texture);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  /* Fallback pour les navigateurs qui ne supportent pas background-clip */
-  @supports not (background-clip: text) {
-    color: var(--foreground-color);
-  }
+.title {
+  font-size: 3.2rem;
+  line-height: 1.1;
 }
