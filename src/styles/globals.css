@@ -7,8 +7,6 @@
   --foreground-color: #0b0bca;
   --background-noise: url("/imgs/white-noise.jpg");
   --foreground-noise: url("/imgs/blue-noise.jpg");
-  font-size: 20px;
-  letter-spacing: -0.03em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,14 +38,17 @@ body {
   label,
   input,
   textarea {
-    letter-spacing: -0.05em;
     line-height: 30px;
     font-weight: 400;
+    letter-spacing: -0.03em;
+    @apply text-[16px];
+    @apply md:text-[20px];
   }
 }
 
 .title {
-  font-size: 3.2rem;
+  @apply text-[36px];
+  @apply md:text-[64px];
   line-height: 1.1;
   margin-top: -0.6rem;
 }

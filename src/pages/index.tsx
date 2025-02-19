@@ -26,25 +26,44 @@ export default function Home({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-5 gap-8 p-8 items-start ">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
+        <header
+          className="sticky top-0 py-4 flex justify-between items-center md:hidden md:col-span-1 z-10"
+          style={{
+            backgroundImage: "var(--background-noise)",
+          }}
+        >
+          <button
+            onClick={scrollToTop}
+            className="overflow-hidden sticky top-4 -m-4 p-4"
+          >
+            <CascadeLogo />
+          </button>
+          <button
+            className="font-bold -m-4 p-4 md:hidden"
+            onClick={scrollToFooter}
+          >
+            Contact
+          </button>
+        </header>
         <button
           onClick={scrollToTop}
-          className="overflow-y-hidden sticky top-4  -m-4 p-4"
+          className="hidden md:block md:col-span-1 overflow-hidden sticky top-4 -m-4 p-4"
         >
           <CascadeLogo />
         </button>
-        <div className="col-span-3 flex flex-col gap-8">
+        <div className="md:col-span-3 flex flex-col gap-4 md:gap-8">
           <h1 className="title">
             Créateurs de sites
-            <br /> web engageants
+            <br className="hidden lg:block" /> web engageants
           </h1>
           <h2 className="leading-snug">
             Nous concevons des sites web uniques et performants pour
-            <br /> des marques inspirantes.
+            <br className="hidden lg:block" /> des marques inspirantes.
           </h2>
           <ProjectsSection projects={projects} />
         </div>
-        <div className="col-start-5 flex items-start justify-end sticky top-8">
+        <div className="hidden md:flex md:col-start-5 items-start justify-end sticky top-8">
           <button className="font-bold -m-4 p-4" onClick={scrollToFooter}>
             Contact
           </button>

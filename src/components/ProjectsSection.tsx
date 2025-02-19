@@ -19,7 +19,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   );
 
   return (
-    <section className="flex flex-col gap-y-16 pb-16">
+    <section className="col-span-3 flex flex-col gap-y-16 pb-16">
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         const [inViewRef, inView] = projectRefs[index];
