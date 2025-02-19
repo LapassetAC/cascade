@@ -2,9 +2,9 @@ import AnimLogo from "./AnimLogo";
 
 const Footer = () => {
   return (
-    <div id="footer" className="relative mt-32">
+    <div id="footer" className="md:relative mt-32 p-4 md:p-0">
       <AnimLogo />
-      <div className="grid grid-cols-5 gap-8 pl-8 absolute bottom-8 left-0 ">
+      <div className="md:grid grid-cols-5 gap-8 md:pl-8 md:absolute bottom-8 md:left-0 ">
         <div className="flex flex-col gap-4">
           <a href="mailto:contact@cascadestudio.fr">
             {/* <div className="hidden md:block">Nous écrire</div> */}

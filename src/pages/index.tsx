@@ -27,7 +27,7 @@ export default function Home({ projects }: { projects: Project[] }) {
   return (
     <>
       <header
-        className="sticky top-0 p-4 flex justify-between items-center md:hidden md:col-span-1 z-10"
+        className="sticky top-0 mb-4 md:mb-0 p-4 flex justify-between items-center md:hidden md:col-span-1 z-10"
         style={{
           backgroundImage: "var(--background-noise)",
         }}
@@ -57,7 +57,7 @@ export default function Home({ projects }: { projects: Project[] }) {
             Créateurs de sites
             <br className="hidden lg:block" /> web engageants
           </h1>
-          <h2 className="leading-snug">
+          <h2 className="leading-snug mb-8 md:mb-0">
             Nous concevons des sites web uniques et performants pour
             <br className="hidden lg:block" /> des marques inspirantes.
           </h2>
