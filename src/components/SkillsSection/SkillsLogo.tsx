@@ -22,22 +22,24 @@ const SkillsLogo = () => {
 
     const skills = document.querySelectorAll("#skills-list > li");
     paths.forEach((path, index) => {
-      console.log(skills);
       if (skills[index]) {
         gsap.fromTo(
           path,
           {
+            opacity: 0,
             scaleY: 0,
           },
           {
+            opacity: 1,
             scaleY: 1,
             duration: 0.3,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: skills[index],
               start: "top center",
               end: "bottom center",
-              //   markers: true, // Pour débugger
               toggleActions: "play none none reverse",
+              // markers: true, // Pour débugger
             },
           }
         );

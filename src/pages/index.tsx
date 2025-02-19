@@ -38,7 +38,7 @@ export default function Home({ projects }: { projects: Project[] }) {
             Créateurs de sites
             <br /> web engageants
           </h1>
-          <h2>
+          <h2 className="leading-snug">
             Nous concevons des sites web uniques et performants pour
             <br /> des marques inspirantes.
           </h2>

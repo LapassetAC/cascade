@@ -16,36 +16,53 @@ const SkillsSection = () => {
       </div>
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-8">
         <SkillsLogo />
-        <ol id="skills-list" className="col-span-2 grid grid-cols-2 gap-16">
-          <li className="text-right font-bold">Identité</li>
+        <ol
+          id="skills-list"
+          className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-16"
+        >
+          <li className="text-right font-bold">
+            <span className="font-normal mr-4">1</span>
+            Identité
+          </li>
           <ul>
             <li>création de logo</li>
             <li>Charte graphique</li>
-            <li>Design UI/UX</li>
             <li>rédaction de contenu</li>
           </ul>
-          <li className="text-right font-bold">Code</li>
+          <li className="text-right font-bold">
+            <span className="font-normal mr-4">2</span>
+            Code
+          </li>
           <ul>
             <li>référencement (SEO)</li>
             <li>gestion du contenu</li>
             <li>déploiement</li>
             <li>hébergement</li>
           </ul>
-          <li className="text-right font-bold">Identité</li>
+          <li className="text-right font-bold">
+            <span className="font-normal mr-4">3</span>
+            Conception
+          </li>
           <ul>
-            <li>création de logo</li>
-            <li>Charte graphique</li>
             <li>Design UI/UX</li>
-            <li>rédaction de contenu</li>
+            <li>arborescence</li>
+            <li>maquettage</li>
+            <li>prototypage</li>
           </ul>
-          <li className="text-right font-bold">Code</li>
+          <li className="text-right font-bold">
+            <span className="font-normal mr-4">4</span>
+            Produits
+          </li>
           <ul>
-            <li>référencement (SEO)</li>
-            <li>gestion du contenu</li>
-            <li>déploiement</li>
-            <li>hébergement</li>
+            <li>sites vitrines</li>
+            <li>e-commerce</li>
+            <li>blogs</li>
+            <li>applications Web</li>
           </ul>
-          <li className="text-right font-bold">Code</li>
+          <li className="text-right font-bold">
+            <span className="font-normal mr-4">5</span>
+            Stratégie digitale
+          </li>
           <ul>
             <li>référencement (SEO)</li>
             <li>gestion du contenu</li>
