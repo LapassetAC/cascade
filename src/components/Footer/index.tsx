@@ -2,7 +2,7 @@ import AnimLogo from "./AnimLogo";
 
 const Footer = () => {
   return (
-    <div id="footer" className="md:relative mt-32 p-4 md:p-0">
+    <div className="md:relative mt-32 p-4 md:p-0">
       <AnimLogo />
       <div className="md:grid grid-cols-5 gap-8 md:px-8 md:absolute bottom-8 md:left-0 w-full">
         <div className="flex flex-col gap-4 col-span-2 xl:col-span-1">

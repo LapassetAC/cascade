@@ -57,7 +57,7 @@ const SkillsLogo = () => {
       height="192"
       viewBox="0 0 243 192"
       xmlns="http://www.w3.org/2000/svg"
-      className="fill-current w-full h-auto sticky top-96"
+      className="fill-current w-full h-auto sticky top-[50vh] mb-4 md:mb-0"
     >
       <path
         ref={path5Ref}
