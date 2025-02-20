@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const useUserActivity = (inactivityTimeout = 3000) => {
   const [isUserActive, setIsUserActive] = useState(true);
-  const userActivityTimeout = useRef<NodeJS.Timeout>();
+  const userActivityTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
 
   useEffect(() => {
     const handleActivity = () => {

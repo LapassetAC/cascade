@@ -5,10 +5,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 function AnimLogo() {
-  const svgRef = useRef(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const paths = gsap.utils.toArray(svgRef.current.querySelectorAll("path"));
+    if (!svgRef.current) return;
+
+    const paths = gsap.utils.toArray(
+      svgRef.current.querySelectorAll("path") || []
+    );
 
     gsap.fromTo(
       paths,
