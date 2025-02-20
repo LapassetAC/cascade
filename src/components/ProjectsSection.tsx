@@ -3,11 +3,13 @@ import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
+import useUserActivity from "@/hooks/useUserActivity";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
 
   const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
+  const isUserActive = useUserActivity();
 
   const projectRefs = projects.map(() =>
     useInView({
@@ -18,39 +20,32 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   );
 
   return (
-    <section className="col-span-3 flex flex-col gap-y-16 pb-16">
+    <section className="col-span-3 flex flex-col gap-y-32 pb-16">
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         const [inViewRef, inView] = projectRefs[index];
         const videoRef = videoRefs[index];
 
         useEffect(() => {
-          console.log(`Video ${index} inView:`, inView);
           const videoElement = videoRef.current;
 
           if (!videoElement) {
-            console.log(`Video ${index} element not found`);
             return;
           }
 
-          if (inView) {
-            console.log(`Attempting to play video ${index}`);
+          if (inView && isUserActive) {
             videoElement
               .play()
-              .then(() => console.log(`Video ${index} playing successfully`))
               .catch((error) =>
                 console.error(`Video ${index} play error:`, error)
               );
           } else {
             videoElement.pause();
           }
-        }, [inView, videoRef, index]);
+        }, [inView, videoRef, index, isUserActive]);
 
-        // Combine the refs
         const setRefs = (element: HTMLVideoElement | null) => {
-          // Set the video ref
           videoRef.current = element;
-          // Set the inView ref
           inViewRef(element);
         };
 
@@ -76,7 +71,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               <div className="overflow-hidden">
                 <video
                   ref={setRefs}
-                  className="w-full relative p-4 md:p-8"
+                  className="w-full relative p-4 md:p-8 xl:p-16"
                   playsInline
                   loop
                   muted

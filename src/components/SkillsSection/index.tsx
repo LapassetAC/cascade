@@ -14,11 +14,11 @@ const SkillsSection = () => {
           contenu (CMS) sur-mesure.
         </p>
       </div>
-      <div className="col-start-2 col-span-3 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+      <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8">
         <SkillsLogo />
         <ol
           id="skills-list"
-          className="md:col-span-2 md:grid md:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-16"
+          className="col-span-2 md:grid md:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-16"
         >
           <li className="md:text-right font-bold mt-8 md:mt-0">
             <span className="font-normal mr-2 md:mr-4">1.</span>

@@ -51,6 +51,6 @@ body {
 .title {
   @apply text-[36px];
   @apply md:text-[64px];
-  line-height: 1.1;
+  line-height: 1;
   margin-top: -0.6rem;
 }
