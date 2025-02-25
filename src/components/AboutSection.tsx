@@ -7,9 +7,9 @@ const AboutSection = () => {
           Fondé par deux frères passionnés, Cascade incarne leur volonté de
           faire passer les sites et interfaces web dans une nouvelle ère, tant
           en termes de design que de performance. Conscients de la complexité
-          des services de l’industrie du web et de l’opacité liée à ses coûts
-          (tel que l’hébergement et la maintenance) nous nous engageons à offrir
-          une structure de prix réduite et transparente.
+          des services de l&apos;industrie du web et de l&apos;opacité liée à
+          ses coûts (tel que l&apos;hébergement et la maintenance) nous nous
+          engageons à offrir une structure de prix réduite et transparente.
         </p>
       </div>
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8">
@@ -37,12 +37,13 @@ const AboutSection = () => {
         <div className="col-span-2">
           <h3 className="ml-auto font-bold md:hidden mb-2">Adrien</h3>
           <p>
-            Initialement formé à l'informatique, Adrien a enrichi son parcours
-            par un Master en Design Graphique et Intéractivité à l'École
-            Supérieure d'Art et de Design Graphique Le Havre-Rouen afin
-            d'acquérir une double compétence en design et développement web.
-            <br /> Avec plus de 10 ans d'expérience en agence puis en tant que
-            freelance, il excelle grâce à sa veille des tendances design et
+            Initialement formé à l&apos;informatique, Adrien a enrichi son
+            parcours par un Master en Design Graphique et Intéractivité à
+            l&apos;École Supérieure d&apos;Art et de Design Graphique Le
+            Havre-Rouen afin d&apos;acquérir une double compétence en design et
+            développement web.
+            <br /> Avec plus de 10 ans d&apos;expérience en agence puis en tant
+            que freelance, il excelle grâce à sa veille des tendances design et
             technologies web, assurant une innovation constante dans ses
             projets.
           </p>
@@ -73,9 +74,10 @@ const AboutSection = () => {
         <div className="col-span-2">
           <h3 className="ml-auto font-bold md:hidden mb-2">Clément</h3>
           <p>
-            Diplômé de l'EDHEC Business School avec une expérience en conseil
-            chez Sopra Steria et Deloitte, Clément s'est orienté vers le domaine
-            du web poussé par sa passion du code et son désir de créativité.
+            Diplômé de l&apos;EDHEC Business School avec une expérience en
+            conseil chez Sopra Steria et Deloitte, Clément s&apos;est orienté
+            vers le domaine du web poussé par sa passion du code et son désir de
+            créativité.
             <br /> Il mise sur une écoute attentive et une communication claire
             pour guider ses clients, tirant parti de son expérience variée pour
             répondre avec agilité et pédagogie à leurs besoins.
