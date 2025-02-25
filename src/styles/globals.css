@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #fcfaf7;
+  --foreground-color: #0b0bca;
+  --background-noise: url("/imgs/white-noise.jpg");
+  --foreground-noise: url("/imgs/blue-noise.jpg");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #0b0bca;
+    --foreground-color: #fcfaf7;
+    --background-noise: url("/imgs/blue-noise.jpg");
+    --foreground-noise: url("/imgs/white-noise.jpg");
+  }
+}
+
+body {
+  color: var(--foreground-color);
+  background: var(--background-noise);
+  font-family: Helvetica, sans-serif;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  li,
+  label,
+  input,
+  textarea {
+    line-height: 30px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    @apply text-[16px];
+    @apply md:text-[20px];
+    @apply leading-[22px];
+    @apply md:leading-[30px];
+  }
+}
+
+.title {
+  @apply text-[36px];
+  @apply md:text-[64px];
+  line-height: 1;
+  margin-top: -0.6rem;
+}
