@@ -1,7 +1,5 @@
 import { createClient } from "@sanity/client";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
-import ProjectsSection from "@/components/ProjectsSection";
-import { Project } from "@/types/project";
 import HomeClient from "@/components/HomeClient";
 
 export default async function Home() {
