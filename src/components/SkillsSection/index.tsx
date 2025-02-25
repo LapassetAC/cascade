@@ -13,7 +13,12 @@ const SkillsSection = () => {
     },
     {
       title: "Code",
-      items: ["gestion du contenu", "déploiement", "hébergement"],
+      items: [
+        "gestion du contenu",
+        "déploiement",
+        "hébergement",
+        "maintenance",
+      ],
     },
     {
       title: "Conception",
