@@ -14,7 +14,7 @@ export const useGsapAnimation = () => {
     const title = element.querySelector(".skill-title");
     const items = element.querySelectorAll(".skill-item");
 
-    gsap.set([title, items], { opacity: 0, y: 50 });
+    gsap.set([title, items], { opacity: 0, y: -50 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -22,26 +22,15 @@ export const useGsapAnimation = () => {
         start: "top center",
         end: "bottom center",
         toggleActions: "play none none reverse",
-        // markers: true,
       },
     });
 
-    tl.to(title, {
+    tl.to([title, items], {
       opacity: 1,
       y: 0,
-      duration: 0.2,
+      duration: 0.3,
       ease: "power3.out",
-    }).to(
-      items,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.2,
-        // stagger: 0.1,
-        ease: "power3.out",
-      },
-      "+=0"
-    );
+    });
 
     return () => {
       tl.kill();

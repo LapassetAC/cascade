@@ -13,12 +13,7 @@ const SkillsSection = () => {
     },
     {
       title: "Code",
-      items: [
-        "référencement (SEO)",
-        "gestion du contenu",
-        "déploiement",
-        "hébergement",
-      ],
+      items: ["gestion du contenu", "déploiement", "hébergement"],
     },
     {
       title: "Conception",
@@ -30,12 +25,7 @@ const SkillsSection = () => {
     },
     {
       title: "Stratégie digitale",
-      items: [
-        "référencement (SEO)",
-        "gestion du contenu",
-        "déploiement",
-        "hébergement",
-      ],
+      items: ["référencement (SEO)", "analyse du trafic", "publicité en ligne"],
     },
   ];
 
