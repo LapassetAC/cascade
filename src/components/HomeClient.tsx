@@ -6,24 +6,9 @@ import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
+import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 
 export default function HomeClient({ projects }: { projects: Project[] }) {
-  const scrollToFooter = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <>
       <header
@@ -32,18 +17,20 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           backgroundImage: "var(--background-noise)",
         }}
       >
-        <button
-          onClick={scrollToTop}
+        <a
+          href="#top"
           className="overflow-hidden sticky top-4 -m-4 p-4"
+          onClick={scrollToTop}
         >
           <CascadeLogo />
-        </button>
-        <button
+        </a>
+        <a
+          href="#footer"
           className="font-bold -m-4 p-4 md:hidden"
           onClick={scrollToFooter}
         >
           Contact
-        </button>
+        </a>
       </header>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         <button
@@ -64,9 +51,13 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           <ProjectsSection projects={projects} />
         </div>
         <div className="hidden md:flex md:col-start-5 items-start justify-end sticky top-8">
-          <button className="font-bold -m-4 p-4" onClick={scrollToFooter}>
+          <a
+            href="#footer"
+            className="font-bold -m-4 p-4"
+            onClick={scrollToFooter}
+          >
             Contact
-          </button>
+          </a>
         </div>
       </div>
       <SkillsSection />
