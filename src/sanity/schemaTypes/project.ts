@@ -1,8 +1,15 @@
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
+
 export const project = {
   name: "project",
   title: "Projet",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: "project" }),
     {
       name: "title",
       title: "Titre",
@@ -59,15 +66,6 @@ export const project = {
       },
     },
   ],
-
-  orderings: [
-    {
-      title: "Date",
-      name: "date",
-      by: [{ field: "date", direction: "desc" }],
-    },
-  ],
-
   preview: {
     select: {
       title: "title",

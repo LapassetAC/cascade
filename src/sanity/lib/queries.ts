@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-export const PROJECTS_QUERY = groq`*[_type == "project"] | order(date desc) {
+export const PROJECTS_QUERY = groq`*[_type == "project"] | order(orderRank) {
   _id,
   title,
   url,
