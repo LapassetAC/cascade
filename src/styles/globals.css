@@ -18,9 +18,12 @@
   }
 }
 
+html,
 body {
   color: var(--foreground-color);
-  background: var(--background-noise);
+  background-image: var(--background-noise);
+  background-color: var(--background-color);
+  min-height: 100%;
 }
 
 @layer base {
