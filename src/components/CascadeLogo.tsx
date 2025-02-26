@@ -1,15 +1,22 @@
-export default function CascadeLogo() {
+"use client";
+
+interface CascadeLogoProps {
+  className?: string;
+  ref?: React.RefObject<SVGSVGElement>;
+}
+
+export default function CascadeLogo({ className }: CascadeLogoProps) {
   const rectClasses = `
     transform -translate-y-[50px] opacity-0 animate-textAppear
   `;
 
   return (
     <svg
-      className="h-[20px] sm:h-[30px] w-auto"
+      className={`h-[20px] sm:h-[30px] w-auto ${className || ""}`}
       width="1134"
       height="246"
       viewBox="0 0 1134 246"
-      fill="var(--foreground-color)"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
