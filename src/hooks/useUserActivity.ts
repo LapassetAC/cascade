@@ -1,48 +1,37 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-const useUserActivity = (inactivityTimeout = 3000) => {
+const useUserActivity = () => {
   const [isUserActive, setIsUserActive] = useState(true);
-  const userActivityTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
 
   useEffect(() => {
-    const handleActivity = () => {
-      setIsUserActive(true);
-
-      // Reset the timeout
-      if (userActivityTimeout.current) {
-        clearTimeout(userActivityTimeout.current);
-      }
-
-      userActivityTimeout.current = setTimeout(() => {
-        setIsUserActive(false);
-      }, inactivityTimeout);
-    };
-
-    // Handle page visibility changes
+    // Function to handle visibility change
     const handleVisibilityChange = () => {
-      setIsUserActive(!document.hidden);
+      if (document.visibilityState === "visible") {
+        setIsUserActive(true);
+      } else {
+        setIsUserActive(false);
+      }
     };
 
-    // Add event listeners
-    window.addEventListener("mousemove", handleActivity);
-    window.addEventListener("keydown", handleActivity);
-    window.addEventListener("scroll", handleActivity);
+    // Set initial state based on current visibility
+    handleVisibilityChange();
+
+    // Add event listener for visibility changes
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Initial activity trigger
-    handleActivity();
+    // Add event listener for when window loses focus
+    window.addEventListener("blur", () => setIsUserActive(false));
+
+    // Add event listener for when window gains focus
+    window.addEventListener("focus", () => setIsUserActive(true));
 
     // Cleanup
     return () => {
-      if (userActivityTimeout.current) {
-        clearTimeout(userActivityTimeout.current);
-      }
-      window.removeEventListener("mousemove", handleActivity);
-      window.removeEventListener("keydown", handleActivity);
-      window.removeEventListener("scroll", handleActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("blur", () => setIsUserActive(false));
+      window.removeEventListener("focus", () => setIsUserActive(true));
     };
-  }, [inactivityTimeout]);
+  }, []);
 
   return isUserActive;
 };
