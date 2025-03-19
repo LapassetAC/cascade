@@ -52,7 +52,9 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
         const ProjectWrapper = isMobile ? "div" : "a";
         const wrapperProps = {
           className: "col-span-3",
-          ...(isMobile ? {} : { href: url }),
+          ...(isMobile
+            ? {}
+            : { href: url, target: "_blank", rel: "noopener noreferrer" }),
         };
 
         return (
@@ -97,6 +99,8 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 <a
                   href={url}
                   className="md:hidden text-right flex items-start gap-2 font-bold"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Voir
                   <svg
