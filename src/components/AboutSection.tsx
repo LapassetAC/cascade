@@ -2,7 +2,7 @@ const AboutSection = () => {
   return (
     <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32">
       <div className="col-start-2 col-span-2 mb-16">
-        <h2 className="title mb-10">Deux frères, deux artisans du web.</h2>
+        <h2 className="title mb-10">Deux frères, deux artisans du web</h2>
         <p>
           Fondé par deux frères passionnés, Cascade incarne leur volonté de
           faire passer les sites et interfaces web dans une nouvelle ère, tant

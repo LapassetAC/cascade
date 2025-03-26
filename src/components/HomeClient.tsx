@@ -71,9 +71,10 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
             Créateurs de sites
             <br className="hidden lg:block" /> web engageants
           </h1>
-          <h2 className="leading-snug mb-8 md:mb-0">
-            Nous concevons des sites web uniques et performants pour
-            <br className="hidden lg:block" /> des marques inspirantes.
+          <h2 className="leading-snug mb-8 md:mb-16">
+            Nous concevons des sites web uniques et performants
+            <br className="hidden lg:block" /> pour vous démarquer dans
+            l&apos;océan digital.
           </h2>
           <ProjectsSection projects={projects} />
         </div>

@@ -9,35 +9,35 @@ const SkillsSection = () => {
   const skills = [
     {
       title: "Identité",
-      items: ["création de logo", "Charte graphique", "rédaction de contenu"],
+      items: ["Création de logo", "Charte graphique", "Rédaction de contenu"],
     },
     {
       title: "Code",
       items: [
-        "gestion du contenu",
-        "déploiement",
-        "hébergement",
-        "maintenance",
+        "Gestion du contenu",
+        "Déploiement",
+        "Hébergement",
+        "Maintenance",
       ],
     },
     {
       title: "Conception",
-      items: ["Design UI/UX", "arborescence", "maquettage", "prototypage"],
+      items: ["Design UI/UX", "Arborescence", "Maquettage", "Prototypage"],
     },
     {
       title: "Produits",
-      items: ["sites vitrines", "e-commerce", "blogs", "applications Web"],
+      items: ["Sites vitrines", "E-commerce", "Blogs", "Applications Web"],
     },
     {
       title: "Stratégie digitale",
-      items: ["référencement (SEO)", "analyse du trafic", "publicité en ligne"],
+      items: ["Référencement (SEO)", "Analyse du trafic", "Publicité en ligne"],
     },
   ];
 
   return (
     <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca]">
       <div className="col-start-2 col-span-2 mb-8 md:mb-16">
-        <h2 className="title mb-10">Revitalisons votre présence digitale.</h2>
+        <h2 className="title mb-10">Revitalisons votre présence digitale</h2>
         <p>
           Nous accompagnons nos clients à travers toutes les étapes de leur
           projet : de la conception du site jusqu&apos;à sa mise en ligne. Afin
