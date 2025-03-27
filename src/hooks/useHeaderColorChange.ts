@@ -20,7 +20,7 @@ export const useHeaderColorChange = ({
 
     const logoElement = logoRef.current;
     const contactElement = contactRef?.current;
-    const skillsSectionElement = skillsSectionRef.current;
+    const skillsSectionElement = skillsSectionRef?.current || null;
 
     if (skillsSectionElement) {
       // Create a function to check intersection between elements and skills section

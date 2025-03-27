@@ -54,5 +54,5 @@ body {
   @apply text-[36px];
   @apply md:text-[64px];
   line-height: 1;
-  margin-top: -0.6rem;
+  /* margin-top: -0.6rem; */
 }

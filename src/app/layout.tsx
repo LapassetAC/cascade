@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={`${moderat.className} antialiased`}>{children}</body>
     </html>
   );
