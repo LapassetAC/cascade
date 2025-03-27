@@ -14,6 +14,7 @@ const eslintConfig = [
   {
     rules: {
       "react-hooks/rules-of-hooks": "warn",
+      "react/no-unescaped-entities": "off",
     },
   },
 ];
