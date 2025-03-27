@@ -66,6 +66,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
             </div>
           </button>
         </div>
+        {/* Main content */}
         <div className="md:col-span-3 flex flex-col gap-4 md:gap-8">
           <h1 className="title">
             Créateurs de sites
@@ -78,6 +79,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           </h2>
           <ProjectsSection projects={projects} />
         </div>
+        {/* Main content */}
         <div className="hidden md:flex md:col-start-5 items-start justify-end">
           <a
             href="#footer"

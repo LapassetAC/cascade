@@ -1,4 +1,5 @@
 import AnimLogo from "./AnimLogo";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -42,6 +43,12 @@ const Footer = () => {
           >
             Instagram
           </a>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Link href="/mentions-legales" className="block mb-2">
+            Mentions légales
+          </Link>
+          <p>Cascade © {new Date().getFullYear()} </p>
         </div>
       </div>
     </div>
