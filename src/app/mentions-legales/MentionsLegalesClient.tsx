@@ -3,10 +3,11 @@
 import { useRef } from "react";
 import CascadeLogo from "@/components/CascadeLogo";
 import Footer from "@/components/Footer";
-import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
+import { scrollToFooter } from "@/utils/scrollTo";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
 import Link from "next/link";
-export default function ClientMentionsLegales() {
+
+export default function MentionsLegalesClient() {
   const logoRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -26,13 +27,9 @@ export default function ClientMentionsLegales() {
           backgroundImage: "var(--background-noise)",
         }}
       >
-        <a
-          href="#top"
-          className="overflow-hidden sticky top-4 -m-4 p-4"
-          onClick={scrollToTop}
-        >
+        <Link href="/" className="overflow-hidden sticky top-4 -m-4 p-4">
           <CascadeLogo />
-        </a>
+        </Link>
         <a
           href="#footer"
           className="font-bold -m-4 p-4 md:hidden"
@@ -45,14 +42,11 @@ export default function ClientMentionsLegales() {
       {/* Desktop header */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         <div className="hidden md:block md:col-span-1">
-          <button
-            onClick={scrollToTop}
-            className="overflow-hidden fixed top-8 -m-4 p-4"
-          >
-            <Link href="/" ref={logoRef}>
+          <Link href="/" className="overflow-hidden fixed top-8 -m-4 p-4">
+            <div ref={logoRef}>
               <CascadeLogo />
-            </Link>
-          </button>
+            </div>
+          </Link>
         </div>
         {/* Main content */}
         <div className="md:col-span-3 flex flex-col gap-4 md:gap-8">
@@ -85,8 +79,14 @@ export default function ClientMentionsLegales() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Hébergement</h2>
-            <p>Ce site est hébergé par [Nom de l'hébergeur]</p>
-            <p>[Adresse de l'hébergeur]</p>
+            <p>Ce site est hébergé par Vercel Inc.</p>
+            <p>
+              232, 3rd Street,
+              <br />
+              San Francisco, CA 94103,
+              <br />
+              United States
+            </p>
           </section>
 
           <section className="mb-8">
@@ -129,14 +129,14 @@ export default function ClientMentionsLegales() {
             </p>
           </section>
 
-          <section className="mb-8">
+          {/* <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Cookies</h2>
             <p>
               Ce site utilise des cookies à des fins de mesure d'audience et
               d'amélioration de l'expérience utilisateur. Vous pouvez désactiver
               l'utilisation de cookies en paramétrant votre navigateur.
             </p>
-          </section>
+          </section> */}
         </div>
         {/* Main content */}
         <div className="hidden md:flex md:col-start-5 items-start justify-end">
