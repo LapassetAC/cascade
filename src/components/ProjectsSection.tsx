@@ -1,12 +1,13 @@
 import { Project } from "@/types/project";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 import useUserActivity from "@/hooks/useUserActivity";
 
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
+  const [firstVideoPlaying, setFirstVideoPlaying] = useState(false);
 
   const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
   const isUserActive = useUserActivity();
@@ -19,6 +20,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
     })
   );
 
+  // Check if projects exist before rendering
+  if (!projects || projects.length === 0) {
+    return null;
+  }
+
   return (
     <section className="col-span-3 flex flex-col gap-y-32 pb-16">
       {projects.map((project, index) => {
@@ -26,9 +32,14 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
         const [inViewRef, inView] = projectRefs[index];
         const videoRef = videoRefs[index];
 
+        // Always call useEffect regardless of conditional rendering
         useEffect(() => {
-          const videoElement = videoRef.current;
+          // Skip effect execution for non-rendered videos
+          if (index > 0 && !firstVideoPlaying) {
+            return;
+          }
 
+          const videoElement = videoRef.current;
           if (!videoElement) {
             return;
           }
@@ -36,13 +47,36 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           if (inView && isUserActive) {
             videoElement
               .play()
+              .then(() => {
+                if (index === 0) {
+                  setFirstVideoPlaying(true);
+                }
+              })
               .catch((error) =>
                 console.error(`Video ${index} play error:`, error)
               );
           } else {
             videoElement.pause();
           }
-        }, [inView, videoRef, index, isUserActive]);
+
+          // Add playing event listener for first video
+          if (index === 0) {
+            const onPlaying = () => {
+              setFirstVideoPlaying(true);
+            };
+
+            videoElement.addEventListener("playing", onPlaying);
+
+            return () => {
+              videoElement.removeEventListener("playing", onPlaying);
+            };
+          }
+        }, [inView, videoRef, index, isUserActive, firstVideoPlaying]);
+
+        // If this is not the first project and first video is not yet playing, don't render it
+        if (index > 0 && !firstVideoPlaying) {
+          return null;
+        }
 
         const setRefs = (element: HTMLVideoElement | null) => {
           videoRef.current = element;
@@ -64,10 +98,12 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 className="absolute object-cover"
                 src={image.asset.url}
                 fill
-                sizes="(max-width: 768px) 100px, 800px"
+                sizes="(max-width: 768px) 100vw, 800px"
                 quality={85}
                 alt={title}
                 priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
               />
               <div className="overflow-hidden">
                 <video
@@ -76,7 +112,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                   playsInline
                   loop
                   muted
-                  preload="metadata"
+                  preload={index === 0 ? "auto" : "metadata"}
                 >
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
