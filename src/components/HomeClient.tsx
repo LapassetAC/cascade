@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Project } from "@/types/project";
 import CascadeLogo from "@/components/CascadeLogo";
 import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
+import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
@@ -16,6 +17,9 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
   const contactRef = useRef<HTMLDivElement>(null);
   const skillsSectionRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+
+  // Modal state
+  const [isCalModalOpen, setIsCalModalOpen] = useState(false);
 
   useHeaderColorChange({
     logoRef,
@@ -28,6 +32,9 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
     contactRef,
     footerRef,
   });
+
+  const openCalModal = () => setIsCalModalOpen(true);
+  const closeCalModal = () => setIsCalModalOpen(false);
 
   return (
     <>
@@ -77,6 +84,17 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
             <br className="hidden lg:block" /> pour vous démarquer dans
             l&apos;océan digital.
           </h2>
+
+          {/* CTA Button */}
+          <div className="mb-8 md:mb-16">
+            <button
+              onClick={openCalModal}
+              className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors font-bold text-lg"
+            >
+              Nous rencontrer
+            </button>
+          </div>
+
           <ProjectsSection projects={projects} />
         </div>
         {/* Main content */}
@@ -97,6 +115,9 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       <div ref={footerRef}>
         <Footer />
       </div>
+
+      {/* Cal.com Modal */}
+      <CalModal isOpen={isCalModalOpen} onClose={closeCalModal} />
     </>
   );
 }
