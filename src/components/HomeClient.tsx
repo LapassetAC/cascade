@@ -7,6 +7,7 @@ import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
+import GradientShowcase from "@/components/GradientShowcase";
 import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
@@ -95,6 +96,8 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
             </button>
           </div>
 
+          <GradientShowcase />
+
           <ProjectsSection projects={projects} />
         </div>
         {/* Main content */}
@@ -108,6 +111,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           </a>
         </div>
       </div>
+
       <div ref={skillsSectionRef}>
         <SkillsSection />
       </div>
@@ -116,7 +120,6 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
         <Footer />
       </div>
 
-      {/* Cal.com Modal */}
       <CalModal isOpen={isCalModalOpen} onClose={closeCalModal} />
     </>
   );
