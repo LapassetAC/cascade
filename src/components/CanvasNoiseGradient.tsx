@@ -9,7 +9,7 @@ interface CascadeFlowProps {
 
 export default function CascadeFlow({
   className = "",
-  intensity = 0.6,
+  intensity = 0.9,
 }: CascadeFlowProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -272,7 +272,11 @@ export default function CascadeFlow({
     <div
       ref={containerRef}
       className={`relative overflow-visible ${className}`}
+      style={{ height: "100px" }}
     >
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      </p>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"

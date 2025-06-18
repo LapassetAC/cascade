@@ -7,7 +7,7 @@ import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
-import GradientShowcase from "@/components/GradientShowcase";
+import CanvasNoiseGradient from "@/components/CanvasNoiseGradient";
 import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
@@ -95,8 +95,9 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
               Nous rencontrer
             </button>
           </div>
-
-          <GradientShowcase />
+          <div className="h-[60vh] md:h-[70vh] w-full relative">
+            <CanvasNoiseGradient />
+          </div>
 
           <ProjectsSection projects={projects} />
         </div>
