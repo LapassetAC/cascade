@@ -7,7 +7,7 @@ import SkillsSection from "@/components/SkillsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
-import CanvasNoiseGradient from "@/components/CanvasNoiseGradient";
+import HeroSection from "@/components/HeroSection";
 import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
@@ -74,34 +74,15 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
             </div>
           </button>
         </div>
+
         {/* Main content */}
-        <div className="md:col-span-3 flex flex-col gap-4 md:gap-8">
-          <h1 className="title">
-            Créateurs de sites
-            <br className="hidden lg:block" /> web engageants
-          </h1>
-          <h2 className="leading-snug mb-8 md:mb-16">
-            Nous concevons des sites web uniques et performants
-            <br className="hidden lg:block" /> pour vous démarquer dans
-            l&apos;océan digital.
-          </h2>
+        <HeroSection onOpenCalModal={openCalModal} />
 
-          {/* CTA Button */}
-          <div className="mb-8 md:mb-16">
-            <button
-              onClick={openCalModal}
-              className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors font-bold text-lg"
-            >
-              Nous rencontrer
-            </button>
-          </div>
-          <div className="h-[60vh] md:h-[70vh] w-full relative">
-            <CanvasNoiseGradient />
-          </div>
-
+        <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-8">
           <ProjectsSection projects={projects} />
         </div>
-        {/* Main content */}
+        {/* End of Main content */}
+
         <div className="hidden md:flex md:col-start-5 items-start justify-end">
           <a
             href="#footer"
