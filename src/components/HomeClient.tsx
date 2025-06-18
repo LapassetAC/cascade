@@ -12,6 +12,7 @@ import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
+import CanvasNoiseGradient from "./CanvasNoiseGradient";
 
 export default function HomeClient({ projects }: { projects: Project[] }) {
   const logoRef = useRef<HTMLDivElement>(null);
@@ -76,9 +77,10 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
         </div>
 
         {/* Main content */}
-        <HeroSection onOpenCalModal={openCalModal} />
+        <HeroSection onOpenCalModal={openCalModal} project={projects[0]} />
 
         <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-8">
+          <CanvasNoiseGradient />
           <ProjectsSection projects={projects} />
         </div>
         {/* End of Main content */}
