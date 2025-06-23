@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Studio Cascade - Créateurs de sites web engageants",
   description:
     "Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal.",
+  verification: {
+    google: "8lWpKFroE35oh-pXDm6WbRWgOjUlKS2R4drXYFPGLPY",
+  },
   openGraph: {
     title: "Studio Cascade - Créateurs de sites web engageants",
     description:
