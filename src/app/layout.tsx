@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "@/styles/globals.css";
 import { moderat } from "@/fonts";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Studio Cascade - Créateurs de sites web engageants",
@@ -60,6 +61,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
