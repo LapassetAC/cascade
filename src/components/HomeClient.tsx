@@ -13,6 +13,7 @@ import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
 import CascadeFlow from "./CascadeFlow";
+import NosSolutionsSection from "./NosSolutionsSection";
 
 export default function HomeClient({ projects }: { projects: Project[] }) {
   const logoRef = useRef<HTMLDivElement>(null);
@@ -54,13 +55,13 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
         >
           <CascadeLogo />
         </a>
-        <a
+        {/* <a
           href="#footer"
           className="font-bold -m-4 p-4 md:hidden"
           onClick={scrollToFooter}
         >
           Contact
-        </a>
+        </a> */}
       </header>
 
       {/* Desktop header */}
@@ -72,6 +73,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       </div>
 
       <CascadeFlow />
+      <NosSolutionsSection />
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-32">
           <ProjectsSection projects={projects} />
