@@ -21,10 +21,10 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
     if (!ctx) return;
 
     // Animation speed controller - ajustez cette valeur pour changer toute la vitesse
-    const animationSpeed = 0.5; // 1.0 = vitesse normale, 2.0 = 2x plus rapide, 0.5 = 2x plus lent
+    const animationSpeed = 0.7; // 1.0 = vitesse normale, 2.0 = 2x plus rapide, 0.5 = 2x plus lent
 
     // Animation intensity controller - ajustez cette valeur pour modifier l'intensité de l'animation
-    const animationIntensity = 1; // 1.0 = intensité normale, 1.5 = plus intense, 0.8 = plus subtil
+    const animationIntensity = 1.2; // 1.0 = intensité normale, 1.5 = plus intense, 0.8 = plus subtil
 
     // Variables de temps simplifiées
     let time = 0;
@@ -205,96 +205,114 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
       ); // Increased amplitude
     };
 
-    // Create flowing organic patterns controlled by animationSpeed
+    // Create flowing organic patterns with downward cascade movement
     const flowNoise = (x: number, y: number, t: number) => {
-      // Create curved flow paths with multi-layered movement
+      // Create vertical flow paths - prioritize downward movement
+      const verticalOffset = t * 50 * animationSpeed; // Constant downward movement
+      const flowY = y - verticalOffset; // Move patterns downward over time
+
+      // Subtle horizontal curves for natural cascade effect
       const curveX =
         x +
-        Math.sin(y * 0.005 + t * 1.2 * animationSpeed) * 40 +
-        Math.sin(y * 0.015 + t * 1.8 * animationSpeed) * 15 +
-        Math.sin(y * 0.03 + t * 2.4 * animationSpeed) * 6;
+        Math.sin(flowY * 0.008 + t * 0.8 * animationSpeed) * 25 +
+        Math.sin(flowY * 0.02 + t * 1.2 * animationSpeed) * 10 +
+        Math.sin(flowY * 0.04 + t * 1.6 * animationSpeed) * 4;
 
-      const curveY =
-        y +
-        Math.sin(x * 0.008 + t * 0.8 * animationSpeed) * 20 +
-        Math.sin(x * 0.02 + t * 1.6 * animationSpeed) * 8 +
-        Math.sin(x * 0.04 + t * 2.2 * animationSpeed) * 3;
+      // Multiple octaves of noise with vertical emphasis
+      const n1 = noise(curveX, flowY, 0.006, t * 1.0 * animationSpeed) * 0.4;
+      const n2 = noise(curveX, flowY, 0.012, t * 1.4 * animationSpeed) * 0.3;
+      const n3 = noise(curveX, flowY, 0.024, t * 1.8 * animationSpeed) * 0.2;
+      const n4 = noise(curveX, flowY, 0.048, t * 2.2 * animationSpeed) * 0.1;
 
-      // Multiple octaves of noise with speed control
-      const n1 = noise(curveX, curveY, 0.005, t * 1.4 * animationSpeed) * 0.4;
-      const n2 = noise(curveX, curveY, 0.01, t * 1.8 * animationSpeed) * 0.3;
-      const n3 = noise(curveX, curveY, 0.02, t * 2.8 * animationSpeed) * 0.2;
-      // Add fine detail layers
-      const n4 = noise(curveX, curveY, 0.04, t * 3.2 * animationSpeed) * 0.1;
-      const n5 = noise(curveX, curveY, 0.08, t * 3.6 * animationSpeed) * 0.05;
+      // Strong vertical flow component - the main cascade effect
+      const cascadeFlow =
+        Math.sin(flowY * 0.004 + t * 1.5 * animationSpeed) * 0.4 +
+        Math.sin(flowY * 0.01 + t * 2.0 * animationSpeed) * 0.2 +
+        Math.sin(flowY * 0.02 + t * 2.5 * animationSpeed) * 0.1;
 
-      // Complex vertical flow with controlled speed
-      const verticalFlow =
-        Math.sin(curveY * 0.003 + t * 2.0 * animationSpeed) * 0.3 +
-        Math.sin(curveY * 0.008 + t * 2.6 * animationSpeed) * 0.15 +
-        Math.sin(curveY * 0.015 + t * 3.2 * animationSpeed) * 0.08;
+      // Add speed gradient - faster at top, slower at bottom
+      const speedGradient = Math.max(0.3, 1 - y / 800); // Adjust 800 based on typical height
 
-      return (n1 + n2 + n3 + n4 + n5 + verticalFlow) * 0.5 + 0.5;
+      return (n1 + n2 + n3 + n4 + cascadeFlow * speedGradient) * 0.5 + 0.5;
     };
 
-    // Create complex organic cascade patterns controlled by animationSpeed
+    // Create vertical cascade streams with downward flow
     const cascadePattern = (x: number, y: number, t: number) => {
-      // Create multiple curved streams with layered movement
+      // Create vertical offset for downward movement
+      const cascadeOffset = t * 60 * animationSpeed; // Slightly faster than flowNoise
+      const cascadeY = y - cascadeOffset;
+
+      // Create multiple vertical streams with gentle horizontal sway
       const stream1X =
         x +
-        Math.sin(y * 0.01 + t * 1.8 * animationSpeed) * 30 +
-        Math.sin(y * 0.025 + t * 2.4 * animationSpeed) * 12 +
-        Math.sin(y * 0.05 + t * 3.0 * animationSpeed) * 5;
+        Math.sin(cascadeY * 0.012 + t * 1.0 * animationSpeed) * 20 +
+        Math.sin(cascadeY * 0.03 + t * 1.5 * animationSpeed) * 8 +
+        Math.sin(cascadeY * 0.06 + t * 2.0 * animationSpeed) * 3;
 
       const stream2X =
         x +
-        Math.sin(y * 0.008 + t * 1.4 * animationSpeed + 2) * 25 +
-        Math.sin(y * 0.02 + t * 2.0 * animationSpeed + 2) * 10 +
-        Math.sin(y * 0.04 + t * 2.6 * animationSpeed + 2) * 4;
+        Math.sin(cascadeY * 0.01 + t * 1.2 * animationSpeed + 2) * 18 +
+        Math.sin(cascadeY * 0.025 + t * 1.8 * animationSpeed + 2) * 7 +
+        Math.sin(cascadeY * 0.05 + t * 2.3 * animationSpeed + 2) * 3;
 
       const stream3X =
         x +
-        Math.sin(y * 0.012 + t * 2.2 * animationSpeed + 4) * 20 +
-        Math.sin(y * 0.03 + t * 2.8 * animationSpeed + 4) * 8 +
-        Math.sin(y * 0.06 + t * 3.4 * animationSpeed + 4) * 3;
+        Math.sin(cascadeY * 0.014 + t * 0.8 * animationSpeed + 4) * 15 +
+        Math.sin(cascadeY * 0.035 + t * 1.3 * animationSpeed + 4) * 6 +
+        Math.sin(cascadeY * 0.07 + t * 1.9 * animationSpeed + 4) * 2;
 
-      // Calculate stream intensities with controlled speed
+      // Calculate vertical cascade streams
       const stream1 =
-        Math.sin(stream1X * 0.02 + t * 2.4 * animationSpeed) *
-        Math.exp(-Math.pow((stream1X - x) * 0.02, 2)) *
-        (1 + Math.sin(y * 0.015 + t * 1.6 * animationSpeed) * 0.3);
+        Math.sin(
+          stream1X * 0.025 + cascadeY * 0.005 + t * 1.8 * animationSpeed
+        ) *
+        Math.exp(-Math.pow((stream1X - x) * 0.03, 2)) *
+        (1 + Math.sin(cascadeY * 0.008 + t * 1.2 * animationSpeed) * 0.3);
 
       const stream2 =
-        Math.sin(stream2X * 0.025 + t * 2.8 * animationSpeed) *
-        Math.exp(-Math.pow((stream2X - x) * 0.022, 2)) *
-        (1 + Math.sin(y * 0.018 + t * 2.2 * animationSpeed) * 0.3);
+        Math.sin(
+          stream2X * 0.03 + cascadeY * 0.006 + t * 2.2 * animationSpeed
+        ) *
+        Math.exp(-Math.pow((stream2X - x) * 0.032, 2)) *
+        (1 + Math.sin(cascadeY * 0.01 + t * 1.6 * animationSpeed) * 0.3);
 
       const stream3 =
-        Math.sin(stream3X * 0.018 + t * 2.0 * animationSpeed) *
-        Math.exp(-Math.pow((stream3X - x) * 0.025, 2)) *
-        (1 + Math.sin(y * 0.012 + t * 1.8 * animationSpeed) * 0.3);
+        Math.sin(
+          stream3X * 0.02 + cascadeY * 0.004 + t * 1.4 * animationSpeed
+        ) *
+        Math.exp(-Math.pow((stream3X - x) * 0.035, 2)) *
+        (1 + Math.sin(cascadeY * 0.006 + t * 1.0 * animationSpeed) * 0.3);
 
-      // Complex organic flow with controlled interference patterns
-      const flow1 =
-        Math.sin(x * 0.008 + y * 0.003 + t * 1.6 * animationSpeed) *
-        Math.cos(y * 0.004 + t * 1.2 * animationSpeed) *
-        (1 + Math.sin(x * 0.02 + t * 2.4 * animationSpeed) * 0.2) *
-        0.4;
+      // Vertical flow patterns emphasizing downward movement
+      const verticalFlow1 =
+        Math.sin(x * 0.015 + cascadeY * 0.008 + t * 1.5 * animationSpeed) *
+        Math.cos(cascadeY * 0.006 + t * 1.0 * animationSpeed) *
+        0.3;
 
-      const flow2 =
-        Math.sin(x * 0.012 + y * 0.006 + t * 2.0 * animationSpeed) *
-        Math.cos(x * 0.005 + t * 1.4 * animationSpeed) *
-        (1 + Math.sin(y * 0.025 + t * 2.8 * animationSpeed) * 0.2) *
-        0.4;
+      const verticalFlow2 =
+        Math.sin(x * 0.02 + cascadeY * 0.01 + t * 1.8 * animationSpeed) *
+        Math.cos(cascadeY * 0.008 + t * 1.3 * animationSpeed) *
+        0.25;
 
-      // Add fine turbulence details with controlled speed
-      const turbulence =
-        Math.sin(x * 0.03 + y * 0.02 + t * 3.0 * animationSpeed) * 0.15 +
-        Math.sin(x * 0.05 + y * 0.04 + t * 3.6 * animationSpeed) * 0.08 +
-        Math.sin(x * 0.08 + y * 0.06 + t * 4.0 * animationSpeed) * 0.04;
+      // Fine vertical turbulence for realistic cascade effect
+      const verticalTurbulence =
+        Math.sin(x * 0.04 + cascadeY * 0.015 + t * 2.5 * animationSpeed) * 0.1 +
+        Math.sin(x * 0.06 + cascadeY * 0.02 + t * 3.0 * animationSpeed) * 0.06 +
+        Math.sin(x * 0.08 + cascadeY * 0.025 + t * 3.5 * animationSpeed) * 0.03;
+
+      // Apply vertical speed gradient
+      const verticalGradient = Math.max(0.4, 1 - y / 600);
 
       return (
-        (stream1 + stream2 + stream3 + flow1 + flow2 + turbulence) * 0.22 + 0.5
+        (stream1 +
+          stream2 +
+          stream3 +
+          verticalFlow1 +
+          verticalFlow2 +
+          verticalTurbulence) *
+          verticalGradient *
+          0.25 +
+        0.5
       );
     };
 
