@@ -21,10 +21,10 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
     if (!ctx) return;
 
     // Animation speed controller - ajustez cette valeur pour changer toute la vitesse
-    const animationSpeed = 0.7; // 1.0 = vitesse normale, 2.0 = 2x plus rapide, 0.5 = 2x plus lent
+    const animationSpeed = 0.8; // 1.0 = vitesse normale, 2.0 = 2x plus rapide, 0.5 = 2x plus lent
 
     // Animation intensity controller - ajustez cette valeur pour modifier l'intensité de l'animation
-    const animationIntensity = 1.2; // 1.0 = intensité normale, 1.5 = plus intense, 0.8 = plus subtil
+    const animationIntensity = 1.5; // 1.0 = intensité normale, 1.5 = plus intense, 0.8 = plus subtil
 
     // Variables de temps simplifiées
     let time = 0;
@@ -99,8 +99,8 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
       const centerY = height * 0.5;
 
       // Add safety margins to avoid edge cutoffs
-      const marginX = width * 0.05;
-      const marginY = height * 0.05;
+      const marginX = width * 0;
+      const marginY = height * 0;
 
       // Use a more concentrated vertical area with margins
       const effectiveHeight = Math.min(height - marginY * 2, width * 0.6);
@@ -348,7 +348,7 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
       const centerX = width * 0.5;
       const centerY = height * 0.5;
       const maxRadius = Math.min(width, height);
-      const edgeMargin = 20;
+      const edgeMargin = 0;
 
       // Create organic flowing gradient with maximum performance optimizations
       const imageData = ctx.createImageData(width, height);
