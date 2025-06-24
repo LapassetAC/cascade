@@ -16,23 +16,29 @@ export default function HeroSection({
 
   return (
     <div className="col-span-full grid grid-cols-5 gap-4 md:gap-8">
-      <div className="flex flex-col col-span-2 gap-4 md:gap-8">
+      <div className="flex flex-col col-span-2 gap-4 md:gap-16">
         <h1 className="title">
           Créons un site à <br className="hidden lg:block" /> la hauteur de
           votre <br className="hidden lg:block" />
           savoir-faire
         </h1>
-        <h2 className="leading-snug mb-8 md:mb-16">
+        <h2 className="leading-snug">
           Nous concevons des sites web uniques et performants
           <br className="hidden lg:block" /> pour vous démarquer dans
           l&apos;océan digital.
         </h2>
-        <div className="mb-8 md:mb-16">
+        <div className="mb-8 md:mb-16 grid grid-cols-2 gap-4 text-left">
           <button
             onClick={onOpenCalModal}
-            className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors font-bold text-lg"
+            className="font-bold -m-4 p-4 text-left"
           >
-            Nous rencontrer
+            → Nous rencontrer
+          </button>
+          <button
+            onClick={onOpenCalModal}
+            className="font-bold -m-4 p-4 text-left"
+          >
+            → Estimer mon projet
           </button>
         </div>
       </div>

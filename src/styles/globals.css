@@ -39,6 +39,7 @@ body {
   li,
   label,
   input,
+  button,
   textarea {
     line-height: 30px;
     font-weight: 400;

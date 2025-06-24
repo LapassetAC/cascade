@@ -65,7 +65,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
 
       {/* Desktop header */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
-        <div className="hidden md:block md:col-span-1">
+        <div className="hidden md:block md:col-span-1 mb-10">
           <button
             onClick={scrollToTop}
             className="overflow-hidden fixed top-8 -m-4 p-4"
@@ -85,7 +85,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
         </div>
         {/* End of Main content */}
 
-        <div className="hidden md:flex md:col-start-5 items-start justify-end">
+        {/* <div className="hidden md:flex md:col-start-5 items-start justify-end">
           <a
             href="#footer"
             className="font-bold -m-4 p-4 fixed top-8"
@@ -93,7 +93,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           >
             <div ref={contactRef}>Contact</div>
           </a>
-        </div>
+        </div> */}
       </div>
 
       <div ref={skillsSectionRef}>
