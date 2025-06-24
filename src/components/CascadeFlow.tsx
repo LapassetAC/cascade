@@ -23,6 +23,9 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
     // Animation speed controller - ajustez cette valeur pour changer toute la vitesse
     const animationSpeed = 0.5; // 1.0 = vitesse normale, 2.0 = 2x plus rapide, 0.5 = 2x plus lent
 
+    // Animation intensity controller - ajustez cette valeur pour modifier l'intensité de l'animation
+    const animationIntensity = 1; // 1.0 = intensité normale, 1.5 = plus intense, 0.8 = plus subtil
+
     // Variables de temps simplifiées
     let time = 0;
     let frameSkipCounter = 0;
@@ -381,7 +384,9 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
 
           // Calcul des patterns une seule fois pour le bloc
           const combinedPattern = flowValue * 0.5 + cascadeValue * 0.5;
-          const colorMix = combinedPattern * intensity * combinedMask * 1.0;
+          const enhancedIntensity = intensity * animationIntensity;
+          const colorMix =
+            combinedPattern * enhancedIntensity * combinedMask * 1.0;
 
           const r = bgRgb.r + (fgRgb.r - bgRgb.r) * colorMix;
           const g = bgRgb.g + (fgRgb.g - bgRgb.g) * colorMix;
