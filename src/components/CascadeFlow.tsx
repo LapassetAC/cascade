@@ -269,14 +269,29 @@ export default function CascadeFlow({
   }, [intensity]);
 
   return (
-    <div
+    <section
       ref={containerRef}
-      className={`relative overflow-visible ${className}`}
-      style={{ height: "100px" }}
+      className="relative overflow-visible mt-32 grid grid-cols-3 gap-16"
     >
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      <p className="text-[64px] leading-none col-span-3">
+        Cascade c’est l’histoire de deux{" "}
+        <span className="italic text-[64px] leading-none">frères</span> qui
+        conçoivent le web comme un{" "}
+        <span className="italic text-[64px] leading-none">artisanat</span> :{" "}
+        avec rigueur, écoute et soin.
       </p>
+      <div className="col-start-2 col-span-2 flex flex-col gap-8">
+        <p>
+          Notre volonté est d’être les artisans d’un web mieux conçu et plus
+          sobre, où la forme sert le message pour vous offrir la visibilité et
+          la crédibilité que vous méritez.
+        </p>
+        <p>
+          Avec des parcours mêlant design, tech et conseil, nous travaillons en
+          cascade : chaque étape découle du problème initial et y apporte une
+          réponse sur mesure, de la réflexion stratégique à la mise en ligne.
+        </p>
+      </div>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
@@ -286,6 +301,6 @@ export default function CascadeFlow({
           opacity: 0.95, // Slightly increased for better center visibility
         }}
       />
-    </div>
+    </section>
   );
 }

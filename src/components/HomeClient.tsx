@@ -12,7 +12,7 @@ import CalModal from "@/components/CalModal";
 import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
-import CanvasNoiseGradient from "./CanvasNoiseGradient";
+import CascadeFlow from "./CascadeFlow";
 
 export default function HomeClient({ projects }: { projects: Project[] }) {
   const logoRef = useRef<HTMLDivElement>(null);
@@ -68,21 +68,11 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
         {/* Main content */}
         <HeroSection onOpenCalModal={openCalModal} project={projects[0]} />
 
-        <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-8">
-          <CanvasNoiseGradient />
+        <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-32">
+          <CascadeFlow />
           <ProjectsSection projects={projects} />
         </div>
         {/* End of Main content */}
-
-        {/* <div className="hidden md:flex md:col-start-5 items-start justify-end">
-          <a
-            href="#footer"
-            className="font-bold -m-4 p-4 fixed top-8"
-            onClick={scrollToFooter}
-          >
-            <div ref={contactRef}>Contact</div>
-          </a>
-        </div> */}
       </div>
 
       <div ref={skillsSectionRef}>
