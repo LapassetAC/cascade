@@ -73,7 +73,7 @@ export default function HeroSection({
         <div className="overflow-hidden">
           <video
             //   ref={setRefs}
-            className="w-full relative p-4 md:pt-8 xl:px-40 xl:py-20"
+            className="w-full relative p-[4vw] md:pt-[8vw] xl:px-[12vw] xl:py-[5vw]"
             playsInline
             loop
             muted
