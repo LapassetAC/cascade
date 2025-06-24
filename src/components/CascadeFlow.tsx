@@ -102,9 +102,9 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
       const marginX = width * 0;
       const marginY = height * 0;
 
-      // Use a more concentrated vertical area with margins
-      const effectiveHeight = Math.min(height - marginY * 2, width * 0.6);
-      const topOffset = (height - effectiveHeight) * 0.5;
+      // Use a more expanded vertical area to cover more of the top and bottom
+      const effectiveHeight = Math.min(height - marginY * 2, height * 0.9); // Increased from width * 0.6 to height * 0.9
+      const topOffset = (height - effectiveHeight) * 0.1; // Reduced from 0.5 to 0.1 to start higher
       const bottomOffset = topOffset + effectiveHeight;
 
       // Create complex, smooth boundaries
