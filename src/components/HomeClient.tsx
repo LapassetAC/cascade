@@ -65,17 +65,6 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
 
       {/* Desktop header */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
-        <div className="hidden md:block md:col-span-1 mb-10">
-          <button
-            onClick={scrollToTop}
-            className="overflow-hidden fixed top-8 -m-4 p-4"
-          >
-            <div ref={logoRef}>
-              <CascadeLogo />
-            </div>
-          </button>
-        </div>
-
         {/* Main content */}
         <HeroSection onOpenCalModal={openCalModal} project={projects[0]} />
 

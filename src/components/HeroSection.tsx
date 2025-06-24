@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import { Project } from "@/types/project";
+import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
+import { useRef } from "react";
+import CascadeLogo from "./CascadeLogo";
 
 interface HeroSectionProps {
   onOpenCalModal: () => void;
@@ -14,9 +17,21 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const { title, image, videoUrl } = project;
 
+  const logoRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="col-span-full grid grid-cols-5 gap-4 md:gap-8">
       <div className="flex flex-col col-span-2 gap-4 md:gap-16">
+        <div className="hidden md:block md:col-span-1 mb-2">
+          <button
+            onClick={scrollToTop}
+            className="overflow-hidden fixed top-8 -m-4 p-4"
+          >
+            <div ref={logoRef}>
+              <CascadeLogo />
+            </div>
+          </button>
+        </div>
         <h1 className="title">
           Créons un site à <br className="hidden lg:block" /> la hauteur de
           votre <br className="hidden lg:block" />
@@ -27,7 +42,7 @@ export default function HeroSection({
           <br className="hidden lg:block" /> pour vous démarquer dans
           l&apos;océan digital.
         </h2>
-        <div className="mb-8 md:mb-16 grid grid-cols-2 gap-4 text-left">
+        <div className="mb-8 md:mb-0 grid grid-cols-2 gap-4 text-left">
           <button
             onClick={onOpenCalModal}
             className="font-bold -m-4 p-4 text-left"
@@ -58,7 +73,7 @@ export default function HeroSection({
         <div className="overflow-hidden">
           <video
             //   ref={setRefs}
-            className="w-full relative p-4 md:p-8 xl:p-16"
+            className="w-full relative p-4 md:pt-8 xl:px-40 xl:py-20"
             playsInline
             loop
             muted
