@@ -462,7 +462,7 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
           réponse sur mesure, de la réflexion stratégique à la mise en ligne.
         </p>
       </div>
-      <canvas
+      {/* <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{
@@ -470,7 +470,7 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
           filter: "blur(0.6px)", // Reduced blur for better visibility
           opacity: 1, // Increased opacity for better visibility
         }}
-      />
+      /> */}
     </section>
   );
 }
