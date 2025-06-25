@@ -441,14 +441,13 @@ export default function CascadeFlow({ intensity = 0.9 }: CascadeFlowProps) {
   return (
     <section
       ref={containerRef}
-      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start relative overflow-visible gap-16"
+      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start relative overflow-visible gap-16 mb-16 lg:mb-0"
     >
-      <p className="text-[64px] leading-none col-span-3 md:col-start-2 md:col-span-3 mb-16">
+      <p className="text-[64px] title col-span-3 md:col-start-2 md:col-span-3 lg:mb-16">
         Cascade c'est l'histoire de deux{" "}
-        <span className="italic text-[64px] leading-none">frères</span> qui
-        conçoivent le web comme un{" "}
-        <span className="italic text-[64px] leading-none">artisanat</span> :{" "}
-        avec rigueur, écoute et soin.
+        <span className="italic title">frères</span> qui conçoivent le web comme
+        un <span className="italic title">artisanat</span> : avec rigueur,
+        écoute et soin.
       </p>
       <div className="col-start-2 col-span-2 md:col-start-3 md:col-span-2 flex flex-col gap-8">
         <p>

@@ -89,7 +89,7 @@ export default function CalModal({ isOpen, onClose }: CalModalProps) {
 
         <div className="w-full h-full rounded-lg overflow-hidden">
           <iframe
-            src="https://cal.com/cascadestudio/30min"
+            src="https://cal.com/cascadestudio/contact"
             width="100%"
             height="100%"
             frameBorder="0"

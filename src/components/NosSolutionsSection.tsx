@@ -6,8 +6,8 @@ const NosSolutionsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-8 md:gap-16">
           {/* Card 1 */}
-          <div className="flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] py-8 ">
-            <div className="flex items-center gap-4 mb-8 pl-16">
+          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] lg:py-8 ">
+            <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="139"
                 height="103"
@@ -30,15 +30,15 @@ const NosSolutionsSection = () => {
                 Valoriser votre <br /> présence digitale
               </h3>
             </div>
-            <div className="grid grid-cols-3 gap-8 items-start">
-              <p className="mb-6 col-span-2 pl-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <p className="mb-6 col-span-2 lg:pl-16">
                 Nous concevons des sites sur mesure, engageants et performants
                 qui traduisent fidèlement votre identité et mettent en valeur ce
                 qui vous distingue. En nous immergeant dans votre métier, nous
                 construisons avec vous une présence digitale claire, élégante et
                 cohérente.
               </p>
-              <div className="flex flex-col gap-2 items-start">
+              <div className="flex flex-wrap lg:flex-col gap-3 items-start">
                 <span className="px-3 py-1 text-sm border border-current rounded-full">
                   Site vitrine
                 </span>
@@ -53,8 +53,8 @@ const NosSolutionsSection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] py-8">
-            <div className="flex items-center gap-4 mb-8 pl-16">
+          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] lg:py-8 ">
+            <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="85"
                 height="93"
@@ -77,8 +77,8 @@ const NosSolutionsSection = () => {
                 Créer des outils <br /> pour votre métier
               </h3>
             </div>
-            <div className="grid grid-cols-3 gap-8 items-start">
-              <p className="mb-6 col-span-2 pl-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <p className="mb-6 col-span-2 lg:pl-16">
                 Vous avez des idées concrètes pour mieux travailler, mais les
                 outils manquent ou ne conviennent pas. Nous concevons avec vous
                 des solutions digitales sur mesure, web ou mobile, qui répondent
@@ -86,7 +86,7 @@ const NosSolutionsSection = () => {
                 aidons à transformer une intuition en un outil simple, efficace
                 et adapté.
               </p>
-              <div className="flex flex-col gap-2 items-start">
+              <div className="flex flex-wrap lg:flex-col gap-3 items-start">
                 <span className="px-3 py-1 text-sm border border-current rounded-full">
                   Application web
                 </span>

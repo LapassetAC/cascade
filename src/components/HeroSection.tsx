@@ -20,7 +20,7 @@ export default function HeroSection({
   const logoRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="col-span-full grid grid-cols-5 gap-4 md:gap-8">
+    <div className="col-span-full grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-8 mb-32 lg:mb-0">
       <div className="flex flex-col col-span-2 gap-4 md:gap-16">
         <div className="hidden md:block md:col-span-1 mb-2">
           <button
@@ -58,7 +58,7 @@ export default function HeroSection({
         </div>
       </div>
 
-      <div className="col-span-3 relative">
+      <div className="col-span-3 relative aspect-[4/3]">
         <Image
           className="absolute object-cover"
           src={image.asset.url}
@@ -70,10 +70,9 @@ export default function HeroSection({
           loading="eager"
           fetchPriority="high"
         />
-        <div className="overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
           <video
-            //   ref={setRefs}
-            className="w-full relative p-[4vw] md:pt-[8vw] xl:px-[12vw] xl:py-[5vw]"
+            className="max-w-[60%] max-h-[70%] w-auto h-auto"
             playsInline
             loop
             muted
