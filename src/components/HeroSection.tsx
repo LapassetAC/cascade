@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Project } from "@/types/project";
-import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
+import { scrollToTop } from "@/utils/scrollTo";
 import { useRef } from "react";
 import CascadeLogo from "./CascadeLogo";
 

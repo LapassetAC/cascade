@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Project } from "@/types/project";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
@@ -5,29 +6,83 @@ import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 import useUserActivity from "@/hooks/useUserActivity";
 
+// Create a custom hook for managing multiple video refs and inView states
+const useProjectsInView = (projectsCount: number) => {
+  const inViewHooks = [];
+  for (let i = 0; i < projectsCount; i++) {
+    inViewHooks.push(
+      useInView({
+        triggerOnce: false,
+        threshold: 0.4,
+        rootMargin: "-100px",
+      })
+    );
+  }
+  return inViewHooks;
+};
+
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
-  const isMobile = useWindowSize();
-  const [firstVideoPlaying, setFirstVideoPlaying] = useState(false);
-  const [showAllProjects, setShowAllProjects] = useState(false);
-
-  const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
-  const isUserActive = useUserActivity();
-
-  const projectRefs = projects.map(() =>
-    useInView({
-      triggerOnce: false,
-      threshold: 0.4,
-      rootMargin: "-100px",
-    })
-  );
-
-  // Check if projects exist before rendering
+  // Check if projects exist early
   if (!projects || projects.length === 0) {
     return null;
   }
 
-  // Determine which projects to show
-  const projectsToShow = showAllProjects ? projects : projects.slice(0, 3);
+  const isMobile = useWindowSize();
+  const [firstVideoPlaying, setFirstVideoPlaying] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const isUserActive = useUserActivity();
+
+  // Create refs for all possible projects
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  // Create inView observers for all projects
+  const projectInViewData = useProjectsInView(projects.length);
+
+  // Handle video playback based on inView state
+  useEffect(() => {
+    projects.forEach((_, index) => {
+      const videoElement = videoRefs.current[index];
+      const inView = projectInViewData[index]?.[1];
+
+      // Skip effect execution for non-rendered videos
+      if (index > 0 && !firstVideoPlaying) {
+        return;
+      }
+
+      if (!videoElement) {
+        return;
+      }
+
+      if (inView && isUserActive) {
+        videoElement
+          .play()
+          .then(() => {
+            if (index === 0) {
+              setFirstVideoPlaying(true);
+            }
+          })
+          .catch((error) => console.error(`Video ${index} play error:`, error));
+      } else {
+        videoElement.pause();
+      }
+    });
+  }, [projects, projectInViewData, firstVideoPlaying, isUserActive]);
+
+  // Add event listener for first video
+  useEffect(() => {
+    const firstVideo = videoRefs.current[0];
+    if (!firstVideo) return;
+
+    const onPlaying = () => {
+      setFirstVideoPlaying(true);
+    };
+
+    firstVideo.addEventListener("playing", onPlaying);
+
+    return () => {
+      firstVideo.removeEventListener("playing", onPlaying);
+    };
+  }, []);
 
   return (
     <section className="col-span-3 flex flex-col gap-y-32 pb-16">
@@ -35,62 +90,20 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
-        const [inViewRef, inView] = projectRefs[index];
-        const videoRef = videoRefs[index];
-
-        // Always call useEffect regardless of conditional rendering
-        useEffect(() => {
-          // Skip effect execution for non-rendered videos
-          if (index > 0 && !firstVideoPlaying) {
-            return;
-          }
-
-          const videoElement = videoRef.current;
-          if (!videoElement) {
-            return;
-          }
-
-          if (inView && isUserActive) {
-            videoElement
-              .play()
-              .then(() => {
-                if (index === 0) {
-                  setFirstVideoPlaying(true);
-                }
-              })
-              .catch((error) =>
-                console.error(`Video ${index} play error:`, error)
-              );
-          } else {
-            videoElement.pause();
-          }
-
-          // Add playing event listener for first video
-          if (index === 0) {
-            const onPlaying = () => {
-              setFirstVideoPlaying(true);
-            };
-
-            videoElement.addEventListener("playing", onPlaying);
-
-            return () => {
-              videoElement.removeEventListener("playing", onPlaying);
-            };
-          }
-        }, [inView, videoRef, index, isUserActive, firstVideoPlaying]);
+        const [inViewRef] = projectInViewData[index];
 
         // If this is not the first project and first video is not yet playing, don't render it
         if (index > 0 && !firstVideoPlaying) {
           return null;
         }
 
-        // Don't render if project is not in the projectsToShow array
+        // Don't render if project is not in the show all projects and beyond first 3
         if (!showAllProjects && index >= 3) {
           return null;
         }
 
         const setRefs = (element: HTMLVideoElement | null) => {
-          videoRef.current = element;
+          videoRefs.current[index] = element;
           inViewRef(element);
         };
 

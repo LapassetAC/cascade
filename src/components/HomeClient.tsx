@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
 import HeroSection from "@/components/HeroSection";
 import CalModal from "@/components/CalModal";
-import { scrollToFooter, scrollToTop } from "@/utils/scrollTo";
+import { scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
 import CascadeFlow from "./CascadeFlow";
