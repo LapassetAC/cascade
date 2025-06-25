@@ -8,6 +8,7 @@ import useUserActivity from "@/hooks/useUserActivity";
 const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
   const [firstVideoPlaying, setFirstVideoPlaying] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const videoRefs = projects.map(() => useRef<HTMLVideoElement>(null));
   const isUserActive = useUserActivity();
@@ -25,8 +26,13 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
     return null;
   }
 
+  // Determine which projects to show
+  const projectsToShow = showAllProjects ? projects : projects.slice(0, 3);
+
   return (
     <section className="col-span-3 flex flex-col gap-y-32 pb-16">
+      <h2 className="title">Nos projets</h2>
+
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         const [inViewRef, inView] = projectRefs[index];
@@ -75,6 +81,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
         // If this is not the first project and first video is not yet playing, don't render it
         if (index > 0 && !firstVideoPlaying) {
+          return null;
+        }
+
+        // Don't render if project is not in the projectsToShow array
+        if (!showAllProjects && index >= 3) {
           return null;
         }
 
@@ -155,6 +166,16 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           </ProjectWrapper>
         );
       })}
+      {projects.length > 3 && (
+        <button
+          onClick={() => setShowAllProjects(!showAllProjects)}
+          className="text-center font-bold -m-4 p-4"
+        >
+          {showAllProjects
+            ? "← Voir moins de projets"
+            : "→ Voir plus de projets"}
+        </button>
+      )}
     </section>
   );
 };

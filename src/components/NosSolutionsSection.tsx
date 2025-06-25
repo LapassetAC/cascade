@@ -2,11 +2,11 @@ const NosSolutionsSection = () => {
   return (
     <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32">
       <div className="col-start-2 col-span-3">
-        <h2 className="title mb-16 md:mb-16">Nos solutions</h2>
+        <h2 className="title mb-16 md:mb-32">Nos solutions</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-8 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-8 md:gap-16">
           {/* Card 1 */}
-          <div className="flex flex-col col-span-3  bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] py-8 ">
+          <div className="flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] py-8 ">
             <div className="flex items-center gap-4 mb-8 pl-16">
               <svg
                 width="139"
