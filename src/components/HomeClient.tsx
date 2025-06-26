@@ -74,11 +74,11 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
 
       <CascadeFlow onOpenCalModal={openCalModal} />
       <NosSolutionsSection />
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
+      {/* <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         <div className="md:col-start-2 md:col-span-3 flex flex-col gap-4 md:gap-32">
           <ProjectsSection projects={projects} />
         </div>
-      </div>
+      </div> */}
       <div ref={skillsSectionRef}>
         <SkillsSection />
       </div>
