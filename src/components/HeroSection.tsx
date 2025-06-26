@@ -58,7 +58,7 @@ export default function HeroSection({
         </div>
       </div>
 
-      <div className="col-span-3 relative aspect-[4/3]">
+      <div className="col-span-3 relative aspect-[4/3] lg:aspect-auto overflow-hidden">
         <Image
           className="absolute object-cover"
           src={image.asset.url}
