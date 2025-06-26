@@ -5,6 +5,7 @@ import { Project } from "@/types/project";
 import { scrollToTop } from "@/utils/scrollTo";
 import { useRef } from "react";
 import CascadeLogo from "./CascadeLogo";
+import { useHeroVisibility } from "@/hooks/useHeroVisibility";
 
 interface HeroSectionProps {
   onOpenCalModal: () => void;
@@ -18,9 +19,14 @@ export default function HeroSection({
   const { title, image, videoUrl } = project;
 
   const logoRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroVisible = useHeroVisibility({ heroRef });
 
   return (
-    <div className="col-span-full grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-8 mb-32 lg:mb-0">
+    <div
+      ref={heroRef}
+      className="col-span-full grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-8 mb-32 lg:mb-0"
+    >
       <div className="flex flex-col col-span-2 gap-4 md:gap-16">
         <div className="hidden md:block md:col-span-1 mb-2">
           <button
@@ -58,7 +64,7 @@ export default function HeroSection({
         </div>
       </div>
 
-      <div className="col-span-3 relative aspect-[4/3] lg:aspect-auto overflow-hidden">
+      <div className="col-span-3 relative aspect-[4/3] lg:aspect-auto overflow-hidden z-10">
         <Image
           className="absolute object-cover"
           src={image.asset.url}
@@ -84,6 +90,26 @@ export default function HeroSection({
           </video>
         </div>
       </div>
+      <aside
+        className={`fixed top-8 right-8 flex flex-col gap-1 transition-all duration-200 ease-in-out ${
+          isHeroVisible
+            ? "opacity-0 translate-y-[-20px] pointer-events-none"
+            : "opacity-100 translate-y-0 pointer-events-auto"
+        }`}
+      >
+        <button
+          onClick={onOpenCalModal}
+          className="font-bold -m-4 p-4 text-left md:mb-1"
+        >
+          → Nous rencontrer
+        </button>
+        <button
+          onClick={onOpenCalModal}
+          className="font-bold -m-4 p-4 text-left"
+        >
+          → Estimer mon projet
+        </button>
+      </aside>
     </div>
   );
 }

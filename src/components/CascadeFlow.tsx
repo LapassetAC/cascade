@@ -2,7 +2,11 @@
 
 // import { useEffect, useRef } from "react";
 
-export default function CascadeFlow() {
+export default function CascadeFlow({
+  onOpenCalModal,
+}: {
+  onOpenCalModal: () => void;
+}) {
   // const canvasRef = useRef<HTMLCanvasElement>(null);
   // const containerRef = useRef<HTMLDivElement>(null);
   // const animationRef = useRef<number>(null);
@@ -436,7 +440,7 @@ export default function CascadeFlow() {
   return (
     <section
       // ref={containerRef}
-      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start relative overflow-visible gap-16 mb-16 lg:mb-0"
+      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start  overflow-visible gap-16 mb-16 lg:mb-0"
     >
       <p className="text-[64px] title col-span-3 md:col-start-2 md:col-span-3 lg:mb-16">
         Cascade c'est l'histoire de deux{" "}
@@ -456,6 +460,7 @@ export default function CascadeFlow() {
           réponse sur mesure, de la réflexion stratégique à la mise en ligne.
         </p>
       </div>
+
       {/* <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
