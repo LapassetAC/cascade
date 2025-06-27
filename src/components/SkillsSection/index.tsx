@@ -11,25 +11,25 @@ const SkillsSection = () => {
 
   const skills = [
     {
-      title: "Identifier l’objectif à partir d’un audit stratégique",
+      title: "Identifier l'objectif à partir d'un audit stratégique",
       description:
-        "À partir du problème identifié et d’un audit de votre présence digitale (site, réseaux, identité), nous définissons ensemble un objectif clair et le périmètre du projet pour y répondre.",
+        "À partir du problème identifié et d'un audit de votre présence digitale (site, réseaux, identité), nous définissons ensemble un objectif clair et le périmètre du projet pour y répondre.",
     },
     {
-      title: "Aligner l’identité, l’esthétique et le parcours utilisateur ",
+      title: "Aligner l'identité, l'esthétique et le parcours utilisateur",
       description:
         "Si nécessaire, nous retravaillons votre identité de marque puis nous explorons la direction esthétique la plus pertinente, et enfin nous créons un parcours utilisateur fluide en phase avec vos objectifs",
     },
     {
-      title: "Concevoir l’interface et le contenu",
+      title: "Concevoir l'interface et le contenu",
       description:
-        "Nous maquettons chaque page dans Figma (au format mobile, tablette, et ordinateur) et vous accompagnons dans la création des contenus pour qu’ils soient clairs, cohérents et impactants.",
+        "Nous maquettons chaque page dans Figma (au format mobile, tablette, et ordinateur) et vous accompagnons dans la création des contenus pour qu'ils soient clairs, cohérents et impactants.",
       logo: ["figma"],
     },
     {
       title: "Donner vie au site",
       description:
-        "Nous codons entièrement votre site avec les technologies les plus performantes du marché pour qu’il soit rapide, engageant, et évolutif.",
+        "Nous codons entièrement votre site avec les technologies les plus performantes du marché pour qu'il soit rapide, engageant, et évolutif.",
       logo: ["github", "nextjs", "tailwindcss", "typescript", "gsap"],
     },
     {
@@ -104,15 +104,40 @@ const SkillsSection = () => {
       },
     });
 
+    // Set up ResizeObserver to detect layout changes
+    const resizeObserver = new ResizeObserver(() => {
+      // Debounce the refresh to avoid excessive calls
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    });
+
+    // Observe changes to the document body (which includes the ProjectsSection)
+    resizeObserver.observe(document.body);
+
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      resizeObserver.disconnect();
+    };
+  }, []);
+
+  // Additional effect to handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] relative h-[300vh] mb-[-200px]"
+      className="bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] relative h-[400vh] xl:h-[300vh]"
     >
       <div
         ref={skillsContainerRef}

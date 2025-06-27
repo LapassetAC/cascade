@@ -28,7 +28,6 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   }
 
   const isMobile = useWindowSize();
-  const [firstVideoPlaying, setFirstVideoPlaying] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const isUserActive = useUserActivity();
 
@@ -44,11 +43,6 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
       const videoElement = videoRefs.current[index];
       const inView = projectInViewData[index]?.[1];
 
-      // Skip effect execution for non-rendered videos
-      if (index > 0 && !firstVideoPlaying) {
-        return;
-      }
-
       if (!videoElement) {
         return;
       }
@@ -56,33 +50,12 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
       if (inView && isUserActive) {
         videoElement
           .play()
-          .then(() => {
-            if (index === 0) {
-              setFirstVideoPlaying(true);
-            }
-          })
           .catch((error) => console.error(`Video ${index} play error:`, error));
       } else {
         videoElement.pause();
       }
     });
-  }, [projects, projectInViewData, firstVideoPlaying, isUserActive]);
-
-  // Add event listener for first video
-  useEffect(() => {
-    const firstVideo = videoRefs.current[0];
-    if (!firstVideo) return;
-
-    const onPlaying = () => {
-      setFirstVideoPlaying(true);
-    };
-
-    firstVideo.addEventListener("playing", onPlaying);
-
-    return () => {
-      firstVideo.removeEventListener("playing", onPlaying);
-    };
-  }, []);
+  }, [projects, projectInViewData, isUserActive]);
 
   return (
     <section className="col-span-3 flex flex-col gap-y-32 pb-16">
@@ -91,11 +64,6 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
       {projects.map((project, index) => {
         const { title, image, url, videoUrl, category, services } = project;
         const [inViewRef] = projectInViewData[index];
-
-        // If this is not the first project and first video is not yet playing, don't render it
-        if (index > 0 && !firstVideoPlaying) {
-          return null;
-        }
 
         // Don't render if project is not in the show all projects and beyond first 3
         if (!showAllProjects && index >= 3) {
