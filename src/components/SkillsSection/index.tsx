@@ -43,21 +43,6 @@ const SkillsSection = () => {
 
     if (!section || !skillsContainer) return;
 
-    // Set proper height for the section to accommodate scrolling
-    gsap.set(section, {
-      height: `${skills.length * 200}vh`,
-      position: "relative",
-    });
-
-    // Pin/fix the skills container within the section
-    const pinTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: "bottom bottom",
-      pin: skillsContainer,
-      pinSpacing: false,
-    });
-
     // Initialize all skills as hidden
     const skillElements = skills.map((_, index) =>
       skillsContainer.querySelector(`#skill-${index}`)
@@ -65,18 +50,20 @@ const SkillsSection = () => {
 
     skillElements.forEach((el) => {
       if (el) {
-        gsap.set(el, { opacity: 0, y: 50 });
+        gsap.set(el, { opacity: 0, y: -50 });
       }
     });
 
     if (skillElements[0]) {
-      gsap.set(skillElements[0], { opacity: 1 });
+      gsap.set(skillElements[0], { opacity: 1, y: 0 });
     }
     // Create a single scroll trigger that manages all skills
     ScrollTrigger.create({
       trigger: section,
       start: "top top",
       end: "bottom bottom",
+      pin: skillsContainer,
+      pinSpacing: false,
       onUpdate: (self) => {
         const totalProgress = self.progress;
         const skillProgress = totalProgress * skills.length;
@@ -95,7 +82,7 @@ const SkillsSection = () => {
               gsap.to(el, {
                 opacity: 1,
                 y: 0,
-                duration: 0.2,
+                duration: 0.3,
                 ease: "power2.out",
                 overwrite: true,
               });
@@ -103,7 +90,7 @@ const SkillsSection = () => {
               // Hide inactive skills with smooth transition
               gsap.to(el, {
                 opacity: 0,
-                y: 50,
+                y: 0,
                 duration: 0.2,
                 ease: "power2.out",
                 overwrite: true,
@@ -122,11 +109,11 @@ const SkillsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] relative"
+      className="bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] relative h-[300vh] mb-[-300px]"
     >
       <div
         ref={skillsContainerRef}
-        className="min-h-screen md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 flex flex-col justify-center relative z-10"
+        className="md:grid grid-cols-5 gap-8 px-4 md:px-8 pt-16 md:pt-32 flex flex-col justify-center relative z-10"
       >
         <h2 className="col-start-2 col-span-3 title mb-8">
           Un accompagnement <br />

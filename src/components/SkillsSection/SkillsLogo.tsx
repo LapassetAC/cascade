@@ -36,7 +36,7 @@ const SkillsLogo = () => {
         gsap.set(path, {
           opacity: 0,
           scaleY: 0,
-          transformOrigin: "bottom",
+          transformOrigin: "top",
         });
       }
     });
@@ -64,7 +64,7 @@ const SkillsLogo = () => {
               gsap.to(path, {
                 opacity: 1,
                 scaleY: 1,
-                duration: 0.2,
+                duration: 0.3,
                 ease: "power2.out",
                 overwrite: true,
               });
@@ -73,7 +73,7 @@ const SkillsLogo = () => {
               gsap.to(path, {
                 opacity: 0,
                 scaleY: 0,
-                duration: 0.2,
+                duration: 0.3,
                 ease: "power2.out",
                 overwrite: true,
               });

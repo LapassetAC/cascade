@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32">
+    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 z-10 relative bg-[url('/imgs/white-noise.jpg')] dark:bg-[url('/imgs/blue-noise.jpg')]">
       <div className="col-start-2 col-span-2 mb-16">
         <h2 className="title mb-10">Deux frères, deux artisans du web</h2>
         <p>
