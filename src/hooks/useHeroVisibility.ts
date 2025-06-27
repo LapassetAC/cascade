@@ -15,10 +15,11 @@ export const useHeroVisibility = ({ heroRef }: UseHeroVisibilityProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     const heroElement = heroRef.current;
+    let scrollTrigger: ScrollTrigger | null = null;
 
     if (heroElement) {
       // Create ScrollTrigger to track when hero section exits viewport
-      ScrollTrigger.create({
+      scrollTrigger = ScrollTrigger.create({
         trigger: heroElement,
         start: "bottom top", // When bottom of hero reaches top of viewport
         end: "bottom top",
@@ -30,7 +31,10 @@ export const useHeroVisibility = ({ heroRef }: UseHeroVisibilityProps) => {
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Kill the specific ScrollTrigger created by this hook
+      if (scrollTrigger) {
+        scrollTrigger.kill();
+      }
     };
   }, [heroRef]);
 

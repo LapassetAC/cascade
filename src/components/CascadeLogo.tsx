@@ -3,16 +3,20 @@
 interface CascadeLogoProps {
   className?: string;
   ref?: React.RefObject<SVGSVGElement>;
+  isWhite?: boolean;
 }
 
-export default function CascadeLogo({ className }: CascadeLogoProps) {
+export default function CascadeLogo({
+  className,
+  isWhite = false,
+}: CascadeLogoProps) {
   const rectClasses = `
     transform -translate-y-[50px] opacity-0 animate-textAppear
   `;
 
   return (
     <svg
-      className={`h-[20px] sm:h-[30px] w-auto ${className || ""}`}
+      className={`z-20 relative h-[20px] sm:h-[30px] w-auto transition-colors duration-300 ${isWhite ? "text-white" : "text-[#0b0bca]"} ${className || ""}`}
       width="1134"
       height="246"
       viewBox="0 0 1134 246"

@@ -141,7 +141,7 @@ const SkillsSection = () => {
     >
       <div
         ref={skillsContainerRef}
-        className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 flex flex-col justify-center relative z-10"
+        className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 flex flex-col justify-center relative"
       >
         <h2 className="col-start-2 col-span-3 title mb-8">
           Un accompagnement <br />
@@ -152,7 +152,7 @@ const SkillsSection = () => {
           avec la qualité d'une agence et la flexibilité d'un·e freelance.
         </p>
         <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8 relative">
-          <div className="relative z-20">
+          <div className="relative">
             <SkillsLogo />
           </div>
           <div className="col-span-2 relative">
