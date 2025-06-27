@@ -1,6 +1,6 @@
 const NosSolutionsSection = () => {
   return (
-    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32">
+    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-32">
       <div className="col-start-2 col-span-3">
         <h2 className="title mb-16 md:mb-32">Nos solutions</h2>
 

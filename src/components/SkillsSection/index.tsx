@@ -163,7 +163,7 @@ const SkillsSection = () => {
                 className="skill-item-container absolute inset-0 flex flex-col justify-start"
               >
                 <div className="md:grid md:grid-cols-2 gap-4 md:gap-8">
-                  <div className="skill-title md:text-right font-bold mt-8 md:mt-0">
+                  <div className="skill-title md:text-right font-bold">
                     <span className="font-normal mr-2 md:mr-4">
                       {index + 1}.
                     </span>

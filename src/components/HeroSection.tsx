@@ -97,7 +97,7 @@ export default function HeroSection({
         </div>
       </div>
       <aside
-        className={`fixed top-8 right-8 flex flex-col gap-1 transition-all duration-200 ease-in-out z-30 ${
+        className={`fixed top-4 md:top-8 right-4 md:right-8 flex flex-col gap-1 transition-all duration-200 ease-in-out z-30 ${
           isHeroVisible
             ? "opacity-0 translate-y-[-20px] pointer-events-none"
             : "opacity-100 translate-y-0 pointer-events-auto"
@@ -113,7 +113,7 @@ export default function HeroSection({
         </button>
         <button
           onClick={onOpenCalModal}
-          className={`font-bold -m-4 p-4 text-left transition-colors duration-300 ${
+          className={`hidden md:block  font-bold -m-4 p-4 text-left transition-colors duration-300 ${
             shouldUseWhiteLogo ? "text-white" : "text-[#0b0bca]"
           }`}
         >

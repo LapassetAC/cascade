@@ -440,7 +440,7 @@ export default function CascadeFlow({
   return (
     <section
       // ref={containerRef}
-      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start  overflow-visible gap-16 mb-16 lg:mb-0"
+      className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start  overflow-visible gap-16"
     >
       <p className="text-[64px] title col-span-3 md:col-start-2 md:col-span-3 lg:mb-16">
         Cascade c'est l'histoire de deux{" "}
