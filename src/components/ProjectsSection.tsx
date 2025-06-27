@@ -85,7 +85,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
         return (
           <ProjectWrapper key={project._id} {...wrapperProps}>
-            <div className="relative">
+            <div className="relative aspect-[4/3] lg:min-h-[500px] lg:aspect-[16/10] overflow-hidden">
               <Image
                 className="absolute object-cover"
                 src={image.asset.url}
@@ -97,10 +97,10 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "auto"}
               />
-              <div className="overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
                 <video
                   ref={setRefs}
-                  className="w-full relative p-4 md:p-8 xl:p-16"
+                  className="max-w-[60%] max-h-[70%] w-auto h-auto"
                   playsInline
                   loop
                   muted
