@@ -2,11 +2,7 @@
 
 // import { useEffect, useRef } from "react";
 
-export default function CascadeFlow({
-  onOpenCalModal,
-}: {
-  onOpenCalModal: () => void;
-}) {
+export default function CascadeFlow() {
   // const canvasRef = useRef<HTMLCanvasElement>(null);
   // const containerRef = useRef<HTMLDivElement>(null);
   // const animationRef = useRef<number>(null);
