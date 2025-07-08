@@ -10,11 +10,13 @@ import { useLogoColorChange } from "@/hooks/useLogoColorChange";
 
 interface HeroSectionProps {
   onOpenCalModal: () => void;
+  onOpenTallyModal: () => void;
   project: Project;
 }
 
 export default function HeroSection({
   onOpenCalModal,
+  onOpenTallyModal,
   project,
 }: HeroSectionProps) {
   const { title, image, videoUrl } = project;
@@ -60,7 +62,7 @@ export default function HeroSection({
             → Nous rencontrer
           </button>
           <button
-            onClick={onOpenCalModal}
+            onClick={onOpenTallyModal}
             className={`font-bold -m-4 p-4 text-left transition-colors duration-300 ${
               shouldUseWhiteLogo ? "text-white" : "text-[#0b0bca]"
             }`}
@@ -112,7 +114,7 @@ export default function HeroSection({
           → Nous rencontrer
         </button>
         <button
-          onClick={onOpenCalModal}
+          onClick={onOpenTallyModal}
           className={`hidden md:block  font-bold -m-4 p-4 text-left transition-colors duration-300 ${
             shouldUseWhiteLogo ? "text-white" : "text-[#0b0bca]"
           }`}

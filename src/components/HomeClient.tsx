@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ProjectsSection from "@/components/ProjectsSection";
 import HeroSection from "@/components/HeroSection";
 import CalModal from "@/components/CalModal";
+import TallyModal from "@/components/TallyModal";
 import { scrollToTop } from "@/utils/scrollTo";
 import { useHeaderColorChange } from "@/hooks/useHeaderColorChange";
 import { useFooterIntersection } from "@/hooks/useFooterIntersection";
@@ -23,6 +24,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
 
   // Modal state
   const [isCalModalOpen, setIsCalModalOpen] = useState(false);
+  const [isTallyModalOpen, setIsTallyModalOpen] = useState(false);
 
   useHeaderColorChange({
     logoRef,
@@ -38,6 +40,8 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
 
   const openCalModal = () => setIsCalModalOpen(true);
   const closeCalModal = () => setIsCalModalOpen(false);
+  const openTallyModal = () => setIsTallyModalOpen(true);
+  const closeTallyModal = () => setIsTallyModalOpen(false);
 
   return (
     <>
@@ -67,7 +71,11 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       {/* Desktop header */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         {/* Main content */}
-        <HeroSection onOpenCalModal={openCalModal} project={projects[0]} />
+        <HeroSection
+          onOpenCalModal={openCalModal}
+          onOpenTallyModal={openTallyModal}
+          project={projects[0]}
+        />
 
         {/* End of Main content */}
       </div>
@@ -88,6 +96,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       </div>
 
       <CalModal isOpen={isCalModalOpen} onClose={closeCalModal} />
+      <TallyModal isOpen={isTallyModalOpen} onClose={closeTallyModal} />
     </>
   );
 }

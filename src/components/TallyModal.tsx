@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-interface CalModalProps {
+interface TallyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function CalModal({ isOpen, onClose }: CalModalProps) {
+export default function TallyModal({ isOpen, onClose }: TallyModalProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ export default function CalModal({ isOpen, onClose }: CalModalProps) {
             <div className="text-center">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-black mb-4"></div>
               <p className="text-gray-600 font-medium">
-                Chargement de Cal.com...
+                Chargement de l'estimation...
               </p>
             </div>
           </div>
@@ -89,11 +89,11 @@ export default function CalModal({ isOpen, onClose }: CalModalProps) {
 
         <div className="w-full h-full rounded-lg overflow-hidden">
           <iframe
-            src="https://cal.com/cascadestudio/prise-de-contact"
+            src="https://tally.so/r/w50Lad"
             width="100%"
             height="100%"
             frameBorder="0"
-            title="Planifier un rendez-vous"
+            title="Estimer mon projet"
             className="rounded-lg"
             onLoad={handleIframeLoad}
           />
