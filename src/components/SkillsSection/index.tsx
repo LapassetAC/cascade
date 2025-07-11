@@ -175,12 +175,12 @@ const SkillsSection = () => {
                       {skill.logo.map((logo, logoIndex) => (
                         <div
                           key={logoIndex}
-                          className="logo-item w-12 h-12 flex items-center justify-center p-1.5"
+                          className="logo-item h-10 max-w-16 flex items-center justify-center p-1.5"
                         >
                           <img
                             src={`/logos/${logo}.svg`}
                             alt={logo}
-                            className="w-full h-full object-contain"
+                            className="h-full w-auto object-contain"
                           />
                         </div>
                       ))}
