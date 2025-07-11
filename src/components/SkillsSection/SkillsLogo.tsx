@@ -5,13 +5,17 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const SkillsLogo = () => {
-  const path1Ref = useRef(null);
-  const path2Ref = useRef(null);
-  const path3Ref = useRef(null);
-  const path4Ref = useRef(null);
-  const path5Ref = useRef(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const path1Ref = useRef<SVGPathElement>(null);
+  const path2Ref = useRef<SVGPathElement>(null);
+  const path3Ref = useRef<SVGPathElement>(null);
+  const path4Ref = useRef<SVGPathElement>(null);
+  const path5Ref = useRef<SVGPathElement>(null);
 
   useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+
     const paths = [
       path1Ref.current,
       path2Ref.current,
@@ -20,44 +24,83 @@ const SkillsLogo = () => {
       path5Ref.current,
     ];
 
-    const skills = document.querySelectorAll("#skills-list > li");
-    paths.forEach((path, index) => {
-      if (skills[index]) {
-        gsap.fromTo(
-          path,
-          {
-            opacity: 0,
-            scaleY: 0,
-          },
-          {
-            opacity: 1,
-            scaleY: 1,
-            duration: 0.3,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: skills[index],
-              start: "top center",
-              end: "bottom center",
-              toggleActions: "play none none reverse",
-              // markers: true, // Pour débugger
-            },
-          }
-        );
+    // Find the skills section by traversing up from the SVG
+    const skillsSection = svg.closest("section");
+    if (!skillsSection) return;
+
+    const skillsCount = 5;
+
+    // Initialize all paths as hidden
+    paths.forEach((path) => {
+      if (path) {
+        gsap.set(path, {
+          opacity: 0,
+          scaleY: 0,
+          transformOrigin: "top",
+        });
       }
     });
 
+    // Show first path initially
+    if (paths[0]) {
+      gsap.set(paths[0], { opacity: 1, scaleY: 1 });
+    }
+
+    // Create a single scroll trigger that manages all paths
+    ScrollTrigger.create({
+      trigger: skillsSection,
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        const totalProgress = self.progress;
+        const pathProgress = totalProgress * skillsCount;
+        const activePathIndex = Math.floor(pathProgress);
+
+        // Show all paths up to the current active skill
+        paths.forEach((path, index) => {
+          if (path) {
+            if (index <= activePathIndex) {
+              // Show this path with smooth transition
+              gsap.to(path, {
+                opacity: 1,
+                scaleY: 1,
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: true,
+              });
+            } else {
+              // Hide this path with smooth transition
+              gsap.to(path, {
+                opacity: 0,
+                scaleY: 0,
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: true,
+              });
+            }
+          }
+        });
+      },
+    });
+
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Clean up only the ScrollTriggers created by this component
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.trigger === skillsSection) {
+          trigger.kill();
+        }
+      });
     };
   }, []);
 
   return (
     <svg
+      ref={svgRef}
       width="243"
       height="192"
       viewBox="0 0 243 192"
       xmlns="http://www.w3.org/2000/svg"
-      className="fill-current w-full h-auto sticky top-[50vh] mb-4 md:mb-0"
+      className="fill-current w-full h-auto mb-4 md:mb-0 relative z-10"
     >
       <path
         ref={path5Ref}
