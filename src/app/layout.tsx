@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "@/styles/globals.css";
 import { moderat } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next";
@@ -56,10 +55,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${moderat.className} antialiased`}>
-        <Script
-          src="https://webvisor.xyz/api/tracker.js?tid=5c7e25a4-1033-4b82-bd8f-0c5476523702"
-          strategy="afterInteractive"
-        />
         {children}
         <Analytics />
       </body>
