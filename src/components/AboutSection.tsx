@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 const AboutSection = () => {
   return (
-    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 relative bg-[url('/imgs/white-noise.jpg')] dark:bg-[url('/imgs/blue-noise.jpg')]">
+    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-16 md:py-32 relative bg-[url('/imgs/white-noise.jpg')]">
       <div className="col-start-2 col-span-3 mb-16">
         <h2 className="title mb-10">
           Deux frères,

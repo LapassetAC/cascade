@@ -6,7 +6,7 @@ const NosSolutionsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-8 md:gap-16">
           {/* Card 1 */}
-          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] lg:py-8 ">
+          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] rounded-tr-[30px] lg:py-8 ">
             <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="139"
@@ -53,7 +53,7 @@ const NosSolutionsSection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] rounded-tr-[30px] lg:py-8 ">
+          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] rounded-tr-[30px] lg:py-8 ">
             <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="85"

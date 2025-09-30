@@ -137,7 +137,7 @@ const SkillsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-[url('/imgs/blue-noise.jpg')] dark:bg-[url('/imgs/white-noise.jpg')] bg-repeat text-[#fcfaf7] dark:text-[#0b0bca] relative h-[400vh] xl:h-[300vh]"
+      className="bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] relative h-[400vh] xl:h-[300vh]"
     >
       <div
         ref={skillsContainerRef}
