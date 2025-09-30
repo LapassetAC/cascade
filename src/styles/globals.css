@@ -9,6 +9,7 @@
   --foreground-noise: url("/imgs/blue-noise.jpg");
 }
 
+/* Correct bug before re-enabling 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #0b0bca;
@@ -16,7 +17,7 @@
     --background-noise: url("/imgs/blue-noise.jpg");
     --foreground-noise: url("/imgs/white-noise.jpg");
   }
-}
+} */
 
 html,
 body {
