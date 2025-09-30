@@ -9,14 +9,14 @@
   --foreground-noise: url("/imgs/blue-noise.jpg");
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #0b0bca;
     --foreground-color: #fcfaf7;
     --background-noise: url("/imgs/blue-noise.jpg");
     --foreground-noise: url("/imgs/white-noise.jpg");
   }
-}
+} */
 
 html,
 body {
