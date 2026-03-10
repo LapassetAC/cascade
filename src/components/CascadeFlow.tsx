@@ -13,7 +13,7 @@ export default function CascadeFlow() {
     if (!logoRef.current) return;
 
     const paths = gsap.utils.toArray(
-      logoRef.current.querySelectorAll("path") || []
+      logoRef.current.querySelectorAll("path") || [],
     );
 
     gsap.fromTo(
@@ -30,7 +30,7 @@ export default function CascadeFlow() {
           start: "top 80%",
           toggleActions: "play none none none",
         },
-      }
+      },
     );
 
     return () => {
@@ -39,7 +39,7 @@ export default function CascadeFlow() {
   }, []);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start  overflow-visible gap-16">
+    <section className="grid grid-cols-1 md:grid-cols-5 md:gap-8 px-4 md:py-48 col-span-3 items-start overflow-visible gap-16 pb-16">
       <p className="text-[64px] title col-span-3 md:col-start-2 md:col-span-3 lg:mb-16">
         Cascade c&apos;est l&apos;histoire de deux{" "}
         <span className="italic title">frères</span> qui conçoivent le web comme
@@ -65,9 +65,9 @@ export default function CascadeFlow() {
       </div>
       <div className="col-start-2 col-span-2 md:col-start-3 md:col-span-2 flex flex-col gap-8">
         <p>
-          Notre volonté est d&apos;être les artisans d&apos;un web mieux conçu et plus
-          sobre, où la forme sert le message pour vous offrir la visibilité et
-          la crédibilité que vous méritez.
+          Notre volonté est d&apos;être les artisans d&apos;un web mieux conçu
+          et plus sobre, où la forme sert le message pour vous offrir la
+          visibilité et la crédibilité que vous méritez.
         </p>
         <p>
           Avec des parcours mêlant design, tech et conseil, nous travaillons en

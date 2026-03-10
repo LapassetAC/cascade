@@ -12,7 +12,7 @@ const AboutSection = () => {
         <img
           src="/imgs/avatar-adrien.svg"
           alt="Adrien"
-          className="w-36 h-36 justify-self-end relative -top-6"
+          className="w-20 h-20 md:w-36 md:h-36 justify-self-end relative -top-6"
         />
 
         <div className="grid-cols-2 md:grid-cols-3 col-span-2">
@@ -33,7 +33,7 @@ const AboutSection = () => {
         <img
           src="/imgs/avatar-clem.png"
           alt="Clément"
-          className="w-36 h-36 justify-self-end relative -top-6"
+          className="w-20 h-20 md:w-36 md:h-36 justify-self-end relative -top-6"
         />
 
         <div className="grid-cols-2 md:grid-cols-3 col-span-2">
