@@ -42,7 +42,7 @@ const ProjectCard = ({
     if (inView && isUserActive) {
       videoElement
         .play()
-        .catch((error) => console.error(`Video ${index} play error:`, error));
+        .catch(() => {});
     } else {
       videoElement.pause();
     }

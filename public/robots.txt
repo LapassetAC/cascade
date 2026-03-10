@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cascadestudio.fr/sitemap.xml

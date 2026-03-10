@@ -22,6 +22,8 @@ export default function CascadeLogo({
       viewBox="0 0 1134 246"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Cascade Studio"
     >
       <path
         className={`${rectClasses} [animation-delay:1.2s]`}

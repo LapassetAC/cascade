@@ -38,11 +38,6 @@ export const useGsapAnimation = () => {
           setTimeout(() => requestAnimationFrame(initAnimation), 50);
           return;
         } else {
-          console.warn(
-            "GSAP animation: Elements not found after",
-            maxRetries,
-            "retries"
-          );
           return;
         }
       }

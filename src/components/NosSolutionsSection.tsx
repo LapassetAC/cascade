@@ -1,6 +1,6 @@
 const NosSolutionsSection = () => {
   return (
-    <section className="bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] md:grid grid-cols-5 gap-8 px-4 md:px-8 py-24">
+    <section id="nos-solutions" className="bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] md:grid grid-cols-5 gap-8 px-4 md:px-8 py-24">
       <div className="col-start-2 col-span-3">
         <h2 className="title mb-16">Nos solutions</h2>
 
@@ -14,6 +14,7 @@ const NosSolutionsSection = () => {
                 viewBox="0 0 139 103"
                 className="fill-current flex-shrink w-[80px] md:w-[110px] h-auto mt-2 mr-4"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path d="M138.031 14.3303L138.031 0.412111L81.311 0.412113C75.474 0.412114 70.7421 5.14396 70.7421 10.981L70.7421 19.7884L71.0009 19.7884C72.8023 16.5339 76.2709 14.3303 80.2541 14.3303L138.031 14.3303Z" />
                 <path d="M124.643 30.536L124.643 16.6177L81.311 16.6177C75.474 16.6177 70.7421 21.3496 70.7421 27.1866L70.7421 35.994L71.0009 35.994C72.8023 32.7395 76.2709 30.536 80.2541 30.536L124.643 30.536Z" />
@@ -61,6 +62,7 @@ const NosSolutionsSection = () => {
                 viewBox="0 0 85 93"
                 xmlns="http://www.w3.org/2000/svg"
                 className="fill-current flex-shrink w-[55px] md:w-[75px] h-auto mt-2 mr-4"
+                aria-hidden="true"
               >
                 <path d="M67.8031 20.5164L67.8031 6.59815L11.0834 6.59815C5.24641 6.59815 0.514564 11.33 0.514564 17.167L0.514565 25.9744L0.773347 25.9744C2.57477 22.7199 6.04334 20.5164 10.0266 20.5164L67.8031 20.5164Z" />
                 <path d="M54.4159 36.722L54.4159 22.8038L11.0834 22.8038C5.24642 22.8038 0.514565 27.5356 0.514565 33.3727L0.514565 42.1801L0.773348 42.1801C2.57477 38.9255 6.04334 36.722 10.0266 36.722L54.4159 36.722Z" />

@@ -19,9 +19,7 @@ export const useLogoColorChange = ({ logoRef }: UseLogoColorChangeProps) => {
 
     if (logoElement) {
       // Find the Skills section element
-      const skillsSection = document.querySelector(
-        "section[class*=\"bg-[url('/imgs/blue-noise.jpg')]\"]"
-      );
+      const skillsSection = document.getElementById("nos-solutions");
 
       if (skillsSection) {
         // Create ScrollTrigger to track when logo overlaps with Skills section

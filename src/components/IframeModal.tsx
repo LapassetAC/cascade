@@ -103,6 +103,7 @@ export default function IframeModal({
             frameBorder="0"
             title={title}
             className="rounded-lg"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
             onLoad={() => setIsLoading(false)}
           />
         </div>
