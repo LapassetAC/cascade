@@ -72,12 +72,14 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       {/* Desktop header */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 px-4 md:p-8 items-start">
         {/* Main content */}
-        <HeroSection
-          onOpenCalModal={openCalModal}
-          onOpenTallyModal={openTallyModal}
-          project={projects[0]}
-          hideButtons={isFooterLogoHovered}
-        />
+        {projects[0] && (
+          <HeroSection
+            onOpenCalModal={openCalModal}
+            onOpenTallyModal={openTallyModal}
+            project={projects[0]}
+            hideButtons={isFooterLogoHovered}
+          />
+        )}
 
         {/* End of Main content */}
       </div>

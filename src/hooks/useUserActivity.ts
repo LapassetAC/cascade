@@ -19,17 +19,20 @@ const useUserActivity = () => {
     // Add event listener for visibility changes
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
+    const handleBlur = () => setIsUserActive(false);
+    const handleFocus = () => setIsUserActive(true);
+
     // Add event listener for when window loses focus
-    window.addEventListener("blur", () => setIsUserActive(false));
+    window.addEventListener("blur", handleBlur);
 
     // Add event listener for when window gains focus
-    window.addEventListener("focus", () => setIsUserActive(true));
+    window.addEventListener("focus", handleFocus);
 
     // Cleanup
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("blur", () => setIsUserActive(false));
-      window.removeEventListener("focus", () => setIsUserActive(true));
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("focus", handleFocus);
     };
   }, []);
 

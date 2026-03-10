@@ -54,7 +54,7 @@ const Footer = ({ onLogoMouseEnter, onLogoMouseLeave }: FooterProps) => {
         <Link href="/mentions-legales" className="block mb-2 text-xs">
           Mentions légales
         </Link>
-        <p className="text-xs">Cascade © {new Date().getFullYear()}</p>
+        <p className="text-xs">Cascade © {new Date().getFullYear().toString()}</p>
       </div>
     </div>
   );
