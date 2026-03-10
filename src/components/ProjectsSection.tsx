@@ -5,6 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "@/hooks/useWindowSize";
 import useUserActivity from "@/hooks/useUserActivity";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // Create a custom hook for managing multiple video refs and inView states
 const useProjectsInView = (projectsCount: number) => {
@@ -30,6 +32,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const isMobile = useWindowSize();
   const [showAllProjects, setShowAllProjects] = useState(false);
   const isUserActive = useUserActivity();
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.refresh();
+  }, [showAllProjects]);
 
   // Create refs for all possible projects
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);

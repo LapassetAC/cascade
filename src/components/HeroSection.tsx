@@ -12,12 +12,14 @@ interface HeroSectionProps {
   onOpenCalModal: () => void;
   onOpenTallyModal: () => void;
   project: Project;
+  hideButtons?: boolean;
 }
 
 export default function HeroSection({
   onOpenCalModal,
   onOpenTallyModal,
   project,
+  hideButtons = false,
 }: HeroSectionProps) {
   const { title, image, videoUrl } = project;
 
@@ -100,7 +102,7 @@ export default function HeroSection({
       </div>
       <aside
         className={`fixed top-4 md:top-8 right-4 md:right-8 flex flex-col gap-1 transition-all duration-200 ease-in-out z-30 ${
-          isHeroVisible
+          isHeroVisible || hideButtons
             ? "opacity-0 translate-y-[-20px] pointer-events-none"
             : "opacity-100 translate-y-0 pointer-events-auto"
         }`}

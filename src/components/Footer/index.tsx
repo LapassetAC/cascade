@@ -1,10 +1,15 @@
 import AnimLogo from "./AnimLogo";
 import Link from "next/link";
 
-const Footer = () => {
+interface FooterProps {
+  onLogoMouseEnter?: () => void;
+  onLogoMouseLeave?: () => void;
+}
+
+const Footer = ({ onLogoMouseEnter, onLogoMouseLeave }: FooterProps) => {
   return (
     <div className="relative mt-32 p-4 md:p-0">
-      <AnimLogo />
+      <AnimLogo onMouseEnter={onLogoMouseEnter} onMouseLeave={onLogoMouseLeave} />
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 md:px-8 md:absolute bottom-8 md:left-0 w-full">
         <div className="flex flex-col md:gap-4 md:col-span-2 xl:col-span-1">
           <a href="mailto:contact@cascadestudio.fr">

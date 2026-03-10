@@ -6,7 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function AnimLogo() {
+interface AnimLogoProps {
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+function AnimLogo({ onMouseEnter, onMouseLeave }: AnimLogoProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -42,6 +47,8 @@ function AnimLogo() {
     <svg
       id="anim-logo"
       ref={svgRef}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       width="243"
       height="192"
       viewBox="0 0 243 192"

@@ -25,6 +25,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
   // Modal state
   const [isCalModalOpen, setIsCalModalOpen] = useState(false);
   const [isTallyModalOpen, setIsTallyModalOpen] = useState(false);
+  const [isFooterLogoHovered, setIsFooterLogoHovered] = useState(false);
 
   useHeaderColorChange({
     logoRef,
@@ -75,6 +76,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
           onOpenCalModal={openCalModal}
           onOpenTallyModal={openTallyModal}
           project={projects[0]}
+          hideButtons={isFooterLogoHovered}
         />
 
         {/* End of Main content */}
@@ -92,7 +94,10 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       </div>
       <AboutSection />
       <div ref={footerRef}>
-        <Footer />
+        <Footer
+          onLogoMouseEnter={() => setIsFooterLogoHovered(true)}
+          onLogoMouseLeave={() => setIsFooterLogoHovered(false)}
+        />
       </div>
 
       <CalModal isOpen={isCalModalOpen} onClose={closeCalModal} />
