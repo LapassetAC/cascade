@@ -15,31 +15,39 @@ export const useLogoColorChange = ({ logoRef }: UseLogoColorChangeProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     const logoElement = logoRef.current;
-    let scrollTrigger: ScrollTrigger | null = null;
+    const scrollTriggers: ScrollTrigger[] = [];
 
     if (logoElement) {
-      // Find the Skills section element
-      const skillsSection = document.getElementById("nos-solutions");
+      let activeCount = 0;
 
-      if (skillsSection) {
-        // Create ScrollTrigger to track when logo overlaps with Skills section
-        scrollTrigger = ScrollTrigger.create({
-          trigger: skillsSection,
-          start: "top 60px", // When skills section reaches the logo area (accounting for top-8 positioning)
-          end: "bottom 60px", // When skills section bottom passes the logo area
-          onEnter: () => setShouldUseWhiteLogo(true), // Logo is over blue background
-          onLeave: () => setShouldUseWhiteLogo(false), // Logo is past blue background
-          onEnterBack: () => setShouldUseWhiteLogo(true), // Logo is back over blue background
-          onLeaveBack: () => setShouldUseWhiteLogo(false), // Logo is before blue background
-        });
-      }
+      const updateState = (entering: boolean) => {
+        activeCount += entering ? 1 : -1;
+        setShouldUseWhiteLogo(activeCount > 0);
+      };
+
+      // Dark background sections that need white menu
+      const darkSections = ["nos-solutions", "skills-section"];
+
+      darkSections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          scrollTriggers.push(
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top 60px",
+              end: "bottom 60px",
+              onEnter: () => updateState(true),
+              onLeave: () => updateState(false),
+              onEnterBack: () => updateState(true),
+              onLeaveBack: () => updateState(false),
+            })
+          );
+        }
+      });
     }
 
     return () => {
-      // Kill the specific ScrollTrigger created by this hook
-      if (scrollTrigger) {
-        scrollTrigger.kill();
-      }
+      scrollTriggers.forEach((trigger) => trigger.kill());
     };
   }, [logoRef]);
 

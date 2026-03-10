@@ -133,6 +133,7 @@ const SkillsSection = () => {
 
   return (
     <section
+      id="skills-section"
       ref={sectionRef}
       className="bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] relative h-[400vh] xl:h-[300vh]"
     >
