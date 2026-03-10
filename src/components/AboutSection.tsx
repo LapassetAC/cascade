@@ -20,7 +20,7 @@ const AboutSection = () => {
             Adrien, de l’informatique au design, un voyage entre code et
             créativité
           </h3>
-          <p className="md:grid-cols-3 text-sm">
+          <p className="md:grid-cols-3 text-base">
             Initialement formé à l’informatique, Adrien a enrichi son parcours
             par un Master en Design Graphique et Interactivité afin d’acquérir
             une double compétence en design et développement web. Avec plus de
@@ -40,7 +40,7 @@ const AboutSection = () => {
           <h3 className="grid-cols-2 font-bold mb-4 leading-tight">
             Clément, un parcours croisé entre stratégie et développement web
           </h3>
-          <p className="md:grid-cols-3 text-sm">
+          <p className="md:grid-cols-3 text-base">
             Diplômé de l&apos;EDHEC Business School avec une expérience en
             conseil chez Sopra Steria et Deloitte, Clément s&apos;est orienté
             vers le domaine du web poussé par sa passion du code et son désir de
