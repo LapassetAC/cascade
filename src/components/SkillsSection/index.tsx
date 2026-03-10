@@ -24,19 +24,16 @@ const SkillsSection = () => {
       title: "Concevoir l'interface et le contenu",
       description:
         "Nous maquettons chaque page dans Figma (au format mobile, tablette, et ordinateur) et vous accompagnons dans la création des contenus pour qu'ils soient clairs, cohérents et impactants.",
-      logo: ["figma"],
     },
     {
       title: "Donner vie au site",
       description:
         "Nous codons entièrement votre site avec les technologies les plus performantes du marché pour qu'il soit rapide, engageant, et évolutif.",
-      logo: ["github", "nextjs", "tailwindcss", "typescript", "gsap"],
     },
     {
       title: "Livrer et vous accompagner",
       description:
         "Vous gérez facilement vos contenus grâce à une interface simple. Nous assurons la maintenance technique et vous accompagnons dans le temps pour suivre les performances et faire évoluer votre présence en ligne.",
-      logo: ["sanity", "vercel"],
     },
   ];
 
@@ -48,7 +45,7 @@ const SkillsSection = () => {
 
     // Initialize all skills as hidden
     const skillElements = skills.map((_, index) =>
-      skillsContainer.querySelector(`#skill-${index}`)
+      skillsContainer.querySelector(`#skill-${index}`),
     );
 
     skillElements.forEach((el) => {
@@ -147,7 +144,7 @@ const SkillsSection = () => {
           Un accompagnement <br />
           de bout en bout
         </h2>
-        <p className="col-start-2 col-span-2 mb-8 md:mb-32">
+        <p className="col-start-2 col-span-2 mb-8 md:mb-16">
           De l'audit à la mise en ligne, nous vous accompagnons à chaque étape,
           avec la qualité d'une agence et la flexibilité d'un·e freelance.
         </p>
@@ -169,23 +166,7 @@ const SkillsSection = () => {
                     </span>
                     {skill.title}
                   </div>
-                  <p className="text-sm pt-2">{skill.description}</p>
-                  {skill.logo && (
-                    <div className="logos-container flex flex-wrap gap-3 mt-4 justify-end">
-                      {skill.logo.map((logo, logoIndex) => (
-                        <div
-                          key={logoIndex}
-                          className="logo-item h-10 max-w-16 flex items-center justify-center p-1.5"
-                        >
-                          <img
-                            src={`/logos/${logo}.svg`}
-                            alt={logo}
-                            className="h-full w-auto object-contain"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <p className="text-base pt-2">{skill.description}</p>
                 </div>
               </div>
             ))}

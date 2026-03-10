@@ -1,12 +1,12 @@
 const NosSolutionsSection = () => {
   return (
-    <section className="md:grid grid-cols-5 gap-8 px-4 md:px-8 py-32">
+    <section className="bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] md:grid grid-cols-5 gap-8 px-4 md:px-8 py-24">
       <div className="col-start-2 col-span-3">
-        <h2 className="title mb-16 md:mb-32">Nos solutions</h2>
+        <h2 className="title mb-16">Nos solutions</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 col-span-3 gap-8 md:gap-16">
           {/* Card 1 */}
-          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] rounded-tr-[30px] lg:py-8 ">
+          <div className="flex flex-col col-span-3 lg:py-8 ">
             <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="139"
@@ -53,7 +53,7 @@ const NosSolutionsSection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 flex flex-col col-span-3 bg-[url('/imgs/blue-noise.jpg')] bg-repeat text-[#fcfaf7] rounded-tr-[30px] lg:py-8 ">
+          <div className="flex flex-col col-span-3 lg:py-8 ">
             <div className="flex items-center gap-4 mb-8 lg:pl-16">
               <svg
                 width="85"

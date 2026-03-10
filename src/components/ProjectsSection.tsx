@@ -17,7 +17,7 @@ const useProjectsInView = (projectsCount: number) => {
         triggerOnce: false,
         threshold: 0.4,
         rootMargin: "-100px",
-      })
+      }),
     );
   }
   return inViewHooks;
@@ -65,7 +65,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   }, [projects, projectInViewData, isUserActive]);
 
   return (
-    <section className="col-span-3 flex flex-col gap-y-16 md:gap-y-32 pb-16">
+    <section className="col-span-3 flex flex-col gap-y-16 md:gap-y-32 pb-16 py-16">
       <h2 className="title ">Nos projets</h2>
 
       {projects.map((project, index) => {
