@@ -31,7 +31,7 @@ const AboutSection = () => {
       </div>
       <div className="col-start-2 col-span-3 grid grid-cols-3 gap-4 md:gap-8 mt-16 md:mt-0">
         <img
-          src="/imgs/avatar-clem.svg"
+          src="/imgs/avatar-clem.png"
           alt="Clément"
           className="w-36 h-36 justify-self-end relative -top-6"
         />
