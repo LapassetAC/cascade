@@ -109,8 +109,8 @@ export default function HeroSection({
       >
         <button
           onClick={onOpenCalModal}
-          className={`font-bold -m-4 p-4 text-left md:mb-1 transition-colors duration-300 ${
-            shouldUseWhiteLogo ? "text-white" : "text-[#0b0bca]"
+          className={`font-bold -m-4 p-4 text-left md:mb-1 transition-colors duration-300 text-[#0b0bca] ${
+            shouldUseWhiteLogo ? "md:text-white" : "md:text-[#0b0bca]"
           }`}
         >
           → Nous rencontrer

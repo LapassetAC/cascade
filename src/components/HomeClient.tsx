@@ -50,6 +50,7 @@ export default function HomeClient({ projects }: { projects: Project[] }) {
       <header
         className="sticky top-0 mb-4 md:mb-0 p-4 flex justify-between items-center md:hidden md:col-span-1 z-30"
         style={{
+          backgroundColor: "var(--background-color)",
           backgroundImage: "var(--background-noise)",
         }}
       >
