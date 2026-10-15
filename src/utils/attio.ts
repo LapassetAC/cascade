@@ -56,6 +56,33 @@ export async function getWonDeals(): Promise<WonDeal[]> {
   }));
 }
 
+export type OngoingProject = {
+  name: string;
+  value: number;
+};
+
+type AttioProjectRecord = {
+  values: {
+    name: { value: string }[];
+    value: { currency_value: number }[];
+  };
+};
+
+// Projets signés mais pas encore facturés
+export async function getOngoingProjects(): Promise<OngoingProject[]> {
+  const records = await queryAll<AttioProjectRecord>(
+    "/objects/deals/records/query",
+    { filter: { stage: WON_STAGE, facture: false } }
+  );
+
+  return records
+    .map((record) => ({
+      name: record.values.name[0]?.value ?? "",
+      value: record.values.value[0]?.currency_value ?? 0,
+    }))
+    .filter((project) => project.name && project.value > 0);
+}
+
 // Somme des montants annuels de la liste "Contrats Maintenance"
 export async function getMaintenanceAnnualTotal(): Promise<number> {
   const entries = await queryAll<AttioListEntry>(
