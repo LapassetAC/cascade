@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cascadestudio.fr"),
+  metadataBase: new URL("https://www.cascadestudio.fr"),
   title: "Studio Cascade - Créateurs de sites web engageants",
   description:
     "Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal.",
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     description:
       "Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal.",
     type: "website",
-    url: "https://cascadestudio.fr",
+    url: "https://www.cascadestudio.fr",
     images: [
       {
-        url: "https://cascadestudio.fr/og.jpg",
+        url: "https://www.cascadestudio.fr/og.jpg",
         alt: "Cascade",
       },
     ],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Nous concevons des sites web uniques pour des marques inspirantes. Fidèles aux valeurs de nos clients, nos créations se distinguent par leur fluidité, leur performance et un référencement naturel (SEO) optimal.",
     images: [
       {
-        url: "https://cascadestudio.fr/og.jpg",
+        url: "https://www.cascadestudio.fr/og.jpg",
         alt: "Cascade",
       },
     ],

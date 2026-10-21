@@ -3,13 +3,13 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://cascadestudio.fr",
+      url: "https://www.cascadestudio.fr",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://cascadestudio.fr/mentions-legales",
+      url: "https://www.cascadestudio.fr/mentions-legales",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,
