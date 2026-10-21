@@ -3,6 +3,7 @@ import MentionsLegalesClient from "./MentionsLegalesClient";
 export const metadata: Metadata = {
   title: "Mentions Légales - Studio Cascade",
   description: "Mentions légales du site Studio Cascade",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegales() {

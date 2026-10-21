@@ -1,6 +1,11 @@
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import HomeClient from "@/components/HomeClient";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export const revalidate = 3600;
 
