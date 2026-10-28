@@ -58,6 +58,7 @@ export async function getWonDeals(): Promise<WonDeal[]> {
 
 export type OngoingProject = {
   name: string;
+  company: string;
   value: number;
 };
 
@@ -65,8 +66,30 @@ type AttioProjectRecord = {
   values: {
     name: { value: string }[];
     value: { currency_value: number }[];
+    associated_company: { target_record_id: string }[];
   };
 };
+
+type AttioCompanyRecord = {
+  id: { record_id: string };
+  values: { name: { value: string }[] };
+};
+
+// Noms des entreprises, indexés par record_id
+async function getCompanyNames(ids: string[]): Promise<Map<string, string>> {
+  if (ids.length === 0) return new Map();
+
+  const records = await queryAll<AttioCompanyRecord>(
+    "/objects/companies/records/query",
+    { filter: { record_id: { $in: ids } } }
+  );
+  return new Map(
+    records.map((record) => [
+      record.id.record_id,
+      record.values.name[0]?.value ?? "",
+    ])
+  );
+}
 
 // Projets signés mais pas encore facturés
 export async function getOngoingProjects(): Promise<OngoingProject[]> {
@@ -75,12 +98,50 @@ export async function getOngoingProjects(): Promise<OngoingProject[]> {
     { filter: { stage: WON_STAGE, facture: false } }
   );
 
+  const companyId = (record: AttioProjectRecord) =>
+    record.values.associated_company[0]?.target_record_id;
+  const companies = await getCompanyNames(
+    records.flatMap((record) => companyId(record) ?? [])
+  );
+
   return records
     .map((record) => ({
       name: record.values.name[0]?.value ?? "",
+      company: companies.get(companyId(record) ?? "") ?? "",
       value: record.values.value[0]?.currency_value ?? 0,
     }))
     .filter((project) => project.name && project.value > 0);
+}
+
+export type OpenDeal = {
+  name: string;
+  stage: string;
+  value: number;
+  createdAt: string; // "YYYY-MM-DD"
+};
+
+type AttioOpenDealRecord = {
+  created_at: string;
+  values: {
+    name: { value: string }[];
+    stage: { status: { title: string } }[];
+    value: { currency_value: number }[];
+  };
+};
+
+// Deals en cours de négociation : "Lead" (prospect chaud) et "In Progress"
+export async function getOpenDeals(): Promise<OpenDeal[]> {
+  const records = await queryAll<AttioOpenDealRecord>(
+    "/objects/deals/records/query",
+    { filter: { $or: [{ stage: "Lead" }, { stage: "In Progress" }] } }
+  );
+
+  return records.map((record) => ({
+    name: record.values.name[0]?.value ?? "",
+    stage: record.values.stage[0]?.status.title ?? "",
+    value: record.values.value[0]?.currency_value ?? 0,
+    createdAt: record.created_at.slice(0, 10),
+  }));
 }
 
 // Somme des montants annuels de la liste "Contrats Maintenance"
