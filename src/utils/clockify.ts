@@ -25,10 +25,15 @@ function durationToHours(duration: string): number {
   return h + m / 60 + s / 3600 || 0;
 }
 
-// Le plan gratuit de Clockify limite l'API à 30 requêtes par heure :
-// chaque réponse est gardée 15 minutes, quel que soit le nombre d'appels
-// au dashboard (page, route JSON lue par Claude)
-const CACHE_SECONDS = 15 * 60;
+// Le plan gratuit de Clockify limite l'API à 30 requêtes par heure pour tout
+// l'espace, partagées avec nos autres outils (Raycast, scripts) : chaque
+// réponse est gardée 30 minutes, quel que soit le nombre d'appels au
+// dashboard (page, route JSON lue par Claude). Soit 4 requêtes par
+// rafraîchissement, 8 par heure au plus
+const CACHE_SECONDS = 30 * 60;
+
+// Espace Clockify « Cascade » : fixe, évite un appel à /user
+const WORKSPACE_ID = "66e0416dfba3245061a9a661";
 
 const cachedClockifyFetch = unstable_cache(
   async (path: string): Promise<unknown> => {
@@ -51,20 +56,12 @@ async function clockifyFetch<T>(path: string): Promise<T> {
   return (await cachedClockifyFetch(path)) as T;
 }
 
-async function getWorkspaceId(): Promise<string> {
-  if (process.env.CLOCKIFY_WORKSPACE_ID) return process.env.CLOCKIFY_WORKSPACE_ID;
-
-  const user = await clockifyFetch<{ activeWorkspace: string }>("/user");
-  return user.activeWorkspace;
-}
-
 // Heures suivies par projet actif, indexées par nom normalisé.
 // Le champ "duration" des projets donne le total suivi, sans passer par
 // l'API des rapports (limitée en période sur le plan gratuit)
 export async function getTrackedHoursByProject(): Promise<Map<string, number>> {
-  const workspaceId = await getWorkspaceId();
   const projects = await clockifyFetch<ClockifyProject[]>(
-    `/workspaces/${workspaceId}/projects?archived=false&page-size=5000`
+    `/workspaces/${WORKSPACE_ID}/projects?archived=false&page-size=5000`
   );
 
   const hours = new Map<string, number>();
@@ -107,15 +104,14 @@ const parisDate = new Intl.DateTimeFormat("en-CA", {
 export async function getTrackedHoursByPerson(
   since: Date
 ): Promise<PersonHours[]> {
-  const workspaceId = await getWorkspaceId();
   const users = await clockifyFetch<ClockifyUser[]>(
-    `/workspaces/${workspaceId}/users`
+    `/workspaces/${WORKSPACE_ID}/users`
   );
 
   return Promise.all(
     users.map(async ({ id, name }) => {
       const entries = await clockifyFetch<ClockifyTimeEntry[]>(
-        `/workspaces/${workspaceId}/user/${id}/time-entries?start=${since.toISOString()}&hydrated=true&page-size=1000`
+        `/workspaces/${WORKSPACE_ID}/user/${id}/time-entries?start=${since.toISOString()}&hydrated=true&page-size=1000`
       );
 
       const days = new Map<string, DayHours>();
