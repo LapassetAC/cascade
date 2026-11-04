@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { moderat } from "@/fonts";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cascadestudio.fr"),
@@ -60,6 +61,13 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
+        {/* Umami (analytics.cascadestudio.fr) : visites et UTM des crédits /credit/<client>, sur le vrai domaine seulement. */}
+        <Script
+          src="https://analytics.cascadestudio.fr/script.js"
+          data-website-id="5f770ac3-00a3-4755-8c29-7ec12a60f9e1"
+          data-domains="www.cascadestudio.fr"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
