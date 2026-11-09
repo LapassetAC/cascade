@@ -25,8 +25,6 @@ export const HOURLY_RATE = 80;
 // Temps de travail visé, par personne
 export const DAILY_HOURS_TARGET = 4;
 export const WEEKLY_HOURS_TARGET = 20;
-// Part de commercial à garder même quand le travail signé suffit
-export const COMMERCIAL_SHARE_MIN = 0.15;
 // Part du temps prévu à partir de laquelle un projet est signalé
 export const OVERRUN_WARNING = 0.8;
 // Un deal ouvert créé il y a plus longtemps ne compte plus comme prospect récent
@@ -208,13 +206,6 @@ export async function getDashboardData(period: Period) {
       `${recentDeals.length} deal ouvert créé ces ${RECENT_DEAL_DAYS} derniers jours`,
     );
   }
-  for (const { name, last30 } of people) {
-    if (last30.hours > 0 && last30.commercialShare < COMMERCIAL_SHARE_MIN) {
-      reasons.push(
-        `${name} : ${Math.round(last30.commercialShare * 100)} % de commercial sur 30 jours (minimum ${COMMERCIAL_SHARE_MIN * 100} %)`,
-      );
-    }
-  }
 
   return {
     generatedAt: new Date().toISOString(),
@@ -225,7 +216,6 @@ export async function getDashboardData(period: Period) {
       yearly: YEARLY_TARGET,
       dailyHours: DAILY_HOURS_TARGET,
       weeklyHours: WEEKLY_HOURS_TARGET,
-      commercialShareMin: COMMERCIAL_SHARE_MIN,
       overrunWarning: OVERRUN_WARNING,
     },
     revenue: { period, average, remaining },
